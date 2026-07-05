@@ -335,3 +335,18 @@ Coverage:
 Notes:
 - `block_slab` and `block_stairs` use direct item IDs, not `c:storage_blocks/*` tags.
 - Ore heat values follow the source metal heat values; powder heat uses the source metal heat tier.
+
+## 12. Multi-version build layout
+
+- Supported targets:
+  - Minecraft 1.20.1: Forge 47.4.20, TFC 3.2.23, JEI 15.20.0.133, Java 17, under `versions/mc1_20_1/src/main`.
+  - Minecraft 1.21.1: NeoForge 21.1.235, TFC 4.2.5, JEI 19.27.0.346, Java 21, under `versions/mc1_21_1/src/main`.
+- The Minecraft 1.21.1 NeoForge implementation lives under `versions/mc1_21_1/src/main`.
+- The Minecraft 1.20.1 Forge implementation uses ForgeGradle and `META-INF/mods.toml`.
+- Shared Java and common resources live under `shared/src/main`; loader metadata stays in each version project.
+- The root `build.gradle` is an aggregator; build targets with `./gradlew :versions:mc1_20_1:build` or `./gradlew :versions:mc1_21_1:build`.
+- `./gradlew collectArtifacts` copies release jars into `build/all-versions`.
+- Common mod metadata stays in root `gradle.properties`; version-specific Minecraft, loader, TFC, JEI, and Java versions stay in each version project's `gradle.properties`.
+- Keep the Gradle wrapper on a Gradle 8.x release; ForgeGradle 6 does not support Gradle 9 yet. Configuration cache is disabled for ForgeGradle compatibility.
+- Older `src/main/...` path notes above now map to `shared/src/main/...` for common resources/data and `versions/<version>/src/main/...` for loader-specific code.
+- Do not add loader-specific sources back under root `src`.

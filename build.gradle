@@ -1,4 +1,5 @@
 plugins {
+    id 'net.minecraftforge.gradle' version '6.0.54' apply false
     id 'net.neoforged.gradle.userdev' version '7.1.38' apply false
 }
 
@@ -16,17 +17,13 @@ allprojects {
             url = uri('https://maven.neoforged.net/releases')
         }
         maven {
+            url = uri('https://maven.minecraftforge.net')
+        }
+        maven {
             url = uri('https://maven.blamejared.com')
         }
-        exclusiveContent {
-            forRepository {
-                maven {
-                    url = uri('https://api.modrinth.com/maven')
-                }
-            }
-            filter {
-                includeGroup 'maven.modrinth'
-            }
+        maven {
+            url = uri('https://api.modrinth.com/maven')
         }
     }
 
@@ -34,6 +31,11 @@ allprojects {
         options.encoding = 'UTF-8'
     }
 }
+
+def mc1_20_1ProjectPath = ':versions:mc1_20_1'
+def mc1_20_1MinecraftVersion = '1.20.1'
+def mc1_20_1JarFile = layout.projectDirectory.file("versions/mc1_20_1/build/libs/${mod_id}-${mc1_20_1MinecraftVersion}-${mod_version}.jar")
+def mc1_20_1ArtifactName = "${rootProject.mod_id}-${rootProject.mod_version}-mc${mc1_20_1MinecraftVersion}.jar"
 
 def mc1_21_1ProjectPath = ':versions:mc1_21_1'
 def mc1_21_1MinecraftVersion = '1.21.1'
@@ -43,6 +45,7 @@ def mc1_21_1ArtifactName = "${rootProject.mod_id}-${rootProject.mod_version}-mc$
 tasks.register('buildAll') {
     group = 'build'
     description = 'Builds all supported Minecraft version projects.'
+    dependsOn "${mc1_20_1ProjectPath}:build"
     dependsOn "${mc1_21_1ProjectPath}:build"
 }
 
@@ -52,6 +55,11 @@ tasks.register('collectArtifacts', Sync) {
     dependsOn 'buildAll'
     duplicatesStrategy = DuplicatesStrategy.FAIL
 
+    from(mc1_20_1JarFile) {
+        rename {
+            mc1_20_1ArtifactName
+        }
+    }
     from(mc1_21_1JarFile) {
         rename {
             mc1_21_1ArtifactName

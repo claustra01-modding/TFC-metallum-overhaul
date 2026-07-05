@@ -36,12 +36,21 @@ runs {
     }
 
     data {
-        arguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        arguments.addAll '--mod', project.mod_id, '--all',
+            '--output', file('src/generated/resources/').getAbsolutePath(),
+            '--existing', rootProject.file('shared/src/main/resources').getAbsolutePath(),
+            '--existing', file('src/main/resources/').getAbsolutePath()
     }
 }
 
-sourceSets.main.resources {
-    srcDir 'src/generated/resources'
+sourceSets {
+    main {
+        java.srcDir rootProject.file('shared/src/main/java')
+        resources {
+            srcDir rootProject.file('shared/src/main/resources')
+            srcDir 'src/generated/resources'
+        }
+    }
 }
 
 configurations {

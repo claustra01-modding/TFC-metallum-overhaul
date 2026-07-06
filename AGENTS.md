@@ -13,7 +13,7 @@
 ### 1.1 金属アイテム形状
 
 対象金属:
-`compressed_iron`, `platinum`, `naquadah`, `iridium`, `osmium`, `osmiridium`, `mythril`, `adamant`, `biosteel`, `duratium`, `energite`, `refined_glowstone`, `refined_obsidian`, `antimony`, `titanium`, `tungsten`, `solder`, `tungsten_steel`, `netherite`
+`compressed_iron`, `platinum`, `naquadah`, `iridium`, `osmium`, `osmiridium`, `mythril`, `adamant`, `biosteel`, `duratium`, `energite`, `refined_glowstone`, `refined_obsidian`, `antimony`, `titanium`, `cobalt`, `tungsten`, `solder`, `tungsten_steel`, `netherite`
 
 常時生成される形状:
 - `ingot`
@@ -59,7 +59,7 @@ ID規則:
 ### 1.2 鉱石アイテム形状
 
 対象鉱石:
-- 品位あり: `native_platinum`, `native_naquadah`, `native_iridium`, `native_osmium`, `rutile`, `stibnite`, `wolframite`
+- 品位あり: `native_platinum`, `native_naquadah`, `native_iridium`, `native_osmium`, `rutile`, `cobaltite`, `stibnite`, `wolframite`
 - 品位なし: `fluorite`
 
 鉱石アイテム形状:
@@ -312,6 +312,7 @@ Oritech版（輝度あり、Oritechで使用）:
 - 元Modに明るい固有ハイライトがない場合は通常版を使う。
 - 元Modの ingot に明るい固有ハイライトがある場合は Oritech版を使う。
 - ハイライト調整時は、パレット抽出の閾値や `highlight_mix` / `specular_mix` の係数を更新して全対象形状を再生成する。
+- `cobalt` 金属フォームと `cobaltite` 鉱石テクスチャは TFC Metallum U（`tfc_metallum`）の cobalt / cobaltite テクスチャを元素材として使う。
 
 ## 10. 参照コード
 

@@ -19,6 +19,7 @@
                    "#c:ingots/tungsten_steel",
                    "#c:ingots/netherite",
                    "#c:ingots/high_carbon_tungsten_steel",
-                   "#c:ingots/titanium"
+                   "#c:ingots/titanium",
+                   "#c:ingots/cobalt"
                ]
 }

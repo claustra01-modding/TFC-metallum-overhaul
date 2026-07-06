@@ -15,6 +15,7 @@
                    "tfc:metal/solder",
                    "tfc:metal/tungsten_steel",
                    "tfc:metal/netherite",
-                   "tfc:metal/titanium"
+                   "tfc:metal/titanium",
+                   "tfc:metal/cobalt"
                ]
 }

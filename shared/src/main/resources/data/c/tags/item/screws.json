@@ -19,6 +19,7 @@
                    "#c:screws/solder",
                    "#c:screws/tungsten_steel",
                    "#c:screws/netherite",
-                   "#c:screws/titanium"
+                   "#c:screws/titanium",
+                   "#c:screws/cobalt"
                ]
 }

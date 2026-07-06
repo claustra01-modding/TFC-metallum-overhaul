@@ -19,6 +19,7 @@
                    "#c:rods/solder",
                    "#c:rods/tungsten_steel",
                    "#c:rods/netherite",
-                   "#c:rods/titanium"
+                   "#c:rods/titanium",
+                   "#c:rods/cobalt"
                ]
 }

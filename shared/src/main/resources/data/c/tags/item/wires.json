@@ -19,6 +19,7 @@
                    "#c:wires/solder",
                    "#c:wires/tungsten_steel",
                    "#c:wires/netherite",
-                   "#c:wires/titanium"
+                   "#c:wires/titanium",
+                   "#c:wires/cobalt"
                ]
 }

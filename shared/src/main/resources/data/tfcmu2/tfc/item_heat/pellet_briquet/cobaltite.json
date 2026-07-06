@@ -1,0 +1,13 @@
+{
+    "ingredient":  [
+                       {
+                           "tag":  "c:metal/pellet/cobaltite"
+                       },
+                       {
+                           "tag":  "c:metal/briquet/cobaltite"
+                       }
+                   ],
+    "heat_capacity":  3.333,
+    "forging_temperature":  921,
+    "welding_temperature":  1228
+}

@@ -1,0 +1,11 @@
+{
+    "type":  "tfc:heating",
+    "ingredient":  {
+                       "item":  "tfcmu2:ore/poor_cobaltite"
+                   },
+    "result_fluid":  {
+                         "amount":  15,
+                         "id":  "tfc:metal/cobalt"
+                     },
+    "temperature":  1700
+}

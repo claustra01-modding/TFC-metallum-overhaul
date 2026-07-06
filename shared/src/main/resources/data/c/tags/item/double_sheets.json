@@ -18,6 +18,7 @@
                    "#c:double_sheets/solder",
                    "#c:double_sheets/tungsten_steel",
                    "#c:double_sheets/netherite",
-                   "#c:double_sheets/titanium"
+                   "#c:double_sheets/titanium",
+                   "#c:double_sheets/cobalt"
                ]
 }

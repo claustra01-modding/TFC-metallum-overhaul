@@ -18,6 +18,7 @@
                    "#c:double_ingots/solder",
                    "#c:double_ingots/tungsten_steel",
                    "#c:double_ingots/netherite",
-                   "#c:double_ingots/titanium"
+                   "#c:double_ingots/titanium",
+                   "#c:double_ingots/cobalt"
                ]
 }

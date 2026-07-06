@@ -26,6 +26,7 @@ public enum Tfcmu2Metal implements RegistryMetal {
     REFINED_OBSIDIAN("refined_obsidian", Rarity.RARE, 0x473752),
     ANTIMONY("antimony", Rarity.COMMON, 0xB4AFBD),
     TITANIUM("titanium", Rarity.UNCOMMON, 0x898B93),
+    COBALT("cobalt", Rarity.UNCOMMON, 0x175AB3),
     TUNGSTEN("tungsten", Rarity.EPIC, 0x585F6B),
     SOLDER("solder", Rarity.UNCOMMON, 0x888888),
     TUNGSTEN_STEEL("tungsten_steel", Rarity.EPIC, 0x2F353E),

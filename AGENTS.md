@@ -13,7 +13,7 @@
 ### 1.1 金属アイテム形状
 
 対象金属:
-`compressed_iron`, `platinum`, `naquadah`, `iridium`, `osmium`, `osmiridium`, `mythril`, `arcane`, `refined_glowstone`, `refined_obsidian`, `antimony`, `titanium`, `cobalt`, `tungsten`, `solder`, `tungsten_steel`, `netherite`
+`compressed_iron`, `platinum`, `naquadah`, `iridium`, `osmium`, `osmiridium`, `mithril`, `arcane`, `refined_glowstone`, `refined_obsidian`, `antimony`, `titanium`, `cobalt`, `tungsten`, `solder`, `tungsten_steel`, `netherite`
 
 常時生成される形状:
 - `ingot`
@@ -313,8 +313,8 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 - 元Modの ingot に明るい固有ハイライトがある場合は高輝度式を使う。
 - ハイライト調整時は、パレット抽出の閾値や `highlight_mix` / `specular_mix` の係数を更新して全対象形状を再生成する。
 - `cobalt` 金属フォームと `cobaltite` 鉱石テクスチャは TFC Metallum U（`tfc_metallum`）の cobalt / cobaltite テクスチャを元素材として使う。
-- `mythril` and `arcane` metal forms use the 高輝度式 wrought-iron recolor workflow sampled from Iron's Spells 'n Spellbooks ingot textures (`mithril_ingot.png` and `arcane_ingot.png`); do not copy Iron's Spells textures into the repository.
-- `mithril_matrix` is the graded ore for `mythril`; its ore item and overlay textures use temporary 高輝度式 placeholders until final art is provided.
+- `mithril` and `arcane` metal forms use the 高輝度式 wrought-iron recolor workflow sampled from Iron's Spells 'n Spellbooks ingot textures (`mithril_ingot.png` and `arcane_ingot.png`); do not copy Iron's Spells textures into the repository.
+- `mithril_matrix` is the graded ore for `mithril`; its ore item and overlay textures use temporary 高輝度式 placeholders until final art is provided.
 
 ## 10. 参照コード
 

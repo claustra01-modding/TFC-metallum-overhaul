@@ -1,0 +1,16 @@
+{
+    "ingredient":  [
+                       {
+                           "tag":  "c:nails/mithril"
+                       },
+                       {
+                           "tag":  "c:rivets/mithril"
+                       },
+                       {
+                           "tag":  "c:screws/mithril"
+                       }
+                   ],
+    "heat_capacity":  0.171,
+    "forging_temperature":  564,
+    "welding_temperature":  752
+}

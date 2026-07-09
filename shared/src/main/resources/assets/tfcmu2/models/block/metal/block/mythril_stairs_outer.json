@@ -1,8 +1,0 @@
-﻿{
-    "parent":  "block/outer_stairs",
-    "textures":  {
-                     "bottom":  "tfcmu2:block/metal/block/mythril",
-                     "top":  "tfcmu2:block/metal/block/mythril",
-                     "side":  "tfcmu2:block/metal/block/mythril"
-                 }
-}

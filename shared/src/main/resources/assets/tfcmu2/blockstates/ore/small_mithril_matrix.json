@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "tfcmu2:block/ore/small_mithril_matrix",
+        "y": 90
+      },
+      {
+        "model": "tfcmu2:block/ore/small_mithril_matrix"
+      },
+      {
+        "model": "tfcmu2:block/ore/small_mithril_matrix",
+        "y": 180
+      },
+      {
+        "model": "tfcmu2:block/ore/small_mithril_matrix",
+        "y": 270
+      }
+    ]
+  }
+}

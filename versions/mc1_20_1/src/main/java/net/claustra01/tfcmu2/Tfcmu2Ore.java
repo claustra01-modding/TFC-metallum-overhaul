@@ -16,7 +16,7 @@ public enum Tfcmu2Ore {
     FLUORITE(false, "fluorite"),
     RUTILE(true, "titanium"),
     COBALTITE(true, "cobalt"),
-    MANA_INFUSED(true, "mythril"),
+    MITHRIL_MATRIX(true, "mythril"),
     STIBNITE(true, "antimony"),
     WOLFRAMITE(true, "tungsten");
 

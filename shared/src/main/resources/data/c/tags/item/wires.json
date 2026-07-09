@@ -1,26 +1,3 @@
 {
-  "replace": false,
-  "values": [
-    "#c:wires/compressed_iron",
-    "#c:wires/platinum",
-    "#c:wires/naquadah",
-    "#c:wires/iridium",
-    "#c:wires/osmium",
-    "#c:wires/osmiridium",
-    "#c:wires/mythril",
-    "#c:wires/adamant",
-    "#c:wires/biosteel",
-    "#c:wires/duratium",
-    "#c:wires/energite",
-    "#c:wires/refined_glowstone",
-    "#c:wires/refined_obsidian",
-    "#c:wires/antimony",
-    "#c:wires/tungsten",
-    "#c:wires/solder",
-    "#c:wires/tungsten_steel",
-    "#c:wires/netherite",
-    "#c:wires/titanium",
-    "#c:wires/cobalt",
-    "#c:wires/arcane"
-  ]
+  "replace": false
 }

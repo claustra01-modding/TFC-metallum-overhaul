@@ -1,26 +1,3 @@
 {
-  "replace": false,
-  "values": [
-    "#c:rods/compressed_iron",
-    "#c:rods/platinum",
-    "#c:rods/naquadah",
-    "#c:rods/iridium",
-    "#c:rods/osmium",
-    "#c:rods/osmiridium",
-    "#c:rods/mythril",
-    "#c:rods/adamant",
-    "#c:rods/biosteel",
-    "#c:rods/duratium",
-    "#c:rods/energite",
-    "#c:rods/refined_glowstone",
-    "#c:rods/refined_obsidian",
-    "#c:rods/antimony",
-    "#c:rods/tungsten",
-    "#c:rods/solder",
-    "#c:rods/tungsten_steel",
-    "#c:rods/netherite",
-    "#c:rods/titanium",
-    "#c:rods/cobalt",
-    "#c:rods/arcane"
-  ]
+  "replace": false
 }

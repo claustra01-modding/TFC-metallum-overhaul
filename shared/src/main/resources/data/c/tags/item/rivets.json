@@ -1,26 +1,3 @@
 {
-  "replace": false,
-  "values": [
-    "#c:rivets/compressed_iron",
-    "#c:rivets/platinum",
-    "#c:rivets/naquadah",
-    "#c:rivets/iridium",
-    "#c:rivets/osmium",
-    "#c:rivets/osmiridium",
-    "#c:rivets/mythril",
-    "#c:rivets/adamant",
-    "#c:rivets/biosteel",
-    "#c:rivets/duratium",
-    "#c:rivets/energite",
-    "#c:rivets/refined_glowstone",
-    "#c:rivets/refined_obsidian",
-    "#c:rivets/antimony",
-    "#c:rivets/tungsten",
-    "#c:rivets/solder",
-    "#c:rivets/tungsten_steel",
-    "#c:rivets/netherite",
-    "#c:rivets/titanium",
-    "#c:rivets/cobalt",
-    "#c:rivets/arcane"
-  ]
+  "replace": false
 }

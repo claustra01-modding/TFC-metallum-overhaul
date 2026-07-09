@@ -1,8 +1,0 @@
-{
-    "parent":  "block/stairs",
-    "textures":  {
-                     "bottom":  "tfcmu2:block/metal/block/energite",
-                     "top":  "tfcmu2:block/metal/block/energite",
-                     "side":  "tfcmu2:block/metal/block/energite"
-                 }
-}

@@ -1,26 +1,3 @@
 {
-  "replace": false,
-  "values": [
-    "#c:gears/compressed_iron",
-    "#c:gears/platinum",
-    "#c:gears/naquadah",
-    "#c:gears/iridium",
-    "#c:gears/osmium",
-    "#c:gears/osmiridium",
-    "#c:gears/mythril",
-    "#c:gears/adamant",
-    "#c:gears/biosteel",
-    "#c:gears/duratium",
-    "#c:gears/energite",
-    "#c:gears/refined_glowstone",
-    "#c:gears/refined_obsidian",
-    "#c:gears/antimony",
-    "#c:gears/tungsten",
-    "#c:gears/solder",
-    "#c:gears/tungsten_steel",
-    "#c:gears/netherite",
-    "#c:gears/titanium",
-    "#c:gears/cobalt",
-    "#c:gears/arcane"
-  ]
+  "replace": false
 }

@@ -1,26 +1,3 @@
 {
-  "replace": false,
-  "values": [
-    "#c:nails/compressed_iron",
-    "#c:nails/platinum",
-    "#c:nails/naquadah",
-    "#c:nails/iridium",
-    "#c:nails/osmium",
-    "#c:nails/osmiridium",
-    "#c:nails/mythril",
-    "#c:nails/adamant",
-    "#c:nails/biosteel",
-    "#c:nails/duratium",
-    "#c:nails/energite",
-    "#c:nails/refined_glowstone",
-    "#c:nails/refined_obsidian",
-    "#c:nails/antimony",
-    "#c:nails/tungsten",
-    "#c:nails/solder",
-    "#c:nails/tungsten_steel",
-    "#c:nails/netherite",
-    "#c:nails/titanium",
-    "#c:nails/cobalt",
-    "#c:nails/arcane"
-  ]
+  "replace": false
 }

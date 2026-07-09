@@ -13,7 +13,7 @@
 ### 1.1 金属アイテム形状
 
 対象金属:
-`compressed_iron`, `platinum`, `naquadah`, `iridium`, `osmium`, `osmiridium`, `mythril`, `arcane`, `adamant`, `biosteel`, `duratium`, `energite`, `refined_glowstone`, `refined_obsidian`, `antimony`, `titanium`, `cobalt`, `tungsten`, `solder`, `tungsten_steel`, `netherite`
+`compressed_iron`, `platinum`, `naquadah`, `iridium`, `osmium`, `osmiridium`, `mythril`, `arcane`, `refined_glowstone`, `refined_obsidian`, `antimony`, `titanium`, `cobalt`, `tungsten`, `solder`, `tungsten_steel`, `netherite`
 
 常時生成される形状:
 - `ingot`
@@ -59,7 +59,7 @@ ID規則:
 ### 1.2 鉱石アイテム形状
 
 対象鉱石:
-- 品位あり: `native_platinum`, `native_naquadah`, `native_iridium`, `native_osmium`, `rutile`, `cobaltite`, `mana_infused`, `stibnite`, `wolframite`
+- 品位あり: `native_platinum`, `native_naquadah`, `native_iridium`, `native_osmium`, `rutile`, `cobaltite`, `mithril_matrix`, `stibnite`, `wolframite`
 - 品位なし: `fluorite`
 
 鉱石アイテム形状:
@@ -283,7 +283,7 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 1. `.tmp` で依存jarを展開し、TFC / TFC More Items の `wrought_iron` テクスチャをベースとして取得する。
 2. 元Modごとに、以下のどちらかの方式で色変換する。
 
-通常版（輝度なし、Oritech以外で使用）:
+通常版（単色式）:
 - 元Modの該当 `ingot.png` から代表色（平均色）を抽出する。
 - ベース画像の非透過ピクセルごとに輝度を算出し、代表色へ乗算して生成する。
 - 元Mod側の固有ハイライトは持ち込まず、TFC / TFC More Items 側の陰影をそのまま使う。
@@ -294,12 +294,12 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 - `mapped = 0.08 + 0.92 * lum2`
 - `out = tone * mapped`
 
-Oritech版（輝度あり、Oritechで使用）:
+高輝度式:
 - 元Modの該当 `ingot.png` から、非透過ピクセルの輝度分布を使って `shadow` / `mid` / `highlight` の3色パレットを抽出する。
 - ベース画像の非透過ピクセルごとに輝度を算出し、補正後の輝度を使って `shadow -> mid -> highlight` の順に段階補間する。
 - 高輝度ピクセルには `highlight` と白寄りの `glint` を追加で混ぜ、元Mod ingot の明るいハイライト感を他フォームへ移す。
 
-補正式（Oritech版）:
+補正式（高輝度式）:
 - `lum = (0.2126*R + 0.7152*G + 0.0722*B) / 255`
 - `lum2 = clamp((pow(lum, 0.82) - 0.08) / 0.92, 0, 1)`
 - `base = lerp(shadow, mid, lum2 / 0.58)` または `lerp(mid, highlight, (lum2 - 0.58) / 0.42)`
@@ -310,11 +310,11 @@ Oritech版（輝度あり、Oritechで使用）:
 実装・運用:
 - 生成スクリプト: `.tmp/add_new_metals.ps1`
 - 元Modに明るい固有ハイライトがない場合は通常版を使う。
-- 元Modの ingot に明るい固有ハイライトがある場合は Oritech版を使う。
+- 元Modの ingot に明るい固有ハイライトがある場合は高輝度式を使う。
 - ハイライト調整時は、パレット抽出の閾値や `highlight_mix` / `specular_mix` の係数を更新して全対象形状を再生成する。
 - `cobalt` 金属フォームと `cobaltite` 鉱石テクスチャは TFC Metallum U（`tfc_metallum`）の cobalt / cobaltite テクスチャを元素材として使う。
-- `mythril` and `arcane` metal forms use the normal wrought-iron recolor workflow with average tones sampled from Iron's Spells 'n Spellbooks ingot textures (`mithril_ingot.png` and `arcane_ingot.png`); do not copy Iron's Spells textures into the repository.
-- `mana_infused` is the graded ore for `mythril`; its ore item and overlay textures are temporary placeholders until final art is provided.
+- `mythril` and `arcane` metal forms use the 高輝度式 wrought-iron recolor workflow sampled from Iron's Spells 'n Spellbooks ingot textures (`mithril_ingot.png` and `arcane_ingot.png`); do not copy Iron's Spells textures into the repository.
+- `mithril_matrix` is the graded ore for `mythril`; its ore item and overlay textures use temporary 高輝度式 placeholders until final art is provided.
 
 ## 10. 参照コード
 

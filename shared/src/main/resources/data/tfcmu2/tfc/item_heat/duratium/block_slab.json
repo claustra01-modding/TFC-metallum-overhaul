@@ -1,8 +1,0 @@
-{
-    "ingredient": {
-        "item": "tfcmu2:metal/block/duratium_slab"
-    },
-    "heat_capacity": 2,
-    "forging_temperature": 378,
-    "welding_temperature": 504
-}

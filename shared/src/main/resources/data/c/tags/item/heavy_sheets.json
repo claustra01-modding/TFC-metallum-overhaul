@@ -1,26 +1,3 @@
 {
-  "replace": false,
-  "values": [
-    "#c:heavy_sheets/compressed_iron",
-    "#c:heavy_sheets/platinum",
-    "#c:heavy_sheets/naquadah",
-    "#c:heavy_sheets/iridium",
-    "#c:heavy_sheets/osmium",
-    "#c:heavy_sheets/osmiridium",
-    "#c:heavy_sheets/mythril",
-    "#c:heavy_sheets/adamant",
-    "#c:heavy_sheets/biosteel",
-    "#c:heavy_sheets/duratium",
-    "#c:heavy_sheets/energite",
-    "#c:heavy_sheets/refined_glowstone",
-    "#c:heavy_sheets/refined_obsidian",
-    "#c:heavy_sheets/antimony",
-    "#c:heavy_sheets/tungsten",
-    "#c:heavy_sheets/solder",
-    "#c:heavy_sheets/tungsten_steel",
-    "#c:heavy_sheets/netherite",
-    "#c:heavy_sheets/titanium",
-    "#c:heavy_sheets/cobalt",
-    "#c:heavy_sheets/arcane"
-  ]
+  "replace": false
 }

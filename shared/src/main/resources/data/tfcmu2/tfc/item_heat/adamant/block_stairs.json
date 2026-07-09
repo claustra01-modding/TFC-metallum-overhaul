@@ -1,8 +1,0 @@
-{
-    "ingredient": {
-        "item": "tfcmu2:metal/block/adamant_stairs"
-    },
-    "heat_capacity": 3,
-    "forging_temperature": 378,
-    "welding_temperature": 504
-}

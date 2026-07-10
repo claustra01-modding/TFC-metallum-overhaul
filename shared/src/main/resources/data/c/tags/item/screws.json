@@ -1,3 +1,22 @@
 {
-  "replace": false
+  "replace": false,
+  "values": [
+    "#c:screws/compressed_iron",
+    "#c:screws/platinum",
+    "#c:screws/naquadah",
+    "#c:screws/iridium",
+    "#c:screws/osmium",
+    "#c:screws/osmiridium",
+    "#c:screws/mithril",
+    "#c:screws/arcane",
+    "#c:screws/refined_glowstone",
+    "#c:screws/refined_obsidian",
+    "#c:screws/antimony",
+    "#c:screws/titanium",
+    "#c:screws/cobalt",
+    "#c:screws/tungsten",
+    "#c:screws/solder",
+    "#c:screws/tungsten_steel",
+    "#c:screws/netherite"
+  ]
 }

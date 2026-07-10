@@ -341,7 +341,17 @@ Notes:
 - `block_slab` and `block_stairs` use direct item IDs, not `c:storage_blocks/*` tags.
 - Ore heat values follow the source metal heat values; powder heat uses the source metal heat tier.
 
-## 12. Multi-version build layout
+## 12. TFC item_size implementation
+
+Directory:
+- `shared/src/main/resources/data/tfc/tfc/item_size`
+
+Coverage:
+- Keep top-level common item tags (`c:ingots`, `c:sheets`, `c:foils`, etc.) populated with this mod's per-metal tags so TFC's built-in item sizes can match standard metal forms.
+- Add explicit item size definitions for TFMCU2 metal blocks, slabs, stairs, TFC More Items forms, and tfcorewashing forms.
+- Keep shared item size resources in the Minecraft 1.21 `item_size` path; the Minecraft 1.20.1 build converts this path to `item_sizes`.
+
+## 13. Multi-version build layout
 
 - Supported targets:
   - Minecraft 1.20.1: Forge 47.4.20, TFC 3.2.23, JEI 15.20.0.133, Java 17, under `versions/mc1_20_1/src/main`.
@@ -359,9 +369,9 @@ Notes:
 - Keep shared data resources in the Minecraft 1.21 layout; the Minecraft 1.20.1 build converts resource paths, common tag namespaces, and JSON compatibility keys during `processResources`.
 - Minecraft 1.20.1 recipe conversion also adapts TFC casting fluids, alloy metal references, and advanced shaped crafting `input_row`.
 - Minecraft 1.20.1 generates TFC metal manager JSON from `tfcmu2/tfc/fluid_heat` for alloy recipe compatibility.
-- Minecraft 1.20.1 tag conversion rewrites `#c` / `#neoforge` references to `#forge` and removes TFC tuff ore tag entries.
+- Minecraft 1.20.1 tag conversion rewrites `#c` / `#neoforge` references to `#forge`, converts TFC `item_size` paths to `item_sizes`, and removes TFC tuff ore tag entries.
 
-## 13. Molten fluid compatibility
+## 14. Molten fluid compatibility
 
 - Own molten fluid registry IDs stay under `tfc:metal/<metal>` for released-world compatibility.
 - Minecraft 1.20.1 adds `tfcmu2:bucket/metal/<metal>` bucket items and `tfc:fluid/metal/<metal>` fluid blocks so Forge/TFC creative tab enumeration never receives an empty bucket stack.

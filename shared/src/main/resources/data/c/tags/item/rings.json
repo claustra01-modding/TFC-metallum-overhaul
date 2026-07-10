@@ -1,3 +1,22 @@
 {
-  "replace": false
+  "replace": false,
+  "values": [
+    "#c:rings/compressed_iron",
+    "#c:rings/platinum",
+    "#c:rings/naquadah",
+    "#c:rings/iridium",
+    "#c:rings/osmium",
+    "#c:rings/osmiridium",
+    "#c:rings/mithril",
+    "#c:rings/arcane",
+    "#c:rings/refined_glowstone",
+    "#c:rings/refined_obsidian",
+    "#c:rings/antimony",
+    "#c:rings/titanium",
+    "#c:rings/cobalt",
+    "#c:rings/tungsten",
+    "#c:rings/solder",
+    "#c:rings/tungsten_steel",
+    "#c:rings/netherite"
+  ]
 }

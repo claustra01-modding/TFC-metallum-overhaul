@@ -1,3 +1,22 @@
 {
-  "replace": false
+  "replace": false,
+  "values": [
+    "#c:stamens/compressed_iron",
+    "#c:stamens/platinum",
+    "#c:stamens/naquadah",
+    "#c:stamens/iridium",
+    "#c:stamens/osmium",
+    "#c:stamens/osmiridium",
+    "#c:stamens/mithril",
+    "#c:stamens/arcane",
+    "#c:stamens/refined_glowstone",
+    "#c:stamens/refined_obsidian",
+    "#c:stamens/antimony",
+    "#c:stamens/titanium",
+    "#c:stamens/cobalt",
+    "#c:stamens/tungsten",
+    "#c:stamens/solder",
+    "#c:stamens/tungsten_steel",
+    "#c:stamens/netherite"
+  ]
 }

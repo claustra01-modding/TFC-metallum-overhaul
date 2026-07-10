@@ -36,6 +36,7 @@ def toMc1_20_1ResourcePath = { String path ->
         .replace('/tags/block/', '/tags/blocks/')
         .replace('/tags/fluid/', '/tags/fluids/')
         .replace('/tags/item/', '/tags/items/')
+        .replace('/tfc/item_size/', '/tfc/item_sizes/')
         .replace('/neoforge/biome_modifier/', '/forge/biome_modifier/')
 }
 

@@ -1,3 +1,22 @@
 {
-  "replace": false
+  "replace": false,
+  "values": [
+    "#c:foils/compressed_iron",
+    "#c:foils/platinum",
+    "#c:foils/naquadah",
+    "#c:foils/iridium",
+    "#c:foils/osmium",
+    "#c:foils/osmiridium",
+    "#c:foils/mithril",
+    "#c:foils/arcane",
+    "#c:foils/refined_glowstone",
+    "#c:foils/refined_obsidian",
+    "#c:foils/antimony",
+    "#c:foils/titanium",
+    "#c:foils/cobalt",
+    "#c:foils/tungsten",
+    "#c:foils/solder",
+    "#c:foils/tungsten_steel",
+    "#c:foils/netherite"
+  ]
 }

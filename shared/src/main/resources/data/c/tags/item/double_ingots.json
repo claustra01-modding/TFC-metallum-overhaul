@@ -1,1 +1,22 @@
-{}
+{
+  "replace": false,
+  "values": [
+    "#c:double_ingots/compressed_iron",
+    "#c:double_ingots/platinum",
+    "#c:double_ingots/naquadah",
+    "#c:double_ingots/iridium",
+    "#c:double_ingots/osmium",
+    "#c:double_ingots/osmiridium",
+    "#c:double_ingots/mithril",
+    "#c:double_ingots/arcane",
+    "#c:double_ingots/refined_glowstone",
+    "#c:double_ingots/refined_obsidian",
+    "#c:double_ingots/antimony",
+    "#c:double_ingots/titanium",
+    "#c:double_ingots/cobalt",
+    "#c:double_ingots/tungsten",
+    "#c:double_ingots/solder",
+    "#c:double_ingots/tungsten_steel",
+    "#c:double_ingots/netherite"
+  ]
+}

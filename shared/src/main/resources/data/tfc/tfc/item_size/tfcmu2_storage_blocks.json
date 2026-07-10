@@ -1,0 +1,57 @@
+{
+  "ingredient": [
+    {
+      "tag": "c:storage_blocks/compressed_iron"
+    },
+    {
+      "tag": "c:storage_blocks/platinum"
+    },
+    {
+      "tag": "c:storage_blocks/naquadah"
+    },
+    {
+      "tag": "c:storage_blocks/iridium"
+    },
+    {
+      "tag": "c:storage_blocks/osmium"
+    },
+    {
+      "tag": "c:storage_blocks/osmiridium"
+    },
+    {
+      "tag": "c:storage_blocks/mithril"
+    },
+    {
+      "tag": "c:storage_blocks/arcane"
+    },
+    {
+      "tag": "c:storage_blocks/refined_glowstone"
+    },
+    {
+      "tag": "c:storage_blocks/refined_obsidian"
+    },
+    {
+      "tag": "c:storage_blocks/antimony"
+    },
+    {
+      "tag": "c:storage_blocks/titanium"
+    },
+    {
+      "tag": "c:storage_blocks/cobalt"
+    },
+    {
+      "tag": "c:storage_blocks/tungsten"
+    },
+    {
+      "tag": "c:storage_blocks/solder"
+    },
+    {
+      "tag": "c:storage_blocks/tungsten_steel"
+    },
+    {
+      "tag": "c:storage_blocks/netherite"
+    }
+  ],
+  "size": "huge",
+  "weight": "very_heavy"
+}

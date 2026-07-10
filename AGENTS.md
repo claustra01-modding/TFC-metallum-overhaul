@@ -278,6 +278,7 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 対象:
 - 新規金属の `block` / `ingot` / `double_ingot` / `sheet` / `double_sheet` / `rod`
 - `tfc_items` 由来追加形状（`foil`, `gear`, `heavy_sheet`, `nail`, `ring`, `rivet`, `screw`, `stamen`, `wire`）
+- TFC ingot pile soft textures: `assets/tfc/textures/block/metal/smooth/<metal>.png`
 
 手順:
 1. `.tmp` で依存jarを展開し、TFC / TFC More Items の `wrought_iron` テクスチャをベースとして取得する。
@@ -315,6 +316,7 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 - `cobalt` 金属フォームと `cobaltite` 鉱石テクスチャは TFC Metallum U（`tfc_metallum`）の cobalt / cobaltite テクスチャを元素材として使う。
 - `mithril` and `arcane` metal forms use the 高輝度式 wrought-iron recolor workflow sampled from Iron's Spells 'n Spellbooks ingot textures (`mithril_ingot.png` and `arcane_ingot.png`); do not copy Iron's Spells textures into the repository.
 - `mithril_matrix` is the graded ore for `mithril`; its ore item and overlay textures use temporary 高輝度式 placeholders until final art is provided.
+- Ingot and double ingot piles resolve `tfc:block/metal/smooth/<metal>` from TFC's soft metal texture lookup; keep these `smooth` textures in the `tfc` namespace and generate them with the same metal texture workflow. Do not add sheet pile assets unless the target TFC version supports them.
 
 ## 10. 参照コード
 

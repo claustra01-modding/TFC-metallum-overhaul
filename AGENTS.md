@@ -278,7 +278,7 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 対象:
 - 新規金属の `block` / `ingot` / `double_ingot` / `sheet` / `double_sheet` / `rod`
 - `tfc_items` 由来追加形状（`foil`, `gear`, `heavy_sheet`, `nail`, `ring`, `rivet`, `screw`, `stamen`, `wire`）
-- TFC ingot pile soft textures: `assets/tfc/textures/block/metal/smooth/<metal>.png`
+- TFC ingot pile 用 soft texture: `assets/tfc/textures/block/metal/smooth/<metal>.png`
 
 手順:
 1. `.tmp` で依存jarを展開し、TFC / TFC More Items の `wrought_iron` テクスチャをベースとして取得する。
@@ -314,9 +314,12 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 - 元Modの ingot に明るい固有ハイライトがある場合は高輝度式を使う。
 - ハイライト調整時は、パレット抽出の閾値や `highlight_mix` / `specular_mix` の係数を更新して全対象形状を再生成する。
 - `cobalt` 金属フォームと `cobaltite` 鉱石テクスチャは TFC Metallum U（`tfc_metallum`）の cobalt / cobaltite テクスチャを元素材として使う。
-- `mithril` and `arcane` metal forms use the 高輝度式 wrought-iron recolor workflow sampled from Iron's Spells 'n Spellbooks ingot textures (`mithril_ingot.png` and `arcane_ingot.png`); do not copy Iron's Spells textures into the repository.
-- `mithril_matrix` is the graded ore for `mithril`; its ore item and overlay textures use temporary 高輝度式 placeholders until final art is provided.
-- Ingot and double ingot piles resolve `tfc:block/metal/smooth/<metal>` from TFC's soft metal texture lookup; keep these `smooth` textures in the `tfc` namespace and generate them with the same metal texture workflow. Do not add sheet pile assets unless the target TFC version supports them.
+- `mithril` と `arcane` の金属形状は、Iron's Spells 'n Spellbooks の ingot テクスチャ（`mithril_ingot.png`, `arcane_ingot.png`）から抽出した色を使い、高輝度式で wrought iron ベースを再着色する。Iron's Spells のテクスチャ自体はリポジトリへコピーしない。
+- `mithril_matrix` は `mithril` 対応の品位あり鉱石。鉱石アイテムと overlay テクスチャは、正式素材が用意されるまで高輝度式の仮素材を使う。
+- ingot / double ingot の pile は、TFC 側の soft metal texture lookup により `tfc:block/metal/smooth/<metal>` を参照する。この `smooth` テクスチャは `tfc` 名前空間に置き、金属テクスチャと同じ方式で生成する。対象 TFC バージョンが sheet pile に対応しない限り、sheet pile 用アセットは追加しない。
+- TFC Ore Washing 系アイテム（`pellet`, `briquet`, `chunks`, `rocky_chunks`, `dirty_dust`, `dirty_pile`, `powder`）は TFC `item/ore/graphite` の輝度をベースにし、先に graphite 輝度を白方向へ淡色化してから、各対象鉱石の代表色で通常版（単色式）補正を行う。
+- tfcorewashing に graphite 版がある Ore Washing 形状は graphite 版を形状元にする。graphite 版がない `pellet` / `briquet` は chromium 版を形状マスクとしてのみ使い、輝度を TFC `item/ore/graphite` へ再マップしてから補正する。`powder` は TFC `item/powder/graphite` を形状元にする。
+- `rocky_chunks` の item model は、鉱石部分だけのベーステクスチャに `tfcmu2:item/metal/rocky_chunks/_rocky_overlay` を重ねる。固定色の岩部分は個別 PNG ではなく overlay 側に保持する。
 
 ## 10. 参照コード
 
@@ -327,51 +330,51 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 - `src/main/java/net/claustra01/tfcmu2/Tfcmu2CompatOres.java`
 - `src/main/java/net/claustra01/tfcmu2/Tfcmu2Mod.java`
 
-## 11. TFC item_heat implementation
+## 11. TFC item_heat 実装
 
-Directory:
+ディレクトリ:
 - `src/main/resources/data/tfcmu2/tfc/item_heat`
 
-Coverage:
-- Metal heat definitions include `block`, `block_slab`, and `block_stairs` separately.
-- Graded own ores (`small`, `poor`, `normal`, `rich`) each share one `item_heat/<ore>.json`.
-- `tfcorewashing` heating inputs are covered by `item_heat/pellet_briquet/<ore>.json` and `item_heat/powder/<ore>.json`.
+対象:
+- 金属の heat 定義は `block`, `block_slab`, `block_stairs` を個別に持つ。
+- 独自の品位あり鉱石（`small`, `poor`, `normal`, `rich`）は、鉱石ごとに同じ `item_heat/<ore>.json` を共有する。
+- `tfcorewashing` の加熱入力は `item_heat/pellet_briquet/<ore>.json` と `item_heat/powder/<ore>.json` で扱う。
 
-Notes:
-- `block_slab` and `block_stairs` use direct item IDs, not `c:storage_blocks/*` tags.
-- Ore heat values follow the source metal heat values; powder heat uses the source metal heat tier.
+補足:
+- `block_slab` と `block_stairs` は `c:storage_blocks/*` タグではなく、直接 item ID を使う。
+- 鉱石の heat 値は対応する金属の heat 値に合わせる。powder の heat は対応金属の heat tier を使う。
 
-## 12. TFC item_size implementation
+## 12. TFC item_size 実装
 
-Directory:
+ディレクトリ:
 - `shared/src/main/resources/data/tfc/tfc/item_size`
 
-Coverage:
-- Keep top-level common item tags (`c:ingots`, `c:sheets`, `c:foils`, etc.) populated with this mod's per-metal tags so TFC's built-in item sizes can match standard metal forms.
-- Add explicit item size definitions for TFMCU2 metal blocks, slabs, stairs, TFC More Items forms, and tfcorewashing forms.
-- Keep shared item size resources in the Minecraft 1.21 `item_size` path; the Minecraft 1.20.1 build converts this path to `item_sizes`.
+対象:
+- TFC 標準の item size が金属形状に一致するように、トップレベルの common item tag（`c:ingots`, `c:sheets`, `c:foils` など）には、このModの金属別タグを含める。
+- TFMCU2 の金属ブロック、slab、stairs、TFC More Items 形状、tfcorewashing 形状には明示的な item size 定義を追加する。
+- 共有 item size リソースは Minecraft 1.21 の `item_size` パスに置く。Minecraft 1.20.1 ビルドでは、このパスを `item_sizes` へ変換する。
 
-## 13. Multi-version build layout
+## 13. マルチバージョン build 構成
 
-- Supported targets:
-  - Minecraft 1.20.1: Forge 47.4.20, TFC 3.2.23, JEI 15.20.0.133, Java 17, under `versions/mc1_20_1/src/main`.
-  - Minecraft 1.21.1: NeoForge 21.1.235, TFC 4.2.5, JEI 19.27.0.346, Java 21, under `versions/mc1_21_1/src/main`.
-- The Minecraft 1.21.1 NeoForge implementation lives under `versions/mc1_21_1/src/main`.
-- The Minecraft 1.20.1 Forge implementation uses ForgeGradle and `META-INF/mods.toml`.
-- Shared Java and common resources live under `shared/src/main`; loader metadata stays in each version project.
-- Each version project owns its root `pack.mcmeta`; keep `pack_format` matched to that Minecraft target.
-- The root `build.gradle` is an aggregator; use `./gradlew build` for all targets, or build one target with `./gradlew :versions:mc1_20_1:build` or `./gradlew :versions:mc1_21_1:build`.
-- `./gradlew build` and `./gradlew collectArtifacts` copy release jars into root `build/libs`.
-- Common mod metadata stays in root `gradle.properties`; version-specific Minecraft, loader, TFC, JEI, and Java versions stay in each version project's `gradle.properties`.
-- Keep the Gradle wrapper on a Gradle 8.x release; ForgeGradle 6 does not support Gradle 9 yet. Configuration cache is disabled for ForgeGradle compatibility.
-- Older `src/main/...` path notes above now map to `shared/src/main/...` for common resources/data and `versions/<version>/src/main/...` for loader-specific code.
-- Do not add loader-specific sources back under root `src`.
-- Keep shared data resources in the Minecraft 1.21 layout; the Minecraft 1.20.1 build converts resource paths, common tag namespaces, and JSON compatibility keys during `processResources`.
-- Minecraft 1.20.1 recipe conversion also adapts TFC casting fluids, alloy metal references, and advanced shaped crafting `input_row`.
-- Minecraft 1.20.1 generates TFC metal manager JSON from `tfcmu2/tfc/fluid_heat` for alloy recipe compatibility.
-- Minecraft 1.20.1 tag conversion rewrites `#c` / `#neoforge` references to `#forge`, converts TFC `item_size` paths to `item_sizes`, and removes TFC tuff ore tag entries.
+- 対応対象:
+  - Minecraft 1.20.1: Forge 47.4.20, TFC 3.2.23, JEI 15.20.0.133, Java 17。実装は `versions/mc1_20_1/src/main` 配下。
+  - Minecraft 1.21.1: NeoForge 21.1.235, TFC 4.2.5, JEI 19.27.0.346, Java 21。実装は `versions/mc1_21_1/src/main` 配下。
+- Minecraft 1.21.1 NeoForge 実装は `versions/mc1_21_1/src/main` に置く。
+- Minecraft 1.20.1 Forge 実装は ForgeGradle と `META-INF/mods.toml` を使う。
+- 共有 Java と共通リソースは `shared/src/main` に置き、loader metadata は各 version project 側に置く。
+- 各 version project は自身の root `pack.mcmeta` を持つ。`pack_format` は対象 Minecraft バージョンに合わせる。
+- root `build.gradle` は集約用。全対象は `./gradlew build`、個別対象は `./gradlew :versions:mc1_20_1:build` または `./gradlew :versions:mc1_21_1:build` で build する。
+- `./gradlew build` と `./gradlew collectArtifacts` は release jar を root `build/libs` へコピーする。
+- 共通 mod metadata は root `gradle.properties` に置き、Minecraft / loader / TFC / JEI / Java のバージョン指定は各 version project の `gradle.properties` に置く。
+- Gradle wrapper は Gradle 8.x に維持する。ForgeGradle 6 は Gradle 9 に未対応。ForgeGradle 互換性のため configuration cache は無効化する。
+- 上記の古い `src/main/...` パス表記は、共通リソース/data では `shared/src/main/...`、loader 固有コードでは `versions/<version>/src/main/...` と読み替える。
+- loader 固有 source を root `src` 配下へ戻さない。
+- 共有 data リソースは Minecraft 1.21 レイアウトで保持する。Minecraft 1.20.1 build は `processResources` 中にリソースパス、common tag namespace、JSON 互換 key を変換する。
+- Minecraft 1.20.1 の recipe 変換では、TFC casting fluid、alloy metal reference、advanced shaped crafting の `input_row` も変換する。
+- Minecraft 1.20.1 では alloy recipe 互換性のため、`tfcmu2/tfc/fluid_heat` から TFC metal manager JSON を生成する。
+- Minecraft 1.20.1 の tag 変換では、`#c` / `#neoforge` 参照を `#forge` へ書き換え、TFC `item_size` パスを `item_sizes` へ変換し、TFC tuff ore tag entry を削除する。
 
-## 14. Molten fluid compatibility
+## 14. 溶融 fluid 互換性
 
-- Own molten fluid registry IDs stay under `tfc:metal/<metal>` for released-world compatibility.
-- Minecraft 1.20.1 adds `tfcmu2:bucket/metal/<metal>` bucket items and `tfc:fluid/metal/<metal>` fluid blocks so Forge/TFC creative tab enumeration never receives an empty bucket stack.
+- 独自 molten fluid の registry ID は、既存リリース済みワールドとの互換性維持のため `tfc:metal/<metal>` のままにする。
+- Minecraft 1.20.1 では Forge/TFC の creative tab 列挙が空 bucket stack を受け取らないように、`tfcmu2:bucket/metal/<metal>` bucket item と `tfc:fluid/metal/<metal>` fluid block を追加する。

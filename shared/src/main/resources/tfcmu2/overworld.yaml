@@ -2,7 +2,8 @@ veins:
 
   # TFC (with indicator)
   - tfc:vein/surface_native_copper:
-      block: tfc:ore/{tier}_native_copper/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_native_copper/{rock}
       type: tfc:cluster_vein
       ymax: 130
       ymin: 40
@@ -16,9 +17,9 @@ veins:
         - andesite
         - dacite
       tier:
-        - poor: 70
-        - normal: 25
-        - rich: 5
+        poor: 70
+        normal: 25
+        rich: 5
       indicator:
         block: tfc:ore/small_native_copper
         rarity: 14
@@ -27,7 +28,8 @@ veins:
         underground_count: 0
 
   - tfc:vein/surface_malachite:
-      block: tfc:ore/{tier}_malachite/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_malachite/{rock}
       type: tfc:cluster_vein
       ymax: 130
       ymin: 40
@@ -41,9 +43,9 @@ veins:
         - chalk
         - dolomite
       tier:
-        - poor: 70
-        - normal: 25
-        - rich: 5
+        poor: 70
+        normal: 25
+        rich: 5
       indicator:
         block: tfc:ore/small_malachite
         rarity: 14
@@ -52,7 +54,8 @@ veins:
         underground_count: 0
 
   - tfc:vein/surface_tetrahedrite:
-      block: tfc:ore/{tier}_tetrahedrite/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_tetrahedrite/{rock}
       type: tfc:cluster_vein
       ymax: 170
       ymin: 90
@@ -68,9 +71,9 @@ veins:
         - gneiss
         - marble
       tier:
-        - poor: 70
-        - normal: 25
-        - rich: 5
+        poor: 70
+        normal: 25
+        rich: 5
       indicator:
         block: tfc:ore/small_tetrahedrite
         rarity: 8
@@ -79,7 +82,8 @@ veins:
         underground_count: 0
 
   - tfc:vein/normal_malachite:
-      block: tfc:ore/{tier}_malachite/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_malachite/{rock}
       type: tfc:cluster_vein
       ymax: 70
       ymin: -30
@@ -93,9 +97,9 @@ veins:
         - chalk
         - dolomite
       tier:
-        - poor: 35
-        - normal: 40
-        - rich: 25
+        poor: 35
+        normal: 40
+        rich: 25
       indicator:
         block: tfc:ore/small_malachite
         rarity: 25
@@ -104,7 +108,8 @@ veins:
         underground_count: 0
 
   - tfc:vein/normal_tetrahedrite:
-      block: tfc:ore/{tier}_tetrahedrite/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_tetrahedrite/{rock}
       type: tfc:cluster_vein
       ymax: 70
       ymin: -30
@@ -120,9 +125,9 @@ veins:
         - gneiss
         - marble
       tier:
-        - poor: 35
-        - normal: 40
-        - rich: 25
+        poor: 35
+        normal: 40
+        rich: 25
       indicator:
         block: tfc:ore/small_tetrahedrite
         rarity: 25
@@ -131,7 +136,8 @@ veins:
         underground_count: 0
 
   - tfc:vein/normal_native_gold:
-      block: tfc:ore/{tier}_native_gold/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_native_gold/{rock}
       type: tfc:cluster_vein
       ymax: 70
       ymin: 0
@@ -148,9 +154,9 @@ veins:
         - diorite
         - gabbro
       tier:
-        - poor: 35
-        - normal: 40
-        - rich: 25
+        poor: 35
+        normal: 40
+        rich: 25
       indicator:
         block: tfc:ore/small_native_gold
         rarity: 40
@@ -159,7 +165,8 @@ veins:
         underground_count: 0
 
   - tfc:vein/rich_native_gold:
-      block: tfc:ore/{tier}_native_gold/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_native_gold/{rock}
       type: tfc:cluster_vein
       ymax: 20
       ymin: -80
@@ -172,9 +179,9 @@ veins:
         - diorite
         - gabbro
       tier:
-        - poor: 15
-        - normal: 25
-        - rich: 60
+        poor: 15
+        normal: 25
+        rich: 60
       indicator:
         block: tfc:ore/small_native_gold
         rarity: 0
@@ -183,7 +190,8 @@ veins:
         underground_count: 4
 
   - tfc:vein/surface_native_silver:
-      block: tfc:ore/{tier}_native_silver/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_native_silver/{rock}
       type: tfc:cluster_vein
       ymax: 180
       ymin: 90
@@ -195,9 +203,9 @@ veins:
         - granite
         - diorite
       tier:
-        - poor: 70
-        - normal: 25
-        - rich: 5
+        poor: 70
+        normal: 25
+        rich: 5
       indicator:
         block: tfc:ore/small_native_silver
         rarity: 12
@@ -206,7 +214,8 @@ veins:
         underground_count: 0
 
   - tfc:vein/normal_native_silver:
-      block: tfc:ore/{tier}_native_silver/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_native_silver/{rock}
       type: tfc:cluster_vein
       ymax: 20
       ymin: -80
@@ -220,9 +229,9 @@ veins:
         - gneiss
         - schist
       tier:
-        - poor: 15
-        - normal: 25
-        - rich: 60
+        poor: 15
+        normal: 25
+        rich: 60
       indicator:
         block: tfc:ore/small_native_silver
         rarity: 0
@@ -231,7 +240,8 @@ veins:
         underground_count: 9
 
   - tfc:vein/surface_cassiterite:
-      block: tfc:ore/{tier}_cassiterite/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_cassiterite/{rock}
       type: tfc:cluster_vein
       ymax: 180
       ymin: 80
@@ -244,9 +254,9 @@ veins:
         - diorite
         - gabbro
       tier:
-        - poor: 35
-        - normal: 40
-        - rich: 25
+        poor: 35
+        normal: 40
+        rich: 25
       indicator:
         block: tfc:ore/small_cassiterite
         rarity: 12
@@ -255,7 +265,8 @@ veins:
         underground_count: 0
 
   - tfc:vein/surface_bismuthinite:
-      block: tfc:ore/{tier}_bismuthinite/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_bismuthinite/{rock}
       type: tfc:cluster_vein
       ymax: 130
       ymin: 40
@@ -273,9 +284,9 @@ veins:
         - chalk
         - tuff
       tier:
-        - poor: 70
-        - normal: 25
-        - rich: 5
+        poor: 70
+        normal: 25
+        rich: 5
       indicator:
         block: tfc:ore/small_bismuthinite
         rarity: 14
@@ -284,7 +295,8 @@ veins:
         underground_count: 0
 
   - tfc:vein/normal_bismuthinite:
-      block: tfc:ore/{tier}_bismuthinite/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_bismuthinite/{rock}
       type: tfc:cluster_vein
       ymax: 20
       ymin: -80
@@ -297,9 +309,9 @@ veins:
         - diorite
         - gabbro
       tier:
-        - poor: 15
-        - normal: 25
-        - rich: 60
+        poor: 15
+        normal: 25
+        rich: 60
       indicator:
         block: tfc:ore/small_bismuthinite
         rarity: 0
@@ -308,7 +320,8 @@ veins:
         underground_count: 4
 
   - tfc:vein/surface_sphalerite:
-      block: tfc:ore/{tier}_sphalerite/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_sphalerite/{rock}
       type: tfc:cluster_vein
       ymax: 130
       ymin: 40
@@ -322,9 +335,9 @@ veins:
         - andesite
         - dacite
       tier:
-        - poor: 70
-        - normal: 25
-        - rich: 5
+        poor: 70
+        normal: 25
+        rich: 5
       indicator:
         block: tfc:ore/small_sphalerite
         rarity: 12
@@ -333,7 +346,8 @@ veins:
         underground_count: 0
 
   - tfc:vein/normal_sphalerite:
-      block: tfc:ore/{tier}_sphalerite/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_sphalerite/{rock}
       type: tfc:cluster_vein
       ymax: 20
       ymin: -80
@@ -346,9 +360,9 @@ veins:
         - diorite
         - gabbro
       tier:
-        - poor: 15
-        - normal: 25
-        - rich: 60
+        poor: 15
+        normal: 25
+        rich: 60
       indicator:
         block: tfc:ore/small_sphalerite
         rarity: 0
@@ -357,7 +371,8 @@ veins:
         underground_count: 5
 
   - tfc:vein/surface_hematite:
-      block: tfc:ore/{tier}_hematite/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_hematite/{rock}
       type: tfc:cluster_vein
       ymax: 90
       ymin: 10
@@ -371,9 +386,9 @@ veins:
         - andesite
         - dacite
       tier:
-        - poor: 35
-        - normal: 40
-        - rich: 25
+        poor: 35
+        normal: 40
+        rich: 25
       indicator:
         block: tfc:ore/small_hematite
         rarity: 24
@@ -382,7 +397,8 @@ veins:
         underground_count: 0
 
   - tfc:vein/surface_magnetite:
-      block: tfc:ore/{tier}_magnetite/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_magnetite/{rock}
       type: tfc:cluster_vein
       ymax: 90
       ymin: 10
@@ -400,9 +416,9 @@ veins:
         - chalk
         - tuff
       tier:
-        - poor: 35
-        - normal: 40
-        - rich: 25
+        poor: 35
+        normal: 40
+        rich: 25
       indicator:
         block: tfc:ore/small_magnetite
         rarity: 24
@@ -411,7 +427,8 @@ veins:
         underground_count: 0
 
   - tfc:vein/surface_limonite:
-      block: tfc:ore/{tier}_limonite/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_limonite/{rock}
       type: tfc:cluster_vein
       ymax: 90
       ymin: 10
@@ -429,9 +446,9 @@ veins:
         - chalk
         - tuff
       tier:
-        - poor: 35
-        - normal: 40
-        - rich: 25
+        poor: 35
+        normal: 40
+        rich: 25
       indicator:
         block: tfc:ore/small_limonite
         rarity: 24
@@ -440,7 +457,8 @@ veins:
         underground_count: 0
 
   - tfc:vein/normal_garnierite:
-      block: tfc:ore/{tier}_garnierite/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_garnierite/{rock}
       type: tfc:cluster_vein
       ymax: 0
       ymin: -80
@@ -453,9 +471,9 @@ veins:
         - diorite
         - gabbro
       tier:
-        - poor: 35
-        - normal: 40
-        - rich: 25
+        poor: 35
+        normal: 40
+        rich: 25
       indicator:
         block: tfc:ore/small_garnierite
         rarity: 12
@@ -464,7 +482,8 @@ veins:
         underground_count: 0
 
   - tfc:vein/gabbro_garnierite:
-      block: tfc:ore/{tier}_garnierite/{rock}
+      blocks:
+        - block: tfc:ore/{tier}_garnierite/{rock}
       type: tfc:cluster_vein
       ymax: 0
       ymin: -80
@@ -475,9 +494,9 @@ veins:
       rocks:
         - gabbro
       tier:
-        - poor: 15
-        - normal: 25
-        - rich: 60
+        poor: 15
+        normal: 25
+        rich: 60
       indicator:
         block: tfc:ore/small_garnierite
         rarity: 0
@@ -487,7 +506,8 @@ veins:
 
   # TFC (no indicator, not gems)
   - tfc:vein/fake_native_gold:
-      block: tfc:ore/pyrite/{rock}
+      blocks:
+        - block: tfc:ore/pyrite/{rock}
       type: tfc:cluster_vein
       ymax: 70
       ymin: -50
@@ -505,7 +525,8 @@ veins:
         - gabbro
 
   - tfc:vein/graphite:
-      block: tfc:ore/graphite/{rock}
+      blocks:
+        - block: tfc:ore/graphite/{rock}
       type: tfc:cluster_vein
       ymax: 60
       ymin: -30
@@ -520,7 +541,8 @@ veins:
         - schist
 
   - tfc:vein/lignite:
-      block: tfc:lignite
+      blocks:
+        - block: tfc:lignite
       type: tfc:disc_vein
       ymax: -8
       ymin: -20
@@ -542,7 +564,8 @@ veins:
         - tuff
 
   - tfc:vein/bituminous_coal:
-      block: tfc:bituminous_coal
+      blocks:
+        - block: tfc:bituminous_coal
       type: tfc:disc_vein
       ymax: -12
       ymin: -35
@@ -564,7 +587,8 @@ veins:
         - tuff
 
   - tfc:vein/sulfur:
-      block: tfc:ore/sulfur/{rock}
+      blocks:
+        - block: tfc:ore/sulfur/{rock}
       type: tfc:disc_vein
       ymax: -45
       ymin: -64
@@ -586,7 +610,8 @@ veins:
         - marble
 
   - tfc:vein/tuff_sulfur:
-      block: tfc:ore/sulfur/{rock}
+      blocks:
+        - block: tfc:ore/sulfur/{rock}
       type: tfc:disc_vein
       ymax: 120
       ymin: 40
@@ -599,7 +624,8 @@ veins:
         - tuff
 
   - tfc:vein/cryolite:
-      block: tfc:ore/cryolite/{rock}
+      blocks:
+        - block: tfc:ore/cryolite/{rock}
       type: tfc:cluster_vein
       ymax: -10
       ymin: -70
@@ -612,7 +638,8 @@ veins:
         - diorite
 
   - tfc:vein/cinnabar:
-      block: tfc:ore/cinnabar/{rock}
+      blocks:
+        - block: tfc:ore/cinnabar/{rock}
       type: tfc:cluster_vein
       ymax: 10
       ymin: -70
@@ -627,7 +654,8 @@ veins:
         - schist
 
   - tfc:vein/saltpeter:
-      block: tfc:ore/saltpeter/{rock}
+      blocks:
+        - block: tfc:ore/saltpeter/{rock}
       type: tfc:disc_vein
       ymax: 100
       ymin: 40
@@ -647,7 +675,8 @@ veins:
         - tuff
 
   - tfc:vein/sylvite:
-      block: tfc:ore/sylvite/{rock}
+      blocks:
+        - block: tfc:ore/sylvite/{rock}
       type: tfc:disc_vein
       ymax: 100
       ymin: 40
@@ -662,7 +691,8 @@ veins:
         - chert
 
   - tfc:vein/borax:
-      block: tfc:ore/borax/{rock}
+      blocks:
+        - block: tfc:ore/borax/{rock}
       type: tfc:disc_vein
       ymax: 100
       ymin: 40
@@ -677,7 +707,8 @@ veins:
         - shale
 
   - tfc:vein/gypsum:
-      block: tfc:ore/gypsum/{rock}
+      blocks:
+        - block: tfc:ore/gypsum/{rock}
       type: tfc:disc_vein
       ymax: 100
       ymin: 40
@@ -697,7 +728,8 @@ veins:
         - tuff
 
   - tfc:vein/halite:
-      block: tfc:halite
+      blocks:
+        - block: tfc:halite
       type: tfc:disc_vein
       ymax: -12
       ymin: -45
@@ -720,7 +752,8 @@ veins:
 
   # TFC (gems)
   - tfc:vein/lapis_lazuli:
-      block: tfc:ore/lapis_lazuli/{rock}
+      blocks:
+        - block: tfc:ore/lapis_lazuli/{rock}
       type: tfc:cluster_vein
       ymax: 80
       ymin: -20
@@ -733,7 +766,8 @@ veins:
         - marble
 
   - tfc:vein/diamond:
-      block: tfc:ore/diamond/{rock}
+      blocks:
+        - block: tfc:ore/diamond/{rock}
       type: tfc:pipe_vein
       ymax: 100
       ymin: -64
@@ -751,7 +785,8 @@ veins:
         - gabbro
 
   - tfc:vein/emerald:
-      block: tfc:ore/emerald/{rock}
+      blocks:
+        - block: tfc:ore/emerald/{rock}
       type: tfc:pipe_vein
       ymax: 100
       ymin: -64
@@ -771,7 +806,8 @@ veins:
         - gabbro
 
   - tfc:vein/ruby:
-      block: tfc:ore/ruby/{rock}
+      blocks:
+        - block: tfc:ore/ruby/{rock}
       type: tfc:cluster_vein
       ymax: -10
       ymin: -70
@@ -784,7 +820,8 @@ veins:
         - gneiss
 
   - tfc:vein/amethyst:
-      block: tfc:ore/amethyst/{rock}
+      blocks:
+        - block: tfc:ore/amethyst/{rock}
       type: tfc:disc_vein
       ymax: 60
       ymin: 40
@@ -810,7 +847,8 @@ veins:
         - marble
 
   - tfc:vein/opal:
-      block: tfc:ore/opal/{rock}
+      blocks:
+        - block: tfc:ore/opal/{rock}
       type: tfc:disc_vein
       ymax: 60
       ymin: 40
@@ -835,7 +873,8 @@ veins:
 
   # Firmalife
   - firmalife:vein/normal_chromite:
-      block: firmalife:ore/{tier}_chromite/{rock}
+      blocks:
+        - block: firmalife:ore/{tier}_chromite/{rock}
       type: tfc:cluster_vein
       ymax: 130
       ymin: 40
@@ -855,9 +894,9 @@ veins:
         - gneiss
         - marble
       tier:
-        - poor: 70
-        - normal: 25
-        - rich: 5
+        poor: 70
+        normal: 25
+        rich: 5
       indicator:
         block: firmalife:ore/small_chromite
         rarity: 14
@@ -866,7 +905,8 @@ veins:
         underground_count: 0
 
   - firmalife:vein/deep_chromite:
-      block: firmalife:ore/{tier}_chromite/{rock}
+      blocks:
+        - block: firmalife:ore/{tier}_chromite/{rock}
       type: tfc:cluster_vein
       ymax: 20
       ymin: -80
@@ -885,9 +925,9 @@ veins:
         - gneiss
         - marble
       tier:
-        - poor: 15
-        - normal: 25
-        - rich: 60
+        poor: 15
+        normal: 25
+        rich: 60
       indicator:
         block: firmalife:ore/small_chromite
         rarity: 0
@@ -897,7 +937,8 @@ veins:
 
   # TFC IE Crossover
   - tfc_ie_addon:vein/surface_bauxite:
-      block: tfc_ie_addon:ore/{tier}_bauxite/{rock}
+      blocks:
+        - block: tfc_ie_addon:ore/{tier}_bauxite/{rock}
       type: tfc:cluster_vein
       ymax: 100
       ymin: 48
@@ -921,9 +962,9 @@ veins:
         - gneiss
         - marble
       tier:
-        - poor: 70
-        - normal: 25
-        - rich: 5
+        poor: 70
+        normal: 25
+        rich: 5
       indicator:
         block: tfc_ie_addon:ore/small_bauxite
         rarity: 12
@@ -932,7 +973,8 @@ veins:
         underground_count: 0
 
   - tfc_ie_addon:vein/normal_bauxite:
-      block: tfc_ie_addon:ore/{tier}_bauxite/{rock}
+      blocks:
+        - block: tfc_ie_addon:ore/{tier}_bauxite/{rock}
       type: tfc:cluster_vein
       ymax: 32
       ymin: -64
@@ -956,9 +998,9 @@ veins:
         - gneiss
         - marble
       tier:
-        - poor: 15
-        - normal: 25
-        - rich: 60
+        poor: 15
+        normal: 25
+        rich: 60
       indicator:
         block: tfc_ie_addon:ore/small_bauxite
         rarity: 0
@@ -967,7 +1009,8 @@ veins:
         underground_count: 4
 
   - tfc_ie_addon:vein/surface_galena:
-      block: tfc_ie_addon:ore/{tier}_galena/{rock}
+      blocks:
+        - block: tfc_ie_addon:ore/{tier}_galena/{rock}
       type: tfc:cluster_vein
       ymax: 75
       ymin: 32
@@ -990,9 +1033,9 @@ veins:
         - diorite
         - gabbro
       tier:
-        - poor: 70
-        - normal: 25
-        - rich: 5
+        poor: 70
+        normal: 25
+        rich: 5
       indicator:
         block: tfc_ie_addon:ore/small_galena
         rarity: 12
@@ -1001,7 +1044,8 @@ veins:
         underground_count: 0
 
   - tfc_ie_addon:vein/normal_galena:
-      block: tfc_ie_addon:ore/{tier}_galena/{rock}
+      blocks:
+        - block: tfc_ie_addon:ore/{tier}_galena/{rock}
       type: tfc:cluster_vein
       ymax: 20
       ymin: -80
@@ -1024,9 +1068,9 @@ veins:
         - diorite
         - gabbro
       tier:
-        - poor: 15
-        - normal: 25
-        - rich: 60
+        poor: 15
+        normal: 25
+        rich: 60
       indicator:
         block: tfc_ie_addon:ore/small_galena
         rarity: 0
@@ -1035,7 +1079,8 @@ veins:
         underground_count: 4
 
   - tfc_ie_addon:vein/normal_uraninite:
-      block: tfc_ie_addon:ore/{tier}_uraninite/{rock}
+      blocks:
+        - block: tfc_ie_addon:ore/{tier}_uraninite/{rock}
       type: tfc:cluster_vein
       ymax: 20
       ymin: -80
@@ -1055,9 +1100,9 @@ veins:
         - andesite
         - dacite
       tier:
-        - poor: 15
-        - normal: 25
-        - rich: 60
+        poor: 15
+        normal: 25
+        rich: 60
       indicator:
         block: tfc_ie_addon:ore/small_uraninite
         rarity: 0

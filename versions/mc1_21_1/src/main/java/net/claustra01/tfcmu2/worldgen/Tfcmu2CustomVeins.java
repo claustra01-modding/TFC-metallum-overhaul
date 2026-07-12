@@ -199,12 +199,8 @@ public final class Tfcmu2CustomVeins {
     }
 
     private static boolean canLoadDefinition(Tfcmu2VeinsYamlParser.VeinDefinition def) {
-        final String template = def.blockTemplate();
-        final int colonIdx = template.indexOf(':');
-        if (colonIdx > 0) {
-            final String ns = template.substring(0, colonIdx);
-            if (!"minecraft".equals(ns) && !ModList.get().isLoaded(ns)) {
-                LOGGER.warn("Skipping custom vein {} because referenced mod '{}' is not loaded (block template: {}).", def.id(), ns, template);
+        for (Tfcmu2VeinsYamlParser.BlockDefinition block : def.blocks()) {
+            if (!canLoadTemplate(def, block.blockTemplate())) {
                 return false;
             }
         }
@@ -217,6 +213,18 @@ public final class Tfcmu2CustomVeins {
                     LOGGER.warn("Skipping custom vein {} because referenced mod '{}' is not loaded (indicator: {}).", def.id(), ns, indicator);
                     return false;
                 }
+            }
+        }
+        return true;
+    }
+
+    private static boolean canLoadTemplate(Tfcmu2VeinsYamlParser.VeinDefinition def, String template) {
+        final int colonIdx = template.indexOf(':');
+        if (colonIdx > 0) {
+            final String ns = template.substring(0, colonIdx);
+            if (!"minecraft".equals(ns) && !ModList.get().isLoaded(ns)) {
+                LOGGER.warn("Skipping custom vein {} because referenced mod '{}' is not loaded (block template: {}).", def.id(), ns, template);
+                return false;
             }
         }
         return true;

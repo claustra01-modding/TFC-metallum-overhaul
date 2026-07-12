@@ -378,3 +378,10 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 
 - 独自 molten fluid の registry ID は、既存リリース済みワールドとの互換性維持のため `tfc:metal/<metal>` のままにする。
 - Minecraft 1.20.1 では Forge/TFC の creative tab 列挙が空 bucket stack を受け取らないように、`tfcmu2:bucket/metal/<metal>` bucket item と `tfc:fluid/metal/<metal>` fluid block を追加する。
+
+## 15. カスタム鉱脈設定
+
+- 詳細仕様は `config_doc.md` を参照する。
+- 鉱石出力は `blocks` リストで定義し、各要素に `block` と省略可能な `weight`（既定値 `1`）を指定する。
+- `tier` はリストではなく、品位名から整数weightへのマッピングとして記述する。
+- 読み込み時は、既存configとの互換性のため旧 `block` とリスト風 `tier` も受け入れる。

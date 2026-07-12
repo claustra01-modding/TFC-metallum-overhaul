@@ -39,8 +39,8 @@ import org.slf4j.Logger;
  * - Root key: veins:
  * - List items: - namespace:path:
  * - Key/value pairs inside each item
- * - Lists (rocks/tier) as dash items, indentation tolerant
- * - A nested mapping: indicator:
+ * - Lists: blocks: and rocks:
+ * - Nested mappings: tier: and indicator:
  */
 public final class Tfcmu2VeinsYamlParser {
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -68,9 +68,12 @@ public final class Tfcmu2VeinsYamlParser {
     ) {
     }
 
+    public record BlockDefinition(String blockTemplate, double weight) {
+    }
+
     public record VeinDefinition(
         ResourceLocation id,
-        String blockTemplate,
+        List<BlockDefinition> blocks,
         ResourceLocation type,
         int minY,
         int maxY,
@@ -122,25 +125,15 @@ public final class Tfcmu2VeinsYamlParser {
 
                 final Weighted<BlockState> weighted = new Weighted<>(new ArrayList<>());
                 final String rockToken = resolveOreRockToken(rock);
-                if (tierWeights.isEmpty()) {
-                    final String out = blockTemplate.replace("{rock}", rockToken);
-                    final BlockState oreState = resolveOutputBlockState(out);
-                    if (oreState != null) {
-                        weighted.add(1, oreState);
-                    }
-                } else {
-                    for (Map.Entry<String, Integer> entry : tierWeights.entrySet()) {
-                        final String tier = entry.getKey();
-                        final int weight = entry.getValue();
-                        if (weight <= 0) {
-                            continue;
-                        }
-                        final String out = blockTemplate
-                            .replace("{tier}", tier)
-                            .replace("{rock}", rockToken);
-                        final BlockState oreState = resolveOutputBlockState(out);
-                        if (oreState != null) {
-                            weighted.add(weight, oreState);
+                for (BlockDefinition output : blocks) {
+                    if (tierWeights.isEmpty()) {
+                        addOutput(weighted, output, rockToken, null, output.weight());
+                    } else {
+                        for (Map.Entry<String, Integer> entry : tierWeights.entrySet()) {
+                            final int tierWeight = entry.getValue();
+                            if (tierWeight > 0) {
+                                addOutput(weighted, output, rockToken, entry.getKey(), output.weight() * tierWeight);
+                            }
                         }
                     }
                 }
@@ -158,10 +151,21 @@ public final class Tfcmu2VeinsYamlParser {
             return new VeinConfig(states, indicatorOpt, rarity, density, minY, maxY, project, projectOffset, seed, Optional.empty(), nearLava);
         }
 
-        private BlockState resolveOutputBlockState(String out) {
+        private void addOutput(Weighted<BlockState> weighted, BlockDefinition output, String rock, String tier, double weight) {
+            String blockId = output.blockTemplate().replace("{rock}", rock);
+            if (tier != null) {
+                blockId = blockId.replace("{tier}", tier);
+            }
+            final BlockState oreState = resolveOutputBlockState(blockId, output.blockTemplate());
+            if (oreState != null) {
+                weighted.add(weight, oreState);
+            }
+        }
+
+        private BlockState resolveOutputBlockState(String out, String template) {
             final ResourceLocation outId = ResourceLocation.tryParse(out);
             if (outId == null) {
-                LOGGER.warn("Invalid ore block id '{}' (template '{}') in {}", out, blockTemplate, id);
+                LOGGER.warn("Invalid ore block id '{}' (template '{}') in {}", out, template, id);
                 return null;
             }
 
@@ -274,6 +278,59 @@ public final class Tfcmu2VeinsYamlParser {
                 }
 
                 // Block keys that are lists or nested maps.
+                if ("blocks".equals(kv.key) && kv.value.isEmpty()) {
+                    i++;
+                    final List<LinkedHashMap<String, String>> blocks = new ArrayList<>();
+                    while (i < lines.size()) {
+                        final String r = stripComment(lines.get(i));
+                        if (r.trim().isEmpty()) {
+                            i++;
+                            continue;
+                        }
+                        final int rind = countIndent(r);
+                        final String rt = r.trim();
+                        if (rind <= ind) {
+                            break;
+                        }
+                        if (!rt.startsWith("- ")) {
+                            LOGGER.warn("Skipping malformed block entry for {} in {}: {}", id, yamlPath, rt);
+                            i++;
+                            continue;
+                        }
+
+                        final int itemIndent = rind;
+                        final LinkedHashMap<String, String> blockProps = new LinkedHashMap<>();
+                        final ParsedKeyValue first = parseKeyValue(rt.substring(2).trim());
+                        if (first != null) {
+                            blockProps.put(first.key, first.value);
+                        }
+                        i++;
+                        while (i < lines.size()) {
+                            final String child = stripComment(lines.get(i));
+                            if (child.trim().isEmpty()) {
+                                i++;
+                                continue;
+                            }
+                            final int childIndent = countIndent(child);
+                            final String childText = child.trim();
+                            if (childIndent <= ind || (childIndent == itemIndent && childText.startsWith("- "))) {
+                                break;
+                            }
+                            if (childIndent <= itemIndent) {
+                                break;
+                            }
+                            final ParsedKeyValue childKv = parseKeyValue(childText);
+                            if (childKv != null) {
+                                blockProps.put(childKv.key, childKv.value);
+                            }
+                            i++;
+                        }
+                        blocks.add(blockProps);
+                    }
+                    props.put("blocks", blocks);
+                    continue;
+                }
+
                 if ("rocks".equals(kv.key) && kv.value.isEmpty()) {
                     i++;
                     final List<String> rocks = new ArrayList<>();
@@ -309,13 +366,10 @@ public final class Tfcmu2VeinsYamlParser {
                         }
                         final int rind = countIndent(r);
                         final String rt = r.trim();
-                        if (rind < ind) {
+                        if (rind <= ind) {
                             break;
                         }
-                        if (!rt.startsWith("- ")) {
-                            break;
-                        }
-                        final String item = rt.substring(2).trim();
+                        final String item = rt.startsWith("- ") ? rt.substring(2).trim() : rt;
                         final ParsedKeyValue ikv = parseKeyValue(item);
                         if (ikv != null) {
                             try {
@@ -369,7 +423,7 @@ public final class Tfcmu2VeinsYamlParser {
 
     private static VeinDefinition toDefinition(ResourceLocation id, LinkedHashMap<String, Object> props, Path owner, List<String> defaultRocks) {
         try {
-            final String block = requireString(props, "block", id);
+            final List<BlockDefinition> blocks = parseBlocks(props, id);
             final ResourceLocation type = requireResourceLocation(props, "type", id);
 
             final int minY = getInt(props, id, "ymin", "min_y");
@@ -391,7 +445,7 @@ public final class Tfcmu2VeinsYamlParser {
 
             @SuppressWarnings("unchecked")
             final LinkedHashMap<String, Integer> tiers = (LinkedHashMap<String, Integer>) props.getOrDefault("tier", new LinkedHashMap<>());
-            if (tiers.isEmpty() && block.contains("{tier}")) {
+            if (tiers.isEmpty() && blocks.stream().anyMatch(block -> block.blockTemplate().contains("{tier}"))) {
                 LOGGER.warn("Missing tier weights for {} in {}", id, owner);
                 return null;
             }
@@ -411,7 +465,7 @@ public final class Tfcmu2VeinsYamlParser {
 
             return new VeinDefinition(
                 id,
-                block,
+                blocks,
                 type,
                 minY,
                 maxY,
@@ -433,6 +487,37 @@ public final class Tfcmu2VeinsYamlParser {
             LOGGER.warn("Failed to build vein definition for {}: {}", id, e.getMessage());
             return null;
         }
+    }
+
+    private static List<BlockDefinition> parseBlocks(Map<String, Object> props, ResourceLocation id) {
+        final Object value = props.get("blocks");
+        if (value == null) {
+            return List.of(new BlockDefinition(requireString(props, "block", id), 1));
+        }
+        if (props.containsKey("block")) {
+            throw new IllegalArgumentException("Use either 'blocks' or legacy 'block' for " + id + ", not both");
+        }
+        if (!(value instanceof List<?> entries) || entries.isEmpty()) {
+            throw new IllegalArgumentException("Field 'blocks' must be a non-empty list for " + id);
+        }
+
+        final List<BlockDefinition> blocks = new ArrayList<>(entries.size());
+        for (Object entry : entries) {
+            if (!(entry instanceof Map<?, ?> map)) {
+                throw new IllegalArgumentException("Each 'blocks' entry must be a mapping for " + id);
+            }
+            final Object blockValue = map.get("block");
+            if (blockValue == null || blockValue.toString().isBlank()) {
+                throw new IllegalArgumentException("Missing field 'blocks[].block' for " + id);
+            }
+            final Object weightValue = map.get("weight");
+            final double weight = weightValue == null || weightValue.toString().isBlank() ? 1 : Double.parseDouble(weightValue.toString());
+            if (!Double.isFinite(weight) || weight <= 0) {
+                throw new IllegalArgumentException("Field 'blocks[].weight' must be greater than 0 for " + id);
+            }
+            blocks.add(new BlockDefinition(blockValue.toString(), weight));
+        }
+        return List.copyOf(blocks);
     }
 
     private static PipeParams parsePipeParams(Map<String, Object> props) {

@@ -272,6 +272,7 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 - compat鉱石は主に `netherrack` / `endstone` 向けtypeを持つ。
 - 独自鉱石は TFC岩石 + バニラ石材向けtypeを持つ。
 - 一部 `small_*` は groundcover blockのみ（ブロックアイテムなし）。
+- TFC propickは鉱石blockの通常translation keyではなく、末尾に `.prospected` を付けたキーを表示する。独自鉱石の全品位・全母岩blockと、TFC / Firmalife / TFC IE Addon由来のNether・End鉱石blockについて `en_us.json` にこのキーを定義する。値は元Modの `.prospected` と一致させ、品位・母岩名を含めない（例: diamondは `Kimberlite`、pyriteは `Native Gold?`）。
 
 ## 9. テクスチャ生成方法
 
@@ -378,3 +379,11 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 
 - 独自 molten fluid の registry ID は、既存リリース済みワールドとの互換性維持のため `tfc:metal/<metal>` のままにする。
 - Minecraft 1.20.1 では Forge/TFC の creative tab 列挙が空 bucket stack を受け取らないように、`tfcmu2:bucket/metal/<metal>` bucket item と `tfc:fluid/metal/<metal>` fluid block を追加する。
+
+## 15. カスタム鉱脈設定
+
+- 詳細仕様は `config_doc.md` を参照する。
+- 鉱石出力は `blocks` リストで定義し、各要素に `block` と省略可能な `weight`（既定値 `1`）を指定する。
+- `tier` はリストではなく、品位名から整数weightへのマッピングとして記述する。
+- 読み込み時は、既存configとの互換性のため旧 `block` とリスト風 `tier` も受け入れる。
+- YAMLパーサー本体は `shared/src/main/java` に置き、TFC API差分は各versionの `Tfcmu2VeinPlatform` に限定する。

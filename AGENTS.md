@@ -385,3 +385,4 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 - 鉱石出力は `blocks` リストで定義し、各要素に `block` と省略可能な `weight`（既定値 `1`）を指定する。
 - `tier` はリストではなく、品位名から整数weightへのマッピングとして記述する。
 - 読み込み時は、既存configとの互換性のため旧 `block` とリスト風 `tier` も受け入れる。
+- YAMLパーサー本体は `shared/src/main/java` に置き、TFC API差分は各versionの `Tfcmu2VeinPlatform` に限定する。

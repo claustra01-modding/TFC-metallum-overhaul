@@ -148,7 +148,18 @@ public final class Tfcmu2VeinsYamlParser {
 
             final long seed = seedOverride != null ? seedOverride : hashSeed(randomName);
 
-            return new VeinConfig(states, indicatorOpt, rarity, density, minY, maxY, project, projectOffset, seed, nearLava);
+            return Tfcmu2VeinPlatform.createVeinConfig(
+                states,
+                indicatorOpt,
+                rarity,
+                density,
+                minY,
+                maxY,
+                project,
+                projectOffset,
+                seed,
+                nearLava
+            );
         }
 
         private void addOutput(Weighted<BlockState> weighted, BlockDefinition output, String rock, String tier, double weight) {
@@ -672,11 +683,11 @@ public final class Tfcmu2VeinsYamlParser {
             final ResourceLocation rl = ResourceLocation.tryParse(t);
             id = rl;
         } else if ("netherrack".equals(t)) {
-            id = ResourceLocation.fromNamespaceAndPath("minecraft", "netherrack");
+            id = ResourceLocation.tryParse("minecraft:netherrack");
         } else if ("endstone".equals(t) || "end_stone".equals(t)) {
-            id = ResourceLocation.fromNamespaceAndPath("minecraft", "end_stone");
+            id = ResourceLocation.tryParse("minecraft:end_stone");
         } else {
-            id = ResourceLocation.fromNamespaceAndPath("tfc", "rock/raw/" + t);
+            id = ResourceLocation.tryParse("tfc:rock/raw/" + t);
         }
 
         if (id == null || !BuiltInRegistries.BLOCK.containsKey(id)) {

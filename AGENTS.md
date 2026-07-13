@@ -284,7 +284,7 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 
 手順:
 1. `.tmp` で依存jarを展開し、TFC / TFC More Items の `wrought_iron` テクスチャをベースとして取得する。
-2. 元Modごとに、以下のどちらかの方式で色変換する。
+2. 元Modごとの ingotから色またはパレットを抽出し、素材分類に応じて以下の方式で色変換する。
 
 通常版（単色式）:
 - 元Modの該当 `ingot.png` から代表色（平均色）を抽出する。
@@ -293,8 +293,8 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 
 補正式（通常版）:
 - `lum = (0.2126*R + 0.7152*G + 0.0722*B) / 255`
-- `lum2 = clamp(((lum - 0.5) * 1.35) + 0.5, 0, 1)`
-- `mapped = 0.08 + 0.92 * lum2`
+- `lum2 = clamp(((lum - 0.5) * 1.5) + 0.5, 0, 1)`
+- `mapped = 0.05 + 0.95 * lum2`
 - `out = tone * mapped`
 
 高輝度式:
@@ -304,7 +304,8 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 
 補正式（高輝度式）:
 - `lum = (0.2126*R + 0.7152*G + 0.0722*B) / 255`
-- `lum2 = clamp((pow(lum, 0.82) - 0.08) / 0.92, 0, 1)`
+- `lum_contrast = clamp(((lum - 0.5) * 1.45) + 0.5, 0, 1)`
+- `lum2 = clamp((pow(lum_contrast, 0.82) - 0.08) / 0.92, 0, 1)`
 - `base = lerp(shadow, mid, lum2 / 0.58)` または `lerp(mid, highlight, (lum2 - 0.58) / 0.42)`
 - `highlight_mix = smoothstep(0.72, 0.94, lum2)`
 - `specular_mix = smoothstep(0.88, 1.0, lum2)`
@@ -312,8 +313,8 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 
 実装・運用:
 - 生成スクリプト: `.tmp/add_new_metals.ps1`
-- 元Modに明るい固有ハイライトがない場合は通常版を使う。
-- 元Modの ingot に明るい固有ハイライトがある場合は高輝度式を使う。
+- 貴金属・魔法系（`platinum`, `iridium`, `osmium`, `osmiridium`, `mithril`, `arcane`）は高輝度式を使う。
+- その他の鉄鋼・卑金属・工業系金属は通常版を使う。
 - ハイライト調整時は、パレット抽出の閾値や `highlight_mix` / `specular_mix` の係数を更新して全対象形状を再生成する。
 - `cobalt` 金属フォームと `cobaltite` 鉱石テクスチャは TFC Metallum U（`tfc_metallum`）の cobalt / cobaltite テクスチャを元素材として使う。
 - `lithium` 金属フォームは淡い銀灰色の代表色を使い、通常版（単色式）で生成する。`spodumene` 鉱石は淡いライラック系の品位別代表色を使う。
@@ -321,6 +322,7 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 - `mithril_matrix` は `mithril` 対応の品位あり鉱石。鉱石アイテムと overlay テクスチャは、正式素材が用意されるまで高輝度式の仮素材を使う。
 - ingot / double ingot の pile は、TFC 側の soft metal texture lookup により `tfc:block/metal/smooth/<metal>` を参照する。この `smooth` テクスチャは `tfc` 名前空間に置き、金属テクスチャと同じ方式で生成する。対象 TFC バージョンが sheet pile に対応しない限り、sheet pile 用アセットは追加しない。
 - TFC Ore Washing 系アイテム（`pellet`, `briquet`, `chunks`, `rocky_chunks`, `dirty_dust`, `dirty_pile`, `powder`）は TFC `item/ore/graphite` の輝度をベースにし、先に graphite 輝度を白方向へ淡色化してから、各対象鉱石の代表色で通常版（単色式）補正を行う。
+- Ore Washing 系の代表色は、元鉱石テクスチャの非透過ピクセルを輝度順に並べ、明るい側1/3の平均色から抽出する。
 - tfcorewashing に graphite 版がある Ore Washing 形状は graphite 版を形状元にする。graphite 版がない `pellet` / `briquet` は chromium 版を形状マスクとしてのみ使い、輝度を TFC `item/ore/graphite` へ再マップしてから補正する。`powder` は TFC `item/powder/graphite` を形状元にする。
 - `rocky_chunks` の item model は、鉱石部分だけのベーステクスチャに `tfcmu2:item/metal/rocky_chunks/_rocky_overlay` を重ねる。固定色の岩部分は個別 PNG ではなく overlay 側に保持する。
 

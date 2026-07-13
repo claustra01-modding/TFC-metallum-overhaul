@@ -1,0 +1,19 @@
+{
+  "ingredient": [
+    {
+      "item": "tfcmu2:ore/small_spodumene"
+    },
+    {
+      "item": "tfcmu2:ore/poor_spodumene"
+    },
+    {
+      "item": "tfcmu2:ore/normal_spodumene"
+    },
+    {
+      "item": "tfcmu2:ore/rich_spodumene"
+    }
+  ],
+  "heat_capacity": 1.333,
+  "forging_temperature": 108,
+  "welding_temperature": 145
+}

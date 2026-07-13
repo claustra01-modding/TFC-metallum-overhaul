@@ -1,0 +1,8 @@
+{
+    "parent":  "block/stairs",
+    "textures":  {
+                     "bottom":  "tfcmu2:block/metal/block/lithium",
+                     "top":  "tfcmu2:block/metal/block/lithium",
+                     "side":  "tfcmu2:block/metal/block/lithium"
+                 }
+}

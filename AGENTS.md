@@ -13,7 +13,7 @@
 ### 1.1 金属アイテム形状
 
 対象金属:
-`compressed_iron`, `platinum`, `naquadah`, `iridium`, `osmium`, `osmiridium`, `mithril`, `arcane`, `refined_glowstone`, `refined_obsidian`, `antimony`, `titanium`, `cobalt`, `tungsten`, `solder`, `tungsten_steel`, `netherite`
+`compressed_iron`, `platinum`, `naquadah`, `iridium`, `osmium`, `osmiridium`, `mithril`, `arcane`, `refined_glowstone`, `refined_obsidian`, `antimony`, `titanium`, `cobalt`, `lithium`, `tungsten`, `solder`, `tungsten_steel`, `netherite`
 
 常時生成される形状:
 - `ingot`
@@ -59,7 +59,7 @@ ID規則:
 ### 1.2 鉱石アイテム形状
 
 対象鉱石:
-- 品位あり: `native_platinum`, `native_naquadah`, `native_iridium`, `native_osmium`, `rutile`, `cobaltite`, `mithril_matrix`, `stibnite`, `wolframite`
+- 品位あり: `native_platinum`, `native_naquadah`, `native_iridium`, `native_osmium`, `rutile`, `cobaltite`, `spodumene`, `mithril_matrix`, `stibnite`, `wolframite`
 - 品位なし: `fluorite`
 
 鉱石アイテム形状:
@@ -316,6 +316,7 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 - 元Modの ingot に明るい固有ハイライトがある場合は高輝度式を使う。
 - ハイライト調整時は、パレット抽出の閾値や `highlight_mix` / `specular_mix` の係数を更新して全対象形状を再生成する。
 - `cobalt` 金属フォームと `cobaltite` 鉱石テクスチャは TFC Metallum U（`tfc_metallum`）の cobalt / cobaltite テクスチャを元素材として使う。
+- `lithium` 金属フォームは淡い銀灰色の代表色を使い、通常版（単色式）で生成する。`spodumene` 鉱石は淡いライラック系の品位別代表色を使う。
 - `mithril` と `arcane` の金属形状は、Iron's Spells 'n Spellbooks の ingot テクスチャ（`mithril_ingot.png`, `arcane_ingot.png`）から抽出した色を使い、高輝度式で wrought iron ベースを再着色する。Iron's Spells のテクスチャ自体はリポジトリへコピーしない。
 - `mithril_matrix` は `mithril` 対応の品位あり鉱石。鉱石アイテムと overlay テクスチャは、正式素材が用意されるまで高輝度式の仮素材を使う。
 - ingot / double ingot の pile は、TFC 側の soft metal texture lookup により `tfc:block/metal/smooth/<metal>` を参照する。この `smooth` テクスチャは `tfc` 名前空間に置き、金属テクスチャと同じ方式で生成する。対象 TFC バージョンが sheet pile に対応しない限り、sheet pile 用アセットは追加しない。

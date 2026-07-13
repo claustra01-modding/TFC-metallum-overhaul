@@ -1,0 +1,27 @@
+{
+    "values":  [
+                   "tfcmu2:ore/poor_spodumene/granite",
+                   "tfcmu2:ore/poor_spodumene/diorite",
+                   "tfcmu2:ore/poor_spodumene/gabbro",
+                   "tfcmu2:ore/poor_spodumene/shale",
+                   "tfcmu2:ore/poor_spodumene/claystone",
+                   "tfcmu2:ore/poor_spodumene/limestone",
+                   "tfcmu2:ore/poor_spodumene/conglomerate",
+                   "tfcmu2:ore/poor_spodumene/dolomite",
+                   "tfcmu2:ore/poor_spodumene/chert",
+                   "tfcmu2:ore/poor_spodumene/chalk",
+                   "tfcmu2:ore/poor_spodumene/tuff",
+                   "tfcmu2:ore/poor_spodumene/rhyolite",
+                   "tfcmu2:ore/poor_spodumene/basalt",
+                   "tfcmu2:ore/poor_spodumene/andesite",
+                   "tfcmu2:ore/poor_spodumene/dacite",
+                   "tfcmu2:ore/poor_spodumene/quartzite",
+                   "tfcmu2:ore/poor_spodumene/slate",
+                   "tfcmu2:ore/poor_spodumene/phyllite",
+                   "tfcmu2:ore/poor_spodumene/schist",
+                   "tfcmu2:ore/poor_spodumene/gneiss",
+                   "tfcmu2:ore/poor_spodumene/marble",
+                   "tfcmu2:ore/poor_spodumene/netherrack",
+                   "tfcmu2:ore/poor_spodumene/endstone"
+               ]
+}

@@ -1,0 +1,16 @@
+{
+  "ingredient": [
+    {
+      "tag": "c:nails/lithium"
+    },
+    {
+      "tag": "c:rivets/lithium"
+    },
+    {
+      "tag": "c:screws/lithium"
+    }
+  ],
+  "heat_capacity": 0.2,
+  "forging_temperature": 108,
+  "welding_temperature": 145
+}

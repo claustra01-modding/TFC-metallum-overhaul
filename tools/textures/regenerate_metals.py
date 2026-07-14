@@ -10,7 +10,7 @@ from PIL import UnidentifiedImageError
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from color_transfer import load_png, load_zip_png, save_png, transfer_palette
+from color_transfer import flip_horizontal, load_png, load_zip_png, save_png, transfer_palette
 
 
 ASSETS = ROOT / "shared/src/main/resources/assets"
@@ -158,6 +158,8 @@ FIXED_COLOR_FORMS = {
     "scythe",
     "shears",
 }
+
+HORIZONTALLY_FLIPPED_TOOL_FORMS = {"knife", "javelin"}
 
 ARMOR_FORMS = {
     "unfinished_helmet",
@@ -338,6 +340,8 @@ def main() -> None:
                         )
                     else:
                         pixels = transfer_palette(base, sources[metal])
+                    if form in HORIZONTALLY_FLIPPED_TOOL_FORMS:
+                        pixels = flip_horizontal(size, pixels)
                     save_png(target, size, pixels)
                     generated += 1
 

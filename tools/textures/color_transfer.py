@@ -32,6 +32,15 @@ def save_png(path: Path, size: tuple[int, int], pixels: list[Pixel]) -> None:
     image.save(path, optimize=True)
 
 
+def flip_horizontal(size: tuple[int, int], pixels: list[Pixel]) -> list[Pixel]:
+    width, height = size
+    return [
+        pixels[y * width + (width - 1 - x)]
+        for y in range(height)
+        for x in range(width)
+    ]
+
+
 def luminance(pixel: Pixel) -> float:
     red, green, blue, _ = pixel
     return (0.2126 * red + 0.7152 * green + 0.0722 * blue) / 255

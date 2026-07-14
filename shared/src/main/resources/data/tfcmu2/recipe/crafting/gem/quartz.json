@@ -1,0 +1,25 @@
+{
+  "type": "tfc:advanced_shapeless_crafting",
+  "ingredients": [
+    {
+      "item": "tfc:sandpaper"
+    },
+    {
+      "item": "tfcmu2:ore/quartz"
+    }
+  ],
+  "primary_ingredient": {
+    "item": "tfc:sandpaper"
+  },
+  "remainder": {
+    "modifiers": [
+      {
+        "type": "tfc:damage_crafting_remainder"
+      }
+    ]
+  },
+  "result": {
+    "count": 1,
+    "id": "tfcmu2:gem/quartz"
+  }
+}

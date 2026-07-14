@@ -13,7 +13,7 @@
 ### 1.1 金属アイテム形状
 
 対象金属:
-`compressed_iron`, `platinum`, `naquadah`, `iridium`, `osmium`, `osmiridium`, `mithril`, `arcane`, `refined_glowstone`, `refined_obsidian`, `antimony`, `titanium`, `cobalt`, `lithium`, `tungsten`, `solder`, `tungsten_steel`, `netherite`
+`compressed_iron`, `platinum`, `naquadah`, `iridium`, `osmium`, `osmiridium`, `mithril`, `arcane`, `refined_glowstone`, `refined_obsidian`, `antimony`, `titanium`, `cobalt`, `lithium`, `aluminum`, `constantan`, `electrum`, `lead`, `uranium`, `tungsten`, `solder`, `tungsten_steel`, `netherite`
 
 常時生成される形状:
 - `ingot`
@@ -59,7 +59,7 @@ ID規則:
 ### 1.2 鉱石アイテム形状
 
 対象鉱石:
-- 品位あり: `native_platinum`, `native_naquadah`, `native_iridium`, `native_osmium`, `rutile`, `cobaltite`, `spodumene`, `mithril_matrix`, `stibnite`, `wolframite`
+- 品位あり: `native_platinum`, `native_naquadah`, `native_iridium`, `native_osmium`, `rutile`, `cobaltite`, `spodumene`, `bauxite`, `galena`, `uraninite`, `mithril_matrix`, `stibnite`, `wolframite`
 - 品位なし: `fluorite`
 
 鉱石アイテム形状:
@@ -97,6 +97,13 @@ ID規則:
 ID規則:
 - `tfcmu2:metal/<form>/<ore>`
 
+### 1.3 Gem鉱石
+
+- Quartz: `tfcmu2:ore/quartz`
+- Cut Quartz: `tfcmu2:gem/quartz`
+- Quartzをsandpaperで研磨してCut Quartzにする。
+- common tagはそれぞれ `c:ores/quartz`、`c:gems/quartz` を使う。
+
 ## 2. `tfc` 由来（compat展開）
 
 `Tfcmu2CompatOres.TFC_ORES` の鉱石に対して、以下の形状を追加する。
@@ -129,34 +136,32 @@ ID規則:
 補足:
 - このcompat層では金属形状は追加しない。
 
-## 4. `tfc_ie_addon` 由来（compat展開）
+## 4. TFC IE Crossover由来
 
-対象:
-`normal_bauxite`, `poor_bauxite`, `rich_bauxite`
-`normal_galena`, `poor_galena`, `rich_galena`
-`normal_uraninite`, `poor_uraninite`, `rich_uraninite`
+金属:
+- `aluminum`, `constantan`, `electrum`, `lead`, `uranium`
 
-追加される形状:
-- `netherrack` 内鉱石ブロック
-- `endstone` 内鉱石ブロック
-
-ID規則:
-- `tfcmu2:ore/<ore_name>/netherrack`
-- `tfcmu2:ore/<ore_name>/endstone`
+鉱石:
+- `bauxite` -> `aluminum`
+- `galena` -> `lead`
+- `uraninite` -> `uranium`
 
 補足:
-- このcompat層では金属形状は追加しない。
+- 上記はCrossoverのロード有無にかかわらず、独自金属・独自品位あり鉱石として常時生成する。
+- 金属・鉱石の形状とID規則は1章と同じ。
+- ElectrumはGold 40-60% + Silver 40-60%、ConstantanはCopper 40-60% + Nickel 40-60%のalloy recipeを持つ。
+- `bauxite` / `galena` / `uraninite` の鉱石テクスチャはTFC IE Crossover由来素材を使用する。
+- Quartzは金属鉱石ではなく1.3のGem鉱石として実装する。
 
 ## 5. 鉱石アイテム有無（重要）
 
 - 単体の鉱石アイテム（`tfcmu2:ore/{poor|normal|rich}_<ore>`, `tfcmu2:ore/<ore>`）を持つのは `tfcmu2` 独自鉱石のみ。
-- `tfc` / `firmalife` / `tfc_ie_addon` 由来は、このMod側では主に `netherrack` / `endstone` 向け鉱石ブロック展開。
+- `tfc` / `firmalife` 由来は、このMod側では主に `netherrack` / `endstone` 向け鉱石ブロック展開。
 
 ## 6. 有効化条件
 
 - `tfcmu2` 独自の金属・鉱石形状: 常時有効
 - `firmalife` compat鉱石形状: `firmalife` ロード時のみ
-- `tfc_ie_addon` compat鉱石形状: `tfc_ie_addon` ロード時のみ
 - 追加金属形状（`foil`, `wire` など）: `tfc_items` ロード時のみ
 - 鉱石洗浄形状: `tfcorewashing` ロード時のみ
 
@@ -228,7 +233,7 @@ ID規則:
 - `tfc/heating/ore_washing/briquet`
 - `tfc/heating/ore_washing/powder`
 
-compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
+compat鉱石（`tfc` / `firmalife`）:
 - このMod側では専用加工レシピtypeは持たず、主に鉱石ブロック展開が役割。
 
 鉱石加熱の条件:
@@ -277,7 +282,7 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 - 独自鉱石は TFC岩石 + バニラ石材向けtypeを持つ。
 - 一部 `small_*` は groundcover blockのみ（ブロックアイテムなし）。
 - 独自鉱石とcompat鉱石blockは `#c:ores` を介して `minecraft:mineable/pickaxe` に含め、通常のpickaxeとTFC Mining HammerのSledgehammerで正しい採掘対象として扱えるようにする。
-- TFC propickは鉱石blockの通常translation keyではなく、末尾に `.prospected` を付けたキーを表示する。独自鉱石の全品位・全母岩blockと、TFC / Firmalife / TFC IE Addon由来のNether・End鉱石blockについて `en_us.json` にこのキーを定義する。値は元Modの `.prospected` と一致させ、品位・母岩名を含めない（例: diamondは `Kimberlite`、pyriteは `Native Gold?`）。
+- TFC propickは鉱石blockの通常translation keyではなく、末尾に `.prospected` を付けたキーを表示する。独自鉱石の全品位・全母岩blockと、TFC / Firmalife由来のNether・End鉱石blockについて `en_us.json` にこのキーを定義する。値は元Modの `.prospected` と一致させ、品位・母岩名を含めない（例: diamondは `Kimberlite`、pyriteは `Native Gold?`）。
 
 ## 9. テクスチャ生成方法
 
@@ -316,12 +321,14 @@ compat鉱石（`tfc` / `firmalife` / `tfc_ie_addon`）:
 - `final = lerp(lerp(base, highlight, 0.45 * highlight_mix), glint, 0.55 * specular_mix)`
 
 実装・運用:
-- 生成スクリプト: `.tmp/add_new_metals.ps1`
-- 貴金属・魔法系（`platinum`, `iridium`, `osmium`, `osmiridium`, `mithril`, `arcane`）は高輝度式を使う。
+- 金属テクスチャ生成スクリプト: `.tmp/regenerate_all_metal_textures_high_luminance.py`
+- TFC IE Crossover由来コンテンツ展開スクリプト: `.tmp/add_tfc_ie_content.py`
+- 貴金属・魔法系（`platinum`, `iridium`, `osmium`, `osmiridium`, `mithril`, `arcane`, `electrum`）は高輝度式を使う。
 - その他の鉄鋼・卑金属・工業系金属は通常版を使う。
 - ハイライト調整時は、パレット抽出の閾値や `highlight_mix` / `specular_mix` の係数を更新して全対象形状を再生成する。
 - `cobalt` 金属フォームと `cobaltite` 鉱石テクスチャは TFC Metallum U（`tfc_metallum`）の cobalt / cobaltite テクスチャを元素材として使う。
 - `lithium` 金属フォームは TFC Metallum 1.12.2の lithium ingotから代表色を抽出し、通常版（単色式）で生成する。`spodumene` の鉱石item textureとblock overlayも同Modの素材を使う。
+- `aluminum`, `constantan`, `electrum`, `lead`, `uranium` はTFC IE Crossoverのdouble ingotから色またはパレットを抽出する。`bauxite`, `galena`, `uraninite` の鉱石item textureとblock overlay、およびQuartzのraw textureは同Modの素材を使う。
 - `mithril` と `arcane` の金属形状は、Iron's Spells 'n Spellbooks の ingot テクスチャ（`mithril_ingot.png`, `arcane_ingot.png`）から抽出した色を使い、高輝度式で wrought iron ベースを再着色する。Iron's Spells のテクスチャ自体はリポジトリへコピーしない。
 - `mithril_matrix` は `mithril` 対応の品位あり鉱石。鉱石アイテムと overlay テクスチャは、正式素材が用意されるまで高輝度式の仮素材を使う。
 - ingot / double ingot の pile は、TFC 側の soft metal texture lookup により `tfc:block/metal/smooth/<metal>` を参照する。この `smooth` テクスチャは `tfc` 名前空間に置き、金属テクスチャと同じ方式で生成する。対象 TFC バージョンが sheet pile に対応しない限り、sheet pile 用アセットは追加しない。

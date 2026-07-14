@@ -18,6 +18,11 @@
     "#c:sheets/tungsten",
     "#c:sheets/solder",
     "#c:sheets/tungsten_steel",
-    "#c:sheets/netherite"
+    "#c:sheets/netherite",
+    "#c:sheets/aluminum",
+    "#c:sheets/constantan",
+    "#c:sheets/electrum",
+    "#c:sheets/lead",
+    "#c:sheets/uranium"
   ]
 }

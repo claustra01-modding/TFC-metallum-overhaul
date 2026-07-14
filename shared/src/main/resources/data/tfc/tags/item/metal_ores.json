@@ -29,6 +29,15 @@
     "tfcmu2:ore/rich_wolframite",
     "tfcmu2:ore/poor_mithril_matrix",
     "tfcmu2:ore/normal_mithril_matrix",
-    "tfcmu2:ore/rich_mithril_matrix"
+    "tfcmu2:ore/rich_mithril_matrix",
+    "tfcmu2:ore/poor_bauxite",
+    "tfcmu2:ore/poor_galena",
+    "tfcmu2:ore/poor_uraninite",
+    "tfcmu2:ore/normal_bauxite",
+    "tfcmu2:ore/normal_galena",
+    "tfcmu2:ore/normal_uraninite",
+    "tfcmu2:ore/rich_bauxite",
+    "tfcmu2:ore/rich_galena",
+    "tfcmu2:ore/rich_uraninite"
   ]
 }

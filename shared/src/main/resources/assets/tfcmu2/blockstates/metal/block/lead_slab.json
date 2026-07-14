@@ -1,0 +1,13 @@
+{
+    "variants":  {
+                     "type=bottom":  {
+                                         "model":  "tfcmu2:block/metal/block/lead_slab"
+                                     },
+                     "type=top":  {
+                                      "model":  "tfcmu2:block/metal/block/lead_slab_top"
+                                  },
+                     "type=double":  {
+                                         "model":  "tfcmu2:block/metal/block/lead"
+                                     }
+                 }
+}

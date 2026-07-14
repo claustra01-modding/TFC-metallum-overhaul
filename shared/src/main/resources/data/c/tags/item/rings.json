@@ -18,6 +18,11 @@
     "#c:rings/tungsten",
     "#c:rings/solder",
     "#c:rings/tungsten_steel",
-    "#c:rings/netherite"
+    "#c:rings/netherite",
+    "#c:rings/aluminum",
+    "#c:rings/constantan",
+    "#c:rings/electrum",
+    "#c:rings/lead",
+    "#c:rings/uranium"
   ]
 }

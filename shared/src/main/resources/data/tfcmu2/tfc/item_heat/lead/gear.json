@@ -1,0 +1,8 @@
+{
+  "ingredient": {
+    "tag": "c:gears/lead"
+  },
+  "heat_capacity": 30.77154,
+  "forging_temperature": 198,
+  "welding_temperature": 264
+}

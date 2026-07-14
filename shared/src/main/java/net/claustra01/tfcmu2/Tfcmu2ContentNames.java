@@ -66,18 +66,6 @@ public final class Tfcmu2ContentNames {
         "rich_chromite"
     );
 
-    public static final List<String> TFC_IE_ADDON_ORES = List.of(
-        "normal_bauxite",
-        "normal_galena",
-        "normal_uraninite",
-        "poor_bauxite",
-        "poor_galena",
-        "poor_uraninite",
-        "rich_bauxite",
-        "rich_galena",
-        "rich_uraninite"
-    );
-
     public static final List<String> ORE_PIECES_WITHOUT_SAMPLES = List.of(
         "amethyst",
         "bituminous_coal",

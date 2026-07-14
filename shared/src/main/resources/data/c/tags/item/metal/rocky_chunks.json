@@ -10,6 +10,9 @@
     "#c:metal/rocky_chunks/native_naquadah",
     "#c:metal/rocky_chunks/native_iridium",
     "#c:metal/rocky_chunks/native_osmium",
-    "#c:metal/rocky_chunks/mithril_matrix"
+    "#c:metal/rocky_chunks/mithril_matrix",
+    "#c:metal/rocky_chunks/bauxite",
+    "#c:metal/rocky_chunks/galena",
+    "#c:metal/rocky_chunks/uraninite"
   ]
 }

@@ -3,6 +3,6 @@
   "textures": {
     "all": "minecraft:block/netherrack",
     "particle": "minecraft:block/netherrack",
-    "overlay": "tfc_ie_addon:block/ore/poor_bauxite"
+    "overlay": "tfcmu2:block/ore/poor_bauxite"
   }
 }

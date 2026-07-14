@@ -1,0 +1,8 @@
+{
+  "ingredient": {
+    "tag": "c:ingots/electrum"
+  },
+  "heat_capacity": 1.818182,
+  "forging_temperature": 600,
+  "welding_temperature": 800
+}

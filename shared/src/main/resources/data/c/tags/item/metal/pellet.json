@@ -10,6 +10,9 @@
     "#c:metal/pellet/native_naquadah",
     "#c:metal/pellet/native_iridium",
     "#c:metal/pellet/native_osmium",
-    "#c:metal/pellet/mithril_matrix"
+    "#c:metal/pellet/mithril_matrix",
+    "#c:metal/pellet/bauxite",
+    "#c:metal/pellet/galena",
+    "#c:metal/pellet/uraninite"
   ]
 }

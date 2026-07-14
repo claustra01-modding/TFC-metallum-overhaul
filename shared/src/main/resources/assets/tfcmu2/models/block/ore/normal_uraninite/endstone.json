@@ -3,6 +3,6 @@
   "textures": {
     "all": "minecraft:block/end_stone",
     "particle": "minecraft:block/end_stone",
-    "overlay": "tfc_ie_addon:block/ore/normal_uraninite"
+    "overlay": "tfcmu2:block/ore/normal_uraninite"
   }
 }

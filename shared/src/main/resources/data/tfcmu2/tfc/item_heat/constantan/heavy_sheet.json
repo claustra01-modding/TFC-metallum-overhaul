@@ -1,0 +1,8 @@
+{
+  "ingredient": {
+    "tag": "c:heavy_sheets/constantan"
+  },
+  "heat_capacity": 14.287429,
+  "forging_temperature": 750,
+  "welding_temperature": 1000
+}

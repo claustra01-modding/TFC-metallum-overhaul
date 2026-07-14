@@ -18,6 +18,11 @@
     "tfc:metal/titanium",
     "tfc:metal/cobalt",
     "tfc:metal/lithium",
-    "tfc:metal/arcane"
+    "tfc:metal/arcane",
+    "tfc:metal/aluminum",
+    "tfc:metal/constantan",
+    "tfc:metal/electrum",
+    "tfc:metal/lead",
+    "tfc:metal/uranium"
   ]
 }

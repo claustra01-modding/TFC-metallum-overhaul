@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tfcorewashing"
+    }
+  ],
+  "type": "tfc:quern",
+  "ingredient": {
+    "item": "tfcmu2:metal/chunks/bauxite"
+  },
+  "result": {
+    "id": "tfcmu2:metal/dirty_dust/bauxite",
+    "count": 1
+  }
+}

@@ -14,7 +14,6 @@ public final class Tfcmu2Mod {
     public static final String TFC_MORE_ITEMS_MOD_ID = "tfc_items";
     public static final String TFC_ORE_WASHING_MOD_ID = "tfcorewashing";
     public static final String FIRMALIFE_MOD_ID = "firmalife";
-    public static final String TFC_IE_ADDON_MOD_ID = "tfc_ie_addon";
 
     public Tfcmu2Mod(IEventBus modEventBus, ModContainer modContainer) {
         modContainer.registerConfig(ModConfig.Type.COMMON, Tfcmu2Config.COMMON_SPEC);

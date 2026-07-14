@@ -1,0 +1,19 @@
+{
+  "ingredient": [
+    {
+      "item": "tfcmu2:ore/small_uraninite"
+    },
+    {
+      "item": "tfcmu2:ore/poor_uraninite"
+    },
+    {
+      "item": "tfcmu2:ore/normal_uraninite"
+    },
+    {
+      "item": "tfcmu2:ore/rich_uraninite"
+    }
+  ],
+  "heat_capacity": 3.332833,
+  "forging_temperature": 678,
+  "welding_temperature": 904
+}

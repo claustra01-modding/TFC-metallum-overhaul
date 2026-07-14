@@ -1,9 +1,9 @@
 veins:
 
 # sample
-  # - tfcmu2:veins/nether_native_gold:
+  # - tfcm:veins/nether_native_gold:
   #     blocks:
-  #       - block: tfcmu2:ore/{tier}_native_gold/netherrack
+  #       - block: tfcm:ore/{tier}_native_gold/netherrack
   #     type: tfc:cluster_vein
   #     ymax: 130
   #     ymin: 40

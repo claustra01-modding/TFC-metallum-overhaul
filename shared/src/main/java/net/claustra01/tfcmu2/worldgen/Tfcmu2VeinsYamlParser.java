@@ -33,7 +33,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import org.slf4j.Logger;
 
 /**
- * A tiny, purpose-built parser for tfcmu2 custom veins YAML.
+ * A tiny, purpose-built parser for TFCM custom veins YAML.
  *
  * Supported structure (subset of YAML):
  * - Root key: veins:

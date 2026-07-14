@@ -14,15 +14,14 @@ import java.util.Set;
 import com.mojang.logging.LogUtils;
 
 import net.claustra01.tfcmu2.Tfcmu2Mod;
+import net.claustra01.tfcmu2.Tfcmu2Platform;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.loading.FMLPaths;
 
 import org.slf4j.Logger;
 
 /**
- * Loads custom veins from config/tfcmu2/{overworld,nether,end}.yaml and builds
+ * Loads custom veins from the mod config directory and builds
  * direct placed features from them.
  * These features are inserted into biomes by {@link Tfcmu2OreVeinBiomeModifier}
  * when enabled via config.
@@ -36,9 +35,10 @@ public final class Tfcmu2CustomVeins {
     private static final String NETHER_CONFIG_FILE = "nether.yaml";
     private static final String END_CONFIG_FILE = "end.yaml";
 
-    private static final String CLASSPATH_OVERWORLD_SAMPLE = "/tfcmu2/overworld.yaml";
-    private static final String CLASSPATH_NETHER_SAMPLE = "/tfcmu2/nether.yaml";
-    private static final String CLASSPATH_END_SAMPLE = "/tfcmu2/end.yaml";
+    private static final String CLASSPATH_CONFIG_ROOT = "/" + Tfcmu2Mod.MOD_ID + "/";
+    private static final String CLASSPATH_OVERWORLD_SAMPLE = CLASSPATH_CONFIG_ROOT + OVERWORLD_CONFIG_FILE;
+    private static final String CLASSPATH_NETHER_SAMPLE = CLASSPATH_CONFIG_ROOT + NETHER_CONFIG_FILE;
+    private static final String CLASSPATH_END_SAMPLE = CLASSPATH_CONFIG_ROOT + END_CONFIG_FILE;
 
     private static List<Tfcmu2VeinsYamlParser.VeinDefinition> CACHED_OVERWORLD_DEFS = List.of();
     private static List<Tfcmu2VeinsYamlParser.VeinDefinition> CACHED_NETHER_DEFS = List.of();
@@ -209,7 +209,7 @@ public final class Tfcmu2CustomVeins {
             final int idx = indicator.indexOf(':');
             if (idx > 0) {
                 final String ns = indicator.substring(0, idx);
-                if (!"minecraft".equals(ns) && !ModList.get().isLoaded(ns)) {
+                if (!"minecraft".equals(ns) && !Tfcmu2Platform.isModLoaded(ns)) {
                     LOGGER.warn("Skipping custom vein {} because referenced mod '{}' is not loaded (indicator: {}).", def.id(), ns, indicator);
                     return false;
                 }
@@ -222,7 +222,7 @@ public final class Tfcmu2CustomVeins {
         final int colonIdx = template.indexOf(':');
         if (colonIdx > 0) {
             final String ns = template.substring(0, colonIdx);
-            if (!"minecraft".equals(ns) && !ModList.get().isLoaded(ns)) {
+            if (!"minecraft".equals(ns) && !Tfcmu2Platform.isModLoaded(ns)) {
                 LOGGER.warn("Skipping custom vein {} because referenced mod '{}' is not loaded (block template: {}).", def.id(), ns, template);
                 return false;
             }
@@ -244,11 +244,11 @@ public final class Tfcmu2CustomVeins {
     }
 
     private static ResourceLocation toTfcmu2Id(ResourceLocation sourceId) {
-        return new ResourceLocation(Tfcmu2Mod.MOD_ID, sourceId.getPath());
+        return Tfcmu2Platform.id(Tfcmu2Mod.MOD_ID, sourceId.getPath());
     }
 
     private static Path getConfigDir() {
-        return FMLPaths.CONFIGDIR.get().resolve(DEFAULT_CONFIG_SUBDIR);
+        return Tfcmu2Platform.configDirectory().resolve(DEFAULT_CONFIG_SUBDIR);
     }
 
     private static void ensureSampleFileExists(Path path, String classpathSample) {

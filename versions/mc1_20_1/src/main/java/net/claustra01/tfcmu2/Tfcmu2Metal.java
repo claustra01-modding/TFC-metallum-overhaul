@@ -11,44 +11,40 @@ import net.minecraft.world.level.material.MapColor;
 import java.util.function.Supplier;
 
 public enum Tfcmu2Metal implements RegistryMetal {
-    COMPRESSED_IRON("compressed_iron", Rarity.UNCOMMON, 0x6F6C6B),
-    PLATINUM("platinum", Rarity.RARE, 0x627C8B),
-    NAQUADAH("naquadah", Rarity.RARE, 0x4D5742),
-    IRIDIUM("iridium", Rarity.UNCOMMON, 0xADC4CE),
-    OSMIUM("osmium", Rarity.UNCOMMON, 0xA5B4CA),
-    OSMIRIDIUM("osmiridium", Rarity.UNCOMMON, 0x718383),
-    MITHRIL("mithril", Rarity.COMMON, 0x8DB4BC),
-    ARCANE("arcane", Rarity.RARE, 0x888CCC),
-    REFINED_GLOWSTONE("refined_glowstone", Rarity.UNCOMMON, 0xE2B446),
-    REFINED_OBSIDIAN("refined_obsidian", Rarity.RARE, 0x473752),
-    ANTIMONY("antimony", Rarity.COMMON, 0xB4AFBD),
-    TITANIUM("titanium", Rarity.UNCOMMON, 0x898B93),
-    COBALT("cobalt", Rarity.UNCOMMON, 0x175AB3),
-    LITHIUM("lithium", Rarity.COMMON, 0xC5CBD1),
-    ALUMINUM("aluminum", Rarity.COMMON, 0x929799),
-    CONSTANTAN("constantan", Rarity.COMMON, 0xA45B49),
-    INVAR("invar", Rarity.COMMON, 0x869A97),
-    ELECTRUM("electrum", Rarity.UNCOMMON, 0xA67F3A),
-    LEAD("lead", Rarity.COMMON, 0x393D4A),
-    URANIUM("uranium", Rarity.UNCOMMON, 0x4E5946),
-    TUNGSTEN("tungsten", Rarity.EPIC, 0x585F6B),
-    SOLDER("solder", Rarity.UNCOMMON, 0x888888),
-    TUNGSTEN_STEEL("tungsten_steel", Rarity.EPIC, 0x2F353E),
-    NETHERITE("netherite", Rarity.EPIC, 0x3B3230);
+    COMPRESSED_IRON(Tfcmu2MetalSpec.COMPRESSED_IRON),
+    PLATINUM(Tfcmu2MetalSpec.PLATINUM),
+    NAQUADAH(Tfcmu2MetalSpec.NAQUADAH),
+    IRIDIUM(Tfcmu2MetalSpec.IRIDIUM),
+    OSMIUM(Tfcmu2MetalSpec.OSMIUM),
+    OSMIRIDIUM(Tfcmu2MetalSpec.OSMIRIDIUM),
+    MITHRIL(Tfcmu2MetalSpec.MITHRIL),
+    ARCANE(Tfcmu2MetalSpec.ARCANE),
+    REFINED_GLOWSTONE(Tfcmu2MetalSpec.REFINED_GLOWSTONE),
+    REFINED_OBSIDIAN(Tfcmu2MetalSpec.REFINED_OBSIDIAN),
+    ANTIMONY(Tfcmu2MetalSpec.ANTIMONY),
+    TITANIUM(Tfcmu2MetalSpec.TITANIUM),
+    COBALT(Tfcmu2MetalSpec.COBALT),
+    LITHIUM(Tfcmu2MetalSpec.LITHIUM),
+    ALUMINUM(Tfcmu2MetalSpec.ALUMINUM),
+    CONSTANTAN(Tfcmu2MetalSpec.CONSTANTAN),
+    INVAR(Tfcmu2MetalSpec.INVAR),
+    ELECTRUM(Tfcmu2MetalSpec.ELECTRUM),
+    LEAD(Tfcmu2MetalSpec.LEAD),
+    URANIUM(Tfcmu2MetalSpec.URANIUM),
+    TUNGSTEN(Tfcmu2MetalSpec.TUNGSTEN),
+    SOLDER(Tfcmu2MetalSpec.SOLDER),
+    TUNGSTEN_STEEL(Tfcmu2MetalSpec.TUNGSTEN_STEEL),
+    NETHERITE(Tfcmu2MetalSpec.NETHERITE);
 
-    private final String serializedName;
-    private final Rarity rarity;
-    private final int color;
+    private final Tfcmu2MetalSpec spec;
 
-    Tfcmu2Metal(String serializedName, Rarity rarity, int color) {
-        this.serializedName = serializedName;
-        this.rarity = rarity;
-        this.color = color;
+    Tfcmu2Metal(Tfcmu2MetalSpec spec) {
+        this.spec = spec;
     }
 
     @Override
     public String getSerializedName() {
-        return serializedName;
+        return spec.serializedName();
     }
 
     @Override
@@ -60,7 +56,7 @@ public enum Tfcmu2Metal implements RegistryMetal {
     }
 
     public boolean hasTools() {
-        return this == INVAR || this == TITANIUM || this == TUNGSTEN_STEEL;
+        return spec.hasTools();
     }
 
     @Override
@@ -91,18 +87,18 @@ public enum Tfcmu2Metal implements RegistryMetal {
 
     @Override
     public Rarity getRarity() {
-        return rarity;
+        return spec.rarity();
     }
 
     public Rarity rarity() {
-        return rarity;
+        return spec.rarity();
     }
 
     public int color() {
-        return color;
+        return spec.color();
     }
 
     private UnsupportedOperationException unsupported(String method) {
-        return new UnsupportedOperationException(method + " is not used by the implemented metal subset: " + serializedName);
+        return new UnsupportedOperationException(method + " is not used by the implemented metal subset: " + spec.serializedName());
     }
 }

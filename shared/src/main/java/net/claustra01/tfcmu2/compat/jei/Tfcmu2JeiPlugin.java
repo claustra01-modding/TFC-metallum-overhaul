@@ -10,12 +10,13 @@ import mezz.jei.api.runtime.IIngredientManager;
 import mezz.jei.api.runtime.IJeiRuntime;
 import net.claustra01.tfcmu2.Tfcmu2Items;
 import net.claustra01.tfcmu2.Tfcmu2Mod;
+import net.claustra01.tfcmu2.Tfcmu2Platform;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 @JeiPlugin
 public final class Tfcmu2JeiPlugin implements IModPlugin {
-    private static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(Tfcmu2Mod.MOD_ID, "jei_plugin");
+    private static final ResourceLocation UID = Tfcmu2Platform.id(Tfcmu2Mod.MOD_ID, "jei_plugin");
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -39,7 +40,7 @@ public final class Tfcmu2JeiPlugin implements IModPlugin {
 
     private static boolean containsEquivalent(Collection<ItemStack> stacks, ItemStack target) {
         for (ItemStack stack : stacks) {
-            if (ItemStack.isSameItemSameComponents(stack, target)) {
+            if (Tfcmu2Platform.itemStacksEquivalent(stack, target)) {
                 return true;
             }
         }

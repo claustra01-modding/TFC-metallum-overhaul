@@ -23,4 +23,3 @@ public enum Tfcmu2VanillaStone {
         return baseBlock;
     }
 }
-

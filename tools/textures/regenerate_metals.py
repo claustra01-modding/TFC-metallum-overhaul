@@ -266,14 +266,14 @@ def source_pixels(metal: str) -> list[tuple[int, int, int, int]]:
 
 
 def main() -> None:
-    ingot_dir = ASSETS / "tfcmu2/textures/item/metal/ingot"
+    ingot_dir = ASSETS / "tfcm/textures/item/metal/ingot"
     metals = sorted(path.stem for path in ingot_dir.glob("*.png"))
     sources = {metal: source_pixels(metal) for metal in metals}
     generated = 0
 
     for form, (archive, member) in FORM_BASES.items():
         size, base = load_zip_png(archive, member)
-        target_dir = ASSETS / f"tfcmu2/textures/item/metal/{form}"
+        target_dir = ASSETS / f"tfcm/textures/item/metal/{form}"
         for metal in metals:
             target = target_dir / f"{metal}.png"
             if target.exists():
@@ -282,7 +282,7 @@ def main() -> None:
 
     for namespace, form, member, rank_scale in (
         (
-            "tfcmu2",
+            "tfcm",
             "block",
             "assets/tfc/textures/block/metal/block/wrought_iron.png",
             LARGE_SURFACE_RANK_SCALE,
@@ -311,7 +311,7 @@ def main() -> None:
             for form in TOOL_FORMS:
                 form_base_metal = ARMOR_METAL_BASES[metal] if form in ARMOR_FORMS else base_metal
                 prefix = f"assets/tfc/textures/item/metal/{form}/{form_base_metal}"
-                target_dir = ASSETS / f"tfcmu2/textures/item/metal/{form}"
+                target_dir = ASSETS / f"tfcm/textures/item/metal/{form}"
                 for stale in target_dir.glob(f"{metal}*.png"):
                     stale.unlink()
                 for member in sorted(name for name in members if name.startswith(prefix) and name.endswith(".png")):
@@ -345,13 +345,13 @@ def main() -> None:
                 armor_base_metal = ARMOR_METAL_BASES[metal]
                 member = f"assets/tfc/textures/models/armor/{armor_base_metal}_layer_{layer}.png"
                 size, base = load_zip_png(TFC_JAR, member)
-                target = ASSETS / f"tfcmu2/textures/models/armor/{metal}_layer_{layer}.png"
+                target = ASSETS / f"tfcm/textures/models/armor/{metal}_layer_{layer}.png"
                 save_png(target, size, transfer_palette(base, sources[metal]))
                 generated += 1
 
             member = f"assets/tfc/textures/entity/projectiles/{base_metal}_javelin.png"
             size, base = load_zip_png(TFC_JAR, member)
-            target = ASSETS / f"tfcmu2/textures/entity/projectiles/{metal}_javelin.png"
+            target = ASSETS / f"tfcm/textures/entity/projectiles/{metal}_javelin.png"
             save_png(
                 target,
                 size,
@@ -392,7 +392,7 @@ def main() -> None:
                 else:
                     pixels = transfer_palette(base, sources[metal])
                 target_assets = ASSETS if form in {"crossguard", "pommel"} else MC1_21_1_ASSETS
-                target = target_assets / f"tfcmu2/textures/item/metal/{form}/{metal}.png"
+                target = target_assets / f"tfcm/textures/item/metal/{form}/{metal}.png"
                 save_png(target, size, pixels)
                 generated += 1
 

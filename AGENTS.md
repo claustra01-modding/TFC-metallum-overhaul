@@ -1,4 +1,4 @@
-# tfcmu2 開発仕様
+# tfcm 開発仕様
 
 ## 1. 運用ルール
 
@@ -9,6 +9,7 @@
 - 再利用する保守ツールは `tools` に置き、生成物だけでなく再生成手順も維持する。
 - JSONはBOMなしUTF-8で保存する。
 - 既存リリースのregistry IDや名前空間を変更する場合は、ワールド互換性を最優先する。
+- release用Mod IDとresource namespaceは `tfcm` とし、旧 `tfcmu2` namespaceとの互換aliasは持たない。
 
 ## 2. build構成
 
@@ -27,7 +28,9 @@
 - 各version projectは対象に合う `pack.mcmeta` とloader metadataを持つ。
 - 共通dataはMinecraft 1.21レイアウトで保持する。1.20.1の `processResources` でpath、tag名前空間、recipe JSONを変換する。
 - 1.20.1変換はTFC casting fluid、alloy metal reference、advanced shapedの `input_row`、`item_size` -> `item_sizes`、`#c` / `#neoforge` -> `#forge`、tuff ore tag除去を含む。
-- 1.20.1では `tfcmu2/tfc/fluid_heat` からTFC metal manager JSONを生成する。
+- 1.20.1では `tfcm/tfc/fluid_heat` からTFC metal manager JSONを生成する。
+- 金属・鉱石・tool tier等の仕様値とloader非依存worldgen処理は `shared/src/main/java` に置く。各versionにはregistry holder、loader event、serializer、TFC API constructor等のadapterだけを置く。
+- loader差分は各versionの `Tfcmu2Platform` とworldgen adapterへ閉じ込め、同一ロジックをversion別に複製しない。
 
 ## 3. 独自金属
 
@@ -43,24 +46,24 @@
 
 基本ID:
 
-- item: `tfcmu2:metal/<form>/<metal>`
-- block: `tfcmu2:metal/block/<metal>`
-- slab: `tfcmu2:metal/block/<metal>_slab`
-- stairs: `tfcmu2:metal/block/<metal>_stairs`
+- item: `tfcm:metal/<form>/<metal>`
+- block: `tfcm:metal/block/<metal>`
+- slab: `tfcm:metal/block/<metal>_slab`
+- stairs: `tfcm:metal/block/<metal>_stairs`
 
 `tfc_items` 導入時のみ生成する形状:
 
 `foil`, `gear`, `heavy_sheet`, `nail`, `ring`, `rivet`, `screw`, `stamen`, `wire`
 
-追加形状のIDも `tfcmu2:metal/<form>/<metal>` とする。
+追加形状のIDも `tfcm:metal/<form>/<metal>` とする。
 
 工具・防具対応金属:
 
 - `invar`: wrought ironと同等
-- `titanium`: black steelと同等
+- `titanium`: 耐久値のみsteel相当の3300、それ以外はblack steelと同等
 - `tungsten_steel`: red / blue steelより上位。tool level 7、耐久8125、採掘速度13、攻撃補正10.5、enchantment 25とする。
 
-上記3金属はTFC標準の工具、工具頭、shears、tuyere、fishing rod、shield、horse armor、防具、中間防具をすべて持つ。IDは `tfcmu2:metal/<tfc_item_type>/<metal>` とする。
+上記3金属はTFC標準の工具、工具頭、shears、tuyere、fishing rod、shield、horse armor、防具、中間防具をすべて持つ。IDは `tfcm:metal/<tfc_item_type>/<metal>` とする。
 
 ## 4. 独自鉱石・Gem
 
@@ -74,54 +77,54 @@
 
 ID規則:
 
-- 品位ありitem: `tfcmu2:ore/{poor|normal|rich}_<ore>`
-- 品位なしitem: `tfcmu2:ore/<ore>`
+- 品位ありitem: `tfcm:ore/{poor|normal|rich}_<ore>`
+- 品位なしitem: `tfcm:ore/<ore>`
 - 母岩内block: item IDに `/<tfc_rock>`、`/netherrack`、`/endstone` を付ける。
-- 地表サンプル: `tfcmu2:ore/small_<ore>`
+- 地表サンプル: `tfcm:ore/small_<ore>`
 - `small_fluorite` はgroundcover blockのみでblock itemを持たない。
-- QuartzはTFCのRuby等と同じ非品位宝石鉱石として、全TFC母岩の `tfcmu2:ore/quartz/<tfc_rock>` blockを持つ。small、Nether、End版は持たない。
-- Quartz block modelは `tfcmu2:block/ore/quartz` overlayを参照する。overlay PNGは別途提供される正式素材を使用する。
+- QuartzはTFCのRuby等と同じ非品位宝石鉱石として、全TFC母岩の `tfcm:ore/quartz/<tfc_rock>` blockを持つ。small、Nether、End版は持たない。
+- Quartz block modelは `tfcm:block/ore/quartz` overlayを参照する。overlay PNGは別途提供される正式素材を使用する。
 
 `tfcorewashing` 導入時のみ、全品位あり鉱石へ次の形状を追加する。
 
 `pellet`, `briquet`, `chunks`, `rocky_chunks`, `dirty_dust`, `dirty_pile`, `powder`
 
-IDは `tfcmu2:metal/<form>/<ore>` とする。
+IDは `tfcm:metal/<form>/<ore>` とする。
 
 Gem関連:
 
-- raw Quartz item/block: `tfcmu2:ore/quartz` / `tfcmu2:ore/quartz/<tfc_rock>`、tag `c:ores/quartz`
-- Cut Quartz: `tfcmu2:gem/cut_quartz`、tag `c:gems/quartz`
+- raw Quartz item/block: `tfcm:ore/quartz` / `tfcm:ore/quartz/<tfc_rock>`、tag `c:ores/quartz`
+- Cut Quartz: `tfcm:gem/cut_quartz`、tag `c:gems/quartz`
 - Quartzをsandpaperで研磨してCut Quartzにする。
-- Fluorite Powder: `tfcmu2:powder/fluorite`
+- Fluorite Powder: `tfcm:powder/fluorite`
 - Fluoriteをquernで粉砕してFluorite Powderを4個生成し、`tfc:gem_powders` と `tfc:bowl_powders` に含める。
 
 ## 5. IE由来コンテンツ
 
-次のコンテンツはTFC IE Crossoverを実行時依存にせず、TFMCU2の独自コンテンツとして常時登録する。
+次のコンテンツはTFC IE Crossoverを実行時依存にせず、TFCMの独自コンテンツとして常時登録する。
 
 - 金属: `aluminum`, `constantan`, `electrum`, `lead`, `uranium`
 - 鉱石: `bauxite` -> `aluminum`, `galena` -> `lead`, `uraninite` -> `uranium`
 - Electrum alloy: Gold 40-60% + Silver 40-60%
 - Constantan alloy: Copper 40-60% + Nickel 40-60%
 
-鉱石block、small ore、鉱脈featureは必ず `tfcmu2` 名前空間を使う。TFC IE CrossoverのIDをconfigやloader dependencyへ追加しない。Crossover由来素材を使用してよいのはテクスチャ生成時だけである。
+鉱石block、small ore、鉱脈featureは必ず `tfcm` 名前空間を使う。TFC IE CrossoverのIDをconfigやloader dependencyへ追加しない。Crossover由来素材を使用してよいのはテクスチャ生成時だけである。
 
 ## 6. compat鉱石
 
 TFC由来:
 
 - `Tfcmu2CompatOres.TFC_ORES` の鉱石へ `netherrack` / `endstone` blockを追加する。
-- ID: `tfcmu2:ore/<ore_name>/{netherrack|endstone}`
+- ID: `tfcm:ore/<ore_name>/{netherrack|endstone}`
 - 一部の非品位鉱石pieceへ `small_<ore_piece_name>` groundcover blockを追加する。block itemは持たない。
 
 Firmalife由来:
 
 - 対象: `normal_chromite`, `poor_chromite`, `rich_chromite`
 - `firmalife` 導入時のみ `netherrack` / `endstone` blockを追加する。
-- ID: `tfcmu2:ore/<ore_name>/{netherrack|endstone}`
+- ID: `tfcm:ore/<ore_name>/{netherrack|endstone}`
 
-compat層はingot等の金属形状や専用加工recipeを追加しない。単体鉱石itemを持つのはTFMCU2独自鉱石だけである。
+compat層はingot等の金属形状や専用加工recipeを追加しない。単体鉱石itemを持つのはTFCM独自鉱石だけである。
 
 ### 6.1 optional Mod連携
 
@@ -130,7 +133,7 @@ compat層はingot等の金属形状や専用加工recipeを追加しない。単
 - `tfchotornot` は1.21.1のみoptional dependency。導入時は `tongs`, `tong_part` を有効化する。tongsは同Mod本来の `TongsItem` として生成し、`tfchotornot:tongs` tagへ含める。
 - 1.21.1で両Modを導入した場合もtongsはHot or Not本来のrecipeを維持し、shearsのみTFC Metal Tools方式で組み立てる。
 - Metal Toolsの互換recipe、item heat、tag、assetは `shared/src/main/resources`、Hot or Not固有分は `versions/mc1_21_1/src/main/resources` に置く。
-- optional item IDはresource reload時の未登録参照を避けるため対応versionのregistryへ常設し、対象Mod未導入時はcreative tabとrecipeから隠す。IDは `tfcmu2:metal/<form>/<metal>` とする。
+- optional item IDはresource reload時の未登録参照を避けるため対応versionのregistryへ常設し、対象Mod未導入時はcreative tabとrecipeから隠す。IDは `tfcm:metal/<form>/<metal>` とする。
 
 ## 7. data・model規約
 
@@ -166,21 +169,21 @@ compat層はingot等の金属形状や専用加工recipeを追加しない。単
 
 model pathはregistry IDと同じ階層を基本とする。
 
-- item metal: `assets/tfcmu2/models/item/metal/<form>`
-- 工具・防具modelもregistry IDと同じ `assets/tfcmu2/models/item/metal/<tfc_item_type>` に置く。
-- metal block: `assets/tfcmu2/models/block/metal/block`
-- ore item: `assets/tfcmu2/models/item/ore/<ore_or_grade>`
-- ore block: `assets/tfcmu2/models/block/ore/<ore_or_grade>/<rock_or_stone>`
-- groundcover: `assets/tfcmu2/models/block/ore/small_*`
+- item metal: `assets/tfcm/models/item/metal/<form>`
+- 工具・防具modelもregistry IDと同じ `assets/tfcm/models/item/metal/<tfc_item_type>` に置く。
+- metal block: `assets/tfcm/models/block/metal/block`
+- ore item: `assets/tfcm/models/item/ore/<ore_or_grade>`
+- ore block: `assets/tfcm/models/block/ore/<ore_or_grade>/<rock_or_stone>`
+- groundcover: `assets/tfcm/models/block/ore/small_*`
 
 ## 8. tag・TFC属性
 
 - 独自鉱石とcompat鉱石blockは `#c:ores` を介して `minecraft:mineable/pickaxe` に含める。
 - これにより通常pickaxeとTFC Mining HammerのSledgehammerの対象にする。
-- TFC標準のsize/weightを継承させるため、トップレベルcommon item tagにTFMCU2の金属別tagを含める。
+- TFC標準のsize/weightを継承させるため、トップレベルcommon item tagにTFCMの金属別tagを含める。
 - 金属block、slab、stairs、TFC More Items形状、Ore Washing形状には明示的なitem sizeを定義する。
 - item sizeの正本は `shared/src/main/resources/data/tfc/tfc/item_size`。1.20.1 buildで `item_sizes` へ変換する。
-- item heatは `shared/src/main/resources/data/tfcmu2/tfc/item_heat` に置く。
+- item heatは `shared/src/main/resources/data/tfcm/tfc/item_heat` に置く。
 - 金属block、slab、stairsは個別heat定義を持ち、slab/stairsはitem IDを直接指定する。
 - 品位あり鉱石は鉱石ごとに `small`, `poor`, `normal`, `rich` を一つのheat定義で扱う。
 - Ore Washingは `pellet_briquet/<ore>.json` と `powder/<ore>.json` を使う。
@@ -191,17 +194,17 @@ model pathはregistry IDと同じ階層を基本とする。
 ## 9. 溶融fluid互換性
 
 - 独自molten fluidのregistry IDは既存ワールド互換性のため `tfc:metal/<metal>` を維持する。
-- 1.20.1ではcreative tabが空bucket stackを受け取らないよう、`tfcmu2:bucket/metal/<metal>` itemと `tfc:fluid/metal/<metal>` blockを登録する。
+- 1.20.1ではcreative tabが空bucket stackを受け取らないよう、`tfcm:bucket/metal/<metal>` itemと `tfc:fluid/metal/<metal>` blockを登録する。
 
 ## 10. カスタム鉱脈config
 
 - 詳細仕様は `config_doc.md` を正本とする。
-- bundled configは `shared/src/main/resources/tfcmu2/overworld.yaml`。
+- bundled configは `shared/src/main/resources/tfcm/overworld.yaml`。
 - 出力は `blocks` listで定義し、各要素に `block` と省略可能な `weight`（既定値1）を指定する。
 - `tier` は品位名から整数weightへのmappingとする。
 - 既存config互換のため、parserは旧 `block` とlist風 `tier` も受け入れる。
 - YAML parser本体は `shared/src/main/java`、TFC API差分は各versionの `Tfcmu2VeinPlatform` に限定する。
-- bauxite、galena、uraniniteの鉱脈はCrossoverではなく `tfcmu2:ore/*` と `tfcmu2:ore/small_*` を生成する。
+- bauxite、galena、uraniniteの鉱脈はCrossoverではなく `tfcm:ore/*` と `tfcm:ore/small_*` を生成する。
 
 ## 11. テクスチャ生成
 
@@ -269,7 +272,7 @@ python3 tools/textures/regenerate_metals.py
 
 ### 11.3 Ore Washing
 
-- 色・パレット元は各鉱石の `assets/tfcmu2/textures/item/ore/normal_<ore>.png`。
+- 色・パレット元は各鉱石の `assets/tfcm/textures/item/ore/normal_<ore>.png`。
 - `chunks`, `rocky_chunks`, `dirty_dust`, `dirty_pile` はtfcorewashingのgraphite形状を使う。
 - `pellet`, `briquet` はgraphite形状がないためchromium形状をmaskとして使う。
 - `powder` はTFC `item/powder/graphite` の形状を使う。

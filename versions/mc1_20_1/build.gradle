@@ -23,10 +23,10 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(java_version as int)
 def sharedResourcesDir = rootProject.layout.projectDirectory.dir('shared/src/main/resources')
 def mc1_20_1SharedResourcesDir = layout.buildDirectory.dir('generated/mc1_20_1_shared_resources')
 def mc1_20_1FlippedToolTextures = [
-    'assets/tfcmu2/textures/item/metal/knife',
-    'assets/tfcmu2/textures/item/metal/knife_blade',
-    'assets/tfcmu2/textures/item/metal/javelin',
-    'assets/tfcmu2/textures/item/metal/javelin_head'
+    'assets/tfcm/textures/item/metal/knife',
+    'assets/tfcm/textures/item/metal/knife_blade',
+    'assets/tfcm/textures/item/metal/javelin',
+    'assets/tfcm/textures/item/metal/javelin_head'
 ]
 def mc1_20_1ToolMetals = ['invar', 'titanium', 'tungsten_steel']
 
@@ -59,7 +59,7 @@ def toMc1_20_1MetalReference = { Object reference ->
 }
 def isMc1_20_1MissingTagEntry = { Object entry ->
     def id = entry instanceof Map ? entry.id : entry
-    id instanceof String && id.startsWith('tfcmu2:ore/') && id.endsWith('/tuff')
+    id instanceof String && id.startsWith('tfcm:ore/') && id.endsWith('/tuff')
 }
 def toMc1_20_1TagJson = { Object value ->
     if (value instanceof Map && value.values instanceof List) {
@@ -71,8 +71,8 @@ def toMc1_20_1TagJson = { Object value ->
 }
 def findMc1_20_1MetalTier = { inputRoot, String metal ->
     def candidates = [
-        "data/tfcmu2/recipe/anvil/metal/sheet/${metal}.json",
-        "data/tfcmu2/recipe/anvil/metal/rod/${metal}.json"
+        "data/tfcm/recipe/anvil/metal/sheet/${metal}.json",
+        "data/tfcm/recipe/anvil/metal/rod/${metal}.json"
     ]
     for (candidate in candidates) {
         def source = inputRoot.resolve(candidate)
@@ -177,7 +177,7 @@ tasks.register('prepareMc1_20_1SharedResources') {
                 Files.createDirectories(target.parent)
 
                 def isConvertibleJson = relativePath.endsWith('.json') && (
-                    relativePath.startsWith('data/') || relativePath.startsWith('assets/tfcmu2/models/')
+                    relativePath.startsWith('data/') || relativePath.startsWith('assets/tfcm/models/')
                 )
                 if (isConvertibleJson) {
                     def rawJson = Files.readString(source, StandardCharsets.UTF_8).replaceFirst('^\uFEFF', '')
@@ -206,7 +206,7 @@ tasks.register('prepareMc1_20_1SharedResources') {
             }
         }
 
-        def fluidHeatDir = inputRoot.resolve('data/tfcmu2/tfc/fluid_heat')
+        def fluidHeatDir = inputRoot.resolve('data/tfcm/tfc/fluid_heat')
         if (Files.isDirectory(fluidHeatDir)) {
             Files.walk(fluidHeatDir).withCloseable { stream ->
                 stream.filter { source -> Files.isRegularFile(source) && source.fileName.toString().endsWith('.json') }.forEach { source ->

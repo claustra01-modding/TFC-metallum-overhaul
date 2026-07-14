@@ -40,23 +40,23 @@ Notes:
 - Host: `chalk, chert, claystone, conglomerate, dolomite, gneiss, limestone, marble, phyllite, quartzite, schist, shale, slate, tuff`
 - Output: `tfc:ore/amethyst/<host rock> (chalk, chert, claystone, conglomerate, dolomite, gneiss, limestone, marble, phyllite, quartzite, schist, shale, slate, tuff)`
 
-## Bauxite (tfcmu2)
+## Bauxite (tfcm)
 
 ### Surface
 
-- Feature: `tfcmu2:vein/surface_bauxite`
+- Feature: `tfcm:vein/surface_bauxite`
 - Gen: `tfc:cluster_vein` (`Y=48..100 rarity=40 density=0.3 size=15`)
 - Host: `chalk, chert, claystone, conglomerate, dolomite, gneiss, limestone, marble, phyllite, quartzite, schist, shale, slate, tuff`
-- Output: `tfcmu2:ore/{poor,normal,rich}_bauxite/<host rock> (chalk, chert, claystone, conglomerate, dolomite, gneiss, limestone, marble, phyllite, quartzite, schist, shale, slate, tuff)` (weights poor/normal/rich=70/25/5)
-- Indicator: `rarity=12 depth=35 underground_rarity=1 underground_count=0 blocks=tfcmu2:ore/small_bauxite`
+- Output: `tfcm:ore/{poor,normal,rich}_bauxite/<host rock> (chalk, chert, claystone, conglomerate, dolomite, gneiss, limestone, marble, phyllite, quartzite, schist, shale, slate, tuff)` (weights poor/normal/rich=70/25/5)
+- Indicator: `rarity=12 depth=35 underground_rarity=1 underground_count=0 blocks=tfcm:ore/small_bauxite`
 
 ### Normal
 
-- Feature: `tfcmu2:vein/normal_bauxite`
+- Feature: `tfcm:vein/normal_bauxite`
 - Gen: `tfc:cluster_vein` (`Y=-64..32 rarity=60 density=0.6 size=25`)
 - Host: `chalk, chert, claystone, conglomerate, dolomite, gneiss, limestone, marble, phyllite, quartzite, schist, shale, slate, tuff`
-- Output: `tfcmu2:ore/{poor,normal,rich}_bauxite/<host rock> (chalk, chert, claystone, conglomerate, dolomite, gneiss, limestone, marble, phyllite, quartzite, schist, shale, slate, tuff)` (weights poor/normal/rich=15/25/60)
-- Indicator: `rarity=0 depth=35 underground_rarity=1 underground_count=4 blocks=tfcmu2:ore/small_bauxite`
+- Output: `tfcm:ore/{poor,normal,rich}_bauxite/<host rock> (chalk, chert, claystone, conglomerate, dolomite, gneiss, limestone, marble, phyllite, quartzite, schist, shale, slate, tuff)` (weights poor/normal/rich=15/25/60)
+- Indicator: `rarity=0 depth=35 underground_rarity=1 underground_count=4 blocks=tfcm:ore/small_bauxite`
 
 ## Bismuthinite (tfc)
 
@@ -169,23 +169,23 @@ Notes:
 - Host: `diorite, gabbro, granite`
 - Output: `tfc:ore/emerald/<host rock> (diorite, gabbro, granite)`
 
-## Galena (tfcmu2)
+## Galena (tfcm)
 
 ### Surface
 
-- Feature: `tfcmu2:vein/surface_galena`
+- Feature: `tfcm:vein/surface_galena`
 - Gen: `tfc:cluster_vein` (`Y=32..75 rarity=40 density=0.3 size=15`)
 - Host: `andesite, basalt, dacite, diorite, gabbro, gneiss, granite, marble, phyllite, quartzite, rhyolite, schist, slate`
-- Output: `tfcmu2:ore/{poor,normal,rich}_galena/<host rock> (andesite, basalt, dacite, diorite, gabbro, gneiss, granite, marble, phyllite, quartzite, rhyolite, schist, slate)` (weights poor/normal/rich=70/25/5)
-- Indicator: `rarity=12 depth=35 underground_rarity=1 underground_count=0 blocks=tfcmu2:ore/small_galena`
+- Output: `tfcm:ore/{poor,normal,rich}_galena/<host rock> (andesite, basalt, dacite, diorite, gabbro, gneiss, granite, marble, phyllite, quartzite, rhyolite, schist, slate)` (weights poor/normal/rich=70/25/5)
+- Indicator: `rarity=12 depth=35 underground_rarity=1 underground_count=0 blocks=tfcm:ore/small_galena`
 
 ### Normal
 
-- Feature: `tfcmu2:vein/normal_galena`
+- Feature: `tfcm:vein/normal_galena`
 - Gen: `tfc:cluster_vein` (`Y=-80..20 rarity=60 density=0.6 size=25`)
 - Host: `andesite, basalt, dacite, diorite, gabbro, gneiss, granite, marble, phyllite, quartzite, rhyolite, schist, slate`
-- Output: `tfcmu2:ore/{poor,normal,rich}_galena/<host rock> (andesite, basalt, dacite, diorite, gabbro, gneiss, granite, marble, phyllite, quartzite, rhyolite, schist, slate)` (weights poor/normal/rich=15/25/60)
-- Indicator: `rarity=0 depth=35 underground_rarity=1 underground_count=4 blocks=tfcmu2:ore/small_galena`
+- Output: `tfcm:ore/{poor,normal,rich}_galena/<host rock> (andesite, basalt, dacite, diorite, gabbro, gneiss, granite, marble, phyllite, quartzite, rhyolite, schist, slate)` (weights poor/normal/rich=15/25/60)
+- Indicator: `rarity=0 depth=35 underground_rarity=1 underground_count=4 blocks=tfcm:ore/small_galena`
 
 ## Garnierite (tfc)
 
@@ -439,12 +439,12 @@ Notes:
 - Output: `tfc:ore/{poor,normal,rich}_tetrahedrite/<host rock> (gneiss, marble, phyllite, quartzite, schist, slate)` (weights poor/normal/rich=35/40/25)
 - Indicator: `rarity=25 depth=35 underground_rarity=1 underground_count=0 blocks=tfc:ore/small_tetrahedrite`
 
-## Uraninite (tfcmu2)
+## Uraninite (tfcm)
 
 ### Normal
 
-- Feature: `tfcmu2:vein/normal_uraninite`
+- Feature: `tfcm:vein/normal_uraninite`
 - Gen: `tfc:cluster_vein` (`Y=-80..20 rarity=50 density=0.6 size=25`)
 - Host: `andesite, basalt, dacite, gneiss, marble, phyllite, quartzite, rhyolite, schist, slate`
-- Output: `tfcmu2:ore/{poor,normal,rich}_uraninite/<host rock> (andesite, basalt, dacite, gneiss, marble, phyllite, quartzite, rhyolite, schist, slate)` (weights poor/normal/rich=15/25/60)
-- Indicator: `rarity=0 depth=35 underground_rarity=1 underground_count=4 blocks=tfcmu2:ore/small_uraninite`
+- Output: `tfcm:ore/{poor,normal,rich}_uraninite/<host rock> (andesite, basalt, dacite, gneiss, marble, phyllite, quartzite, rhyolite, schist, slate)` (weights poor/normal/rich=15/25/60)
+- Indicator: `rarity=0 depth=35 underground_rarity=1 underground_count=4 blocks=tfcm:ore/small_uraninite`

@@ -10,7 +10,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from color_transfer import load_png, load_zip_png, save_png, transfer_palette
 
 
-ASSETS = ROOT / "shared/src/main/resources/assets/tfcmu2/textures/item"
+ASSETS = ROOT / "shared/src/main/resources/assets/tfcm/textures/item"
 TFC_JAR = next(
     (Path.home() / ".gradle/caches/modules-2/files-2.1/maven.modrinth/terrafirmacraft/4.2.5").glob(
         "*/terrafirmacraft-4.2.5.jar"

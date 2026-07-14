@@ -11,7 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from color_transfer import load_png, load_zip_png, save_png, transfer_palette
 
 
-ASSETS = ROOT / "shared/src/main/resources/assets/tfcmu2"
+ASSETS = ROOT / "shared/src/main/resources/assets/tfcm"
 TFC_JAR = next(
     (Path.home() / ".gradle/caches/modules-2/files-2.1/maven.modrinth/terrafirmacraft/4.2.5").glob(
         "*/terrafirmacraft-4.2.5.jar"
@@ -41,8 +41,8 @@ def write_rocky_model(ore: str) -> None:
     data = {
         "parent": "item/generated",
         "textures": {
-            "layer0": f"tfcmu2:item/metal/rocky_chunks/{ore}",
-            "layer1": "tfcmu2:item/metal/rocky_chunks/_rocky_overlay",
+            "layer0": f"tfcm:item/metal/rocky_chunks/{ore}",
+            "layer1": "tfcm:item/metal/rocky_chunks/_rocky_overlay",
         },
     }
     path.write_text(json.dumps(data, separators=(",", ":")), encoding="utf-8")

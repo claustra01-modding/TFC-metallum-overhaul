@@ -11,7 +11,7 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 
 @Mod(Tfcmu2Mod.MOD_ID)
 public final class Tfcmu2Mod {
-    public static final String MOD_ID = "tfcmu2";
+    public static final String MOD_ID = "tfcm";
     public static final String TFC_MORE_ITEMS_MOD_ID = "tfc_items";
     public static final String TFC_ORE_WASHING_MOD_ID = "tfcorewashing";
     public static final String FIRMALIFE_MOD_ID = "firmalife";

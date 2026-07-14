@@ -935,10 +935,10 @@ veins:
         underground_rarity: 1
         underground_count: 4
 
-  # TFMCU2 IE-derived ores
-  - tfcmu2:vein/surface_bauxite:
+  # TFCM IE-derived ores
+  - tfcm:vein/surface_bauxite:
       blocks:
-        - block: tfcmu2:ore/{tier}_bauxite/{rock}
+        - block: tfcm:ore/{tier}_bauxite/{rock}
       type: tfc:cluster_vein
       ymax: 100
       ymin: 48
@@ -966,15 +966,15 @@ veins:
         normal: 25
         rich: 5
       indicator:
-        block: tfcmu2:ore/small_bauxite
+        block: tfcm:ore/small_bauxite
         rarity: 12
         depth: 35
         underground_rarity: 1
         underground_count: 0
 
-  - tfcmu2:vein/normal_bauxite:
+  - tfcm:vein/normal_bauxite:
       blocks:
-        - block: tfcmu2:ore/{tier}_bauxite/{rock}
+        - block: tfcm:ore/{tier}_bauxite/{rock}
       type: tfc:cluster_vein
       ymax: 32
       ymin: -64
@@ -1002,15 +1002,15 @@ veins:
         normal: 25
         rich: 60
       indicator:
-        block: tfcmu2:ore/small_bauxite
+        block: tfcm:ore/small_bauxite
         rarity: 0
         depth: 35
         underground_rarity: 1
         underground_count: 4
 
-  - tfcmu2:vein/surface_galena:
+  - tfcm:vein/surface_galena:
       blocks:
-        - block: tfcmu2:ore/{tier}_galena/{rock}
+        - block: tfcm:ore/{tier}_galena/{rock}
       type: tfc:cluster_vein
       ymax: 75
       ymin: 32
@@ -1037,15 +1037,15 @@ veins:
         normal: 25
         rich: 5
       indicator:
-        block: tfcmu2:ore/small_galena
+        block: tfcm:ore/small_galena
         rarity: 12
         depth: 35
         underground_rarity: 1
         underground_count: 0
 
-  - tfcmu2:vein/normal_galena:
+  - tfcm:vein/normal_galena:
       blocks:
-        - block: tfcmu2:ore/{tier}_galena/{rock}
+        - block: tfcm:ore/{tier}_galena/{rock}
       type: tfc:cluster_vein
       ymax: 20
       ymin: -80
@@ -1072,15 +1072,15 @@ veins:
         normal: 25
         rich: 60
       indicator:
-        block: tfcmu2:ore/small_galena
+        block: tfcm:ore/small_galena
         rarity: 0
         depth: 35
         underground_rarity: 1
         underground_count: 4
 
-  - tfcmu2:vein/normal_uraninite:
+  - tfcm:vein/normal_uraninite:
       blocks:
-        - block: tfcmu2:ore/{tier}_uraninite/{rock}
+        - block: tfcm:ore/{tier}_uraninite/{rock}
       type: tfc:cluster_vein
       ymax: 20
       ymin: -80
@@ -1104,7 +1104,7 @@ veins:
         normal: 25
         rich: 60
       indicator:
-        block: tfcmu2:ore/small_uraninite
+        block: tfcm:ore/small_uraninite
         rarity: 0
         depth: 35
         underground_rarity: 1

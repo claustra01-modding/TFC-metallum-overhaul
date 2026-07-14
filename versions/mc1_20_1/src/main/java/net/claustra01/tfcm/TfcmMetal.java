@@ -70,7 +70,7 @@ public enum TfcmMetal implements RegistryMetal {
     @Override
     public Metal.Tier metalTier() {
         if (this == INVAR) return Metal.Tier.TIER_III;
-        if (this == TITANIUM) return Metal.Tier.TIER_V;
+        if (this == TITANIUM) return Metal.Tier.TIER_IV;
         if (this == TUNGSTEN_STEEL) return Metal.Tier.TIER_VI;
         throw unsupported("metalTier");
     }

@@ -60,7 +60,7 @@
 工具・防具対応金属:
 
 - `invar`: wrought ironと同等
-- `titanium`: 耐久値のみsteel相当の3300、それ以外はblack steelと同等
+- `titanium`: 鍛冶tierと耐久値はsteel相当の4 / 3300、それ以外はblack steelと同等
 - `tungsten_steel`: red / blue steelより上位。tool level 7、耐久8125、採掘速度13、攻撃補正10.5、enchantment 25とする。
 
 上記3金属はTFC標準の工具、工具頭、shears、tuyere、fishing rod、shield、horse armor、防具、中間防具をすべて持つ。IDは `tfcm:metal/<tfc_item_type>/<metal>` とする。
@@ -262,7 +262,7 @@ python3 tools/textures/regenerate_metals.py
 - 依存jarとIron's Spellsの抽出画像は `.tmp` に置き、リポジトリへコピーしない。
 - ingot pile用 `assets/tfc/textures/block/metal/smooth/<metal>.png` も同時生成する。
 - InvarのalloyはWrought Iron 60-70% + Nickel 30-40%。
-- `invar`、`titanium`、`tungsten_steel` のtool tierはTFC本体を直接参照せず、各versionの `TfcmTiers` に固定値で定義する。InvarはWrought Iron相当、Titaniumは耐久値3300（Steel相当）以外をBlack Steel相当とする。
+- `invar`、`titanium`、`tungsten_steel` のtool tierはTFC本体を直接参照せず、各versionの `TfcmTiers` に固定値で定義する。InvarはWrought Iron相当、Titaniumは耐久値3300（Steel相当）以外をBlack Steel相当とし、鍛冶tierはBlack Steelより1段低い4とする。
 - 対象TFC versionがsheet pileに対応しない限り、sheet pile assetは追加しない。
 - 工具・防具の形状元はTFC 1.21.1のtexture/modelを正本とする。工具とjavelinは `invar` がwrought iron、`titanium` が通常steel、`tungsten_steel` がred steelを使う。shield、防具、中間防具、horse armor、防具layerは `invar` がwrought iron、`titanium` がblack steel、`tungsten_steel` が通常steelを使う。
 - 完成工具、shears、javelin projectileは、`invar` / `titanium` ではwrought ironと通常steel、`tungsten_steel` ではred steelとblue steelの同色pixelを固定材maskとして扱う。木柄・紐・支点などは再着色せず、金属部分だけにパレット転写を適用する。

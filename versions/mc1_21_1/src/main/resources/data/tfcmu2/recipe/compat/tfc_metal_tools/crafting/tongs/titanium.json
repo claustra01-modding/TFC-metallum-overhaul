@@ -1,0 +1,46 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tfc_metal_tools"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tfchotornot"
+    }
+  ],
+  "type": "tfc:advanced_shaped_crafting",
+  "pattern": [
+    "sXN",
+    "SRX",
+    " Ss"
+  ],
+  "key": {
+    "N": {
+      "tag": "c:rivets/titanium"
+    },
+    "X": {
+      "item": "tfcmu2:metal/tong_part/titanium"
+    },
+    "R": {
+      "tag": "c:rings/titanium"
+    },
+    "s": {
+      "tag": "c:leather/strip"
+    },
+    "S": {
+      "tag": "c:leather/string"
+    }
+  },
+  "result": {
+    "stack": {
+      "count": 1,
+      "id": "tfcmu2:metal/tongs/titanium"
+    },
+    "modifiers": [
+      {
+        "type": "tfc:copy_forging_bonus"
+      }
+    ]
+  }
+}

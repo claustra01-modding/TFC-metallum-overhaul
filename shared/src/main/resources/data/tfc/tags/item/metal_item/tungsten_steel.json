@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "tfcmu2:metal/tongs/tungsten_steel",
+      "required": false
+    },
+    {
+      "id": "tfcmu2:metal/tong_part/tungsten_steel",
+      "required": false
+    },
+    "tfcmu2:metal/crossguard/tungsten_steel",
+    "tfcmu2:metal/pommel/tungsten_steel"
+  ]
+}

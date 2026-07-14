@@ -15,6 +15,7 @@ public final class Tfcmu2CreativeTabs {
             .title(Component.translatable("itemGroup.tfcmu2"))
             .icon(() -> Tfcmu2Items.METAL_INGOTS.get(Tfcmu2Metal.TUNGSTEN_STEEL).get().getDefaultInstance())
             .displayItems((parameters, output) -> Tfcmu2Items.ITEMS.getEntries().stream()
+                .filter(item -> Tfcmu2Items.isOptionalCompatItemEnabled(item.getId()))
                 .sorted(Comparator.comparing(item -> item.getId().toString()))
                 .map(item -> item.get())
                 .forEach(output::accept))

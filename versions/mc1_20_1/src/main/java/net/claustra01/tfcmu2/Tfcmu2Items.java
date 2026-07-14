@@ -8,6 +8,7 @@ import java.util.Map;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.util.Metal;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
@@ -18,6 +19,7 @@ public final class Tfcmu2Items {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Tfcmu2Mod.MOD_ID);
     public static final boolean TFC_MORE_ITEMS_LOADED = ModList.get().isLoaded(Tfcmu2Mod.TFC_MORE_ITEMS_MOD_ID);
     public static final boolean TFC_ORE_WASHING_LOADED = ModList.get().isLoaded(Tfcmu2Mod.TFC_ORE_WASHING_MOD_ID);
+    public static final boolean TFC_METAL_TOOLS_LOADED = ModList.get().isLoaded(Tfcmu2Mod.TFC_METAL_TOOLS_MOD_ID);
     public static final Map<Tfcmu2Metal, RegistryObject<Item>> METAL_INGOTS = registerMetalItems("ingot", Metal.ItemType.INGOT);
     public static final RegistryObject<Item> HIGH_CARBON_TUNGSTEN_STEEL_INGOT = ITEMS.register("metal/ingot/high_carbon_tungsten_steel", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CUT_QUARTZ = ITEMS.register("gem/cut_quartz", () -> new Item(new Item.Properties()));
@@ -27,6 +29,8 @@ public final class Tfcmu2Items {
     public static final Map<Tfcmu2Metal, RegistryObject<Item>> METAL_DOUBLE_SHEETS = registerMetalItems("double_sheet", Metal.ItemType.DOUBLE_SHEET);
     public static final Map<Tfcmu2Metal, RegistryObject<Item>> METAL_RODS = registerMetalItems("rod", Metal.ItemType.ROD);
     public static final Map<Tfcmu2Metal, Map<Metal.ItemType, RegistryObject<Item>>> METAL_TOOL_ITEMS = registerMetalToolItems();
+    public static final Map<Tfcmu2Metal, RegistryObject<Item>> METAL_TOOL_CROSSGUARDS = registerMetalToolComponents("crossguard");
+    public static final Map<Tfcmu2Metal, RegistryObject<Item>> METAL_TOOL_POMMELS = registerMetalToolComponents("pommel");
     public static final Map<Tfcmu2Metal, Map<Tfcmu2MoreItemType, RegistryObject<Item>>> MORE_METAL_ITEMS = TFC_MORE_ITEMS_LOADED
         ? registerMoreMetalItems()
         : Collections.emptyMap();
@@ -80,6 +84,22 @@ public final class Tfcmu2Items {
             || type == Metal.ItemType.SHEET
             || type == Metal.ItemType.DOUBLE_SHEET
             || type == Metal.ItemType.ROD;
+    }
+
+    private static Map<Tfcmu2Metal, RegistryObject<Item>> registerMetalToolComponents(String form) {
+        final EnumMap<Tfcmu2Metal, RegistryObject<Item>> items = new EnumMap<>(Tfcmu2Metal.class);
+        for (Tfcmu2Metal metal : Tfcmu2Metal.values()) {
+            if (metal.hasTools()) {
+                items.put(metal, ITEMS.register("metal/" + form + "/" + metal.getSerializedName(),
+                    () -> new Item(new Item.Properties().rarity(metal.rarity()))));
+            }
+        }
+        return Collections.unmodifiableMap(items);
+    }
+
+    public static boolean isOptionalCompatItemEnabled(ResourceLocation id) {
+        final String path = id.getPath();
+        return (!path.startsWith("metal/crossguard/") && !path.startsWith("metal/pommel/")) || TFC_METAL_TOOLS_LOADED;
     }
 
     private static Map<Tfcmu2Metal, Map<Tfcmu2MoreItemType, RegistryObject<Item>>> registerMoreMetalItems() {

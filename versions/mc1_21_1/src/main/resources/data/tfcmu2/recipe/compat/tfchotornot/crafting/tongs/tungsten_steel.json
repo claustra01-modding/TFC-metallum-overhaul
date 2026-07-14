@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tfchotornot"
+    },
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:mod_loaded",
+        "modid": "tfc_metal_tools"
+      }
+    }
+  ],
+  "type": "tfchotornot:advanced_damage_inputs_shaped_crafting",
+  "pattern": [
+    "XX",
+    "YZ"
+  ],
+  "key": {
+    "X": {
+      "item": "tfcmu2:metal/tong_part/tungsten_steel"
+    },
+    "Y": {
+      "tag": "c:rods"
+    },
+    "Z": {
+      "tag": "c:tools/hammer"
+    }
+  },
+  "result": {
+    "stack": {
+      "count": 1,
+      "id": "tfcmu2:metal/tongs/tungsten_steel"
+    },
+    "modifiers": [
+      {
+        "type": "tfc:copy_forging_bonus"
+      }
+    ]
+  }
+}

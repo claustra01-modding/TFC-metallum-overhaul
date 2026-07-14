@@ -117,6 +117,20 @@ TFC Metallum Unofficial 2.
     side="BOTH"
 
 [[dependencies.${mod_id}]]
+    modId="tfc_metal_tools"
+    type="optional"
+    versionRange="[1.0.7,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="tfchotornot"
+    type="optional"
+    versionRange="[1.2,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
     modId="jei"
     type="optional"
     versionRange="[0,)"

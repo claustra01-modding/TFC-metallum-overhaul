@@ -37,6 +37,7 @@ def toMc1_20_1ResourcePath = { String path ->
         .replace('/tags/fluid/', '/tags/fluids/')
         .replace('/tags/item/', '/tags/items/')
         .replace('/tfc/item_size/', '/tfc/item_sizes/')
+        .replace('/tfc/item_heat/', '/tfc/item_heats/')
         .replace('/neoforge/biome_modifier/', '/forge/biome_modifier/')
 }
 
@@ -101,18 +102,36 @@ toMc1_20_1Json = { Object value, String context = null ->
             }
         }
         if (result.type == 'tfc:advanced_shaped_crafting' && !result.containsKey('input_row')) {
-            result.input_row = 0
+            def inputRow = 0
+            def inputColumn = 0
+            if (result.pattern instanceof List) {
+                def row = result.pattern.findIndexOf { patternRow -> patternRow instanceof String && patternRow.contains('X') }
+                if (row >= 0) {
+                    inputRow = row
+                    inputColumn = result.pattern[row].indexOf('X')
+                }
+            }
+            result.input_row = inputRow
+            result.input_column = inputColumn
         }
-        if (context == 'result_fluid' && result.containsKey('id')) {
+        if ((context == 'result_fluid') && result.containsKey('id')) {
             result.fluid = result.remove('id')
         }
-        if ((context == 'result' || context == 'results') && result.containsKey('id')) {
+        if ((context == 'result' || context == 'results' || context == 'stack') && result.containsKey('id')) {
             result.item = result.remove('id')
+        }
+        if (context == 'modifiers' && result.size() == 1 && result.type instanceof String) {
+            return result.type
         }
         return result
     }
     if (value instanceof List) {
-        return value.collect { entry -> toMc1_20_1Json(entry, context) }
+        return value.collect { entry ->
+            if (context == 'modifiers' && entry instanceof Map && entry.size() == 1 && entry.type instanceof String) {
+                return entry.type
+            }
+            toMc1_20_1Json(entry, context)
+        }
     }
     if (value == 'c:tools/hammer') {
         return 'tfc:hammers'

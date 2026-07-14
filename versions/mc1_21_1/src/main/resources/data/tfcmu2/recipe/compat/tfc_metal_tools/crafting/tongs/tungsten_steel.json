@@ -1,0 +1,46 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tfc_metal_tools"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "tfchotornot"
+    }
+  ],
+  "type": "tfc:advanced_shaped_crafting",
+  "pattern": [
+    "sXN",
+    "SRX",
+    " Ss"
+  ],
+  "key": {
+    "N": {
+      "tag": "c:rivets/tungsten_steel"
+    },
+    "X": {
+      "item": "tfcmu2:metal/tong_part/tungsten_steel"
+    },
+    "R": {
+      "tag": "c:rings/tungsten_steel"
+    },
+    "s": {
+      "tag": "c:leather/strip"
+    },
+    "S": {
+      "tag": "c:leather/string"
+    }
+  },
+  "result": {
+    "stack": {
+      "count": 1,
+      "id": "tfcmu2:metal/tongs/tungsten_steel"
+    },
+    "modifiers": [
+      {
+        "type": "tfc:copy_forging_bonus"
+      }
+    ]
+  }
+}

@@ -14,6 +14,7 @@ from color_transfer import load_png, load_zip_png, save_png, transfer_palette
 
 
 ASSETS = ROOT / "shared/src/main/resources/assets"
+MC1_21_1_ASSETS = ROOT / "versions/mc1_21_1/src/main/resources/assets"
 TFC_JAR = next(
     (Path.home() / ".gradle/caches/modules-2/files-2.1/maven.modrinth/terrafirmacraft/4.2.5").glob(
         "*/terrafirmacraft-4.2.5.jar"
@@ -27,6 +28,8 @@ PNEUMATICCRAFT_JAR = ROOT / ".tmp/pneumaticcraft/pneumaticcraft-repressurized-8.
 MEKANISM_JAR = ROOT / ".tmp/mekanism/Mekanism-1.21.1-10.7.19.85.jar"
 MEKANISM_EXTRAS_JAR = ROOT / ".tmp/mekanism_extras/mekanism_extras-1.21.1-1.4.0.jar"
 THERMAL_FOUNDATION_JAR = ROOT / ".tmp/thermal_foundation/thermal_foundation-1.20.1-11.0.6.70.jar"
+TFC_METAL_TOOLS_JAR = ROOT / ".tmp/optional_compat/tfc_metal_tools.jar"
+TFC_HOT_OR_NOT_JAR = ROOT / ".tmp/optional_compat/tfc_hot_or_not.jar"
 MINECRAFT_JAR = Path.home() / ".gradle/caches/neoformruntime/artifacts/minecraft_1.21.1_client.jar"
 LARGE_SURFACE_RANK_SCALE = 0.55
 
@@ -184,6 +187,7 @@ TFC_FIXED_COLOR_METALS = (
 
 def transfer_tool_palette(
     archive: zipfile.ZipFile,
+    archive_path: Path,
     member: str,
     base_metal: str,
     comparison_metal: str,
@@ -196,7 +200,7 @@ def transfer_tool_palette(
         return mapped
 
     try:
-        _, comparison = load_zip_png(TFC_JAR, candidate)
+        _, comparison = load_zip_png(archive_path, candidate)
     except UnidentifiedImageError:
         return mapped
     if len(comparison) != len(base):
@@ -337,6 +341,7 @@ def main() -> None:
                     elif form in FIXED_COLOR_FORMS:
                         pixels = transfer_tool_palette(
                             archive,
+                            TFC_JAR,
                             member,
                             form_base_metal,
                             comparison_metal,
@@ -366,6 +371,7 @@ def main() -> None:
                 size,
                 transfer_tool_palette(
                     archive,
+                    TFC_JAR,
                     member,
                     base_metal,
                     comparison_metal,
@@ -374,6 +380,35 @@ def main() -> None:
                 ),
             )
             generated += 1
+
+    compat_forms = {
+        "crossguard": (TFC_METAL_TOOLS_JAR, "tfc_metal_tools", "{metal}_crossguard"),
+        "pommel": (TFC_METAL_TOOLS_JAR, "tfc_metal_tools", "{metal}_pommel"),
+        "tongs": (TFC_HOT_OR_NOT_JAR, "tfchotornot", "tongs/{metal}"),
+        "tong_part": (TFC_HOT_OR_NOT_JAR, "tfchotornot", "tong_part/{metal}"),
+    }
+    for form, (archive_path, namespace, pattern) in compat_forms.items():
+        with zipfile.ZipFile(archive_path) as archive:
+            for metal, (base_metal, comparison_metal) in TOOL_METAL_PROFILES.items():
+                texture = pattern.format(metal=base_metal)
+                member = f"assets/{namespace}/textures/item/{texture}.png"
+                size, base = load_zip_png(archive_path, member)
+                if form == "tongs":
+                    pixels = transfer_tool_palette(
+                        archive,
+                        archive_path,
+                        member,
+                        base_metal,
+                        comparison_metal,
+                        base,
+                        sources[metal],
+                    )
+                else:
+                    pixels = transfer_palette(base, sources[metal])
+                target_assets = ASSETS if form in {"crossguard", "pommel"} else MC1_21_1_ASSETS
+                target = target_assets / f"tfcmu2/textures/item/metal/{form}/{metal}.png"
+                save_png(target, size, pixels)
+                generated += 1
 
     print(f"Regenerated {generated} metal textures for {len(metals)} metals.")
 

@@ -2880,5 +2880,17 @@
   "item.tfcmu2.metal.unfinished_boots.tungsten_steel": "Tungsten Steel Unfinished Boots",
   "item.tfcmu2.metal.boots.tungsten_steel": "Tungsten Steel Boots",
   "item.tfcmu2.metal.horse_armor.tungsten_steel": "Tungsten Steel Horse Armor",
-  "item.tfcmu2.metal.shield.tungsten_steel": "Tungsten Steel Shield"
+  "item.tfcmu2.metal.shield.tungsten_steel": "Tungsten Steel Shield",
+  "item.tfcmu2.metal.crossguard.invar": "Invar Crossguard",
+  "item.tfcmu2.metal.pommel.invar": "Invar Pommel",
+  "item.tfcmu2.metal.tongs.invar": "Invar Tongs",
+  "item.tfcmu2.metal.tong_part.invar": "Invar Tong Part",
+  "item.tfcmu2.metal.crossguard.titanium": "Titanium Crossguard",
+  "item.tfcmu2.metal.pommel.titanium": "Titanium Pommel",
+  "item.tfcmu2.metal.tongs.titanium": "Titanium Tongs",
+  "item.tfcmu2.metal.tong_part.titanium": "Titanium Tong Part",
+  "item.tfcmu2.metal.crossguard.tungsten_steel": "Tungsten Steel Crossguard",
+  "item.tfcmu2.metal.pommel.tungsten_steel": "Tungsten Steel Pommel",
+  "item.tfcmu2.metal.tongs.tungsten_steel": "Tungsten Steel Tongs",
+  "item.tfcmu2.metal.tong_part.tungsten_steel": "Tungsten Steel Tong Part"
 }

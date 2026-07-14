@@ -8,7 +8,9 @@ import java.util.Map;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.util.Metal;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Tier;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -17,6 +19,8 @@ public final class Tfcmu2Items {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Tfcmu2Mod.MOD_ID);
     public static final boolean TFC_MORE_ITEMS_LOADED = ModList.get().isLoaded(Tfcmu2Mod.TFC_MORE_ITEMS_MOD_ID);
     public static final boolean TFC_ORE_WASHING_LOADED = ModList.get().isLoaded(Tfcmu2Mod.TFC_ORE_WASHING_MOD_ID);
+    public static final boolean TFC_METAL_TOOLS_LOADED = ModList.get().isLoaded(Tfcmu2Mod.TFC_METAL_TOOLS_MOD_ID);
+    public static final boolean TFC_HOT_OR_NOT_LOADED = ModList.get().isLoaded(Tfcmu2Mod.TFC_HOT_OR_NOT_MOD_ID);
     public static final Map<Tfcmu2Metal, DeferredItem<Item>> METAL_INGOTS = registerMetalItems("ingot", Metal.ItemType.INGOT);
     public static final DeferredItem<Item> HIGH_CARBON_TUNGSTEN_STEEL_INGOT = ITEMS.register("metal/ingot/high_carbon_tungsten_steel", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> CUT_QUARTZ = ITEMS.register("gem/cut_quartz", () -> new Item(new Item.Properties()));
@@ -26,6 +30,10 @@ public final class Tfcmu2Items {
     public static final Map<Tfcmu2Metal, DeferredItem<Item>> METAL_DOUBLE_SHEETS = registerMetalItems("double_sheet", Metal.ItemType.DOUBLE_SHEET);
     public static final Map<Tfcmu2Metal, DeferredItem<Item>> METAL_RODS = registerMetalItems("rod", Metal.ItemType.ROD);
     public static final Map<Tfcmu2Metal, Map<Metal.ItemType, DeferredItem<Item>>> METAL_TOOL_ITEMS = registerMetalToolItems();
+    public static final Map<Tfcmu2Metal, DeferredItem<Item>> METAL_TOOL_CROSSGUARDS = registerCompatItems("crossguard", false);
+    public static final Map<Tfcmu2Metal, DeferredItem<Item>> METAL_TOOL_POMMELS = registerCompatItems("pommel", false);
+    public static final Map<Tfcmu2Metal, DeferredItem<Item>> HOT_OR_NOT_TONG_PARTS = registerCompatItems("tong_part", false);
+    public static final Map<Tfcmu2Metal, DeferredItem<Item>> HOT_OR_NOT_TONGS = registerCompatItems("tongs", true);
     public static final Map<Tfcmu2Metal, Map<Tfcmu2MoreItemType, DeferredItem<Item>>> MORE_METAL_ITEMS = TFC_MORE_ITEMS_LOADED
         ? registerMoreMetalItems()
         : Collections.emptyMap();
@@ -79,6 +87,43 @@ public final class Tfcmu2Items {
             || type == Metal.ItemType.SHEET
             || type == Metal.ItemType.DOUBLE_SHEET
             || type == Metal.ItemType.ROD;
+    }
+
+    private static Map<Tfcmu2Metal, DeferredItem<Item>> registerCompatItems(String form, boolean tongs) {
+        final EnumMap<Tfcmu2Metal, DeferredItem<Item>> items = new EnumMap<>(Tfcmu2Metal.class);
+        for (Tfcmu2Metal metal : Tfcmu2Metal.values()) {
+            if (!metal.hasTools()) {
+                continue;
+            }
+            final String id = "metal/" + form + "/" + metal.getSerializedName();
+            items.put(metal, ITEMS.register(id, () -> tongs ? createHotOrNotTongs(metal) : new Item(new Item.Properties().rarity(metal.rarity()))));
+        }
+        return Collections.unmodifiableMap(items);
+    }
+
+    private static Item createHotOrNotTongs(Tfcmu2Metal metal) {
+        final Item.Properties properties = new Item.Properties().rarity(metal.rarity());
+        if (!TFC_HOT_OR_NOT_LOADED) {
+            return new Item(properties);
+        }
+        try {
+            final Class<?> type = Class.forName("tfchotornot.common.items.TongsItem");
+            return (Item) type.getConstructor(Item.Properties.class, Tier.class)
+                .newInstance(properties, metal.toolTier());
+        } catch (ReflectiveOperationException exception) {
+            throw new IllegalStateException("Failed to create TFC Hot or Not tongs for " + metal.getSerializedName(), exception);
+        }
+    }
+
+    public static boolean isOptionalCompatItemEnabled(ResourceLocation id) {
+        final String path = id.getPath();
+        if (path.startsWith("metal/crossguard/") || path.startsWith("metal/pommel/")) {
+            return TFC_METAL_TOOLS_LOADED;
+        }
+        if (path.startsWith("metal/tongs/") || path.startsWith("metal/tong_part/")) {
+            return TFC_HOT_OR_NOT_LOADED;
+        }
+        return true;
     }
 
     private static Map<Tfcmu2Metal, Map<Tfcmu2MoreItemType, DeferredItem<Item>>> registerMoreMetalItems() {

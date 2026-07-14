@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "tfcmu2:metal/tongs/invar",
+      "required": false
+    },
+    {
+      "id": "tfcmu2:metal/tong_part/invar",
+      "required": false
+    },
+    "tfcmu2:metal/crossguard/invar",
+    "tfcmu2:metal/pommel/invar"
+  ]
+}

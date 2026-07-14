@@ -7,7 +7,7 @@
 - loader固有sourceをrootの `src` へ戻さない。
 - 依存Modのjar、展開物、比較画像、一時解析スクリプトはrootの `.tmp` に置く。
 - 再利用する保守ツールは `tools` に置き、生成物だけでなく再生成手順も維持する。
-- JSONはBOMなしUTF-8で保存する。既存resourceの正規化には `python3 tools/resources/normalize_json_utf8.py` を使う。
+- JSONはBOMなしUTF-8で保存する。
 - 既存リリースのregistry IDや名前空間を変更する場合は、ワールド互換性を最優先する。
 
 ## 2. build構成
@@ -239,7 +239,7 @@ python3 tools/textures/regenerate_metals.py
 - Python 3とPillowが必要。
 - 依存jarとIron's Spellsの抽出画像は `.tmp` に置き、リポジトリへコピーしない。
 - ingot pile用 `assets/tfc/textures/block/metal/smooth/<metal>.png` も同時生成する。
-- Invarの全resourceは `python3 tools/resources/generate_invar_metal.py` でConstantanの形状構成から生成する。alloyはWrought Iron 60-70% + Nickel 30-40%。
+- InvarのalloyはWrought Iron 60-70% + Nickel 30-40%。
 - 対象TFC versionがsheet pileに対応しない限り、sheet pile assetは追加しない。
 
 ### 11.3 Ore Washing
@@ -269,12 +269,6 @@ python3 tools/textures/regenerate_ore_washing.py
 
 ```bash
 python3 tools/textures/regenerate_misc.py
-```
-
-Quartzの母岩別blockstate、model、loot、tag、translationは次で再生成する。このscriptはoverlay PNGを生成しない。
-
-```bash
-python3 tools/resources/generate_quartz_ore.py
 ```
 
 ## 12. 主要コード

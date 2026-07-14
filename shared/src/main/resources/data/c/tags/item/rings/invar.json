@@ -1,0 +1,9 @@
+{
+    "values":  [
+                   {
+                       "id":  "tfcm:metal/ring/invar",
+                       "required":  false
+                   }
+               ]
+}
+

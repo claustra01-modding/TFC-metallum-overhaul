@@ -1,7 +1,7 @@
-﻿{
+{
     "values":  [
                    {
-                       "id":  "tfcmu2:metal/heavy_sheet/antimony",
+                       "id":  "tfcm:metal/heavy_sheet/antimony",
                        "required":  false
                    }
                ]

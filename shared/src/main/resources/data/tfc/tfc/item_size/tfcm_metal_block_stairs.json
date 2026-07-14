@@ -1,0 +1,57 @@
+{
+  "ingredient": [
+    {
+      "item": "tfcm:metal/block/compressed_iron_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/platinum_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/naquadah_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/iridium_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/osmium_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/osmiridium_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/mithril_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/arcane_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/refined_glowstone_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/refined_obsidian_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/antimony_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/titanium_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/cobalt_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/tungsten_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/solder_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/tungsten_steel_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/netherite_stairs"
+    }
+  ],
+  "size": "small",
+  "weight": "heavy"
+}

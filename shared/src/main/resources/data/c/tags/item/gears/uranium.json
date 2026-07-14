@@ -1,0 +1,9 @@
+{
+    "values":  [
+                   {
+                       "id":  "tfcm:metal/gear/uranium",
+                       "required":  false
+                   }
+               ]
+}
+

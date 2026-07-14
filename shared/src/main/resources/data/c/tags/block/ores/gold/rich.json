@@ -1,6 +1,6 @@
 {
   "values": [
-    "tfcmu2:ore/rich_native_gold/netherrack",
-    "tfcmu2:ore/rich_native_gold/endstone"
+    "tfcm:ore/rich_native_gold/netherrack",
+    "tfcm:ore/rich_native_gold/endstone"
   ]
 }

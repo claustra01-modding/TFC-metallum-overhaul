@@ -1,7 +1,7 @@
-﻿{
+{
     "values":  [
                    {
-                       "id":  "tfcmu2:metal/gear/tungsten",
+                       "id":  "tfcm:metal/gear/tungsten",
                        "required":  false
                    }
                ]

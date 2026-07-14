@@ -30,6 +30,16 @@
     "#c:ores/fluorite",
     "#c:ores/mithril/poor",
     "#c:ores/mithril/normal",
-    "#c:ores/mithril/rich"
+    "#c:ores/mithril/rich",
+    "#c:ores/aluminum/poor",
+    "#c:ores/lead/poor",
+    "#c:ores/uranium/poor",
+    "#c:ores/aluminum/normal",
+    "#c:ores/lead/normal",
+    "#c:ores/uranium/normal",
+    "#c:ores/aluminum/rich",
+    "#c:ores/lead/rich",
+    "#c:ores/uranium/rich",
+    "#c:ores/quartz"
   ]
 }

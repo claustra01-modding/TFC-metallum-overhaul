@@ -1,0 +1,8 @@
+{
+    "parent":  "block/stairs",
+    "textures":  {
+                     "bottom":  "tfcm:block/metal/block/iridium",
+                     "top":  "tfcm:block/metal/block/iridium",
+                     "side":  "tfcm:block/metal/block/iridium"
+                 }
+}

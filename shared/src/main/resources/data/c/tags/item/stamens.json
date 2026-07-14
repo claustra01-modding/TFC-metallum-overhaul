@@ -18,6 +18,12 @@
     "#c:stamens/tungsten",
     "#c:stamens/solder",
     "#c:stamens/tungsten_steel",
-    "#c:stamens/netherite"
+    "#c:stamens/netherite",
+    "#c:stamens/aluminum",
+    "#c:stamens/constantan",
+    "#c:stamens/invar",
+    "#c:stamens/electrum",
+    "#c:stamens/lead",
+    "#c:stamens/uranium"
   ]
 }

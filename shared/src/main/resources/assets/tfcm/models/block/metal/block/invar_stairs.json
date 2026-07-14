@@ -1,0 +1,8 @@
+{
+    "parent":  "block/stairs",
+    "textures":  {
+                     "bottom":  "tfcm:block/metal/block/invar",
+                     "top":  "tfcm:block/metal/block/invar",
+                     "side":  "tfcm:block/metal/block/invar"
+                 }
+}

@@ -1,0 +1,5 @@
+{
+  "fluid": "tfc:metal/constantan",
+  "melt_temperature": 1250,
+  "specific_heat_capacity": 0.008571429
+}

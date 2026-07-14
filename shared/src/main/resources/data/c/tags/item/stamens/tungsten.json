@@ -1,7 +1,7 @@
-﻿{
+{
     "values":  [
                    {
-                       "id":  "tfcmu2:metal/stamen/tungsten",
+                       "id":  "tfcm:metal/stamen/tungsten",
                        "required":  false
                    }
                ]

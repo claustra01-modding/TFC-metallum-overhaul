@@ -1,0 +1,7 @@
+{
+  "values": [
+    "tfcm:metal/chisel/invar",
+    "tfcm:metal/chisel/titanium",
+    "tfcm:metal/chisel/tungsten_steel"
+  ]
+}

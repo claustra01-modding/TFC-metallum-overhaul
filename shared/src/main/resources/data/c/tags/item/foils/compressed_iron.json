@@ -1,7 +1,7 @@
-﻿{
+{
     "values":  [
                    {
-                       "id":  "tfcmu2:metal/foil/compressed_iron",
+                       "id":  "tfcm:metal/foil/compressed_iron",
                        "required":  false
                    }
                ]

@@ -1,7 +1,7 @@
-﻿{
+{
     "values":  [
                    {
-                       "id":  "tfcmu2:metal/nail/osmium",
+                       "id":  "tfcm:metal/nail/osmium",
                        "required":  false
                    }
                ]

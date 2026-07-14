@@ -18,6 +18,12 @@
     "#c:storage_blocks/tungsten",
     "#c:storage_blocks/solder",
     "#c:storage_blocks/tungsten_steel",
-    "#c:storage_blocks/netherite"
+    "#c:storage_blocks/netherite",
+    "#c:storage_blocks/aluminum",
+    "#c:storage_blocks/constantan",
+    "#c:storage_blocks/invar",
+    "#c:storage_blocks/electrum",
+    "#c:storage_blocks/lead",
+    "#c:storage_blocks/uranium"
   ]
 }

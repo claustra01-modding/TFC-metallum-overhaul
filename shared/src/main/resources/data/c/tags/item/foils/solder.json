@@ -1,7 +1,7 @@
-﻿{
+{
     "values":  [
                    {
-                       "id":  "tfcmu2:metal/foil/solder",
+                       "id":  "tfcm:metal/foil/solder",
                        "required":  false
                    }
                ]

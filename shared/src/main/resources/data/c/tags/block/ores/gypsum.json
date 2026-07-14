@@ -1,6 +1,6 @@
 {
   "values": [
-    "tfcmu2:ore/gypsum/netherrack",
-    "tfcmu2:ore/gypsum/endstone"
+    "tfcm:ore/gypsum/netherrack",
+    "tfcm:ore/gypsum/endstone"
   ]
 }

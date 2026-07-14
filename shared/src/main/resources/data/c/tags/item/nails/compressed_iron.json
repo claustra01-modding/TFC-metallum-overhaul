@@ -1,7 +1,7 @@
-﻿{
+{
     "values":  [
                    {
-                       "id":  "tfcmu2:metal/nail/compressed_iron",
+                       "id":  "tfcm:metal/nail/compressed_iron",
                        "required":  false
                    }
                ]

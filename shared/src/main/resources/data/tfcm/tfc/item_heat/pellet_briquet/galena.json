@@ -1,0 +1,13 @@
+{
+  "ingredient": [
+    {
+      "tag": "c:metal/pellet/galena"
+    },
+    {
+      "tag": "c:metal/briquet/galena"
+    }
+  ],
+  "heat_capacity": 7.692308,
+  "forging_temperature": 198,
+  "welding_temperature": 264
+}

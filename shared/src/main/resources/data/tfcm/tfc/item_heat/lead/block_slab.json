@@ -1,0 +1,8 @@
+{
+  "ingredient": {
+    "item": "tfcm:metal/block/lead_slab"
+  },
+  "heat_capacity": 3.847308,
+  "forging_temperature": 198,
+  "welding_temperature": 264
+}

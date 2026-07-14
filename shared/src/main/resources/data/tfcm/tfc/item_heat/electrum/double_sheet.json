@@ -1,0 +1,8 @@
+{
+  "ingredient": {
+    "tag": "c:double_sheets/electrum"
+  },
+  "heat_capacity": 7.273273,
+  "forging_temperature": 600,
+  "welding_temperature": 800
+}

@@ -18,6 +18,12 @@
     "#c:wires/tungsten",
     "#c:wires/solder",
     "#c:wires/tungsten_steel",
-    "#c:wires/netherite"
+    "#c:wires/netherite",
+    "#c:wires/aluminum",
+    "#c:wires/constantan",
+    "#c:wires/invar",
+    "#c:wires/electrum",
+    "#c:wires/lead",
+    "#c:wires/uranium"
   ]
 }

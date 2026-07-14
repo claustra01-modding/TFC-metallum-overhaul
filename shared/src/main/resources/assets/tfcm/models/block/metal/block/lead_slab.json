@@ -1,0 +1,8 @@
+{
+    "parent":  "block/slab",
+    "textures":  {
+                     "bottom":  "tfcm:block/metal/block/lead",
+                     "top":  "tfcm:block/metal/block/lead",
+                     "side":  "tfcm:block/metal/block/lead"
+                 }
+}

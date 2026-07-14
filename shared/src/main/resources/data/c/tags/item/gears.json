@@ -18,6 +18,12 @@
     "#c:gears/tungsten",
     "#c:gears/solder",
     "#c:gears/tungsten_steel",
-    "#c:gears/netherite"
+    "#c:gears/netherite",
+    "#c:gears/aluminum",
+    "#c:gears/constantan",
+    "#c:gears/invar",
+    "#c:gears/electrum",
+    "#c:gears/lead",
+    "#c:gears/uranium"
   ]
 }

@@ -18,6 +18,12 @@
     "#c:rivets/tungsten",
     "#c:rivets/solder",
     "#c:rivets/tungsten_steel",
-    "#c:rivets/netherite"
+    "#c:rivets/netherite",
+    "#c:rivets/aluminum",
+    "#c:rivets/constantan",
+    "#c:rivets/invar",
+    "#c:rivets/electrum",
+    "#c:rivets/lead",
+    "#c:rivets/uranium"
   ]
 }

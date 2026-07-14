@@ -1,6 +1,6 @@
 {
   "values": [
-    "tfcmu2:ore/ruby/netherrack",
-    "tfcmu2:ore/ruby/endstone"
+    "tfcm:ore/ruby/netherrack",
+    "tfcm:ore/ruby/endstone"
   ]
 }

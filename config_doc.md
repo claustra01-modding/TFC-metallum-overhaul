@@ -1,13 +1,13 @@
 # カスタム鉱脈設定仕様
 
-TFMCU2は、Minecraftのconfigディレクトリにある次のファイルからカスタム鉱脈を読み込む。
+TFCMは、Minecraftのconfigディレクトリにある次のファイルからカスタム鉱脈を読み込む。
 
-- `config/tfcmu2/overworld.yaml`
-- `config/tfcmu2/nether.yaml`
-- `config/tfcmu2/end.yaml`
+- `config/tfcm/overworld.yaml`
+- `config/tfcm/nether.yaml`
+- `config/tfcm/end.yaml`
 
 ファイルが存在しない場合はMod同梱の初期設定がコピーされる。既存ファイルは自動更新・上書きされない。
-旧Overworld設定の `config/tfcmu2/veins.yaml` も、`overworld.yaml` が存在しない場合に限り読み込まれる。
+旧Overworld設定の `config/tfcm/veins.yaml` も、`overworld.yaml` が存在しない場合に限り読み込まれる。
 
 ## 有効化
 
@@ -60,7 +60,7 @@ veins:
         underground_count: 0
 ```
 
-鉱脈IDの名前空間は入力元の識別や依存Mod判定に使われる。実行時に登録するfeature IDは、パスを維持した `tfcmu2:<path>` へ変換される。同じ変換後IDを持つ鉱脈が複数ある場合、2件目以降は読み飛ばされる。
+鉱脈IDの名前空間は入力元の識別や依存Mod判定に使われる。実行時に登録するfeature IDは、パスを維持した `tfcm:<path>` へ変換される。同じ変換後IDを持つ鉱脈が複数ある場合、2件目以降は読み飛ばされる。
 
 ## 鉱石ブロック
 
@@ -216,4 +216,3 @@ indicator:
 - 存在しない岩石、出力ブロック、indicatorブロックは警告を記録し、その候補を生成しない。
 - 必須値の欠落、不正な数値、未対応typeを含む鉱脈は警告を記録して読み飛ばす。他の有効な鉱脈は引き続き読み込まれる。
 - `#` 以降はコメントとして扱われる。インデントにはスペースを使用する。
-

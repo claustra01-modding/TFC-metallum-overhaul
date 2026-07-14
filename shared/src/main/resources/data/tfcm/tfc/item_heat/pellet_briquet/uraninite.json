@@ -1,0 +1,13 @@
+{
+  "ingredient": [
+    {
+      "tag": "c:metal/pellet/uraninite"
+    },
+    {
+      "tag": "c:metal/briquet/uraninite"
+    }
+  ],
+  "heat_capacity": 8.333333,
+  "forging_temperature": 678,
+  "welding_temperature": 904
+}

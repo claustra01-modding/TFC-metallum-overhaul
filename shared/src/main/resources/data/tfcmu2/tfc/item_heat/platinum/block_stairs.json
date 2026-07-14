@@ -1,8 +1,0 @@
-{
-    "ingredient": {
-        "item": "tfcmu2:metal/block/platinum_stairs"
-    },
-    "heat_capacity": 2.143,
-    "forging_temperature": 1038,
-    "welding_temperature": 1384
-}

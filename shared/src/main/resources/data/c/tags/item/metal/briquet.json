@@ -10,6 +10,9 @@
     "#c:metal/briquet/native_naquadah",
     "#c:metal/briquet/native_iridium",
     "#c:metal/briquet/native_osmium",
-    "#c:metal/briquet/mithril_matrix"
+    "#c:metal/briquet/mithril_matrix",
+    "#c:metal/briquet/bauxite",
+    "#c:metal/briquet/galena",
+    "#c:metal/briquet/uraninite"
   ]
 }

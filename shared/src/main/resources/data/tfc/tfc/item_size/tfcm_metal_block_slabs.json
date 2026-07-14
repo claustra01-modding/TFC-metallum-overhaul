@@ -1,0 +1,57 @@
+{
+  "ingredient": [
+    {
+      "item": "tfcm:metal/block/compressed_iron_slab"
+    },
+    {
+      "item": "tfcm:metal/block/platinum_slab"
+    },
+    {
+      "item": "tfcm:metal/block/naquadah_slab"
+    },
+    {
+      "item": "tfcm:metal/block/iridium_slab"
+    },
+    {
+      "item": "tfcm:metal/block/osmium_slab"
+    },
+    {
+      "item": "tfcm:metal/block/osmiridium_slab"
+    },
+    {
+      "item": "tfcm:metal/block/mithril_slab"
+    },
+    {
+      "item": "tfcm:metal/block/arcane_slab"
+    },
+    {
+      "item": "tfcm:metal/block/refined_glowstone_slab"
+    },
+    {
+      "item": "tfcm:metal/block/refined_obsidian_slab"
+    },
+    {
+      "item": "tfcm:metal/block/antimony_slab"
+    },
+    {
+      "item": "tfcm:metal/block/titanium_slab"
+    },
+    {
+      "item": "tfcm:metal/block/cobalt_slab"
+    },
+    {
+      "item": "tfcm:metal/block/tungsten_slab"
+    },
+    {
+      "item": "tfcm:metal/block/solder_slab"
+    },
+    {
+      "item": "tfcm:metal/block/tungsten_steel_slab"
+    },
+    {
+      "item": "tfcm:metal/block/netherite_slab"
+    }
+  ],
+  "size": "small",
+  "weight": "heavy"
+}

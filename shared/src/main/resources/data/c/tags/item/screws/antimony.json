@@ -1,7 +1,7 @@
-﻿{
+{
     "values":  [
                    {
-                       "id":  "tfcmu2:metal/screw/antimony",
+                       "id":  "tfcm:metal/screw/antimony",
                        "required":  false
                    }
                ]

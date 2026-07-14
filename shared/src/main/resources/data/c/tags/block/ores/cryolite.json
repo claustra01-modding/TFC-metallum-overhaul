@@ -1,6 +1,6 @@
 {
   "values": [
-    "tfcmu2:ore/cryolite/netherrack",
-    "tfcmu2:ore/cryolite/endstone"
+    "tfcm:ore/cryolite/netherrack",
+    "tfcm:ore/cryolite/endstone"
   ]
 }

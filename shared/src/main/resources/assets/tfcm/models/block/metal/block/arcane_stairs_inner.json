@@ -1,0 +1,8 @@
+{
+    "parent":  "block/inner_stairs",
+    "textures":  {
+                     "bottom":  "tfcm:block/metal/block/arcane",
+                     "top":  "tfcm:block/metal/block/arcane",
+                     "side":  "tfcm:block/metal/block/arcane"
+                 }
+}

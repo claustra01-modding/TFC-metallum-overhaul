@@ -1,0 +1,8 @@
+{
+    "parent":  "block/slab_top",
+    "textures":  {
+                     "bottom":  "tfcm:block/metal/block/solder",
+                     "top":  "tfcm:block/metal/block/solder",
+                     "side":  "tfcm:block/metal/block/solder"
+                 }
+}

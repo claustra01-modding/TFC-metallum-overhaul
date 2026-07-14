@@ -1,0 +1,9 @@
+{
+    "values":  [
+                   {
+                       "id":  "tfcm:metal/rivet/lead",
+                       "required":  false
+                   }
+               ]
+}
+

@@ -1,0 +1,9 @@
+{
+    "values":  [
+                   {
+                       "id":  "tfcm:metal/wire/invar",
+                       "required":  false
+                   }
+               ]
+}
+

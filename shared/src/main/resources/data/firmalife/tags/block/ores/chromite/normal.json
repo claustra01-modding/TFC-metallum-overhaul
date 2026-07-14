@@ -1,7 +1,7 @@
 {
   "values": [
-    "tfcmu2:ore/normal_chromite/netherrack",
-    "tfcmu2:ore/normal_chromite/endstone"
+    "tfcm:ore/normal_chromite/netherrack",
+    "tfcm:ore/normal_chromite/endstone"
   ],
   "neoforge:conditions": [
     {

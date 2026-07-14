@@ -1,10 +1,10 @@
 {
   "values": [
-    "tfcmu2:ore/normal_hematite/netherrack",
-    "tfcmu2:ore/normal_hematite/endstone",
-    "tfcmu2:ore/normal_limonite/netherrack",
-    "tfcmu2:ore/normal_limonite/endstone",
-    "tfcmu2:ore/normal_magnetite/netherrack",
-    "tfcmu2:ore/normal_magnetite/endstone"
+    "tfcm:ore/normal_hematite/netherrack",
+    "tfcm:ore/normal_hematite/endstone",
+    "tfcm:ore/normal_limonite/netherrack",
+    "tfcm:ore/normal_limonite/endstone",
+    "tfcm:ore/normal_magnetite/netherrack",
+    "tfcm:ore/normal_magnetite/endstone"
   ]
 }

@@ -54,9 +54,9 @@ TFC Metallum Unofficial 2.
     side="BOTH"
 
 [[dependencies.${mod_id}]]
-    modId="tfc_ie_addon"
+    modId="tfc_metal_tools"
     mandatory=false
-    versionRange="[0,)"
+    versionRange="[1.0.4,)"
     ordering="AFTER"
     side="BOTH"
 

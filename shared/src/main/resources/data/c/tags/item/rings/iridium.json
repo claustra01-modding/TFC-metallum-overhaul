@@ -1,7 +1,7 @@
-﻿{
+{
     "values":  [
                    {
-                       "id":  "tfcmu2:metal/ring/iridium",
+                       "id":  "tfcm:metal/ring/iridium",
                        "required":  false
                    }
                ]

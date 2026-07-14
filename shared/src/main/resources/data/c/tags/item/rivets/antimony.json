@@ -1,7 +1,7 @@
-﻿{
+{
     "values":  [
                    {
-                       "id":  "tfcmu2:metal/rivet/antimony",
+                       "id":  "tfcm:metal/rivet/antimony",
                        "required":  false
                    }
                ]

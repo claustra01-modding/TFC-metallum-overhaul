@@ -18,6 +18,12 @@
     "#c:double_ingots/tungsten",
     "#c:double_ingots/solder",
     "#c:double_ingots/tungsten_steel",
-    "#c:double_ingots/netherite"
+    "#c:double_ingots/netherite",
+    "#c:double_ingots/aluminum",
+    "#c:double_ingots/constantan",
+    "#c:double_ingots/invar",
+    "#c:double_ingots/electrum",
+    "#c:double_ingots/lead",
+    "#c:double_ingots/uranium"
   ]
 }

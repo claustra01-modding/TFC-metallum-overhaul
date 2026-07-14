@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "tfcm:block/ore/small_spodumene",
+        "y": 90
+      },
+      {
+        "model": "tfcm:block/ore/small_spodumene"
+      },
+      {
+        "model": "tfcm:block/ore/small_spodumene",
+        "y": 180
+      },
+      {
+        "model": "tfcm:block/ore/small_spodumene",
+        "y": 270
+      }
+    ]
+  }
+}

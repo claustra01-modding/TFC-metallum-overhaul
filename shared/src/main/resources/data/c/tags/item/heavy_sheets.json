@@ -18,6 +18,12 @@
     "#c:heavy_sheets/tungsten",
     "#c:heavy_sheets/solder",
     "#c:heavy_sheets/tungsten_steel",
-    "#c:heavy_sheets/netherite"
+    "#c:heavy_sheets/netherite",
+    "#c:heavy_sheets/aluminum",
+    "#c:heavy_sheets/constantan",
+    "#c:heavy_sheets/invar",
+    "#c:heavy_sheets/electrum",
+    "#c:heavy_sheets/lead",
+    "#c:heavy_sheets/uranium"
   ]
 }

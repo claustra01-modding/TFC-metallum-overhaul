@@ -18,6 +18,12 @@
     "#c:nails/tungsten",
     "#c:nails/solder",
     "#c:nails/tungsten_steel",
-    "#c:nails/netherite"
+    "#c:nails/netherite",
+    "#c:nails/aluminum",
+    "#c:nails/constantan",
+    "#c:nails/invar",
+    "#c:nails/electrum",
+    "#c:nails/lead",
+    "#c:nails/uranium"
   ]
 }

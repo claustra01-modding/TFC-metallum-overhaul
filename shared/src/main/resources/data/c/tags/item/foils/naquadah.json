@@ -1,7 +1,7 @@
 {
     "values":  [
                    {
-                       "id":  "tfcmu2:metal/foil/naquadah",
+                       "id":  "tfcm:metal/foil/naquadah",
                        "required":  false
                    }
                ]

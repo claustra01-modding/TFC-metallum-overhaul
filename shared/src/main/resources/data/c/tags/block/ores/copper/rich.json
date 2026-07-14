@@ -1,10 +1,10 @@
 {
   "values": [
-    "tfcmu2:ore/rich_malachite/netherrack",
-    "tfcmu2:ore/rich_malachite/endstone",
-    "tfcmu2:ore/rich_native_copper/netherrack",
-    "tfcmu2:ore/rich_native_copper/endstone",
-    "tfcmu2:ore/rich_tetrahedrite/netherrack",
-    "tfcmu2:ore/rich_tetrahedrite/endstone"
+    "tfcm:ore/rich_malachite/netherrack",
+    "tfcm:ore/rich_malachite/endstone",
+    "tfcm:ore/rich_native_copper/netherrack",
+    "tfcm:ore/rich_native_copper/endstone",
+    "tfcm:ore/rich_tetrahedrite/netherrack",
+    "tfcm:ore/rich_tetrahedrite/endstone"
   ]
 }

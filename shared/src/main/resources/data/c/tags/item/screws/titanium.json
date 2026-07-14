@@ -1,7 +1,7 @@
 {
     "values":  [
                    {
-                       "id":  "tfcmu2:metal/screw/titanium",
+                       "id":  "tfcm:metal/screw/titanium",
                        "required":  false
                    }
                ]

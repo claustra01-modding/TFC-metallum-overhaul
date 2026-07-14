@@ -1,6 +1,6 @@
 {
   "values": [
-    "tfcmu2:ore/graphite/netherrack",
-    "tfcmu2:ore/graphite/endstone"
+    "tfcm:ore/graphite/netherrack",
+    "tfcm:ore/graphite/endstone"
   ]
 }

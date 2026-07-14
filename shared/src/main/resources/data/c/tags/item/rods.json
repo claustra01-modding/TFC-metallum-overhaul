@@ -18,6 +18,12 @@
     "#c:rods/tungsten",
     "#c:rods/solder",
     "#c:rods/tungsten_steel",
-    "#c:rods/netherite"
+    "#c:rods/netherite",
+    "#c:rods/aluminum",
+    "#c:rods/constantan",
+    "#c:rods/invar",
+    "#c:rods/electrum",
+    "#c:rods/lead",
+    "#c:rods/uranium"
   ]
 }

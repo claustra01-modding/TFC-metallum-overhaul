@@ -1,6 +1,6 @@
 {
   "values": [
-    "tfcmu2:ore/saltpeter/netherrack",
-    "tfcmu2:ore/saltpeter/endstone"
+    "tfcm:ore/saltpeter/netherrack",
+    "tfcm:ore/saltpeter/endstone"
   ]
 }

@@ -1,0 +1,8 @@
+{
+  "loader": "tfc:trim",
+  "parent": "neoforge:item/default",
+  "textures": {
+    "armor": "tfcmu2:item/metal/helmet/titanium",
+    "trim": "tfc:item/helmet_trim"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "tfc:welding",
+  "bonus": "copy_best",
+  "first_input": {
+    "item": "tfcmu2:metal/unfinished_chestplate/tungsten_steel"
+  },
+  "result": {
+    "count": 1,
+    "id": "tfcmu2:metal/chestplate/tungsten_steel"
+  },
+  "second_input": {
+    "tag": "c:double_sheets/tungsten_steel"
+  },
+  "tier": 5
+}

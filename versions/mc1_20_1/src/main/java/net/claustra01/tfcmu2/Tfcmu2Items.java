@@ -26,6 +26,7 @@ public final class Tfcmu2Items {
     public static final Map<Tfcmu2Metal, RegistryObject<Item>> METAL_SHEETS = registerMetalItems("sheet", Metal.ItemType.SHEET);
     public static final Map<Tfcmu2Metal, RegistryObject<Item>> METAL_DOUBLE_SHEETS = registerMetalItems("double_sheet", Metal.ItemType.DOUBLE_SHEET);
     public static final Map<Tfcmu2Metal, RegistryObject<Item>> METAL_RODS = registerMetalItems("rod", Metal.ItemType.ROD);
+    public static final Map<Tfcmu2Metal, Map<Metal.ItemType, RegistryObject<Item>>> METAL_TOOL_ITEMS = registerMetalToolItems();
     public static final Map<Tfcmu2Metal, Map<Tfcmu2MoreItemType, RegistryObject<Item>>> MORE_METAL_ITEMS = TFC_MORE_ITEMS_LOADED
         ? registerMoreMetalItems()
         : Collections.emptyMap();
@@ -52,6 +53,33 @@ public final class Tfcmu2Items {
             items.put(metal, ITEMS.register("metal/" + itemTypePath + "/" + metal.getSerializedName(), () -> itemType.create(metal)));
         }
         return Collections.unmodifiableMap(items);
+    }
+
+    private static Map<Tfcmu2Metal, Map<Metal.ItemType, RegistryObject<Item>>> registerMetalToolItems() {
+        final EnumMap<Tfcmu2Metal, Map<Metal.ItemType, RegistryObject<Item>>> itemsByMetal = new EnumMap<>(Tfcmu2Metal.class);
+        for (Tfcmu2Metal metal : Tfcmu2Metal.values()) {
+            if (!metal.hasTools()) {
+                continue;
+            }
+            final EnumMap<Metal.ItemType, RegistryObject<Item>> itemsByType = new EnumMap<>(Metal.ItemType.class);
+            for (Metal.ItemType type : Metal.ItemType.values()) {
+                if (isBaseMetalForm(type)) {
+                    continue;
+                }
+                final String path = type.name().toLowerCase(Locale.ROOT);
+                itemsByType.put(type, ITEMS.register("metal/" + path + "/" + metal.getSerializedName(), () -> type.create(metal)));
+            }
+            itemsByMetal.put(metal, Collections.unmodifiableMap(itemsByType));
+        }
+        return Collections.unmodifiableMap(itemsByMetal);
+    }
+
+    private static boolean isBaseMetalForm(Metal.ItemType type) {
+        return type == Metal.ItemType.INGOT
+            || type == Metal.ItemType.DOUBLE_INGOT
+            || type == Metal.ItemType.SHEET
+            || type == Metal.ItemType.DOUBLE_SHEET
+            || type == Metal.ItemType.ROD;
     }
 
     private static Map<Tfcmu2Metal, Map<Tfcmu2MoreItemType, RegistryObject<Item>>> registerMoreMetalItems() {

@@ -1,0 +1,15 @@
+{
+  "type": "tfc:welding",
+  "bonus": "copy_best",
+  "first_input": {
+    "item": "tfcmu2:metal/unfinished_helmet/titanium"
+  },
+  "result": {
+    "count": 1,
+    "id": "tfcmu2:metal/helmet/titanium"
+  },
+  "second_input": {
+    "tag": "c:sheets/titanium"
+  },
+  "tier": 4
+}

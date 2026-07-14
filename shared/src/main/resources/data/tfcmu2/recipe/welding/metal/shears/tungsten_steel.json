@@ -1,0 +1,15 @@
+{
+  "type": "tfc:welding",
+  "bonus": "copy_worst",
+  "first_input": {
+    "item": "tfcmu2:metal/knife_blade/tungsten_steel"
+  },
+  "result": {
+    "count": 1,
+    "id": "tfcmu2:metal/shears/tungsten_steel"
+  },
+  "second_input": {
+    "item": "tfcmu2:metal/knife_blade/tungsten_steel"
+  },
+  "tier": 5
+}

@@ -1,0 +1,76 @@
+{
+  "forging_temperature": 870,
+  "heat_capacity": 2.857143,
+  "ingredient": [
+    {
+      "item": "tfcmu2:metal/unfinished_lamp/invar"
+    },
+    {
+      "item": "tfcmu2:metal/pickaxe/invar"
+    },
+    {
+      "item": "tfcmu2:metal/pickaxe_head/invar"
+    },
+    {
+      "item": "tfcmu2:metal/propick/invar"
+    },
+    {
+      "item": "tfcmu2:metal/propick_head/invar"
+    },
+    {
+      "item": "tfcmu2:metal/axe/invar"
+    },
+    {
+      "item": "tfcmu2:metal/axe_head/invar"
+    },
+    {
+      "item": "tfcmu2:metal/shovel/invar"
+    },
+    {
+      "item": "tfcmu2:metal/shovel_head/invar"
+    },
+    {
+      "item": "tfcmu2:metal/hoe/invar"
+    },
+    {
+      "item": "tfcmu2:metal/hoe_head/invar"
+    },
+    {
+      "item": "tfcmu2:metal/chisel/invar"
+    },
+    {
+      "item": "tfcmu2:metal/chisel_head/invar"
+    },
+    {
+      "item": "tfcmu2:metal/hammer/invar"
+    },
+    {
+      "item": "tfcmu2:metal/hammer_head/invar"
+    },
+    {
+      "item": "tfcmu2:metal/saw/invar"
+    },
+    {
+      "item": "tfcmu2:metal/saw_blade/invar"
+    },
+    {
+      "item": "tfcmu2:metal/javelin/invar"
+    },
+    {
+      "item": "tfcmu2:metal/javelin_head/invar"
+    },
+    {
+      "item": "tfcmu2:metal/knife/invar"
+    },
+    {
+      "item": "tfcmu2:metal/knife_blade/invar"
+    },
+    {
+      "item": "tfcmu2:metal/scythe/invar"
+    },
+    {
+      "item": "tfcmu2:metal/scythe_blade/invar"
+    }
+  ],
+  "welding_temperature": 1160
+}

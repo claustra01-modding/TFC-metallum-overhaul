@@ -1,0 +1,15 @@
+{
+  "type": "tfc:anvil",
+  "ingredient": {
+    "tag": "c:double_sheets/titanium"
+  },
+  "result": {
+    "count": 1,
+    "id": "tfcmu2:metal/tuyere/titanium"
+  },
+  "rules": [
+    "bend_last",
+    "bend_second_last"
+  ],
+  "tier": 5
+}

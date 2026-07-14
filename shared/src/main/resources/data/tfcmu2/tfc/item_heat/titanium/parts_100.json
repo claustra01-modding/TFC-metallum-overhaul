@@ -1,0 +1,76 @@
+{
+  "forging_temperature": 921,
+  "heat_capacity": 3.333,
+  "ingredient": [
+    {
+      "item": "tfcmu2:metal/unfinished_lamp/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/pickaxe/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/pickaxe_head/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/propick/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/propick_head/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/axe/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/axe_head/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/shovel/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/shovel_head/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/hoe/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/hoe_head/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/chisel/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/chisel_head/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/hammer/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/hammer_head/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/saw/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/saw_blade/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/javelin/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/javelin_head/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/knife/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/knife_blade/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/scythe/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/scythe_blade/titanium"
+    }
+  ],
+  "welding_temperature": 1228
+}

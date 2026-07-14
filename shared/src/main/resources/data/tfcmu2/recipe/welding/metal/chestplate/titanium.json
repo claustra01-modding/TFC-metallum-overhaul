@@ -1,0 +1,15 @@
+{
+  "type": "tfc:welding",
+  "bonus": "copy_best",
+  "first_input": {
+    "item": "tfcmu2:metal/unfinished_chestplate/titanium"
+  },
+  "result": {
+    "count": 1,
+    "id": "tfcmu2:metal/chestplate/titanium"
+  },
+  "second_input": {
+    "tag": "c:double_sheets/titanium"
+  },
+  "tier": 4
+}

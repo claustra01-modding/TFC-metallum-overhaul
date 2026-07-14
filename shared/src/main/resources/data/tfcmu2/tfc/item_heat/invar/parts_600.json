@@ -1,0 +1,13 @@
+{
+  "forging_temperature": 870,
+  "heat_capacity": 17.142858,
+  "ingredient": [
+    {
+      "item": "tfcmu2:metal/helmet/invar"
+    },
+    {
+      "item": "tfcmu2:metal/greaves/invar"
+    }
+  ],
+  "welding_temperature": 1160
+}

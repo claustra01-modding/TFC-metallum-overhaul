@@ -1,0 +1,31 @@
+{
+  "forging_temperature": 870,
+  "heat_capacity": 5.714286,
+  "ingredient": [
+    {
+      "item": "tfcmu2:metal/fish_hook/invar"
+    },
+    {
+      "item": "tfcmu2:metal/fishing_rod/invar"
+    },
+    {
+      "item": "tfcmu2:metal/sword/invar"
+    },
+    {
+      "item": "tfcmu2:metal/sword_blade/invar"
+    },
+    {
+      "item": "tfcmu2:metal/mace/invar"
+    },
+    {
+      "item": "tfcmu2:metal/mace_head/invar"
+    },
+    {
+      "item": "tfcmu2:metal/shears/invar"
+    },
+    {
+      "item": "tfcmu2:metal/unfinished_boots/invar"
+    }
+  ],
+  "welding_temperature": 1160
+}

@@ -2,6 +2,7 @@ package net.claustra01.tfcmu2;
 
 import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.registry.RegistryMetal;
+import net.dries007.tfc.common.TFCTiers;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Tier;
@@ -53,16 +54,29 @@ public enum Tfcmu2Metal implements RegistryMetal {
 
     @Override
     public Tier toolTier() {
+        if (this == INVAR) return TFCTiers.WROUGHT_IRON;
+        if (this == TITANIUM) return TFCTiers.BLACK_STEEL;
+        if (this == TUNGSTEN_STEEL) return Tfcmu2Tiers.TUNGSTEN_STEEL;
         throw unsupported("toolTier");
+    }
+
+    public boolean hasTools() {
+        return this == INVAR || this == TITANIUM || this == TUNGSTEN_STEEL;
     }
 
     @Override
     public ArmorMaterial armorTier() {
+        if (this == INVAR) return Tfcmu2ArmorMaterials.INVAR;
+        if (this == TITANIUM) return Tfcmu2ArmorMaterials.TITANIUM;
+        if (this == TUNGSTEN_STEEL) return Tfcmu2ArmorMaterials.TUNGSTEN_STEEL;
         throw unsupported("armorTier");
     }
 
     @Override
     public Metal.Tier metalTier() {
+        if (this == INVAR) return Metal.Tier.TIER_III;
+        if (this == TITANIUM) return Metal.Tier.TIER_V;
+        if (this == TUNGSTEN_STEEL) return Metal.Tier.TIER_VI;
         throw unsupported("metalTier");
     }
 

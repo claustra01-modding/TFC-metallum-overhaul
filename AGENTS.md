@@ -54,6 +54,14 @@
 
 追加形状のIDも `tfcmu2:metal/<form>/<metal>` とする。
 
+工具・防具対応金属:
+
+- `invar`: wrought ironと同等
+- `titanium`: black steelと同等
+- `tungsten_steel`: red / blue steelより上位。tool level 7、耐久8125、採掘速度13、攻撃補正10.5、enchantment 25とする。
+
+上記3金属はTFC標準の工具、工具頭、shears、tuyere、fishing rod、shield、horse armor、防具、中間防具をすべて持つ。IDは `tfcmu2:metal/<tfc_item_type>/<metal>` とする。
+
 ## 4. 独自鉱石・Gem
 
 品位あり鉱石:
@@ -129,6 +137,7 @@ compat層はingot等の金属形状や専用加工recipeを追加しない。単
 - `welding/metal/{double_ingot,double_sheet}`
 - `crafting/metal/block`
 - `heating/metal/{ingot,double_ingot,sheet,double_sheet,rod,block}`
+- 工具・防具対応金属: `anvil/metal/<part>`, `crafting/metal/<tool>`, `welding/metal/<armor_or_shears>`, `heating/metal/<tool_or_armor>`
 
 `tfc_items` 条件付きrecipe:
 
@@ -149,6 +158,7 @@ compat層はingot等の金属形状や専用加工recipeを追加しない。単
 model pathはregistry IDと同じ階層を基本とする。
 
 - item metal: `assets/tfcmu2/models/item/metal/<form>`
+- 工具・防具modelもregistry IDと同じ `assets/tfcmu2/models/item/metal/<tfc_item_type>` に置く。
 - metal block: `assets/tfcmu2/models/block/metal/block`
 - ore item: `assets/tfcmu2/models/item/ore/<ore_or_grade>`
 - ore block: `assets/tfcmu2/models/block/ore/<ore_or_grade>/<rock_or_stone>`
@@ -241,6 +251,8 @@ python3 tools/textures/regenerate_metals.py
 - ingot pile用 `assets/tfc/textures/block/metal/smooth/<metal>.png` も同時生成する。
 - InvarのalloyはWrought Iron 60-70% + Nickel 30-40%。
 - 対象TFC versionがsheet pileに対応しない限り、sheet pile assetは追加しない。
+- 工具・防具の形状元は、`invar` がwrought iron、`titanium` がblack steel、`tungsten_steel` がred steel。item texture、防具layer、javelin projectileを同じパレット転写で生成する。
+- 完成工具とjavelin projectileは、TFCのwrought iron / black steel / red steel間で同色のpixelを固定材maskとして扱う。木柄・紐などは再着色せず、金属部分だけにパレット転写を適用する。
 
 ### 11.3 Ore Washing
 

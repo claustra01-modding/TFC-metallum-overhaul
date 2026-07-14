@@ -148,7 +148,10 @@ tasks.register('prepareMc1_20_1SharedResources') {
                 def target = outputRoot.resolve(outputPath)
                 Files.createDirectories(target.parent)
 
-                if (relativePath.startsWith('data/') && relativePath.endsWith('.json')) {
+                def isConvertibleJson = relativePath.endsWith('.json') && (
+                    relativePath.startsWith('data/') || relativePath.startsWith('assets/tfcmu2/models/')
+                )
+                if (isConvertibleJson) {
                     def rawJson = Files.readString(source, StandardCharsets.UTF_8).replaceFirst('^\uFEFF', '')
                     def convertedJson = toMc1_20_1Json(new JsonSlurper().parseText(rawJson))
                     if (outputPath.contains('/tags/')) {

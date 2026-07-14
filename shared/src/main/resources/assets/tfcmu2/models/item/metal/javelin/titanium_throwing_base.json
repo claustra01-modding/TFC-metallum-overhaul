@@ -1,0 +1,6 @@
+{
+  "parent": "item/trident_throwing",
+  "textures": {
+    "particle": "tfcmu2:item/metal/javelin/titanium"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "tfc:anvil",
+  "apply_bonus": true,
+  "ingredient": {
+    "tag": "c:sheets/titanium"
+  },
+  "result": {
+    "count": 1,
+    "id": "tfcmu2:metal/fish_hook/titanium"
+  },
+  "rules": [
+    "hit_any",
+    "bend_any",
+    "draw_not_last"
+  ],
+  "tier": 5
+}

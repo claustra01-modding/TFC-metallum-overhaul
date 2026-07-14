@@ -26,6 +26,7 @@ public final class Tfcmu2Mod {
         Tfcmu2Fluids.FLUID_TYPES.register(modEventBus);
         Tfcmu2Fluids.FLUIDS.register(modEventBus);
         Tfcmu2Blocks.BLOCKS.register(modEventBus);
+        Tfcmu2ArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
         Tfcmu2CreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
         Tfcmu2Items.ITEMS.register(modEventBus);
     }

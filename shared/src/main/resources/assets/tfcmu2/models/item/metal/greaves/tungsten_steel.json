@@ -1,0 +1,8 @@
+{
+  "loader": "tfc:trim",
+  "parent": "neoforge:item/default",
+  "textures": {
+    "armor": "tfcmu2:item/metal/greaves/tungsten_steel",
+    "trim": "tfc:item/greaves_trim"
+  }
+}

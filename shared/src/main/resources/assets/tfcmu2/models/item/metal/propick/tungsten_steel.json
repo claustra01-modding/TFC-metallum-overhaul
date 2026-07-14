@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "tfcmu2:item/metal/propick/tungsten_steel"
+  }
+}

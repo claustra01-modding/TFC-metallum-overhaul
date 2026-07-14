@@ -1,0 +1,25 @@
+{
+  "forging_temperature": 870,
+  "heat_capacity": 11.428572,
+  "ingredient": [
+    {
+      "item": "tfcmu2:metal/tuyere/invar"
+    },
+    {
+      "item": "tfcmu2:metal/unfinished_helmet/invar"
+    },
+    {
+      "item": "tfcmu2:metal/unfinished_chestplate/invar"
+    },
+    {
+      "item": "tfcmu2:metal/unfinished_greaves/invar"
+    },
+    {
+      "item": "tfcmu2:metal/boots/invar"
+    },
+    {
+      "item": "tfcmu2:metal/shield/invar"
+    }
+  ],
+  "welding_temperature": 1160
+}

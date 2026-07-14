@@ -1,0 +1,31 @@
+{
+  "forging_temperature": 921,
+  "heat_capacity": 6.666,
+  "ingredient": [
+    {
+      "item": "tfcmu2:metal/fish_hook/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/fishing_rod/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/sword/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/sword_blade/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/mace/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/mace_head/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/shears/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/unfinished_boots/titanium"
+    }
+  ],
+  "welding_temperature": 1228
+}

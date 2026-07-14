@@ -1,6 +1,7 @@
 package net.claustra01.tfcmu2;
 
 import net.dries007.tfc.common.LevelTier;
+import net.dries007.tfc.common.TFCTiers;
 import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.registry.RegistryMetal;
 import net.minecraft.core.Holder;
@@ -53,16 +54,29 @@ public enum Tfcmu2Metal implements RegistryMetal {
 
     @Override
     public LevelTier toolTier() {
+        if (this == INVAR) return TFCTiers.WROUGHT_IRON;
+        if (this == TITANIUM) return TFCTiers.BLACK_STEEL;
+        if (this == TUNGSTEN_STEEL) return Tfcmu2Tiers.TUNGSTEN_STEEL;
         throw unsupported("toolTier");
+    }
+
+    public boolean hasTools() {
+        return this == INVAR || this == TITANIUM || this == TUNGSTEN_STEEL;
     }
 
     @Override
     public Holder<ArmorMaterial> armorMaterial() {
+        if (this == INVAR) return Tfcmu2ArmorMaterials.INVAR.material();
+        if (this == TITANIUM) return Tfcmu2ArmorMaterials.TITANIUM.material();
+        if (this == TUNGSTEN_STEEL) return Tfcmu2ArmorMaterials.TUNGSTEN_STEEL.material();
         throw unsupported("armorMaterial");
     }
 
     @Override
     public int armorDurability(ArmorItem.Type type) {
+        if (this == INVAR) return Tfcmu2ArmorMaterials.INVAR.durability(type);
+        if (this == TITANIUM) return Tfcmu2ArmorMaterials.TITANIUM.durability(type);
+        if (this == TUNGSTEN_STEEL) return Tfcmu2ArmorMaterials.TUNGSTEN_STEEL.durability(type);
         throw unsupported("armorDurability");
     }
 

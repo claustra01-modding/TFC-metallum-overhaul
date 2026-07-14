@@ -1,0 +1,15 @@
+{
+  "type": "tfc:welding",
+  "bonus": "copy_best",
+  "first_input": {
+    "item": "tfcmu2:metal/unfinished_chestplate/invar"
+  },
+  "result": {
+    "count": 1,
+    "id": "tfcmu2:metal/chestplate/invar"
+  },
+  "second_input": {
+    "tag": "c:double_sheets/invar"
+  },
+  "tier": 2
+}

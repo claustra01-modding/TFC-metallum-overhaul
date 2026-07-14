@@ -1,0 +1,17 @@
+{
+  "type": "tfc:anvil",
+  "apply_bonus": true,
+  "ingredient": {
+    "tag": "c:ingots/titanium"
+  },
+  "result": {
+    "count": 1,
+    "id": "tfcmu2:metal/pickaxe_head/titanium"
+  },
+  "rules": [
+    "punch_last",
+    "draw_not_last",
+    "bend_not_last"
+  ],
+  "tier": 5
+}

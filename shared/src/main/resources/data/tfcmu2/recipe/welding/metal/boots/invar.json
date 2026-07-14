@@ -1,0 +1,15 @@
+{
+  "type": "tfc:welding",
+  "bonus": "copy_best",
+  "first_input": {
+    "item": "tfcmu2:metal/unfinished_boots/invar"
+  },
+  "result": {
+    "count": 1,
+    "id": "tfcmu2:metal/boots/invar"
+  },
+  "second_input": {
+    "tag": "c:sheets/invar"
+  },
+  "tier": 2
+}

@@ -1,0 +1,14 @@
+{
+  "parent": "item/handheld_rod",
+  "textures": {
+    "layer0": "tfcmu2:item/metal/fishing_rod/tungsten_steel"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "tfc:cast": 1.0
+      },
+      "model": "tfcmu2:item/metal/fishing_rod/tungsten_steel_cast"
+    }
+  ]
+}

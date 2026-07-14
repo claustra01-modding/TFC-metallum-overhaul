@@ -1,0 +1,25 @@
+{
+  "forging_temperature": 921,
+  "heat_capacity": 13.332,
+  "ingredient": [
+    {
+      "item": "tfcmu2:metal/tuyere/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/unfinished_helmet/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/unfinished_chestplate/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/unfinished_greaves/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/boots/titanium"
+    },
+    {
+      "item": "tfcmu2:metal/shield/titanium"
+    }
+  ],
+  "welding_temperature": 1228
+}

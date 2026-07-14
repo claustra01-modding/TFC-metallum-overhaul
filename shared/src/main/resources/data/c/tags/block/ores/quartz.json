@@ -1,0 +1,25 @@
+{
+  "values": [
+    "tfcmu2:ore/quartz/andesite",
+    "tfcmu2:ore/quartz/basalt",
+    "tfcmu2:ore/quartz/chalk",
+    "tfcmu2:ore/quartz/chert",
+    "tfcmu2:ore/quartz/claystone",
+    "tfcmu2:ore/quartz/conglomerate",
+    "tfcmu2:ore/quartz/dacite",
+    "tfcmu2:ore/quartz/diorite",
+    "tfcmu2:ore/quartz/dolomite",
+    "tfcmu2:ore/quartz/gabbro",
+    "tfcmu2:ore/quartz/gneiss",
+    "tfcmu2:ore/quartz/granite",
+    "tfcmu2:ore/quartz/limestone",
+    "tfcmu2:ore/quartz/marble",
+    "tfcmu2:ore/quartz/phyllite",
+    "tfcmu2:ore/quartz/quartzite",
+    "tfcmu2:ore/quartz/rhyolite",
+    "tfcmu2:ore/quartz/schist",
+    "tfcmu2:ore/quartz/shale",
+    "tfcmu2:ore/quartz/slate",
+    "tfcmu2:ore/quartz/tuff"
+  ]
+}

@@ -46,6 +46,15 @@ class TransferPaletteTest(unittest.TestCase):
         self.assertEqual(output[0], (120, 130, 140, 255))
         self.assertEqual(output[1], (0, 0, 0, 0))
 
+    def test_rank_scale_reduces_output_contrast(self) -> None:
+        base = [(0, 0, 0, 255), (255, 255, 255, 255)]
+        source = [(0, 0, 0, 255), (100, 100, 100, 255), (200, 200, 200, 255)]
+
+        output = transfer_palette(base, source, rank_scale=0.5)
+
+        self.assertEqual(output[0], (50, 50, 50, 255))
+        self.assertEqual(output[1], (150, 150, 150, 255))
+
 
 if __name__ == "__main__":
     unittest.main()

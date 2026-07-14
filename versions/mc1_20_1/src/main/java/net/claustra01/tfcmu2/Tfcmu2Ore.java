@@ -14,6 +14,7 @@ public enum Tfcmu2Ore {
     NATIVE_IRIDIUM(true, "iridium"),
     NATIVE_OSMIUM(true, "osmium"),
     FLUORITE(false, "fluorite"),
+    QUARTZ(false, "quartz"),
     RUTILE(true, "titanium"),
     COBALTITE(true, "cobalt"),
     SPODUMENE(true, "lithium"),

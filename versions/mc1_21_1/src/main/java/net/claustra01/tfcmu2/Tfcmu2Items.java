@@ -19,7 +19,6 @@ public final class Tfcmu2Items {
     public static final boolean TFC_ORE_WASHING_LOADED = ModList.get().isLoaded(Tfcmu2Mod.TFC_ORE_WASHING_MOD_ID);
     public static final Map<Tfcmu2Metal, DeferredItem<Item>> METAL_INGOTS = registerMetalItems("ingot", Metal.ItemType.INGOT);
     public static final DeferredItem<Item> HIGH_CARBON_TUNGSTEN_STEEL_INGOT = ITEMS.register("metal/ingot/high_carbon_tungsten_steel", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> QUARTZ = ITEMS.register("ore/quartz", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> CUT_QUARTZ = ITEMS.register("gem/cut_quartz", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> FLUORITE_POWDER = ITEMS.register("powder/fluorite", () -> new Item(new Item.Properties()));
     public static final Map<Tfcmu2Metal, DeferredItem<Item>> METAL_DOUBLE_INGOTS = registerMetalItems("double_ingot", Metal.ItemType.DOUBLE_INGOT);

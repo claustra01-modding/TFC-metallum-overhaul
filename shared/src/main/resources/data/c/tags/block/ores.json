@@ -39,6 +39,7 @@
     "#c:ores/uranium/normal",
     "#c:ores/aluminum/rich",
     "#c:ores/lead/rich",
-    "#c:ores/uranium/rich"
+    "#c:ores/uranium/rich",
+    "#c:ores/quartz"
   ]
 }

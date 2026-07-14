@@ -61,7 +61,7 @@
 
 品位なし鉱石:
 
-`fluorite`
+`fluorite`, `quartz`
 
 ID規則:
 
@@ -70,6 +70,8 @@ ID規則:
 - 母岩内block: item IDに `/<tfc_rock>`、`/netherrack`、`/endstone` を付ける。
 - 地表サンプル: `tfcmu2:ore/small_<ore>`
 - `small_fluorite` はgroundcover blockのみでblock itemを持たない。
+- QuartzはTFCのRuby等と同じ非品位宝石鉱石として、全TFC母岩の `tfcmu2:ore/quartz/<tfc_rock>` blockを持つ。small、Nether、End版は持たない。
+- Quartz block modelは `tfcmu2:block/ore/quartz` overlayを参照する。overlay PNGは別途提供される正式素材を使用する。
 
 `tfcorewashing` 導入時のみ、全品位あり鉱石へ次の形状を追加する。
 
@@ -79,7 +81,7 @@ IDは `tfcmu2:metal/<form>/<ore>` とする。
 
 Gem関連:
 
-- raw Quartz: `tfcmu2:ore/quartz`、tag `c:ores/quartz`
+- raw Quartz item/block: `tfcmu2:ore/quartz` / `tfcmu2:ore/quartz/<tfc_rock>`、tag `c:ores/quartz`
 - Cut Quartz: `tfcmu2:gem/cut_quartz`、tag `c:gems/quartz`
 - Quartzをsandpaperで研磨してCut Quartzにする。
 - Fluorite Powder: `tfcmu2:powder/fluorite`
@@ -204,6 +206,8 @@ out.a = x.a
 
 この方式はTFC側の形状と陰影位置を保ちながら、元素材のshadow、mid、highlight、彩度、色相変化の分布を移す。元素材と生成物の輝度分位・平均彩度を比較し、分布が大きく崩れていないことを確認する。
 
+plated blockだけは面積の大きい模様でコントラストが過剰にならないよう、`p' = 0.5 + (p - 0.5) * 0.55` として元素材パレットの中央55%を使う。item、More Items、ingot pile、Ore Washingにはこの圧縮を適用しない。
+
 ### 11.2 金属・More Items
 
 形状ベース:
@@ -215,10 +219,14 @@ out.a = x.a
 
 - Immersive Engineering: `aluminum`, `constantan`, `electrum`, `lead`, `uranium`
 - Iron's Spells 'n Spellbooks: `mithril`, `arcane`
-- TFC Metallum U: `antimony`, `cobalt`, `compressed_iron`, `high_carbon_tungsten_steel`, `iridium`, `osmiridium`, `osmium`, `platinum`, `refined_glowstone`, `refined_obsidian`, `solder`, `titanium`, `tungsten`, `tungsten_steel`
+- PneumaticCraft: Repressurized: `compressed_iron`
+- Mekanism Extras: `naquadah`
+- Mekanism: `osmium`, `refined_glowstone`, `refined_obsidian`
+- TFC Metallum U: `antimony`, `cobalt`, `high_carbon_tungsten_steel`, `iridium`, `osmiridium`, `platinum`, `solder`, `titanium`, `tungsten`, `tungsten_steel`
 - TFC Metallum 1.12.2: `lithium`
 - Minecraft: `netherite`
-- `naquadah` は実素材がないため、固定commit `4b6a2316` の初期ingotを基準にhighlightを補って使用する。
+
+Metallumが他Modの素材を移植している場合は、Metallum版ではなく移植元Mod本体のingotを優先する。全金属にsourceを明示し、現在の生成済みtextureをsourceへフォールバックさせない。
 
 生成script:
 
@@ -258,6 +266,12 @@ python3 tools/textures/regenerate_ore_washing.py
 
 ```bash
 python3 tools/textures/regenerate_misc.py
+```
+
+Quartzの母岩別blockstate、model、loot、tag、translationは次で再生成する。このscriptはoverlay PNGを生成しない。
+
+```bash
+python3 tools/resources/generate_quartz_ore.py
 ```
 
 ## 12. 主要コード

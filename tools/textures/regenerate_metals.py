@@ -1,17 +1,13 @@
 from __future__ import annotations
 
-import subprocess
 import sys
-from io import BytesIO
 from pathlib import Path
-
-from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from color_transfer import load_png, load_zip_png, restore_reference_highlights, save_png, transfer_palette
+from color_transfer import load_png, load_zip_png, save_png, transfer_palette
 
 
 ASSETS = ROOT / "shared/src/main/resources/assets"
@@ -24,25 +20,44 @@ MORE_ITEMS_JAR = ROOT / ".tmp/tfc_more_items/TFC-items-1.21.1-neoforge-1.2.1.jar
 IE_JAR = ROOT / ".tmp/immersive_engineering/ImmersiveEngineering-1.21.1-12.4.2-194.jar"
 LEGACY_METALLUM_JAR = ROOT / ".tmp/tfc_metallum_legacy/TFC-Metallum-MC1.12.2-1.4.2.jar"
 METALLUM_U_JAR = ROOT / ".tmp/tfc_metallum_u/TFC Metallum 1.18.2-1.0.8.jar"
+PNEUMATICCRAFT_JAR = ROOT / ".tmp/pneumaticcraft/pneumaticcraft-repressurized-8.2.20+mc1.21.1.jar"
+MEKANISM_JAR = ROOT / ".tmp/mekanism/Mekanism-1.21.1-10.7.19.85.jar"
+MEKANISM_EXTRAS_JAR = ROOT / ".tmp/mekanism_extras/mekanism_extras-1.21.1-1.4.0.jar"
 MINECRAFT_JAR = Path.home() / ".gradle/caches/neoformruntime/artifacts/minecraft_1.21.1_client.jar"
-REFERENCE_COMMIT = "4b6a2316"
+PLATED_BLOCK_RANK_SCALE = 0.55
 
 IE_METALS = {"aluminum", "constantan", "electrum", "lead", "uranium"}
 IRON_SPELLS_METALS = {"mithril", "arcane"}
 METALLUM_U_METALS = {
     "antimony",
-    "compressed_iron",
     "high_carbon_tungsten_steel",
     "iridium",
     "osmiridium",
-    "osmium",
     "platinum",
-    "refined_glowstone",
-    "refined_obsidian",
     "solder",
     "titanium",
     "tungsten",
     "tungsten_steel",
+}
+
+ORIGINAL_MOD_SOURCES = {
+    "compressed_iron": (
+        PNEUMATICCRAFT_JAR,
+        "assets/pneumaticcraft/textures/item/ingot_iron_compressed.png",
+    ),
+    "naquadah": (
+        MEKANISM_EXTRAS_JAR,
+        "assets/mekanism_extras/textures/item/ingot_naquadah.png",
+    ),
+    "osmium": (MEKANISM_JAR, "assets/mekanism/textures/item/ingot_osmium.png"),
+    "refined_glowstone": (
+        MEKANISM_JAR,
+        "assets/mekanism/textures/item/ingot_refined_glowstone.png",
+    ),
+    "refined_obsidian": (
+        MEKANISM_JAR,
+        "assets/mekanism/textures/item/ingot_refined_obsidian.png",
+    ),
 }
 
 FORM_BASES = {
@@ -63,19 +78,9 @@ FORM_BASES = {
 }
 
 
-def git_reference(metal: str) -> list[tuple[int, int, int, int]]:
-    relative = f"shared/src/main/resources/assets/tfcmu2/textures/item/metal/ingot/{metal}.png"
-    data = subprocess.run(
-        ["git", "show", f"{REFERENCE_COMMIT}:{relative}"],
-        cwd=ROOT,
-        check=True,
-        stdout=subprocess.PIPE,
-    ).stdout
-    with Image.open(BytesIO(data)) as image:
-        return list(image.convert("RGBA").get_flattened_data())
-
-
 def source_pixels(metal: str) -> list[tuple[int, int, int, int]]:
+    if metal in ORIGINAL_MOD_SOURCES:
+        return load_zip_png(*ORIGINAL_MOD_SOURCES[metal])[1]
     if metal in IE_METALS:
         return load_zip_png(
             IE_JAR, f"assets/immersiveengineering/textures/item/metal_ingot_{metal}.png"
@@ -96,7 +101,7 @@ def source_pixels(metal: str) -> list[tuple[int, int, int, int]]:
         return load_zip_png(
             MINECRAFT_JAR, "assets/minecraft/textures/item/netherite_ingot.png"
         )[1]
-    return restore_reference_highlights(git_reference(metal))
+    raise ValueError(f"No source texture configured for metal: {metal}")
 
 
 def main() -> None:
@@ -114,15 +119,24 @@ def main() -> None:
                 save_png(target, size, transfer_palette(base, sources[metal]))
                 generated += 1
 
-    for namespace, form, member in (
-        ("tfcmu2", "block", "assets/tfc/textures/block/metal/block/wrought_iron.png"),
-        ("tfc", "smooth", "assets/tfc/textures/block/metal/smooth/wrought_iron.png"),
+    for namespace, form, member, rank_scale in (
+        (
+            "tfcmu2",
+            "block",
+            "assets/tfc/textures/block/metal/block/wrought_iron.png",
+            PLATED_BLOCK_RANK_SCALE,
+        ),
+        ("tfc", "smooth", "assets/tfc/textures/block/metal/smooth/wrought_iron.png", 1.0),
     ):
         size, base = load_zip_png(TFC_JAR, member)
         for metal in metals:
             target = ASSETS / f"{namespace}/textures/block/metal/{form}/{metal}.png"
             if target.exists():
-                save_png(target, size, transfer_palette(base, sources[metal]))
+                save_png(
+                    target,
+                    size,
+                    transfer_palette(base, sources[metal], rank_scale=rank_scale),
+                )
                 generated += 1
 
     print(f"Regenerated {generated} metal textures for {len(metals)} metals.")

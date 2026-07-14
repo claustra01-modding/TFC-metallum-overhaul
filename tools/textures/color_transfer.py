@@ -41,11 +41,6 @@ def lerp(first: tuple[int, int, int], second: tuple[int, int, int], amount: floa
     return tuple(round(first[index] + (second[index] - first[index]) * amount) for index in range(3))
 
 
-def smoothstep(edge0: float, edge1: float, value: float) -> float:
-    amount = max(0.0, min(1.0, (value - edge0) / (edge1 - edge0)))
-    return amount * amount * (3 - 2 * amount)
-
-
 def sample_palette(source: list[Pixel], percentile: float) -> tuple[int, int, int]:
     position = percentile * (len(source) - 1)
     lower = int(position)
@@ -57,7 +52,11 @@ def transfer_palette(
     base_pixels: list[Pixel],
     source_pixels: list[Pixel],
     hidden_indices: set[int] | None = None,
+    rank_scale: float = 1.0,
 ) -> list[Pixel]:
+    if not 0 < rank_scale <= 1:
+        raise ValueError("rank_scale must be greater than 0 and at most 1")
+
     hidden = hidden_indices or set()
     source = sorted(
         (pixel for pixel in source_pixels if pixel[3] > 0),
@@ -87,43 +86,6 @@ def transfer_palette(
             lower = bisect_left(visible_luminances, value)
             upper = bisect_right(visible_luminances, value) - 1
             percentile = ((lower + upper) * 0.5) / last
+        percentile = 0.5 + (percentile - 0.5) * rank_scale
         output.append((*sample_palette(source, percentile), pixel[3]))
     return output
-
-
-def restore_reference_highlights(source_pixels: list[Pixel]) -> list[Pixel]:
-    visible = sorted(
-        (pixel for pixel in source_pixels if pixel[3] > 0),
-        key=lambda pixel: (luminance(pixel), pixel[0], pixel[1], pixel[2]),
-    )
-    positions: dict[tuple[int, int, int], list[float]] = {}
-    last = max(1, len(visible) - 1)
-    for rank, pixel in enumerate(visible):
-        positions.setdefault(pixel[:3], []).append(rank / last)
-
-    output: list[Pixel] = []
-    for pixel in source_pixels:
-        if pixel[3] == 0:
-            output.append(pixel)
-            continue
-        percentiles = positions[pixel[:3]]
-        percentile = sum(percentiles) / len(percentiles)
-        color = pixel[:3]
-        shadow = 0.08 * (1 - smoothstep(0.0, 0.18, percentile))
-        if shadow > 0:
-            color = tuple(round(channel * (1 - shadow)) for channel in color)
-        highlight = 0.24 * smoothstep(0.58, 1.0, percentile)
-        color = lerp(color, (255, 255, 255), highlight)
-        output.append((*color, pixel[3]))
-    return output
-
-
-def quantile_luminances(pixels: list[Pixel], quantiles: tuple[float, ...]) -> tuple[float, ...]:
-    values = sorted(luminance(pixel) for pixel in pixels if pixel[3] > 0)
-    result = []
-    for quantile in quantiles:
-        position = quantile * (len(values) - 1)
-        lower = int(position)
-        upper = min(lower + 1, len(values) - 1)
-        result.append(values[lower] + (values[upper] - values[lower]) * (position - lower))
-    return tuple(result)

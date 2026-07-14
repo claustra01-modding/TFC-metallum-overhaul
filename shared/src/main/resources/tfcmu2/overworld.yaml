@@ -935,7 +935,7 @@ veins:
         underground_rarity: 1
         underground_count: 4
 
-  # TFC IE Crossover
+  # TFMCU2 IE-derived ores
   - tfcmu2:vein/surface_bauxite:
       blocks:
         - block: tfcmu2:ore/{tier}_bauxite/{rock}

@@ -54,13 +54,6 @@ TFC Metallum Unofficial 2.
     side="BOTH"
 
 [[dependencies.${mod_id}]]
-    modId="tfc_ie_addon"
-    mandatory=false
-    versionRange="[0,)"
-    ordering="AFTER"
-    side="BOTH"
-
-[[dependencies.${mod_id}]]
     modId="jei"
     mandatory=false
     versionRange="[0,)"

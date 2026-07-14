@@ -1,0 +1,10 @@
+{
+  "type": "tfc:quern",
+  "ingredient": {
+    "item": "tfcmu2:ore/fluorite"
+  },
+  "result": {
+    "count": 4,
+    "id": "tfcmu2:powder/fluorite"
+  }
+}

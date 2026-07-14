@@ -100,9 +100,10 @@ ID規則:
 ### 1.3 Gem鉱石
 
 - Quartz: `tfcmu2:ore/quartz`
-- Cut Quartz: `tfcmu2:gem/quartz`
+- Cut Quartz: `tfcmu2:gem/cut_quartz`
 - Quartzをsandpaperで研磨してCut Quartzにする。
 - common tagはそれぞれ `c:ores/quartz`、`c:gems/quartz` を使う。
+- `tfcmu2:powder/fluorite` はFluoriteをquernで粉砕して4個生成する。`tfc:gem_powders` と `tfc:bowl_powders` に含める。
 
 ## 2. `tfc` 由来（compat展開）
 
@@ -328,7 +329,9 @@ compat鉱石（`tfc` / `firmalife`）:
 - ハイライト調整時は、パレット抽出の閾値や `highlight_mix` / `specular_mix` の係数を更新して全対象形状を再生成する。
 - `cobalt` 金属フォームと `cobaltite` 鉱石テクスチャは TFC Metallum U（`tfc_metallum`）の cobalt / cobaltite テクスチャを元素材として使う。
 - `lithium` 金属フォームは TFC Metallum 1.12.2の lithium ingotから代表色を抽出し、通常版（単色式）で生成する。`spodumene` の鉱石item textureとblock overlayも同Modの素材を使う。
-- `aluminum`, `constantan`, `electrum`, `lead`, `uranium` はTFC IE Crossoverのdouble ingotから色またはパレットを抽出する。`bauxite`, `galena`, `uraninite` の鉱石item textureとblock overlay、およびQuartzのraw textureは同Modの素材を使う。
+- `aluminum`, `constantan`, `electrum`, `lead`, `uranium` はImmersive Engineering本体の `metal_ingot_<metal>.png` から色またはパレットを抽出する。Electrumは高輝度式、ほか4金属は通常版で生成する。
+- `bauxite`, `galena`, `uraninite` の鉱石item textureとblock overlay、およびCut Quartz textureはTFC IE Crossoverの素材を使う。
+- Cut QuartzはTFC IE CrossoverのQuartz Shardをそのまま使い、raw QuartzはTFC `item/ore/amethyst` の形状をQuartz色へ変換する。Fluorite PowderはTFC `item/powder/graphite` の形状をFluorite色へ変換する。
 - `mithril` と `arcane` の金属形状は、Iron's Spells 'n Spellbooks の ingot テクスチャ（`mithril_ingot.png`, `arcane_ingot.png`）から抽出した色を使い、高輝度式で wrought iron ベースを再着色する。Iron's Spells のテクスチャ自体はリポジトリへコピーしない。
 - `mithril_matrix` は `mithril` 対応の品位あり鉱石。鉱石アイテムと overlay テクスチャは、正式素材が用意されるまで高輝度式の仮素材を使う。
 - ingot / double ingot の pile は、TFC 側の soft metal texture lookup により `tfc:block/metal/smooth/<metal>` を参照する。この `smooth` テクスチャは `tfc` 名前空間に置き、金属テクスチャと同じ方式で生成する。対象 TFC バージョンが sheet pile に対応しない限り、sheet pile 用アセットは追加しない。

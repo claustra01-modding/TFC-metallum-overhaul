@@ -2694,6 +2694,7 @@
   "block.tfcmu2.ore.rich_uraninite.schist.prospected": "Uraninite",
   "block.tfcmu2.ore.rich_uraninite.gneiss.prospected": "Uraninite",
   "block.tfcmu2.ore.rich_uraninite.marble.prospected": "Uraninite",
-  "item.tfcmu2.gem.quartz": "Cut Quartz",
-  "item.tfcmu2.ore.quartz": "Quartz"
+  "item.tfcmu2.ore.quartz": "Quartz",
+  "item.tfcmu2.gem.cut_quartz": "Cut Quartz",
+  "item.tfcmu2.powder.fluorite": "Fluorite Powder"
 }

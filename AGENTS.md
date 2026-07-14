@@ -81,8 +81,8 @@ ID規則:
 - 品位なしitem: `tfcm:ore/<ore>`
 - 母岩内block: item IDに `/<tfc_rock>`、`/netherrack`、`/endstone` を付ける。
 - 地表サンプル: `tfcm:ore/small_<ore>`
-- `small_fluorite` はgroundcover blockのみでblock itemを持たない。
-- QuartzはTFCのRuby等と同じ非品位宝石鉱石として、全TFC母岩の `tfcm:ore/quartz/<tfc_rock>` blockを持つ。small、Nether、End版は持たない。
+- `small_fluorite` と `small_quartz` はgroundcover blockのみでblock itemを持たない。
+- QuartzはTFCのRuby等と同じ非品位宝石鉱石として、全TFC母岩の `tfcm:ore/quartz/<tfc_rock>` blockと `tfcm:ore/small_quartz` groundcover blockを持つ。Nether、End版は持たない。
 - Quartz block modelは `tfcm:block/ore/quartz` overlayを参照する。overlay PNGは別途提供される正式素材を使用する。
 
 `tfcorewashing` 導入時のみ、全品位あり鉱石へ次の形状を追加する。

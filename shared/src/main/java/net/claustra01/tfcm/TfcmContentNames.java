@@ -83,6 +83,7 @@ public final class TfcmContentNames {
         "nether_quartz",
         "opal",
         "pyrite",
+        "quartz",
         "ruby",
         "saltpeter",
         "sapphire",

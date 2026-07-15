@@ -28,6 +28,7 @@ PNEUMATICCRAFT_JAR = ROOT / ".tmp/pneumaticcraft/pneumaticcraft-repressurized-8.
 MEKANISM_JAR = ROOT / ".tmp/mekanism/Mekanism-1.21.1-10.7.19.85.jar"
 MEKANISM_EXTRAS_JAR = ROOT / ".tmp/mekanism_extras/mekanism_extras-1.21.1-1.4.0.jar"
 THERMAL_FOUNDATION_JAR = ROOT / ".tmp/thermal_foundation/thermal_foundation-1.20.1-11.0.6.70.jar"
+EMBERS_REIGNITED_JAR = ROOT / ".tmp/embers_reignited/embers-reignited-1.21.1-1.5.5.jar"
 TFC_METAL_TOOLS_JAR = ROOT / ".tmp/optional_compat/tfc_metal_tools.jar"
 TFC_HOT_OR_NOT_JAR = ROOT / ".tmp/optional_compat/tfc_hot_or_not.jar"
 MINECRAFT_JAR = Path.home() / ".gradle/caches/neoformruntime/artifacts/minecraft_1.21.1_client.jar"
@@ -66,6 +67,7 @@ ORIGINAL_MOD_SOURCES = {
         "assets/mekanism/textures/item/ingot_refined_obsidian.png",
     ),
     "invar": (THERMAL_FOUNDATION_JAR, "assets/thermal/textures/item/invar_ingot.png"),
+    "dawnstone": (EMBERS_REIGNITED_JAR, "assets/embers/textures/item/ingot_dawnstone.png"),
 }
 
 FORM_BASES = {

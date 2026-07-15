@@ -26,7 +26,8 @@ public enum TfcmMetalSpec {
     TUNGSTEN("tungsten", Rarity.EPIC, 0x585F6B, false),
     SOLDER("solder", Rarity.UNCOMMON, 0x888888, false),
     TUNGSTEN_STEEL("tungsten_steel", Rarity.EPIC, 0x2F353E, true),
-    NETHERITE("netherite", Rarity.RARE, 0x111111, true);
+    NETHERITE("netherite", Rarity.RARE, 0x111111, true),
+    DAWNSTONE("dawnstone", Rarity.UNCOMMON, 0xB18143, false);
 
     private final String serializedName;
     private final Rarity rarity;

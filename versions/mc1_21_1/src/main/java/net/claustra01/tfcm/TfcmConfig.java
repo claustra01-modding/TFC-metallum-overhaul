@@ -19,7 +19,7 @@ public final class TfcmConfig {
             builder.push("worldgen");
             enableCustomVeinGeneration = builder
                 .comment(
-                    "If true, TFCM will replace TFC's '#tfc:in_biome/veins' placed features with veins loaded from",
+                    "If true, TFCM will replace TFC ore veins and TFCM's bundled geodes with worldgen loaded from",
                     "config/tfcm/{overworld,nether,end}.yaml. Changes require a full game restart."
                 )
                 .define("enableCustomVeinGeneration", false);

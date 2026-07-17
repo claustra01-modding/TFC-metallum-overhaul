@@ -1109,3 +1109,29 @@ veins:
         depth: 35
         underground_rarity: 1
         underground_count: 4
+
+geodes:
+  - tfcm:quartz_geode:
+      type: tfcm:quartz_geode
+      ymin: -48
+      ymax: 32
+      rarity: 300
+      outer: tfc:rock/hardened/basalt
+      middle: tfc:rock/raw/quartzite
+      inner:
+        - block: tfcm:mineral/budding_quartz
+          weight: 2
+        - block: tfcm:mineral/quartz_block
+          weight: 5
+        - block: tfc:rock/raw/quartzite
+      filling:
+        - block: minecraft:air
+      inner_placements:
+        - block: tfcm:mineral/quartz_cluster
+          weight: 1
+        - block: tfcm:mineral/large_quartz_bud
+          weight: 3
+        - block: tfcm:mineral/medium_quartz_bud
+          weight: 5
+        - block: tfcm:mineral/small_quartz_bud
+          weight: 8

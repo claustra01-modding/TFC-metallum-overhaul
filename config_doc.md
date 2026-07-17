@@ -1,6 +1,6 @@
-# カスタム鉱脈設定仕様
+# カスタムworldgen設定仕様
 
-TFCMは、Minecraftのconfigディレクトリにある次のファイルからカスタム鉱脈を読み込む。
+TFCMは、Minecraftのconfigディレクトリにある次のファイルからカスタム鉱脈と晶洞を読み込む。
 
 - `config/tfcm/overworld.yaml`
 - `config/tfcm/nether.yaml`
@@ -20,13 +20,15 @@ enableCustomVeinGeneration = true
 
 設定変更後はゲームを完全に再起動する。
 
-- Overworldでは、TFCの通常鉱脈を `overworld.yaml` の鉱脈で置き換える。砂利、岩脈、ジオードなど、同じfeature tag内の鉱脈以外の要素は維持される。
-- NetherとEndでは、それぞれのディメンションのbiomeへ設定した鉱脈を追加する。
+- Overworldでは、TFCの通常鉱脈を `overworld.yaml` の鉱脈で置き換える。砂利や岩脈など、同じfeature tag内の鉱脈・TFCM晶洞以外の要素は維持される。
+- custom worldgen有効時は、data packで定義されたTFCM標準晶洞を生成しない。各ファイルの `geodes` に定義した晶洞だけを生成する。
+- NetherとEndでは、それぞれのディメンションのbiomeへ設定した鉱脈と晶洞を追加する。
 - 設定が空、または有効な鉱脈が1つもない場合、OverworldはTFCの標準鉱脈へフォールバックする。
 
 ## 基本構造
 
 ルートキーは `veins` とし、その下を鉱脈IDのリストにする。
+`veins` と後述の `geodes` の記述順序は問わない。空の節は `veins: []` / `geodes: []` とも記述できる。
 
 ```yaml
 veins:
@@ -210,9 +212,58 @@ indicator:
 
 `indicator.block` がない場合、その `indicator` セクションは無効として扱われる。
 
+## 晶洞
+
+晶洞は各ファイルのルートキー `geodes` に定義する。省略または空にしたディメンションでは、custom worldgen有効時にTFCM晶洞を生成しない。
+
+```yaml
+geodes:
+  - tfcm:quartz_geode:
+      type: tfcm:quartz_geode
+      ymin: -48
+      ymax: 32
+      rarity: 300
+      outer: tfc:rock/hardened/basalt
+      middle: tfc:rock/raw/quartzite
+      inner:
+        - block: tfcm:mineral/budding_quartz
+          weight: 2
+        - block: tfcm:mineral/quartz_block
+          weight: 5
+        - block: tfc:rock/raw/quartzite
+      filling:
+        - block: minecraft:air
+      inner_placements:
+        - block: tfcm:mineral/quartz_cluster
+          weight: 1
+        - block: tfcm:mineral/large_quartz_bud
+          weight: 3
+        - block: tfcm:mineral/medium_quartz_bud
+          weight: 5
+        - block: tfcm:mineral/small_quartz_bud
+          weight: 8
+```
+
+| キー | 必須 | 既定値 | 内容 |
+| --- | --- | --- | --- |
+| `type` | はい | なし | 晶洞feature type。現在は `tfcm:quartz_geode` |
+| `ymin` | はい | なし | 配置高度の下限。`min_y` も使用可能 |
+| `ymax` | はい | なし | 配置高度の上限。`max_y` も使用可能 |
+| `rarity` | はい | なし | 平均何chunkに1回配置を試行するか。`0` より大きい整数 |
+| `outer` | はい | なし | 外殻のブロックID |
+| `middle` | はい | なし | 中間層のブロックID |
+| `inner` | はい | なし | 内層のブロック候補 |
+| `filling` | はい | なし | 晶洞内部を満たすブロック候補。空洞は `minecraft:air` |
+| `inner_placements` | はい | なし | 内壁へ配置するcluster・bud等の候補 |
+
+`inner`、`filling`、`inner_placements` は1件以上のリストで、各要素は `block` と省略可能な整数 `weight` を持つ。`weight` の既定値は `1` で、`0` より大きい必要がある。相対weightなので合計を揃える必要はない。
+
+晶洞IDは重複検出とログ表示に使われる。ブロックIDは完全なresource locationで指定し、鉱脈の `{rock}` / `{tier}` テンプレートは使用しない。参照先Modが未導入、type・ブロックが未登録、必須値や数値が不正な定義は読み飛ばされる。
+
 ## 依存Modとエラー処理
 
 - `blocks[].block` または `indicator.block` が参照する名前空間のModがロードされていない場合、その鉱脈全体を読み飛ばす。
+- 晶洞のtypeまたはいずれかのブロックが参照する名前空間のModがロードされていない場合、その晶洞全体を読み飛ばす。
 - 存在しない岩石、出力ブロック、indicatorブロックは警告を記録し、その候補を生成しない。
 - 必須値の欠落、不正な数値、未対応typeを含む鉱脈は警告を記録して読み飛ばす。他の有効な鉱脈は引き続き読み込まれる。
 - `#` 以降はコメントとして扱われる。インデントにはスペースを使用する。

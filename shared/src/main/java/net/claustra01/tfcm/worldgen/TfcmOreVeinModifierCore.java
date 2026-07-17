@@ -52,6 +52,7 @@ public final class TfcmOreVeinModifierCore {
         if (customVeinsEnabled) {
             if (isNether) {
                 final List<Holder<PlacedFeature>> customVeins = TfcmCustomVeins.resolveNetherPlacedFeatures(placedFeatures);
+                final List<Holder<PlacedFeature>> customGeodes = TfcmCustomVeins.resolveNetherGeodes();
                 if (!customVeins.isEmpty()) {
                     if (LOGGED_CUSTOM_NETHER_STATUS.compareAndSet(false, true)) {
                         LOGGER.info("Custom vein generation enabled: adding {} nether custom veins to minecraft:is_nether biomes.", customVeins.size());
@@ -60,10 +61,12 @@ public final class TfcmOreVeinModifierCore {
                 } else if (LOGGED_CUSTOM_NETHER_STATUS.compareAndSet(false, true)) {
                     LOGGER.info("Custom vein generation enabled, but no nether custom veins were loaded.");
                 }
+                addUniqueFeatures(ores, customGeodes);
                 return;
             }
             if (isEnd) {
                 final List<Holder<PlacedFeature>> customVeins = TfcmCustomVeins.resolveEndPlacedFeatures(placedFeatures);
+                final List<Holder<PlacedFeature>> customGeodes = TfcmCustomVeins.resolveEndGeodes();
                 if (!customVeins.isEmpty()) {
                     if (LOGGED_CUSTOM_END_STATUS.compareAndSet(false, true)) {
                         LOGGER.info("Custom vein generation enabled: adding {} end custom veins to minecraft:is_end biomes.", customVeins.size());
@@ -72,6 +75,7 @@ public final class TfcmOreVeinModifierCore {
                 } else if (LOGGED_CUSTOM_END_STATUS.compareAndSet(false, true)) {
                     LOGGER.info("Custom vein generation enabled, but no end custom veins were loaded.");
                 }
+                addUniqueFeatures(ores, customGeodes);
                 return;
             }
         }
@@ -83,11 +87,12 @@ public final class TfcmOreVeinModifierCore {
 
         if (customVeinsEnabled) {
             final List<Holder<PlacedFeature>> customVeins = TfcmCustomVeins.resolveOverworldPlacedFeatures(placedFeatures);
+            final List<Holder<PlacedFeature>> customGeodes = TfcmCustomVeins.resolveOverworldGeodes();
             if (!customVeins.isEmpty()) {
                 if (LOGGED_CUSTOM_OVERWORLD_STATUS.compareAndSet(false, true)) {
                     LOGGER.info("Custom vein generation enabled: replacing ore veins from #tfc:in_biome/veins with {} custom veins.", customVeins.size());
                 }
-                // Only replace actual ore veins. Keep other features from the veins tag (ex: gravel, dikes, geodes) intact.
+                // Keep gravel, dikes, and geodes owned by TFC; the TFCM geode is handled below.
                 replaceOreVeinsFromTagWithValues(ores, placedFeatures, VEINS_TAG, "#tfc:in_biome/veins", customVeins);
             } else {
                 if (LOGGED_CUSTOM_OVERWORLD_STATUS.compareAndSet(false, true)) {
@@ -96,6 +101,8 @@ public final class TfcmOreVeinModifierCore {
                 // If enabled but no custom veins are available, keep default behavior instead of wiping veins.
                 replaceFromTag(ores, placedFeatures, VEINS_TAG, "#tfc:in_biome/veins");
             }
+            // The bundled TFCM geode is disabled with custom worldgen. Only geodes declared in YAML are inserted.
+            replaceTfcmGeodesFromTagWithValues(ores, placedFeatures, VEINS_TAG, "#tfc:in_biome/veins", customGeodes);
         } else {
             replaceFromTag(ores, placedFeatures, VEINS_TAG, "#tfc:in_biome/veins");
         }
@@ -186,6 +193,35 @@ public final class TfcmOreVeinModifierCore {
         }
 
         target.removeIf(holder -> holder.unwrapKey().map(key -> oreVeinKeys.contains(key.location())).orElse(false));
+        target.addAll(insertAt, values);
+    }
+
+    private static void replaceTfcmGeodesFromTagWithValues(List<Holder<PlacedFeature>> target, Registry<PlacedFeature> placedFeatures,
+                                                            TagKey<PlacedFeature> tagKey, String owner,
+                                                            List<Holder<PlacedFeature>> values) {
+        final Optional<HolderSet.Named<PlacedFeature>> tagOpt = placedFeatures.getTag(tagKey);
+        if (tagOpt.isEmpty()) {
+            LOGGER.warn("Missing placed_feature tag {} referenced by {}", tagKey.location(), owner);
+            return;
+        }
+
+        final Set<ResourceLocation> geodeKeys = new HashSet<>();
+        for (Holder<PlacedFeature> holder : tagOpt.get()) {
+            if (holder.value().feature().value().config() instanceof TfcmGeodeConfig) {
+                holder.unwrapKey().ifPresent(key -> geodeKeys.add(key.location()));
+            }
+        }
+
+        int insertAt = target.size();
+        for (int i = 0; i < target.size(); i++) {
+            final Optional<ResourceKey<PlacedFeature>> key = target.get(i).unwrapKey();
+            if (key.isPresent() && geodeKeys.contains(key.get().location())) {
+                insertAt = i;
+                break;
+            }
+        }
+
+        target.removeIf(holder -> holder.unwrapKey().map(key -> geodeKeys.contains(key.location())).orElse(false));
         target.addAll(insertAt, values);
     }
 

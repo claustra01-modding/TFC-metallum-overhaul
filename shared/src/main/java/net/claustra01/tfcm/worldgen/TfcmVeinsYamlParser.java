@@ -217,16 +217,20 @@ public final class TfcmVeinsYamlParser {
         final List<String> lines = Files.readAllLines(yamlPath, StandardCharsets.UTF_8);
         int i = 0;
 
-        // Find 'veins:' root key (ignore blanks/comments).
+        // Root section order is intentionally irrelevant.
         while (i < lines.size()) {
-            final String trimmed = stripComment(lines.get(i)).trim();
-            if (!trimmed.isEmpty()) {
+            final String line = stripComment(lines.get(i));
+            final String trimmed = line.trim();
+            if (countIndent(line) == 0 && ("veins:".equals(trimmed) || "veins: []".equals(trimmed))) {
                 break;
             }
             i++;
         }
-        if (i >= lines.size() || !"veins:".equals(stripComment(lines.get(i)).trim())) {
-            LOGGER.warn("Expected root key 'veins:' in {}", yamlPath);
+        if (i >= lines.size()) {
+            LOGGER.info("No root key 'veins:' in {}", yamlPath);
+            return List.of();
+        }
+        if ("veins: []".equals(stripComment(lines.get(i)).trim())) {
             return List.of();
         }
         i++;
@@ -240,6 +244,9 @@ public final class TfcmVeinsYamlParser {
             }
             final int indent = countIndent(line);
             final String trimmed = line.trim();
+            if (indent == 0) {
+                break;
+            }
             if (!trimmed.startsWith("- ")) {
                 // Unexpected line at root; skip to be tolerant.
                 LOGGER.warn("Skipping unexpected line in {}: {}", yamlPath, trimmed);

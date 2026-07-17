@@ -21,7 +21,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import org.slf4j.Logger;
 
 /**
- * Loads custom veins from the mod config directory and builds
+ * Loads custom veins and geodes from the mod config directory and builds
  * direct placed features from them.
  * These features are inserted into biomes by {@link TfcmOreVeinBiomeModifier}
  * when enabled via config.
@@ -43,14 +43,23 @@ public final class TfcmCustomVeins {
     private static List<TfcmVeinsYamlParser.VeinDefinition> CACHED_OVERWORLD_DEFS = List.of();
     private static List<TfcmVeinsYamlParser.VeinDefinition> CACHED_NETHER_DEFS = List.of();
     private static List<TfcmVeinsYamlParser.VeinDefinition> CACHED_END_DEFS = List.of();
+    private static List<TfcmGeodesYamlParser.GeodeDefinition> CACHED_OVERWORLD_GEODE_DEFS = List.of();
+    private static List<TfcmGeodesYamlParser.GeodeDefinition> CACHED_NETHER_GEODE_DEFS = List.of();
+    private static List<TfcmGeodesYamlParser.GeodeDefinition> CACHED_END_GEODE_DEFS = List.of();
 
     private static List<net.minecraft.core.Holder<PlacedFeature>> CACHED_OVERWORLD_PLACED_FEATURES = List.of();
     private static List<net.minecraft.core.Holder<PlacedFeature>> CACHED_NETHER_PLACED_FEATURES = List.of();
     private static List<net.minecraft.core.Holder<PlacedFeature>> CACHED_END_PLACED_FEATURES = List.of();
+    private static List<net.minecraft.core.Holder<PlacedFeature>> CACHED_OVERWORLD_GEODES = List.of();
+    private static List<net.minecraft.core.Holder<PlacedFeature>> CACHED_NETHER_GEODES = List.of();
+    private static List<net.minecraft.core.Holder<PlacedFeature>> CACHED_END_GEODES = List.of();
 
     private static boolean BUILT_OVERWORLD_PLACED_FEATURES = false;
     private static boolean BUILT_NETHER_PLACED_FEATURES = false;
     private static boolean BUILT_END_PLACED_FEATURES = false;
+    private static boolean BUILT_OVERWORLD_GEODES = false;
+    private static boolean BUILT_NETHER_GEODES = false;
+    private static boolean BUILT_END_GEODES = false;
 
     private TfcmCustomVeins() {
     }
@@ -78,13 +87,22 @@ public final class TfcmCustomVeins {
         CACHED_OVERWORLD_DEFS = loadDefinitions("overworld", overworldSourcePath);
         CACHED_NETHER_DEFS = loadDefinitions("nether", netherPath);
         CACHED_END_DEFS = loadDefinitions("end", endPath);
+        CACHED_OVERWORLD_GEODE_DEFS = loadGeodeDefinitions("overworld", overworldSourcePath);
+        CACHED_NETHER_GEODE_DEFS = loadGeodeDefinitions("nether", netherPath);
+        CACHED_END_GEODE_DEFS = loadGeodeDefinitions("end", endPath);
 
         CACHED_OVERWORLD_PLACED_FEATURES = List.of();
         CACHED_NETHER_PLACED_FEATURES = List.of();
         CACHED_END_PLACED_FEATURES = List.of();
+        CACHED_OVERWORLD_GEODES = List.of();
+        CACHED_NETHER_GEODES = List.of();
+        CACHED_END_GEODES = List.of();
         BUILT_OVERWORLD_PLACED_FEATURES = false;
         BUILT_NETHER_PLACED_FEATURES = false;
         BUILT_END_PLACED_FEATURES = false;
+        BUILT_OVERWORLD_GEODES = false;
+        BUILT_NETHER_GEODES = false;
+        BUILT_END_GEODES = false;
     }
 
     public static List<net.minecraft.core.Holder<PlacedFeature>> resolvePlacedFeatures(net.minecraft.core.Registry<PlacedFeature> placedFeatures) {
@@ -127,6 +145,30 @@ public final class TfcmCustomVeins {
         return CACHED_END_PLACED_FEATURES;
     }
 
+    public static List<net.minecraft.core.Holder<PlacedFeature>> resolveOverworldGeodes() {
+        if (!BUILT_OVERWORLD_GEODES) {
+            CACHED_OVERWORLD_GEODES = buildGeodes(CACHED_OVERWORLD_GEODE_DEFS, "overworld");
+            BUILT_OVERWORLD_GEODES = true;
+        }
+        return CACHED_OVERWORLD_GEODES;
+    }
+
+    public static List<net.minecraft.core.Holder<PlacedFeature>> resolveNetherGeodes() {
+        if (!BUILT_NETHER_GEODES) {
+            CACHED_NETHER_GEODES = buildGeodes(CACHED_NETHER_GEODE_DEFS, "nether");
+            BUILT_NETHER_GEODES = true;
+        }
+        return CACHED_NETHER_GEODES;
+    }
+
+    public static List<net.minecraft.core.Holder<PlacedFeature>> resolveEndGeodes() {
+        if (!BUILT_END_GEODES) {
+            CACHED_END_GEODES = buildGeodes(CACHED_END_GEODE_DEFS, "end");
+            BUILT_END_GEODES = true;
+        }
+        return CACHED_END_GEODES;
+    }
+
     private static List<net.minecraft.core.Holder<PlacedFeature>> buildPlacedFeatures(List<TfcmVeinsYamlParser.VeinDefinition> defs, String scopeName) {
         // Build direct placed features lazily, after all builtin registries
         // (including other mods' Feature/Block entries) are available.
@@ -138,6 +180,18 @@ public final class TfcmCustomVeins {
                 built.add(net.minecraft.core.Holder.direct(placed));
             } catch (Exception e) {
                 LOGGER.error("Failed to build {} custom vein {}. Skipping.", scopeName, def.id(), e);
+            }
+        }
+        return List.copyOf(built);
+    }
+
+    private static List<net.minecraft.core.Holder<PlacedFeature>> buildGeodes(List<TfcmGeodesYamlParser.GeodeDefinition> defs, String scopeName) {
+        final List<net.minecraft.core.Holder<PlacedFeature>> built = new ArrayList<>(defs.size());
+        for (TfcmGeodesYamlParser.GeodeDefinition def : defs) {
+            try {
+                built.add(def.buildPlacedFeature());
+            } catch (Exception e) {
+                LOGGER.error("Failed to build {} custom geode {}. Skipping.", scopeName, def.id(), e);
             }
         }
         return List.copyOf(built);
@@ -190,6 +244,40 @@ public final class TfcmCustomVeins {
         return List.copyOf(accepted);
     }
 
+    private static List<TfcmGeodesYamlParser.GeodeDefinition> loadGeodeDefinitions(String scopeName, Path yamlPath) {
+        if (yamlPath == null || !Files.exists(yamlPath)) {
+            return List.of();
+        }
+
+        final TfcmGeodesYamlParser.ParseResult result;
+        try {
+            result = TfcmGeodesYamlParser.parseGeodes(yamlPath);
+        } catch (Exception e) {
+            LOGGER.error("Failed to parse {} custom geodes YAML at {}. Geodes for this scope will be skipped.", scopeName, yamlPath, e);
+            return List.of();
+        }
+        if (!result.sectionPresent() || result.definitions().isEmpty()) {
+            LOGGER.info("No {} custom geodes found in {}.", scopeName, yamlPath);
+            return List.of();
+        }
+
+        final Set<ResourceLocation> seen = new HashSet<>();
+        final List<TfcmGeodesYamlParser.GeodeDefinition> accepted = new ArrayList<>(result.definitions().size());
+        for (TfcmGeodesYamlParser.GeodeDefinition def : result.definitions()) {
+            final ResourceLocation outId = toTfcmId(def.id());
+            if (!seen.add(outId)) {
+                LOGGER.warn("Duplicate {} custom geode id {} (from {}), skipping.", scopeName, outId, def.id());
+                continue;
+            }
+            if (!canLoadGeodeDefinition(def)) {
+                continue;
+            }
+            accepted.add(def);
+        }
+        LOGGER.info("Loaded {} {} custom geodes from {}.", accepted.size(), scopeName, yamlPath);
+        return List.copyOf(accepted);
+    }
+
     private static List<String> defaultRocksForScope(String scopeName) {
         return switch (scopeName) {
             case "nether" -> List.of("netherrack");
@@ -214,6 +302,25 @@ public final class TfcmCustomVeins {
                     return false;
                 }
             }
+        }
+        return true;
+    }
+
+    private static boolean canLoadGeodeDefinition(TfcmGeodesYamlParser.GeodeDefinition def) {
+        for (String block : def.referencedBlocks()) {
+            final int colonIndex = block.indexOf(':');
+            if (colonIndex > 0) {
+                final String namespace = block.substring(0, colonIndex);
+                if (!"minecraft".equals(namespace) && !TfcmPlatform.isModLoaded(namespace)) {
+                    LOGGER.warn("Skipping custom geode {} because referenced mod '{}' is not loaded (block: {}).", def.id(), namespace, block);
+                    return false;
+                }
+            }
+        }
+        final String featureNamespace = def.type().getNamespace();
+        if (!"minecraft".equals(featureNamespace) && !TfcmPlatform.isModLoaded(featureNamespace)) {
+            LOGGER.warn("Skipping custom geode {} because feature mod '{}' is not loaded (type: {}).", def.id(), featureNamespace, def.type());
+            return false;
         }
         return true;
     }

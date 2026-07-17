@@ -210,6 +210,8 @@ model pathはregistry IDと同じ階層を基本とする。
 - 既存config互換のため、parserは旧 `block` とlist風 `tier` も受け入れる。
 - YAML parser本体は `shared/src/main/java`、TFC API差分は各versionの `TfcmVeinPlatform` に限定する。
 - bauxite、galena、uraniniteの鉱脈はCrossoverではなく `tfcm:ore/*` と `tfcm:ore/small_*` を生成する。
+- `overworld.yaml`、`nether.yaml`、`end.yaml` はルート `geodes` で晶洞も定義できる。晶洞定義はtype、Y範囲、rarity、outer、middle、weightedなinner/filling/inner_placementsを持つ。
+- custom worldgen有効時はdata pack由来のTFCM晶洞を除外し、configの `geodes` に定義された晶洞だけを対象ディメンションへ追加する。`geodes` がない、空、または有効な定義がない場合は晶洞を生成しない。
 
 ## 11. テクスチャ生成
 

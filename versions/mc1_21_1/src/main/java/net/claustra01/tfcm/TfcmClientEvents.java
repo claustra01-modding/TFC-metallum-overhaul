@@ -53,6 +53,11 @@ public final class TfcmClientEvents {
 
             // Loose ore pieces that have no native surface sample blocks (e.g. graphite)
             TfcmBlocks.COMPAT_SMALL_ORE_PIECES.values().forEach(block -> ItemBlockRenderTypes.setRenderLayer(block.get(), cutout));
+
+            ItemBlockRenderTypes.setRenderLayer(TfcmBlocks.QUARTZ_CLUSTER.get(), cutout);
+            ItemBlockRenderTypes.setRenderLayer(TfcmBlocks.LARGE_QUARTZ_BUD.get(), cutout);
+            ItemBlockRenderTypes.setRenderLayer(TfcmBlocks.MEDIUM_QUARTZ_BUD.get(), cutout);
+            ItemBlockRenderTypes.setRenderLayer(TfcmBlocks.SMALL_QUARTZ_BUD.get(), cutout);
         });
     }
 

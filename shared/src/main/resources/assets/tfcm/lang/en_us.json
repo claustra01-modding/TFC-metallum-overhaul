@@ -2962,5 +2962,11 @@
   "fluid.tfc.metal.dawnstone": "Dawnstone",
   "item.tfcm.bucket.metal.dawnstone": "Molten Dawnstone Bucket",
   "block.tfcm.metal.block.dawnstone_slab": "Dawnstone Plated Slab",
-  "block.tfcm.metal.block.dawnstone_stairs": "Dawnstone Plated Stairs"
+  "block.tfcm.metal.block.dawnstone_stairs": "Dawnstone Plated Stairs",
+  "block.tfcm.mineral.quartz_block": "Quartz Block",
+  "block.tfcm.mineral.budding_quartz": "Budding Quartz",
+  "block.tfcm.mineral.quartz_cluster": "Quartz Cluster",
+  "block.tfcm.mineral.large_quartz_bud": "Large Quartz Bud",
+  "block.tfcm.mineral.medium_quartz_bud": "Medium Quartz Bud",
+  "block.tfcm.mineral.small_quartz_bud": "Small Quartz Bud"
 }

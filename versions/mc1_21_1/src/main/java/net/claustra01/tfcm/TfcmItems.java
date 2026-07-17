@@ -26,6 +26,12 @@ public final class TfcmItems {
     public static final DeferredItem<Item> CUT_QUARTZ = ITEMS.register("gem/cut_quartz", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> FLUORITE_POWDER = ITEMS.register("powder/fluorite", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> QUARTZ_POWDER = ITEMS.register("powder/quartz", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<?> QUARTZ_BLOCK = ITEMS.registerSimpleBlockItem("mineral/quartz_block", TfcmBlocks.QUARTZ_BLOCK);
+    public static final DeferredItem<?> BUDDING_QUARTZ = ITEMS.registerSimpleBlockItem("mineral/budding_quartz", TfcmBlocks.BUDDING_QUARTZ);
+    public static final DeferredItem<?> QUARTZ_CLUSTER = ITEMS.registerSimpleBlockItem("mineral/quartz_cluster", TfcmBlocks.QUARTZ_CLUSTER);
+    public static final DeferredItem<?> LARGE_QUARTZ_BUD = ITEMS.registerSimpleBlockItem("mineral/large_quartz_bud", TfcmBlocks.LARGE_QUARTZ_BUD);
+    public static final DeferredItem<?> MEDIUM_QUARTZ_BUD = ITEMS.registerSimpleBlockItem("mineral/medium_quartz_bud", TfcmBlocks.MEDIUM_QUARTZ_BUD);
+    public static final DeferredItem<?> SMALL_QUARTZ_BUD = ITEMS.registerSimpleBlockItem("mineral/small_quartz_bud", TfcmBlocks.SMALL_QUARTZ_BUD);
     public static final Map<TfcmMetal, DeferredItem<Item>> METAL_DOUBLE_INGOTS = registerMetalItems("double_ingot", Metal.ItemType.DOUBLE_INGOT);
     public static final Map<TfcmMetal, DeferredItem<Item>> METAL_SHEETS = registerMetalItems("sheet", Metal.ItemType.SHEET);
     public static final Map<TfcmMetal, DeferredItem<Item>> METAL_DOUBLE_SHEETS = registerMetalItems("double_sheet", Metal.ItemType.DOUBLE_SHEET);

@@ -11,6 +11,9 @@ import net.dries007.tfc.common.blocks.GroundcoverBlock;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.util.Metal;
+import net.claustra01.tfcm.block.TfcmBuddingQuartzBlock;
+import net.minecraft.world.level.block.AmethystBlock;
+import net.minecraft.world.level.block.AmethystClusterBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -35,6 +38,22 @@ public final class TfcmBlocks {
     public static final Map<TfcmVanillaStone, Map<String, RegistryObject<Block>>> COMPAT_VANILLA_ORES = registerCompatVanillaOres();
     public static final Map<TfcmOre, RegistryObject<Block>> SMALL_ORES = registerSmallOres();
     public static final Map<String, RegistryObject<Block>> COMPAT_SMALL_ORE_PIECES = registerCompatSmallOrePieces();
+    public static final RegistryObject<AmethystBlock> QUARTZ_BLOCK = BLOCKS.register("mineral/quartz_block", () ->
+        new AmethystBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).strength(1.5F)
+            .sound(SoundType.STONE).requiresCorrectToolForDrops()));
+    public static final RegistryObject<AmethystClusterBlock> QUARTZ_CLUSTER = BLOCKS.register("mineral/quartz_cluster", () ->
+        new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY)
+            .noOcclusion().randomTicks().sound(SoundType.GLASS).strength(1.5F).lightLevel(state -> 5)));
+    public static final RegistryObject<AmethystClusterBlock> LARGE_QUARTZ_BUD = BLOCKS.register("mineral/large_quartz_bud", () ->
+        new AmethystClusterBlock(5, 3, BlockBehaviour.Properties.copy(QUARTZ_CLUSTER.get()).lightLevel(state -> 4)));
+    public static final RegistryObject<AmethystClusterBlock> MEDIUM_QUARTZ_BUD = BLOCKS.register("mineral/medium_quartz_bud", () ->
+        new AmethystClusterBlock(4, 3, BlockBehaviour.Properties.copy(QUARTZ_CLUSTER.get()).lightLevel(state -> 2)));
+    public static final RegistryObject<AmethystClusterBlock> SMALL_QUARTZ_BUD = BLOCKS.register("mineral/small_quartz_bud", () ->
+        new AmethystClusterBlock(3, 4, BlockBehaviour.Properties.copy(QUARTZ_CLUSTER.get()).lightLevel(state -> 1)));
+    public static final RegistryObject<TfcmBuddingQuartzBlock> BUDDING_QUARTZ = BLOCKS.register("mineral/budding_quartz", () ->
+        new TfcmBuddingQuartzBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).randomTicks()
+            .strength(1.5F).sound(SoundType.STONE).requiresCorrectToolForDrops(),
+            SMALL_QUARTZ_BUD, MEDIUM_QUARTZ_BUD, LARGE_QUARTZ_BUD, QUARTZ_CLUSTER));
 
     private TfcmBlocks() {
     }

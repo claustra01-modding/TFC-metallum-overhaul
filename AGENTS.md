@@ -98,6 +98,8 @@ Gem関連:
 - raw Quartz item/block: `tfcm:ore/quartz` / `tfcm:ore/quartz/<tfc_rock>`、tag `c:ores/quartz`
 - Cut Quartz: `tfcm:gem/cut_quartz`、tag `c:gems/quartz`
 - Quartzをsandpaperで研磨してCut Quartzにする。
+- Quartz晶洞は `tfcm:mineral/{quartz_block,budding_quartz,quartz_cluster,large_quartz_bud,medium_quartz_bud,small_quartz_bud}` で構成する。外殻はTFC hardened basalt、中間層はraw quartzite、内層はbudding quartz : quartz block : raw quartzite = 2 : 5 : 1とする。
+- Quartz晶洞はoverworldのvein配置へ追加し、Y -48から32に平均300chunkに1回生成する。Quartz Clusterは `tfcm:gem/cut_quartz` を2個落とす。
 - Fluorite Powder: `tfcm:powder/fluorite`
 - Quartz Powder: `tfcm:powder/quartz`
 - FluoriteまたはQuartzをquernで粉砕して対応するPowderを4個生成し、両方を `tfc:gem_powders` と `tfc:bowl_powders` に含める。
@@ -294,6 +296,7 @@ python3 tools/textures/regenerate_ore_washing.py
 
 - `bauxite`, `galena`, `uraninite` の鉱石item/block overlayとCut QuartzはTFC IE Crossover由来素材を使用する。
 - Cut QuartzはCrossoverのQuartz Shardをそのまま使う。
+- Quartz晶洞のblock/bud textureとmodel、生成形状はTFC IE Crossover 1.21.xを正本とする。
 - raw QuartzはTFC `item/ore/amethyst` 形状へCut Quartzのパレットを転写する。
 - Fluorite PowderとQuartz PowderはTFC `item/powder/amethyst` 形状へ各鉱石itemのパレットを転写する。
 - `cobaltite` と `spodumene` の鉱石素材は、それぞれTFC Metallum UとTFC Metallum 1.12.2由来とする。

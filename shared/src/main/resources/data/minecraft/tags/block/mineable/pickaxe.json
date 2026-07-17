@@ -1,5 +1,11 @@
 {
   "values": [
-    "#c:ores"
+    "#c:ores",
+    "tfcm:mineral/quartz_block",
+    "tfcm:mineral/budding_quartz",
+    "tfcm:mineral/quartz_cluster",
+    "tfcm:mineral/large_quartz_bud",
+    "tfcm:mineral/medium_quartz_bud",
+    "tfcm:mineral/small_quartz_bud"
   ]
 }

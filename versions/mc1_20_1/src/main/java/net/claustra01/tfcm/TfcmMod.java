@@ -25,6 +25,7 @@ public final class TfcmMod {
         if (FMLEnvironment.dist == Dist.CLIENT) {
             TfcmClientEvents.register(modEventBus);
         }
+        TfcmWorldgen.FEATURES.register(modEventBus);
         TfcmWorldgen.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
         TfcmFluids.FLUID_BLOCKS.register(modEventBus);
         TfcmFluids.BUCKET_ITEMS.register(modEventBus);

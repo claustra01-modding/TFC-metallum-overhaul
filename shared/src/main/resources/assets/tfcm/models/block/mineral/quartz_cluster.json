@@ -1,0 +1,8 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "tfcm:block/mineral/quartz_cluster",
+    "particle": "tfcm:block/mineral/quartz_cluster"
+  }
+}

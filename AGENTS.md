@@ -5,8 +5,8 @@
 - 仕様、形状、ID、有効化条件、生成規則を変更した場合はこのファイルを更新する。
 - 共通実装は `shared/src/main`、Minecraft・loader固有実装は `versions/<version>/src/main` に置く。
 - loader固有sourceをrootの `src` へ戻さない。
-- 依存Modのjar、展開物、比較画像、一時解析スクリプトはrootの `.tmp` に置く。
-- 再利用する保守ツールは `tools` に置き、生成物だけでなく再生成手順も維持する。
+- 依存Modのjar、展開物、比較画像、一時解析scriptはrootの `.tmp/` に置いてGit管理外にする。
+- `tools/textures/` は例外として正式な保守・再生成・検証toolをGit管理する。生成規則は本書とtoolの双方で維持する。
 - JSONはBOMなしUTF-8で保存する。
 - 既存リリースのregistry IDや名前空間を変更する場合は、ワールド互換性を最優先する。
 - 本書は作業規約と実装仕様を兼ねる。数値、ID、条件、例外、優先順位は残し、作業履歴とdataから機械的に得られる重複一覧は載せない。

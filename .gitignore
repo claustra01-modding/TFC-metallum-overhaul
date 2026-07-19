@@ -25,7 +25,7 @@ run-data
 
 repo
 
-.tmp
+.tmp/
 __pycache__/
 *.pyc
 .DS_Store

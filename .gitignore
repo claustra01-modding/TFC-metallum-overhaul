@@ -22,10 +22,11 @@ eclipse
 run
 runs
 run-data
+.vscode/
+.DS_Store
 
 repo
 
 .tmp/
 __pycache__/
 *.pyc
-.DS_Store

@@ -11,6 +11,7 @@
 - 既存リリースのregistry IDや名前空間を変更する場合は、ワールド互換性を最優先する。
 - 本書は作業規約と実装仕様を兼ねる。数値、ID、条件、例外、優先順位は残し、作業履歴とdataから機械的に得られる重複一覧は載せない。
 - READMEは利用者向けの名称、配布先、build入口に絞り、詳細仕様や作業履歴を重複掲載しない。
+- ライセンスと第三者表示はrootの `LICENCE` 一つへ統合し、別のlicense/noticeファイルを作らない。
 - 対象版の実JAR・公式ソースを確認し、client/server境界、optional依存なしのclass loading、無関係な既存差分を守る。
 - release用Mod ID、resource namespace、Java package、class prefixは `tfcm` / `Tfcm` に統一し、旧namespaceとの互換aliasは持たない。
 
@@ -305,7 +306,7 @@ python3 tools/textures/regenerate_ore_washing.py
 - `bauxite`, `galena`, `uraninite` の鉱石item/block overlayとCut QuartzはTFC IE Crossover由来素材を使用する。
 - Cut QuartzはCrossoverのQuartz Shardをそのまま使う。
 - Quartz晶洞のblock/bud textureとmodel、生成形状はTFC IE Crossover 1.21.xを正本とする。
-- Certus Quartzのitem/block/bud textureはApplied Energistics 2 1.21.1を正本とする。非成長blockは枠・中心紋・芽模様のない `quartz_block_empty`、成長blockは `flawless_budding_quartz` を使い、加工済み `quartz_block` は使わない。配布物へLGPL-3.0ライセンスを同梱する。
+- Certus Quartzのitem/block/bud textureはApplied Energistics 2 1.21.1を正本とする。非成長blockは枠・中心紋・芽模様のない `quartz_block_empty`、成長blockは `flawless_budding_quartz` を使い、加工済み `quartz_block` は使わない。必要な第三者表示はルート `LICENCE` 内へ統合する。
 - raw QuartzはTFC `item/ore/amethyst` 形状へCut Quartzのパレットを転写する。
 - Fluorite PowderとQuartz PowderはTFC `item/powder/amethyst` 形状へ各鉱石itemのパレットを転写する。
 - `cobaltite` と `spodumene` の鉱石素材は、それぞれTFC Metallum UとTFC Metallum 1.12.2由来とする。

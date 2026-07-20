@@ -120,3 +120,5 @@ Andesite Alloyの原料として、MetallumのTFC流体構成に合わせた `tf
 金床を持つ金属はInvar (tier 3)、Titanium (tier 5)、Netherite (tier 6)、Tungsten steel (tier 7)です。各金床はdouble ingot 7個でクラフトし、融解すると1400 mBへ戻ります。BlockItemのrarityは同じ金属のingotと共通です。
 
 1.20.1では追加金床専用の `TfcmBlockEntities.ANVIL` を使用します。1.21.1では `BlockEntityTypeAddBlocksEvent` でTFCのanvil block entityへ追加金床を登録します。金床を増やす場合は、ブロック、BlockItem、block entity対象、タグ、モデル、loot table、crafting/heating recipeを両バージョンで確認してください。
+
+追加金床は配置判定用の `#tfc:anvils` block tagと、JEIのanvil/welding recipe catalyst用の同名item tagの両方へ登録します。

@@ -57,13 +57,15 @@ public enum TfcmMetalSpec {
         return hasTools;
     }
 
-    public int anvilTier() {
+    public int forgingTier() {
         return switch (this) {
-            case INVAR -> 3;
+            case ANTIMONY, CONSTANTAN, ELECTRUM, LEAD, DAWNSTONE -> 1;
+            case MITHRIL, ARCANE, REFINED_GLOWSTONE, REFINED_OBSIDIAN -> 2;
+            case COMPRESSED_IRON, PLATINUM, IRIDIUM, OSMIUM, OSMIRIDIUM, COBALT, LITHIUM, ALUMINUM,
+                INVAR, URANIUM, TUNGSTEN, SOLDER -> 3;
             case TITANIUM -> 5;
             case NETHERITE -> 6;
-            case TUNGSTEN_STEEL -> 7;
-            default -> 0;
+            case NAQUADAH, TUNGSTEN_STEEL -> 7;
         };
     }
 }

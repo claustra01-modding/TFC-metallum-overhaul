@@ -1,12 +1,15 @@
 package net.claustra01.tfcm;
 
 import net.claustra01.tfcm.worldgen.TfcmWorldgen;
+import net.dries007.tfc.common.blockentities.TFCBlockEntities;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 
 @Mod(TfcmMod.MOD_ID)
 public final class TfcmMod {
@@ -24,6 +27,7 @@ public final class TfcmMod {
         if (FMLEnvironment.dist == Dist.CLIENT) {
             TfcmClientEvents.register(modEventBus);
         }
+        modEventBus.addListener(TfcmMod::addAnvilBlocks);
         TfcmWorldgen.FEATURES.register(modEventBus);
         TfcmWorldgen.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
         TfcmFluids.FLUID_TYPES.register(modEventBus);
@@ -32,5 +36,13 @@ public final class TfcmMod {
         TfcmArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
         TfcmCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
         TfcmItems.ITEMS.register(modEventBus);
+    }
+
+    private static void addAnvilBlocks(BlockEntityTypeAddBlocksEvent event) {
+        event.modify(
+            TFCBlockEntities.ANVIL.get(),
+            TfcmBlocks.METAL_ANVILS.values().stream()
+                .map(block -> block.get())
+                .toArray(Block[]::new));
     }
 }

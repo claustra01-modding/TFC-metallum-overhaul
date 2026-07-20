@@ -9,5 +9,6 @@
     "result":  {
                    "count":  1,
                    "id":  "tfcm:metal/double_ingot/antimony"
-               }
+               },
+    "tier":  0
 }

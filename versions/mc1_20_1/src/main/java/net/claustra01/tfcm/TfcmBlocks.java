@@ -12,7 +12,6 @@ import net.dries007.tfc.common.blocks.ExtendedProperties;
 import net.dries007.tfc.common.blocks.devices.AnvilBlock;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Rock;
-import net.dries007.tfc.common.blockentities.TFCBlockEntities;
 import net.dries007.tfc.util.Metal;
 import net.claustra01.tfcm.block.TfcmBuddingQuartzBlock;
 import net.minecraft.world.level.block.AmethystBlock;
@@ -282,8 +281,8 @@ public final class TfcmBlocks {
                     .sound(SoundType.ANVIL)
                     .strength(10f, 10f)
                     .requiresCorrectToolForDrops()
-                    .blockEntity(TFCBlockEntities.ANVIL),
-                metal.anvilTier())));
+                    .blockEntity(TfcmBlockEntities.ANVIL),
+                metal.forgingTier())));
         }
         return Collections.unmodifiableMap(blocks);
     }

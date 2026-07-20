@@ -281,7 +281,7 @@ public final class TfcmBlocks {
                     .strength(10f, 10f)
                     .requiresCorrectToolForDrops()
                     .blockEntity(TFCBlockEntities.ANVIL),
-                metal.anvilTier())));
+                metal.forgingTier())));
         }
         return Collections.unmodifiableMap(blocks);
     }

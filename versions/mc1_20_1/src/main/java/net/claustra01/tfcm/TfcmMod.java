@@ -32,6 +32,7 @@ public final class TfcmMod {
         TfcmFluids.FLUID_TYPES.register(modEventBus);
         TfcmFluids.FLUIDS.register(modEventBus);
         TfcmBlocks.BLOCKS.register(modEventBus);
+        TfcmBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
         TfcmCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
         TfcmItems.ITEMS.register(modEventBus);
     }

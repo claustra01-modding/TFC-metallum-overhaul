@@ -61,8 +61,8 @@ public enum TfcmMetal implements RegistryMetal {
         return spec.hasTools();
     }
 
-    public int anvilTier() {
-        return spec.anvilTier();
+    public int forgingTier() {
+        return spec.forgingTier();
     }
 
     @Override

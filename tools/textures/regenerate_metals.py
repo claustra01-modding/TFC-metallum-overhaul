@@ -70,21 +70,47 @@ ORIGINAL_MOD_SOURCES = {
     "dawnstone": (EMBERS_REIGNITED_JAR, "assets/embers/textures/item/ingot_dawnstone.png"),
 }
 
-FORM_BASES = {
-    "ingot": (TFC_JAR, "assets/tfc/textures/item/metal/ingot/wrought_iron.png"),
-    "double_ingot": (TFC_JAR, "assets/tfc/textures/item/metal/double_ingot/wrought_iron.png"),
-    "sheet": (TFC_JAR, "assets/tfc/textures/item/metal/sheet/wrought_iron.png"),
-    "double_sheet": (TFC_JAR, "assets/tfc/textures/item/metal/double_sheet/wrought_iron.png"),
-    "rod": (TFC_JAR, "assets/tfc/textures/item/metal/rod/wrought_iron.png"),
-    "foil": (MORE_ITEMS_JAR, "assets/tfc_items/textures/item/wrought_iron_foil.png"),
-    "gear": (MORE_ITEMS_JAR, "assets/tfc_items/textures/item/wrought_iron_gear.png"),
-    "heavy_sheet": (MORE_ITEMS_JAR, "assets/tfc_items/textures/item/wrought_iron_heavy_sheet.png"),
-    "nail": (MORE_ITEMS_JAR, "assets/tfc_items/textures/item/wrought_iron_nail.png"),
-    "ring": (MORE_ITEMS_JAR, "assets/tfc_items/textures/item/wrought_iron_ring.png"),
-    "rivet": (MORE_ITEMS_JAR, "assets/tfc_items/textures/item/wrought_iron_rivet.png"),
-    "screw": (MORE_ITEMS_JAR, "assets/tfc_items/textures/item/wrought_iron_screw.png"),
-    "stamen": (MORE_ITEMS_JAR, "assets/tfc_items/textures/item/wrought_iron_stamen.png"),
-    "wire": (MORE_ITEMS_JAR, "assets/tfc_items/textures/item/wrought_iron_wire.png"),
+STANDARD_FORMS = ("ingot", "double_ingot", "sheet", "double_sheet", "rod")
+MORE_ITEMS_FORMS = ("foil", "gear", "heavy_sheet", "nail", "ring", "rivet", "screw", "stamen", "wire")
+
+# Shape and shading source. Color still comes from each metal's original mod texture.
+METAL_FORM_BASES = {
+    "compressed_iron": "wrought_iron",
+    "platinum": "silver",
+    "naquadah": "black_steel",
+    "iridium": "silver",
+    "osmium": "nickel",
+    "osmiridium": "sterling_silver",
+    "mithril": "silver",
+    "arcane": "sterling_silver",
+    "refined_glowstone": "gold",
+    "refined_obsidian": "black_steel",
+    "antimony": "bismuth",
+    "titanium": "steel",
+    "cobalt": "nickel",
+    "lithium": "zinc",
+    "aluminum": "zinc",
+    "constantan": "brass",
+    "invar": "steel",
+    "electrum": "rose_gold",
+    "lead": "bismuth",
+    "uranium": "nickel",
+    "tungsten": "steel",
+    "solder": "tin",
+    "tungsten_steel": "black_steel",
+    "high_carbon_tungsten_steel": "high_carbon_steel",
+    "netherite": "black_steel",
+    "dawnstone": "bronze",
+}
+
+# TFC More Items has native shapes for these imported metals.
+MORE_ITEMS_BASE_OVERRIDES = {
+    "aluminum": "aluminum",
+    "constantan": "constantan",
+    "electrum": "electrum",
+    "lead": "lead",
+    "titanium": "stainless_steel",
+    "uranium": "uranium",
 }
 
 TOOL_METAL_PROFILES = {
@@ -276,18 +302,32 @@ def source_pixels(metal: str) -> list[tuple[int, int, int, int]]:
     raise ValueError(f"No source texture configured for metal: {metal}")
 
 
+def form_base(form: str, metal: str) -> tuple[Path, str]:
+    if form in STANDARD_FORMS:
+        base_metal = METAL_FORM_BASES[metal]
+        return TFC_JAR, f"assets/tfc/textures/item/metal/{form}/{base_metal}.png"
+    if form in MORE_ITEMS_FORMS:
+        base_metal = MORE_ITEMS_BASE_OVERRIDES.get(metal, METAL_FORM_BASES[metal])
+        return MORE_ITEMS_JAR, f"assets/tfc_items/textures/item/{base_metal}_{form}.png"
+    raise ValueError(f"No shape base configured for form: {form}")
+
+
 def main() -> None:
     ingot_dir = ASSETS / "tfcm/textures/item/metal/ingot"
     metals = sorted(path.stem for path in ingot_dir.glob("*.png"))
+    missing = set(metals) - METAL_FORM_BASES.keys()
+    if missing:
+        raise ValueError(f"No form base configured for metals: {', '.join(sorted(missing))}")
     sources = {metal: source_pixels(metal) for metal in metals}
     generated = 0
 
-    for form, (archive, member) in FORM_BASES.items():
-        size, base = load_zip_png(archive, member)
+    for form in (*STANDARD_FORMS, *MORE_ITEMS_FORMS):
         target_dir = ASSETS / f"tfcm/textures/item/metal/{form}"
         for metal in metals:
             target = target_dir / f"{metal}.png"
             if target.exists():
+                archive, member = form_base(form, metal)
+                size, base = load_zip_png(archive, member)
                 save_png(target, size, transfer_palette(base, sources[metal]))
                 generated += 1
 
@@ -305,10 +345,12 @@ def main() -> None:
             LARGE_SURFACE_RANK_SCALE,
         ),
     ):
-        size, base = load_zip_png(TFC_JAR, member)
         for metal in metals:
             target = ASSETS / f"{namespace}/textures/block/metal/{form}/{metal}.png"
             if target.exists():
+                base_metal = METAL_FORM_BASES[metal]
+                metal_member = member.replace("wrought_iron", base_metal)
+                size, base = load_zip_png(TFC_JAR, metal_member)
                 save_png(
                     target,
                     size,

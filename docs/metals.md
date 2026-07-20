@@ -60,6 +60,41 @@
 | `netherite` | 6 | 6500 | 12 | 9 | 22 | `netherite` |
 | `tungsten_steel` | 7 | 8125 | 13 | 10.5 | 25 | `tungsten_steel` |
 
+## テクスチャ形状ベース
+
+色と輝度分布は各元素材のingotから取得し、ここで指定する金属は形状と陰影位置のベースにだけ使います。標準形状はTFC、More Items形状はTFC More Itemsのtextureです。
+
+| ID | 標準形状・block・ingot pile・anvil | More Items形状 | 分類・対応 |
+| --- | --- | --- | --- |
+| `compressed_iron` | wrought iron | wrought iron | 加工鉄 |
+| `platinum` | silver | silver | 貴金属 |
+| `naquadah` | black steel | black steel | 高度・異種合金 |
+| `iridium` | silver | silver | 白金族・貴金属 |
+| `osmium` | nickel | nickel | 白金族・遷移金属 |
+| `osmiridium` | sterling silver | sterling silver | 白金族合金 |
+| `mithril` | silver | silver | 魔法系貴金属 |
+| `arcane` | sterling silver | sterling silver | 魔法系貴金属合金 |
+| `refined_glowstone` | gold | gold | 発光性貴金属 |
+| `refined_obsidian` | black steel | black steel | 高度合金 |
+| `antimony` | bismuth | bismuth | 卑金属・半金属 |
+| `titanium` | steel | stainless steel | 高度構造金属 |
+| `cobalt` | nickel | nickel | 遷移金属 |
+| `lithium` | zinc | zinc | 軽卑金属 |
+| `aluminum` | zinc | aluminum | 軽卑金属 |
+| `constantan` | brass | constantan | 銅系合金 |
+| `invar` | steel | steel | 鉄ニッケル合金 |
+| `electrum` | rose gold | electrum | 金銀系貴金属合金 |
+| `lead` | bismuth | lead | 重卑金属 |
+| `uranium` | nickel | uranium | 重遷移金属 |
+| `tungsten` | steel | steel | 高融点構造金属 |
+| `solder` | tin | tin | 低融点合金 |
+| `tungsten_steel` | black steel | black steel | 高度鉄系合金 |
+| `high_carbon_tungsten_steel` | high carbon steel | - | 高炭素鉄系合金 |
+| `netherite` | black steel | black steel | 高度合金 |
+| `dawnstone` | bronze | bronze | 銅系合金 |
+
+`high_carbon_tungsten_steel` はingotだけを生成します。Ore Washingは鉱石textureをパレット元、graphite/chromiumを形状元とする従来ルールを維持します。
+
 防具はInvarがwrought iron、Titaniumがblack steel、Netheriteがred steel相当です。Tungsten steelはred steelを基準に、耐久1.25倍、防御+1、toughness+1、knockback resistance+0.05、enchantability 25とします。1.21.1では同じ意図の値を `TfcmArmorMaterials` に静的に記載しています。
 
 ## 合金

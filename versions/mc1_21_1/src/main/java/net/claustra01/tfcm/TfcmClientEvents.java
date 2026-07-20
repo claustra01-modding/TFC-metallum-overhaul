@@ -79,5 +79,12 @@ public final class TfcmClientEvents {
                 null
             ), TfcmFluids.METAL_FLUIDS.get(metal).getType());
         }
+        event.registerFluidType(new FluidRendererExtension(
+            0xFF000000 | TfcmFluidSpec.MOLTEN_ANDESITE.color(),
+            MOLTEN_STILL,
+            MOLTEN_FLOW,
+            null,
+            null
+        ), TfcmFluids.MOLTEN_ANDESITE.getType());
     }
 }

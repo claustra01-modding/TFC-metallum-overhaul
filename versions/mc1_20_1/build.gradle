@@ -43,6 +43,9 @@ def toMc1_20_1ResourcePath = { String path ->
 
 def toMc1_20_1Json
 def toMc1_20_1MetalReference = { Object reference ->
+    if (reference == 'tfcm:metal/andesite') {
+        return 'tfc:andesite'
+    }
     if (reference instanceof String && reference.startsWith('tfc:metal/')) {
         return "tfc:${reference.substring('tfc:metal/'.length())}"
     }
@@ -120,6 +123,9 @@ toMc1_20_1Json = { Object value, String context = null ->
         if ((context == 'result' || context == 'results' || context == 'stack') && result.containsKey('id')) {
             result.item = result.remove('id')
         }
+        if (result.type == 'forge:single' && result.containsKey('fluid')) {
+            result.remove('type')
+        }
         if (context == 'modifiers' && result.size() == 1 && result.type instanceof String) {
             return result.type
         }
@@ -194,10 +200,12 @@ tasks.register('prepareMc1_20_1SharedResources') {
                         fluid                 : fluidHeat.fluid,
                         melt_temperature      : fluidHeat.melt_temperature,
                         specific_heat_capacity: fluidHeat.specific_heat_capacity,
-                        ingots                : [tag: "forge:ingots/${metal}"],
-                        double_ingots         : [tag: "forge:double_ingots/${metal}"],
-                        sheets                : [tag: "forge:sheets/${metal}"]
+                        ingots                : [tag: "forge:ingots/${metal}"]
                     ]
+                    if (metal != 'andesite') {
+                        metalJson.double_ingots = [tag: "forge:double_ingots/${metal}"]
+                        metalJson.sheets = [tag: "forge:sheets/${metal}"]
+                    }
                     def target = outputRoot.resolve("data/tfc/tfc/metals/${metal}.json")
                     Files.createDirectories(target.parent)
                     Files.writeString(target, JsonOutput.toJson(metalJson) + System.lineSeparator(), StandardCharsets.UTF_8)

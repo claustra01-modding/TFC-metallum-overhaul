@@ -61,7 +61,7 @@
 
 追加形状のIDも `tfcm:metal/<form>/<metal>` とする。
 
-Andesite Alloyは鍛造tier 2、融点520℃、比熱0.012とする。独自alloy recipeは持たず、optionalな `create:andesite_alloy` を `#c:ingots/andesite_alloy` で受け入れる。溶融fluidは `tfc:metal/andesite_alloy` とし、TFC More Itemsの全追加形状にも対応する。
+Andesite Alloyは鍛造tier 2、融点520℃、比熱0.012とする。optionalな `create:andesite_alloy` を `#c:ingots/andesite_alloy` で受け入れ、溶融fluidは `tfc:metal/andesite_alloy` とする。Metallumと同じTFC流体構成で `tfcm:metal/andesite` も登録し、loose andesite 1個を1300℃で90 mBへ溶融する。molten andesite 89-91%とzincまたはtin 9-11%からAndesite Alloyを合金化する。TFC More Itemsの全追加形状にも対応する。
 
 工具・防具対応金属:
 

@@ -32,6 +32,10 @@ public final class TfcmMod {
         TfcmWorldgen.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
         TfcmFluids.FLUID_TYPES.register(modEventBus);
         TfcmFluids.FLUIDS.register(modEventBus);
+        TfcmFluids.AUXILIARY_FLUID_BLOCKS.register(modEventBus);
+        TfcmFluids.AUXILIARY_BUCKET_ITEMS.register(modEventBus);
+        TfcmFluids.AUXILIARY_FLUID_TYPES.register(modEventBus);
+        TfcmFluids.AUXILIARY_FLUIDS.register(modEventBus);
         TfcmBlocks.BLOCKS.register(modEventBus);
         TfcmArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
         TfcmCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);

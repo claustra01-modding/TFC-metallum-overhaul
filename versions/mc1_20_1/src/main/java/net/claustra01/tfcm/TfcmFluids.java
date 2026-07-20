@@ -37,6 +37,15 @@ public final class TfcmFluids {
     public static final DeferredRegister<Item> BUCKET_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TfcmMod.MOD_ID);
     public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, "tfc");
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, "tfc");
+    public static final DeferredRegister<Block> AUXILIARY_FLUID_BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, TfcmMod.MOD_ID);
+    public static final DeferredRegister<Item> AUXILIARY_BUCKET_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TfcmMod.MOD_ID);
+    public static final DeferredRegister<FluidType> AUXILIARY_FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, TfcmMod.MOD_ID);
+    public static final DeferredRegister<Fluid> AUXILIARY_FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS, TfcmMod.MOD_ID);
+    public static final RegistryObject<LiquidBlock> MOLTEN_ANDESITE_BLOCK = AUXILIARY_FLUID_BLOCKS.register("fluid/metal/andesite",
+        TfcmFluids::createMoltenAndesiteBlock);
+    public static final RegistryObject<BucketItem> MOLTEN_ANDESITE_BUCKET = AUXILIARY_BUCKET_ITEMS.register("bucket/metal/andesite",
+        TfcmFluids::createMoltenAndesiteBucket);
+    public static final FluidRegistryObject<MoltenFluid> MOLTEN_ANDESITE = registerMoltenAndesite();
     public static final Map<TfcmMetal, RegistryObject<LiquidBlock>> METAL_FLUID_BLOCKS = registerMetalFluidBlocks();
     public static final Map<TfcmMetal, RegistryObject<BucketItem>> METAL_FLUID_BUCKETS = registerMetalFluidBuckets();
     public static final Map<TfcmMetal, FluidRegistryObject<MoltenFluid>> METAL_FLUIDS = registerMetalFluids();
@@ -75,9 +84,33 @@ public final class TfcmFluids {
     private static FluidRegistryObject<MoltenFluid> registerMoltenMetal(String fluidName, String flowingName, TfcmMetal metal) {
         return RegistrationHelpers.registerFluid(FLUID_TYPES, FLUIDS, fluidName, fluidName, flowingName,
             properties -> configureMoltenFluid(metal, properties),
-            () -> new TfcmMoltenFluidType(moltenFluidProperties().descriptionId("fluid.tfc.metal." + metal.getSerializedName()).rarity(metal.rarity()), metal),
+            () -> new TfcmMoltenFluidType(moltenFluidProperties().descriptionId("fluid.tfc.metal." + metal.getSerializedName()).rarity(metal.rarity()), metal.color()),
             MoltenFluid.Source::new,
             MoltenFluid.Flowing::new);
+    }
+
+    private static FluidRegistryObject<MoltenFluid> registerMoltenAndesite() {
+        final TfcmFluidSpec spec = TfcmFluidSpec.MOLTEN_ANDESITE;
+        return RegistrationHelpers.registerFluid(
+            AUXILIARY_FLUID_TYPES,
+            AUXILIARY_FLUIDS,
+            "metal/" + spec.serializedName(),
+            "metal/" + spec.serializedName(),
+            "metal/flowing_" + spec.serializedName(),
+            properties -> properties.block(MOLTEN_ANDESITE_BLOCK).bucket(MOLTEN_ANDESITE_BUCKET).explosionResistance(100f),
+            () -> new TfcmMoltenFluidType(
+                moltenFluidProperties().descriptionId("fluid.tfcm.metal." + spec.serializedName()).rarity(spec.rarity()),
+                spec.color()),
+            MoltenFluid.Source::new,
+            MoltenFluid.Flowing::new);
+    }
+
+    private static LiquidBlock createMoltenAndesiteBlock() {
+        return new MoltenFluidBlock(MOLTEN_ANDESITE.source(), BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable());
+    }
+
+    private static BucketItem createMoltenAndesiteBucket() {
+        return new BucketItem(() -> MOLTEN_ANDESITE.getSource(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1));
     }
 
     private static void configureMoltenFluid(TfcmMetal metal, ForgeFlowingFluid.Properties properties) {
@@ -107,9 +140,9 @@ public final class TfcmFluids {
     private static final class TfcmMoltenFluidType extends FluidType {
         private final int tintColor;
 
-        private TfcmMoltenFluidType(Properties properties, TfcmMetal metal) {
+        private TfcmMoltenFluidType(Properties properties, int color) {
             super(properties);
-            tintColor = 0xFF000000 | metal.color();
+            tintColor = 0xFF000000 | color;
         }
 
         @Override

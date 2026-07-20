@@ -3016,5 +3016,8 @@
   "block.tfcm.mineral.certus_quartz_cluster.prospected": "Certus Quartz",
   "block.tfcm.mineral.large_certus_quartz_bud.prospected": "Certus Quartz",
   "block.tfcm.mineral.medium_certus_quartz_bud.prospected": "Certus Quartz",
-  "block.tfcm.mineral.small_certus_quartz_bud.prospected": "Certus Quartz"
+  "block.tfcm.mineral.small_certus_quartz_bud.prospected": "Certus Quartz",
+  "fluid.tfcm.metal.andesite": "Molten Andesite",
+  "block.tfcm.fluid.metal.andesite": "Molten Andesite",
+  "item.tfcm.bucket.metal.andesite": "Molten Andesite Bucket"
 }

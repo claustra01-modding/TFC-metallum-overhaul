@@ -108,8 +108,12 @@
 | `invar` | wrought iron 60-70%, nickel 30-40% |
 | `osmiridium` | osmium 60-80%, iridium 20-40% |
 | `solder` | antimony 40-60%, bismuth 20-40%, tin 20-40% |
+| `andesite_alloy` | molten andesite 89-91%, zinc 9-11% |
+| `andesite_alloy` | molten andesite 89-91%, tin 9-11% |
 
-Naquadah、Dawnstone、Andesite Alloyには、このmod独自のalloying recipeを追加しません。Andesite AlloyはCreateのitemをoptionalなcommon ingot tagで受け入れ、520℃で100 mBの `tfc:metal/andesite_alloy` に溶融します。
+NaquadahとDawnstoneには、このmod独自のalloying recipeを追加しません。Andesite AlloyはCreateのitemをoptionalなcommon ingot tagで受け入れ、520℃で100 mBの `tfc:metal/andesite_alloy` に溶融します。
+
+Andesite Alloyの原料として、MetallumのTFC流体構成に合わせた `tfcm:metal/andesite` を登録します。`tfc:rock/loose/andesite` 1個は1300℃で90 mBのmolten andesiteになり、10 mBのmolten zincまたはmolten tinと合わせると100 mBのAndesite Alloyになります。データ上は端数誤差を許容するため89-91% / 9-11%です。独立流体のblock、bucket、flowing fluidも `fluid/metal`、`bucket/metal`、`metal/flowing_` の各ID規則に揃えます。
 
 ## 金床
 

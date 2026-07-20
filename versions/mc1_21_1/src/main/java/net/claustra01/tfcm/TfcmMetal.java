@@ -61,6 +61,10 @@ public enum TfcmMetal implements RegistryMetal {
         return spec.hasTools();
     }
 
+    public int anvilTier() {
+        return spec.anvilTier();
+    }
+
     @Override
     public Holder<ArmorMaterial> armorMaterial() {
         if (this == INVAR) return TfcmArmorMaterials.INVAR.material();
@@ -89,6 +93,9 @@ public enum TfcmMetal implements RegistryMetal {
         }
         if (type == Metal.BlockType.BLOCK_STAIRS) {
             return TfcmBlocks.METAL_BLOCK_STAIRS.get(this).get();
+        }
+        if (type == Metal.BlockType.ANVIL) {
+            return TfcmBlocks.METAL_ANVILS.get(this).get();
         }
         throw unsupported("getBlock(" + type.name() + ")");
     }

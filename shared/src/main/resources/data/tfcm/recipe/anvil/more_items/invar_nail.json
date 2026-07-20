@@ -13,7 +13,7 @@
     "id": "tfcm:metal/nail/invar",
     "count": 5
   },
-  "tier": 1,
+  "tier": 3,
   "rules": [
     "punch_last",
     "hit_not_last",

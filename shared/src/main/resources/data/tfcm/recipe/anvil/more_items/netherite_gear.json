@@ -12,7 +12,7 @@
     "result":  {
                    "id":  "tfcm:metal/gear/netherite"
                },
-    "tier":  3,
+    "tier":  6,
     "rules":  [
                   "punch_last",
                   "hit_second_last",

@@ -13,7 +13,7 @@
                    "id":  "tfcm:metal/foil/tungsten_steel",
                    "count":  2
                },
-    "tier":  3,
+    "tier":  7,
     "rules":  [
                   "hit_last",
                   "hit_second_last",

@@ -18,6 +18,10 @@
     "tfcm:mineral/certus_quartz_cluster",
     "tfcm:mineral/large_certus_quartz_bud",
     "tfcm:mineral/medium_certus_quartz_bud",
-    "tfcm:mineral/small_certus_quartz_bud"
+    "tfcm:mineral/small_certus_quartz_bud",
+    "tfcm:metal/anvil/invar",
+    "tfcm:metal/anvil/titanium",
+    "tfcm:metal/anvil/netherite",
+    "tfcm:metal/anvil/tungsten_steel"
   ]
 }

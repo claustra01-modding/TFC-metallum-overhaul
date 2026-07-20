@@ -13,7 +13,7 @@
                    "id":  "tfcm:metal/rivet/netherite",
                    "count":  5
                },
-    "tier":  3,
+    "tier":  6,
     "rules":  [
                   "draw_not_last",
                   "bend_any",

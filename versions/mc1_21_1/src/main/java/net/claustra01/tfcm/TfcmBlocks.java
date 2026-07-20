@@ -8,8 +8,11 @@ import java.util.List;
 import java.util.Map;
 
 import net.dries007.tfc.common.blocks.GroundcoverBlock;
+import net.dries007.tfc.common.blocks.ExtendedProperties;
+import net.dries007.tfc.common.blocks.devices.AnvilBlock;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Rock;
+import net.dries007.tfc.common.blockentities.TFCBlockEntities;
 import net.dries007.tfc.util.Metal;
 import net.claustra01.tfcm.block.TfcmBuddingQuartzBlock;
 import net.minecraft.world.level.block.AmethystBlock;
@@ -29,6 +32,7 @@ public final class TfcmBlocks {
     public static final Map<TfcmMetal, DeferredBlock<Block>> METAL_BLOCKS = registerMetalBlocks();
     public static final Map<TfcmMetal, DeferredBlock<Block>> METAL_BLOCK_SLABS = registerMetalBlockSlabs();
     public static final Map<TfcmMetal, DeferredBlock<Block>> METAL_BLOCK_STAIRS = registerMetalBlockStairs();
+    public static final Map<TfcmMetal, DeferredBlock<AnvilBlock>> METAL_ANVILS = registerMetalAnvils();
     public static final Map<Rock, Map<TfcmOre, DeferredBlock<Block>>> ORES = registerOres();
     public static final Map<TfcmVanillaStone, Map<TfcmOre, DeferredBlock<Block>>> VANILLA_ORES = registerVanillaOres();
     public static final Map<Rock, Map<TfcmOre, Map<Ore.Grade, DeferredBlock<Block>>>> GRADED_ORES = registerGradedOres();
@@ -119,6 +123,18 @@ public final class TfcmBlocks {
         for (TfcmMetal metal : TfcmMetal.values()) {
             final String id = "metal/block/" + metal.getSerializedName() + "_stairs";
             blockItems.put(metal, items.registerSimpleBlockItem(id, METAL_BLOCK_STAIRS.get(metal)));
+        }
+        return Collections.unmodifiableMap(blockItems);
+    }
+
+    public static Map<TfcmMetal, DeferredItem<?>> registerMetalAnvilBlockItems(DeferredRegister.Items items) {
+        final EnumMap<TfcmMetal, DeferredItem<?>> blockItems = new EnumMap<>(TfcmMetal.class);
+        for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!metal.hasTools()) {
+                continue;
+            }
+            final String id = "metal/anvil/" + metal.getSerializedName();
+            blockItems.put(metal, items.registerSimpleBlockItem(id, METAL_ANVILS.get(metal)));
         }
         return Collections.unmodifiableMap(blockItems);
     }
@@ -246,6 +262,26 @@ public final class TfcmBlocks {
         for (TfcmMetal metal : TfcmMetal.values()) {
             final String id = "metal/block/" + metal.getSerializedName() + "_stairs";
             blocks.put(metal, BLOCKS.register(id, Metal.BlockType.BLOCK_STAIRS.create(metal)));
+        }
+        return Collections.unmodifiableMap(blocks);
+    }
+
+    private static Map<TfcmMetal, DeferredBlock<AnvilBlock>> registerMetalAnvils() {
+        final EnumMap<TfcmMetal, DeferredBlock<AnvilBlock>> blocks = new EnumMap<>(TfcmMetal.class);
+        for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!metal.hasTools()) {
+                continue;
+            }
+            final String id = "metal/anvil/" + metal.getSerializedName();
+            blocks.put(metal, BLOCKS.register(id, () -> new AnvilBlock(
+                ExtendedProperties.of()
+                    .mapColor(metal.mapColor())
+                    .noOcclusion()
+                    .sound(SoundType.ANVIL)
+                    .strength(10f, 10f)
+                    .requiresCorrectToolForDrops()
+                    .blockEntity(TFCBlockEntities.ANVIL),
+                metal.anvilTier())));
         }
         return Collections.unmodifiableMap(blocks);
     }

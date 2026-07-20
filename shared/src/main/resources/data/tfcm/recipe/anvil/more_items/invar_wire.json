@@ -13,7 +13,7 @@
     "id": "tfcm:metal/wire/invar",
     "count": 2
   },
-  "tier": 1,
+  "tier": 3,
   "rules": [
     "hit_last",
     "hit_second_last",

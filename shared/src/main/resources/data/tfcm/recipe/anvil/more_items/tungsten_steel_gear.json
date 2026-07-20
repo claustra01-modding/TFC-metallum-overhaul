@@ -12,7 +12,7 @@
     "result":  {
                    "id":  "tfcm:metal/gear/tungsten_steel"
                },
-    "tier":  3,
+    "tier":  7,
     "rules":  [
                   "punch_last",
                   "hit_second_last",

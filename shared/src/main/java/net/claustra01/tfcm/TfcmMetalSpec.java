@@ -56,4 +56,14 @@ public enum TfcmMetalSpec {
     public boolean hasTools() {
         return hasTools;
     }
+
+    public int anvilTier() {
+        return switch (this) {
+            case INVAR -> 3;
+            case TITANIUM -> 5;
+            case NETHERITE -> 6;
+            case TUNGSTEN_STEEL -> 7;
+            default -> 0;
+        };
+    }
 }

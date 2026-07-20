@@ -14,7 +14,7 @@
     "count": 2,
     "id": "tfcm:metal/crossguard/netherite"
   },
-  "tier": 5,
+  "tier": 6,
   "rules": [
     "bend_last",
     "draw_second_last",

@@ -13,7 +13,7 @@
                    "id":  "tfcm:metal/screw/tungsten_steel",
                    "count":  5
                },
-    "tier":  3,
+    "tier":  7,
     "rules":  [
                   "hit_any",
                   "hit_any",

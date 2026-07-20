@@ -13,7 +13,7 @@
                    "id":  "tfcm:metal/screw/titanium",
                    "count":  5
                },
-    "tier":  3,
+    "tier":  5,
     "rules":  [
                   "hit_any",
                   "hit_any",

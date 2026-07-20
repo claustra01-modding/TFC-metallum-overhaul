@@ -61,6 +61,10 @@ public enum TfcmMetal implements RegistryMetal {
         return spec.hasTools();
     }
 
+    public int anvilTier() {
+        return spec.anvilTier();
+    }
+
     @Override
     public ArmorMaterial armorTier() {
         if (this == INVAR) return TfcmArmorMaterials.INVAR;

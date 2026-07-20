@@ -61,6 +61,7 @@ public final class TfcmItems {
     public static final Map<TfcmMetal, RegistryObject<?>> METAL_BLOCK_ITEMS = TfcmBlocks.registerMetalBlockItems(ITEMS);
     public static final Map<TfcmMetal, RegistryObject<?>> METAL_BLOCK_SLAB_ITEMS = TfcmBlocks.registerMetalSlabBlockItems(ITEMS);
     public static final Map<TfcmMetal, RegistryObject<?>> METAL_BLOCK_STAIRS_ITEMS = TfcmBlocks.registerMetalStairsBlockItems(ITEMS);
+    public static final Map<TfcmMetal, RegistryObject<?>> METAL_ANVIL_ITEMS = TfcmBlocks.registerMetalAnvilBlockItems(ITEMS);
     public static final Map<TfcmOre, RegistryObject<Item>> ORES = registerOreItems();
     public static final Map<TfcmOre, Map<Ore.Grade, RegistryObject<Item>>> GRADED_ORES = registerGradedOreItems();
     public static final Map<Rock, Map<TfcmOre, RegistryObject<?>>> ORE_BLOCK_ITEMS = TfcmBlocks.registerOreBlockItems(ITEMS);

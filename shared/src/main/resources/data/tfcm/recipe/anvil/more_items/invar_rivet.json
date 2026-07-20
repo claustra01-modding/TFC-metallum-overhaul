@@ -13,7 +13,7 @@
     "id": "tfcm:metal/rivet/invar",
     "count": 5
   },
-  "tier": 1,
+  "tier": 3,
   "rules": [
     "draw_not_last",
     "bend_any",

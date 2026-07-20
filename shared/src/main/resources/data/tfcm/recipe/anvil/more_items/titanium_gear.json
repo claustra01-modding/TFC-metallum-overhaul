@@ -12,7 +12,7 @@
     "result":  {
                    "id":  "tfcm:metal/gear/titanium"
                },
-    "tier":  3,
+    "tier":  5,
     "rules":  [
                   "punch_last",
                   "hit_second_last",

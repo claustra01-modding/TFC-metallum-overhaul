@@ -13,7 +13,7 @@
     "id": "tfcm:metal/screw/invar",
     "count": 5
   },
-  "tier": 1,
+  "tier": 3,
   "rules": [
     "hit_any",
     "hit_any",

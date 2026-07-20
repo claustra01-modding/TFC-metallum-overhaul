@@ -12,7 +12,7 @@
     "second_input":  {
                          "tag":  "c:sheets/osmium"
                      },
-    "tier":  1,
+    "tier":  3,
     "result":  {
                    "id":  "tfcm:metal/heavy_sheet/osmium"
                }

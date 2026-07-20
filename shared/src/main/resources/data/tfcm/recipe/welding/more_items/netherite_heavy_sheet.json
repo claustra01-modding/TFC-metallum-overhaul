@@ -12,7 +12,7 @@
     "second_input":  {
                          "tag":  "c:sheets/netherite"
                      },
-    "tier":  5,
+    "tier":  6,
     "result":  {
                    "id":  "tfcm:metal/heavy_sheet/netherite"
                }

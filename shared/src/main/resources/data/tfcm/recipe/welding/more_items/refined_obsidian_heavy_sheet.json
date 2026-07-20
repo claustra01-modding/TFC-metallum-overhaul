@@ -12,7 +12,7 @@
     "second_input":  {
                          "tag":  "c:sheets/refined_obsidian"
                      },
-    "tier":  1,
+    "tier":  2,
     "result":  {
                    "id":  "tfcm:metal/heavy_sheet/refined_obsidian"
                }

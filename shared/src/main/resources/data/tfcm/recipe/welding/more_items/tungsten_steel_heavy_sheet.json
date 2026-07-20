@@ -12,7 +12,7 @@
     "second_input":  {
                          "tag":  "c:sheets/tungsten_steel"
                      },
-    "tier":  6,
+    "tier":  7,
     "result":  {
                    "id":  "tfcm:metal/heavy_sheet/tungsten_steel"
                }

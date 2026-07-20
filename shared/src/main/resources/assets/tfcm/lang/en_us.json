@@ -2981,5 +2981,17 @@
   "block.tfcm.mineral.certus_quartz_cluster": "Certus Quartz Cluster",
   "block.tfcm.mineral.large_certus_quartz_bud": "Large Certus Quartz Bud",
   "block.tfcm.mineral.medium_certus_quartz_bud": "Medium Certus Quartz Bud",
-  "block.tfcm.mineral.small_certus_quartz_bud": "Small Certus Quartz Bud"
+  "block.tfcm.mineral.small_certus_quartz_bud": "Small Certus Quartz Bud",
+  "block.tfcm.mineral.quartz_cluster.prospected": "Quartz",
+  "block.tfcm.mineral.large_quartz_bud.prospected": "Quartz",
+  "block.tfcm.mineral.medium_quartz_bud.prospected": "Quartz",
+  "block.tfcm.mineral.small_quartz_bud.prospected": "Quartz",
+  "block.tfcm.mineral.amethyst_cluster.prospected": "Amethyst",
+  "block.tfcm.mineral.large_amethyst_bud.prospected": "Amethyst",
+  "block.tfcm.mineral.medium_amethyst_bud.prospected": "Amethyst",
+  "block.tfcm.mineral.small_amethyst_bud.prospected": "Amethyst",
+  "block.tfcm.mineral.certus_quartz_cluster.prospected": "Certus Quartz",
+  "block.tfcm.mineral.large_certus_quartz_bud.prospected": "Certus Quartz",
+  "block.tfcm.mineral.medium_certus_quartz_bud.prospected": "Certus Quartz",
+  "block.tfcm.mineral.small_certus_quartz_bud.prospected": "Certus Quartz"
 }

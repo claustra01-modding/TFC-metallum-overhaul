@@ -158,7 +158,7 @@ compat層はingot等の金属形状や専用加工recipeを追加しない。単
 
 金属recipe:
 
-- `casting/ingot`
+- `casting/<metal>_ingot` と `casting/<metal>_fire_ingot`。通常moldは破損率0.1、fire moldは0.01とし、必ず対で追加する。
 - `anvil/metal/{sheet,rod}`
 - `welding/metal/{double_ingot,double_sheet}`
 - `crafting/metal/block`

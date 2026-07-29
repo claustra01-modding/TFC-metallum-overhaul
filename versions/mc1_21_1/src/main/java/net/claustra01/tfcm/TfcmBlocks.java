@@ -132,7 +132,7 @@ public final class TfcmBlocks {
     public static Map<TfcmMetal, DeferredItem<?>> registerMetalAnvilBlockItems(DeferredRegister.Items items) {
         final EnumMap<TfcmMetal, DeferredItem<?>> blockItems = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
-            if (!metal.hasAnvil()) {
+            if (!metal.hasTools()) {
                 continue;
             }
             final String id = "metal/anvil/" + metal.getSerializedName();
@@ -272,7 +272,7 @@ public final class TfcmBlocks {
     private static Map<TfcmMetal, DeferredBlock<AnvilBlock>> registerMetalAnvils() {
         final EnumMap<TfcmMetal, DeferredBlock<AnvilBlock>> blocks = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
-            if (!metal.hasAnvil()) {
+            if (!metal.hasTools()) {
                 continue;
             }
             final String id = "metal/anvil/" + metal.getSerializedName();

@@ -29,7 +29,7 @@ public enum TfcmMetalSpec {
     NETHERITE("netherite", Rarity.RARE, 0x111111, true),
     DAWNSTONE("dawnstone", Rarity.UNCOMMON, 0xB18143, false),
     ANDESITE_ALLOY("andesite_alloy", Rarity.COMMON, 0x757E76, false),
-    DRACONIUM("draconium", Rarity.RARE, 0x6C3F99, false),
+    DRACONIUM("draconium", Rarity.EPIC, 0x6C3F99, false),
     AWAKENED_DRACONIUM("awakened_draconium", Rarity.EPIC, 0xE06100, false);
 
     private final String serializedName;
@@ -60,10 +60,6 @@ public enum TfcmMetalSpec {
         return hasTools;
     }
 
-    public boolean hasAnvil() {
-        return hasTools || this == DRACONIUM;
-    }
-
     public int forgingTier() {
         return switch (this) {
             case ANTIMONY, CONSTANTAN, ELECTRUM, LEAD, DAWNSTONE -> 1;
@@ -72,8 +68,7 @@ public enum TfcmMetalSpec {
                 INVAR, URANIUM, TUNGSTEN, SOLDER -> 3;
             case TITANIUM -> 5;
             case NETHERITE -> 6;
-            case NAQUADAH, TUNGSTEN_STEEL -> 7;
-            case DRACONIUM, AWAKENED_DRACONIUM -> 8;
+            case NAQUADAH, TUNGSTEN_STEEL, DRACONIUM, AWAKENED_DRACONIUM -> 7;
         };
     }
 }

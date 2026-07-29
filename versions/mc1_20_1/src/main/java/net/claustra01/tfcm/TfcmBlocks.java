@@ -131,7 +131,7 @@ public final class TfcmBlocks {
     public static Map<TfcmMetal, RegistryObject<?>> registerMetalAnvilBlockItems(DeferredRegister<Item> items) {
         final EnumMap<TfcmMetal, RegistryObject<?>> blockItems = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
-            if (!metal.hasAnvil()) {
+            if (!metal.hasTools()) {
                 continue;
             }
             final String id = "metal/anvil/" + metal.getSerializedName();
@@ -271,7 +271,7 @@ public final class TfcmBlocks {
     private static Map<TfcmMetal, RegistryObject<AnvilBlock>> registerMetalAnvils() {
         final EnumMap<TfcmMetal, RegistryObject<AnvilBlock>> blocks = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
-            if (!metal.hasAnvil()) {
+            if (!metal.hasTools()) {
                 continue;
             }
             final String id = "metal/anvil/" + metal.getSerializedName();

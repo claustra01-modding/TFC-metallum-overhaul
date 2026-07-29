@@ -13,7 +13,7 @@
     "id": "tfcm:metal/rivet/awakened_draconium",
     "count": 5
   },
-  "tier": 8,
+  "tier": 7,
   "rules": [
     "draw_not_last",
     "bend_any",

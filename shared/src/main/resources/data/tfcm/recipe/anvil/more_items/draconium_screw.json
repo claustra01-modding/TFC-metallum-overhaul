@@ -13,7 +13,7 @@
     "id": "tfcm:metal/screw/draconium",
     "count": 5
   },
-  "tier": 8,
+  "tier": 7,
   "rules": [
     "hit_any",
     "hit_any",

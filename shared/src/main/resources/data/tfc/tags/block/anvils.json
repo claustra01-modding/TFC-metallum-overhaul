@@ -3,7 +3,6 @@
     "tfcm:metal/anvil/invar",
     "tfcm:metal/anvil/titanium",
     "tfcm:metal/anvil/netherite",
-    "tfcm:metal/anvil/tungsten_steel",
-    "tfcm:metal/anvil/draconium"
+    "tfcm:metal/anvil/tungsten_steel"
   ]
 }

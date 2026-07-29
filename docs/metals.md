@@ -51,8 +51,8 @@
 | `netherite` | rare | `#111111` | 6 | 5 | 1535 | Yes |
 | `dawnstone` | uncommon | `#B18143` | 1 | 0 | 1000 | - |
 | `andesite_alloy` | common | `#757E76` | 2 | 1 | 520 | - |
-| `draconium` | rare | `#6C3F99` | 8 | 7 | 1535 | Anvil |
-| `awakened_draconium` | epic | `#E06100` | 8 | 7 | 1730 | - |
+| `draconium` | epic | `#6C3F99` | 7 | 6 | 1535 | - |
+| `awakened_draconium` | epic | `#E06100` | 7 | 6 | 1730 | - |
 
 ## Tool性能
 
@@ -121,7 +121,7 @@ Andesite Alloyの原料として、MetallumのTFC流体構成に合わせた `tf
 
 ## 金床
 
-金床を持つ金属はInvar (tier 3)、Titanium (tier 5)、Netherite (tier 6)、Tungsten steel (tier 7)、Draconium (tier 8)です。各金床はdouble ingot 7個でクラフトし、融解すると1400 mBへ戻ります。BlockItemのrarityは同じ金属のingotと共通です。
+金床を持つ金属はInvar (tier 3)、Titanium (tier 5)、Netherite (tier 6)、Tungsten steel (tier 7)です。各金床はdouble ingot 7個でクラフトし、融解すると1400 mBへ戻ります。BlockItemのrarityは同じ金属のingotと共通です。
 
 1.20.1では追加金床専用の `TfcmBlockEntities.ANVIL` を使用します。1.21.1では `BlockEntityTypeAddBlocksEvent` でTFCのanvil block entityへ追加金床を登録します。金床を増やす場合は、ブロック、BlockItem、block entity対象、タグ、モデル、loot table、crafting/heating recipeを両バージョンで確認してください。
 

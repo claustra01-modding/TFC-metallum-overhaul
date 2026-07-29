@@ -13,7 +13,7 @@
     "id": "tfcm:metal/nail/draconium",
     "count": 5
   },
-  "tier": 8,
+  "tier": 7,
   "rules": [
     "punch_last",
     "hit_not_last",

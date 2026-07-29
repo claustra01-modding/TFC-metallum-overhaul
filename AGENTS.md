@@ -173,6 +173,7 @@ compat層はingot等の金属形状や専用加工recipeを追加しない。単
 
 鉱石・Ore Washing recipe:
 
+- clean powder全体は `#c:metal/powder` に集約し、互換用の `#c:ores/clean_dusts` から参照する。
 - `heating/ore/{poor,normal,rich,small}`
 - `ore_washing/ores/*`
 - `ore_washing/chunks/{quern,milling,crusher}`

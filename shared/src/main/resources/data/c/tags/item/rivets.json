@@ -26,6 +26,8 @@
     "#c:rivets/lead",
     "#c:rivets/uranium",
     "#c:rivets/dawnstone",
-    "#c:rivets/andesite_alloy"
+    "#c:rivets/andesite_alloy",
+    "#c:rivets/draconium",
+    "#c:rivets/awakened_draconium"
   ]
 }

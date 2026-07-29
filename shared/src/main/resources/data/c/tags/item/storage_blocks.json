@@ -26,6 +26,8 @@
     "#c:storage_blocks/lead",
     "#c:storage_blocks/uranium",
     "#c:storage_blocks/dawnstone",
-    "#c:storage_blocks/andesite_alloy"
+    "#c:storage_blocks/andesite_alloy",
+    "#c:storage_blocks/draconium",
+    "#c:storage_blocks/awakened_draconium"
   ]
 }

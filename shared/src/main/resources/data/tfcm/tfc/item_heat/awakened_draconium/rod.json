@@ -1,0 +1,8 @@
+{
+  "ingredient": {
+    "tag": "c:rods/awakened_draconium"
+  },
+  "heat_capacity": 1.429,
+  "forging_temperature": 1038,
+  "welding_temperature": 1384
+}

@@ -26,6 +26,8 @@
     "#c:rings/lead",
     "#c:rings/uranium",
     "#c:rings/dawnstone",
-    "#c:rings/andesite_alloy"
+    "#c:rings/andesite_alloy",
+    "#c:rings/draconium",
+    "#c:rings/awakened_draconium"
   ]
 }

@@ -26,6 +26,8 @@
     "#c:sheets/lead",
     "#c:sheets/uranium",
     "#c:sheets/dawnstone",
-    "#c:sheets/andesite_alloy"
+    "#c:sheets/andesite_alloy",
+    "#c:sheets/draconium",
+    "#c:sheets/awakened_draconium"
   ]
 }

@@ -26,6 +26,8 @@
     "#c:foils/lead",
     "#c:foils/uranium",
     "#c:foils/dawnstone",
-    "#c:foils/andesite_alloy"
+    "#c:foils/andesite_alloy",
+    "#c:foils/draconium",
+    "#c:foils/awakened_draconium"
   ]
 }

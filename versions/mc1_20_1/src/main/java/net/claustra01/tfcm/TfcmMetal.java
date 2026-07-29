@@ -36,7 +36,9 @@ public enum TfcmMetal implements RegistryMetal {
     TUNGSTEN_STEEL(TfcmMetalSpec.TUNGSTEN_STEEL),
     NETHERITE(TfcmMetalSpec.NETHERITE),
     DAWNSTONE(TfcmMetalSpec.DAWNSTONE),
-    ANDESITE_ALLOY(TfcmMetalSpec.ANDESITE_ALLOY);
+    ANDESITE_ALLOY(TfcmMetalSpec.ANDESITE_ALLOY),
+    DRACONIUM(TfcmMetalSpec.DRACONIUM),
+    AWAKENED_DRACONIUM(TfcmMetalSpec.AWAKENED_DRACONIUM);
 
     private final TfcmMetalSpec spec;
 
@@ -60,6 +62,10 @@ public enum TfcmMetal implements RegistryMetal {
 
     public boolean hasTools() {
         return spec.hasTools();
+    }
+
+    public boolean hasAnvil() {
+        return spec.hasAnvil();
     }
 
     public int forgingTier() {

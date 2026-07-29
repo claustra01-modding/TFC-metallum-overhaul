@@ -26,6 +26,8 @@
     "#c:rods/lead",
     "#c:rods/uranium",
     "#c:rods/dawnstone",
-    "#c:rods/andesite_alloy"
+    "#c:rods/andesite_alloy",
+    "#c:rods/draconium",
+    "#c:rods/awakened_draconium"
   ]
 }

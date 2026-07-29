@@ -29,6 +29,7 @@ MEKANISM_JAR = ROOT / ".tmp/mekanism/Mekanism-1.21.1-10.7.19.85.jar"
 MEKANISM_EXTRAS_JAR = ROOT / ".tmp/mekanism_extras/mekanism_extras-1.21.1-1.4.0.jar"
 THERMAL_FOUNDATION_JAR = ROOT / ".tmp/thermal_foundation/thermal_foundation-1.20.1-11.0.6.70.jar"
 EMBERS_REIGNITED_JAR = ROOT / ".tmp/embers_reignited/embers-reignited-1.21.1-1.5.5.jar"
+DRACONIC_EVOLUTION_ZIP = ROOT / ".tmp/draconic_evolution/Draconic-Evolution-1.21.zip"
 CREATE_JAR = next(
     (Path.home() / ".gradle/caches/modules-2/files-2.1/maven.modrinth/create/mc1.21.1-6.0.9").glob(
         "*/create-mc1.21.1-6.0.9.jar"
@@ -74,6 +75,14 @@ ORIGINAL_MOD_SOURCES = {
     "invar": (THERMAL_FOUNDATION_JAR, "assets/thermal/textures/item/invar_ingot.png"),
     "dawnstone": (EMBERS_REIGNITED_JAR, "assets/embers/textures/item/ingot_dawnstone.png"),
     "andesite_alloy": (CREATE_JAR, "assets/create/textures/item/andesite_alloy.png"),
+    "draconium": (
+        DRACONIC_EVOLUTION_ZIP,
+        "Draconic-Evolution-1.21/src/main/resources/assets/draconicevolution/textures/item/components/draconium_ingot.png",
+    ),
+    "awakened_draconium": (
+        DRACONIC_EVOLUTION_ZIP,
+        "Draconic-Evolution-1.21/src/main/resources/assets/draconicevolution/textures/item/components/awakened_draconium_ingot.png",
+    ),
 }
 
 STANDARD_FORMS = ("ingot", "double_ingot", "sheet", "double_sheet", "rod")
@@ -108,6 +117,8 @@ METAL_FORM_BASES = {
     "netherite": "black_steel",
     "dawnstone": "bronze",
     "andesite_alloy": "bronze",
+    "draconium": "black_steel",
+    "awakened_draconium": "red_steel",
 }
 
 # TFC More Items has native shapes for these imported metals.

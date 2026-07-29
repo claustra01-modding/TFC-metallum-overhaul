@@ -26,6 +26,8 @@
     "#c:double_ingots/lead",
     "#c:double_ingots/uranium",
     "#c:double_ingots/dawnstone",
-    "#c:double_ingots/andesite_alloy"
+    "#c:double_ingots/andesite_alloy",
+    "#c:double_ingots/draconium",
+    "#c:double_ingots/awakened_draconium"
   ]
 }

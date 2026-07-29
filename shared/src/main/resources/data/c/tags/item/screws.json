@@ -26,6 +26,8 @@
     "#c:screws/lead",
     "#c:screws/uranium",
     "#c:screws/dawnstone",
-    "#c:screws/andesite_alloy"
+    "#c:screws/andesite_alloy",
+    "#c:screws/draconium",
+    "#c:screws/awakened_draconium"
   ]
 }

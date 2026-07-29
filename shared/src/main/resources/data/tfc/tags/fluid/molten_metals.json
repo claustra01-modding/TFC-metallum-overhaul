@@ -26,6 +26,8 @@
     "tfc:metal/lead",
     "tfc:metal/uranium",
     "tfc:metal/dawnstone",
-    "tfc:metal/andesite_alloy"
+    "tfc:metal/andesite_alloy",
+    "tfc:metal/draconium",
+    "tfc:metal/awakened_draconium"
   ]
 }

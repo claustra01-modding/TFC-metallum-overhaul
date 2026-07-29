@@ -51,6 +51,8 @@
 | `netherite` | rare | `#111111` | 6 | 5 | 1535 | Yes |
 | `dawnstone` | uncommon | `#B18143` | 1 | 0 | 1000 | - |
 | `andesite_alloy` | common | `#757E76` | 2 | 1 | 520 | - |
+| `draconium` | rare | `#6C3F99` | 8 | 7 | 1535 | Anvil |
+| `awakened_draconium` | epic | `#E06100` | 8 | 7 | 1730 | - |
 
 ## Tool性能
 
@@ -94,6 +96,8 @@
 | `netherite` | black steel | black steel | 高度合金 |
 | `dawnstone` | bronze | bronze | 銅系合金 |
 | `andesite_alloy` | bronze | bronze | 低tier岩石・金属合金 |
+| `draconium` | black steel | black steel | 高度・魔法系金属 |
+| `awakened_draconium` | red steel | red steel | 最上位・魔法系金属 |
 
 `high_carbon_tungsten_steel` はingotだけを生成します。Ore Washingは鉱石textureをパレット元、graphite/chromiumを形状元とする従来ルールを維持します。
 
@@ -111,13 +115,13 @@
 | `andesite_alloy` | molten andesite 89-91%, zinc 9-11% |
 | `andesite_alloy` | molten andesite 89-91%, tin 9-11% |
 
-NaquadahとDawnstoneには、このmod独自のalloying recipeを追加しません。Andesite AlloyはCreateのitemをoptionalなcommon ingot tagで受け入れ、520℃で100 mBの `tfc:metal/andesite_alloy` に溶融します。
+Naquadah、Dawnstone、Draconium、Awakened Draconiumには、このmod独自のalloying recipeを追加しません。Draconium系はDraconic Evolutionのingotをoptionalなcommon ingot tagで受け入れます。Andesite AlloyはCreateのitemを同様に受け入れ、520℃で100 mBの `tfc:metal/andesite_alloy` に溶融します。
 
 Andesite Alloyの原料として、MetallumのTFC流体構成に合わせた `tfcm:metal/andesite` を登録します。`tfc:rock/loose/andesite` 1個は1300℃で90 mBのmolten andesiteになり、10 mBのmolten zincまたはmolten tinと合わせると100 mBのAndesite Alloyになります。データ上は端数誤差を許容するため89-91% / 9-11%です。独立流体のblock、bucket、flowing fluidも `fluid/metal`、`bucket/metal`、`metal/flowing_` の各ID規則に揃えます。
 
 ## 金床
 
-金床を持つ金属はInvar (tier 3)、Titanium (tier 5)、Netherite (tier 6)、Tungsten steel (tier 7)です。各金床はdouble ingot 7個でクラフトし、融解すると1400 mBへ戻ります。BlockItemのrarityは同じ金属のingotと共通です。
+金床を持つ金属はInvar (tier 3)、Titanium (tier 5)、Netherite (tier 6)、Tungsten steel (tier 7)、Draconium (tier 8)です。各金床はdouble ingot 7個でクラフトし、融解すると1400 mBへ戻ります。BlockItemのrarityは同じ金属のingotと共通です。
 
 1.20.1では追加金床専用の `TfcmBlockEntities.ANVIL` を使用します。1.21.1では `BlockEntityTypeAddBlocksEvent` でTFCのanvil block entityへ追加金床を登録します。金床を増やす場合は、ブロック、BlockItem、block entity対象、タグ、モデル、loot table、crafting/heating recipeを両バージョンで確認してください。
 

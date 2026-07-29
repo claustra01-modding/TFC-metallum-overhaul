@@ -26,6 +26,8 @@
     "#c:wires/lead",
     "#c:wires/uranium",
     "#c:wires/dawnstone",
-    "#c:wires/andesite_alloy"
+    "#c:wires/andesite_alloy",
+    "#c:wires/draconium",
+    "#c:wires/awakened_draconium"
   ]
 }

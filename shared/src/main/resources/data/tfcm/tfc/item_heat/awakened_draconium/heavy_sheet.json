@@ -3,6 +3,6 @@
     "tag": "c:heavy_sheets/awakened_draconium"
   },
   "heat_capacity": 14.286,
-  "forging_temperature": 1038,
-  "welding_temperature": 1384
+  "forging_temperature": 1200,
+  "welding_temperature": 1600
 }

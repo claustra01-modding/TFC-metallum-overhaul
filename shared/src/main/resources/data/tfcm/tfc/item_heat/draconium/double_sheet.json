@@ -3,6 +3,6 @@
     "tag": "c:double_sheets/draconium"
   },
   "heat_capacity": 11.429,
-  "forging_temperature": 921,
-  "welding_temperature": 1228
+  "forging_temperature": 1200,
+  "welding_temperature": 1600
 }

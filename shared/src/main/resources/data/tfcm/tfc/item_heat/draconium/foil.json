@@ -3,6 +3,6 @@
     "tag": "c:foils/draconium"
   },
   "heat_capacity": 2.857,
-  "forging_temperature": 921,
-  "welding_temperature": 1228
+  "forging_temperature": 1200,
+  "welding_temperature": 1600
 }

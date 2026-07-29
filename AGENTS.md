@@ -286,7 +286,7 @@ python3 tools/textures/regenerate_metals.py
 - ingot pileと金床が共通参照する `assets/tfc/textures/block/metal/smooth/<metal>.png` も同時生成する。
 - InvarのalloyはWrought Iron 60-70% + Nickel 30-40%。
 - Dawnstoneは工具とalloy recipeを追加しない。
-- Draconium系は工具、金床、鉱石、独自alloy recipeを追加しない。両方とも鍛造tier 7とし、double ingot溶接はtier 6とする。item rarityは両方ともEPIC。融点はDraconiumが1535℃、Awakened Draconiumが1730℃。Draconic Evolutionのingotをoptional common tagで受け入れる。
+- Draconium系は工具、金床、鉱石、独自alloy recipeを追加しない。両方とも鍛造tier 7とし、double ingot溶接はtier 6とする。item rarityは両方ともEPIC。融点2000℃、鍛造可能温度1200℃、溶接可能温度1600℃とし、TFC最高級鋼より明確に高温を要求する。Draconic Evolutionのingotをoptional common tagで受け入れる。
 - `invar`、`titanium`、`tungsten_steel`、`netherite` のtool tierはTFC本体を直接参照せず、各versionの `TfcmTiers` に固定値で定義する。InvarはWrought Iron相当、Titaniumは耐久値3300（Steel相当）以外をBlack Steel相当とし、鍛冶tierはBlack Steelより1段低い4とする。Netheriteは工具・防具性能をRed / Blue Steel相当、鍛冶tierと金属色をBlack Steel相当とする。
 - 対象TFC versionがsheet pileに対応しない限り、sheet pile assetは追加しない。
 - 工具・防具の形状元はTFC 1.21.1のtexture/modelを正本とする。工具とjavelinは `invar` がwrought iron、`titanium` が通常steel、`tungsten_steel` と `netherite` がred steelを使う。shield、防具、中間防具、horse armor、防具layerは `invar` がwrought iron、`titanium` がblack steel、`tungsten_steel` が通常steel、`netherite` がblack bronzeを使う。Netheriteのこれらのmodel JSONもblack bronzeを正本とする。

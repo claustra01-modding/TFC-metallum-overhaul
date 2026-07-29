@@ -51,8 +51,8 @@
 | `netherite` | rare | `#111111` | 6 | 5 | 1535 | Yes |
 | `dawnstone` | uncommon | `#B18143` | 1 | 0 | 1000 | - |
 | `andesite_alloy` | common | `#757E76` | 2 | 1 | 520 | - |
-| `draconium` | epic | `#6C3F99` | 7 | 6 | 1535 | - |
-| `awakened_draconium` | epic | `#E06100` | 7 | 6 | 1730 | - |
+| `draconium` | epic | `#6C3F99` | 7 | 6 | 2000 | - |
+| `awakened_draconium` | epic | `#E06100` | 7 | 6 | 2000 | - |
 
 ## Tool性能
 
@@ -116,6 +116,8 @@
 | `andesite_alloy` | molten andesite 89-91%, tin 9-11% |
 
 Naquadah、Dawnstone、Draconium、Awakened Draconiumには、このmod独自のalloying recipeを追加しません。Draconium系はDraconic Evolutionのingotをoptionalなcommon ingot tagで受け入れます。Andesite AlloyはCreateのitemを同様に受け入れ、520℃で100 mBの `tfc:metal/andesite_alloy` に溶融します。
+
+Draconium系は両方とも融点2000℃、鍛造可能温度1200℃、溶接可能温度1600℃とし、TFC最高級鋼より高温の設備を要求します。
 
 Andesite Alloyの原料として、MetallumのTFC流体構成に合わせた `tfcm:metal/andesite` を登録します。`tfc:rock/loose/andesite` 1個は1300℃で90 mBのmolten andesiteになり、10 mBのmolten zincまたはmolten tinと合わせると100 mBのAndesite Alloyになります。データ上は端数誤差を許容するため89-91% / 9-11%です。独立流体のblock、bucket、flowing fluidも `fluid/metal`、`bucket/metal`、`metal/flowing_` の各ID規則に揃えます。
 

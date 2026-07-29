@@ -11,6 +11,6 @@
     }
   ],
   "heat_capacity": 0.171,
-  "forging_temperature": 1038,
-  "welding_temperature": 1384
+  "forging_temperature": 1200,
+  "welding_temperature": 1600
 }

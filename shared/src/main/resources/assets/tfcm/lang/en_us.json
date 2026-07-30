@@ -3057,5 +3057,6 @@
   "block.tfcm.mineral.small_certus_quartz_bud.prospected": "Certus Quartz",
   "fluid.tfcm.metal.andesite": "Molten Andesite",
   "block.tfcm.fluid.metal.andesite": "Molten Andesite",
-  "item.tfcm.bucket.metal.andesite": "Molten Andesite Bucket"
+  "item.tfcm.bucket.metal.andesite": "Molten Andesite Bucket",
+  "item.tfcm.creative_tab_icon": "TFC Metallum Overhaul Icon"
 }

@@ -22,6 +22,7 @@ public final class TfcmMod {
 
     public TfcmMod(IEventBus modEventBus, ModContainer modContainer) {
         modContainer.registerConfig(ModConfig.Type.COMMON, TfcmConfig.COMMON_SPEC);
+        TfcmEnableContent.loadEarly(TfcmPlatform.configDirectory().resolve(MOD_ID + "-common.toml"));
         TfcmWorldgen.bootstrap();
 
         if (FMLEnvironment.dist == Dist.CLIENT) {

@@ -1,5 +1,7 @@
 package net.claustra01.tfcm;
 
+import java.util.List;
+
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 public final class TfcmConfig {
@@ -13,9 +15,20 @@ public final class TfcmConfig {
     }
 
     public static final class Common {
+        public final ModConfigSpec.ConfigValue<List<? extends String>> disabledMetals;
+        public final ModConfigSpec.ConfigValue<List<? extends String>> disabledOres;
         public final ModConfigSpec.BooleanValue enableCustomVeinGeneration;
 
         private Common(ModConfigSpec.Builder builder) {
+            builder.push("content");
+            disabledMetals = builder
+                .comment("Metal names whose registries should not be created. Changes require a full game restart.")
+                .defineListAllowEmpty("disabledMetals", List.of(), value -> value instanceof String);
+            disabledOres = builder
+                .comment("Ore names whose registries should not be created. Changes require a full game restart.")
+                .defineListAllowEmpty("disabledOres", List.of(), value -> value instanceof String);
+            builder.pop();
+
             builder.push("worldgen");
             enableCustomVeinGeneration = builder
                 .comment(

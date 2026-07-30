@@ -104,6 +104,9 @@ public final class TfcmBlocks {
     public static Map<TfcmMetal, RegistryObject<?>> registerMetalBlockItems(DeferredRegister<Item> items) {
         final EnumMap<TfcmMetal, RegistryObject<?>> blockItems = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             final String id = "metal/block/" + metal.getSerializedName();
             blockItems.put(metal, registerBlockItem(items, id, METAL_BLOCKS.get(metal)));
         }
@@ -113,6 +116,9 @@ public final class TfcmBlocks {
     public static Map<TfcmMetal, RegistryObject<?>> registerMetalSlabBlockItems(DeferredRegister<Item> items) {
         final EnumMap<TfcmMetal, RegistryObject<?>> blockItems = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             final String id = "metal/block/" + metal.getSerializedName() + "_slab";
             blockItems.put(metal, registerBlockItem(items, id, METAL_BLOCK_SLABS.get(metal)));
         }
@@ -122,6 +128,9 @@ public final class TfcmBlocks {
     public static Map<TfcmMetal, RegistryObject<?>> registerMetalStairsBlockItems(DeferredRegister<Item> items) {
         final EnumMap<TfcmMetal, RegistryObject<?>> blockItems = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             final String id = "metal/block/" + metal.getSerializedName() + "_stairs";
             blockItems.put(metal, registerBlockItem(items, id, METAL_BLOCK_STAIRS.get(metal)));
         }
@@ -131,6 +140,9 @@ public final class TfcmBlocks {
     public static Map<TfcmMetal, RegistryObject<?>> registerMetalAnvilBlockItems(DeferredRegister<Item> items) {
         final EnumMap<TfcmMetal, RegistryObject<?>> blockItems = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             if (!metal.hasTools()) {
                 continue;
             }
@@ -146,6 +158,9 @@ public final class TfcmBlocks {
         for (Rock rock : Rock.VALUES) {
             final EnumMap<TfcmOre, RegistryObject<?>> rockItems = new EnumMap<>(TfcmOre.class);
             for (TfcmOre ore : TfcmOre.VALUES) {
+                if (!TfcmEnableContent.isOreEnabled(ore)) {
+                    continue;
+                }
                 if (ore.isGraded()) {
                     continue;
                 }
@@ -162,6 +177,9 @@ public final class TfcmBlocks {
         for (TfcmVanillaStone stone : TfcmVanillaStone.values()) {
             final EnumMap<TfcmOre, RegistryObject<?>> stoneItems = new EnumMap<>(TfcmOre.class);
             for (TfcmOre ore : TfcmOre.VALUES) {
+                if (!TfcmEnableContent.isOreEnabled(ore)) {
+                    continue;
+                }
                 if (ore.isGraded()) {
                     continue;
                 }
@@ -178,6 +196,9 @@ public final class TfcmBlocks {
         for (Rock rock : Rock.VALUES) {
             final EnumMap<TfcmOre, Map<Ore.Grade, RegistryObject<?>>> rockItems = new EnumMap<>(TfcmOre.class);
             for (TfcmOre ore : TfcmOre.VALUES) {
+                if (!TfcmEnableContent.isOreEnabled(ore)) {
+                    continue;
+                }
                 if (!ore.isGraded()) {
                     continue;
                 }
@@ -199,6 +220,9 @@ public final class TfcmBlocks {
         for (TfcmVanillaStone stone : TfcmVanillaStone.values()) {
             final EnumMap<TfcmOre, Map<Ore.Grade, RegistryObject<?>>> stoneItems = new EnumMap<>(TfcmOre.class);
             for (TfcmOre ore : TfcmOre.VALUES) {
+                if (!TfcmEnableContent.isOreEnabled(ore)) {
+                    continue;
+                }
                 if (!ore.isGraded()) {
                     continue;
                 }
@@ -221,6 +245,9 @@ public final class TfcmBlocks {
             final Map<String, RegistryObject<?>> stoneItems = new HashMap<>();
             for (Map.Entry<String, RegistryObject<Block>> entry : COMPAT_VANILLA_ORES.get(stone).entrySet()) {
                 final String oreName = entry.getKey();
+                if (!TfcmEnableContent.isOreEnabled(oreName)) {
+                    continue;
+                }
                 final String id = "ore/" + oreName + "/" + stone.getSerializedName();
                 stoneItems.put(oreName, registerBlockItem(items, id, entry.getValue()));
             }
@@ -232,6 +259,9 @@ public final class TfcmBlocks {
     public static Map<TfcmOre, RegistryObject<?>> registerSmallOreBlockItems(DeferredRegister<Item> items) {
         final EnumMap<TfcmOre, RegistryObject<?>> blockItems = new EnumMap<>(TfcmOre.class);
         for (TfcmOre ore : TfcmOre.VALUES) {
+            if (!TfcmEnableContent.isOreEnabled(ore)) {
+                continue;
+            }
             if (!ore.isGraded()) {
                 continue;
             }
@@ -244,6 +274,9 @@ public final class TfcmBlocks {
     private static Map<TfcmMetal, RegistryObject<Block>> registerMetalBlocks() {
         final EnumMap<TfcmMetal, RegistryObject<Block>> blocks = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             final String id = "metal/block/" + metal.getSerializedName();
             blocks.put(metal, BLOCKS.register(id, Metal.BlockType.BLOCK.create(metal)));
         }
@@ -253,6 +286,9 @@ public final class TfcmBlocks {
     private static Map<TfcmMetal, RegistryObject<Block>> registerMetalBlockSlabs() {
         final EnumMap<TfcmMetal, RegistryObject<Block>> blocks = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             final String id = "metal/block/" + metal.getSerializedName() + "_slab";
             blocks.put(metal, BLOCKS.register(id, Metal.BlockType.BLOCK_SLAB.create(metal)));
         }
@@ -262,6 +298,9 @@ public final class TfcmBlocks {
     private static Map<TfcmMetal, RegistryObject<Block>> registerMetalBlockStairs() {
         final EnumMap<TfcmMetal, RegistryObject<Block>> blocks = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             final String id = "metal/block/" + metal.getSerializedName() + "_stairs";
             blocks.put(metal, BLOCKS.register(id, Metal.BlockType.BLOCK_STAIRS.create(metal)));
         }
@@ -271,6 +310,9 @@ public final class TfcmBlocks {
     private static Map<TfcmMetal, RegistryObject<AnvilBlock>> registerMetalAnvils() {
         final EnumMap<TfcmMetal, RegistryObject<AnvilBlock>> blocks = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             if (!metal.hasTools()) {
                 continue;
             }
@@ -293,6 +335,9 @@ public final class TfcmBlocks {
         for (Rock rock : Rock.VALUES) {
             final EnumMap<TfcmOre, RegistryObject<Block>> ores = new EnumMap<>(TfcmOre.class);
             for (TfcmOre ore : TfcmOre.VALUES) {
+                if (!TfcmEnableContent.isOreEnabled(ore)) {
+                    continue;
+                }
                 if (ore.isGraded()) {
                     continue;
                 }
@@ -309,6 +354,9 @@ public final class TfcmBlocks {
         for (TfcmVanillaStone stone : TfcmVanillaStone.values()) {
             final EnumMap<TfcmOre, RegistryObject<Block>> ores = new EnumMap<>(TfcmOre.class);
             for (TfcmOre ore : TfcmOre.VALUES) {
+                if (!TfcmEnableContent.isOreEnabled(ore)) {
+                    continue;
+                }
                 if (ore.isGraded()) {
                     continue;
                 }
@@ -325,6 +373,9 @@ public final class TfcmBlocks {
         for (Rock rock : Rock.VALUES) {
             final EnumMap<TfcmOre, Map<Ore.Grade, RegistryObject<Block>>> ores = new EnumMap<>(TfcmOre.class);
             for (TfcmOre ore : TfcmOre.VALUES) {
+                if (!TfcmEnableContent.isOreEnabled(ore)) {
+                    continue;
+                }
                 if (!ore.isGraded()) {
                     continue;
                 }
@@ -346,6 +397,9 @@ public final class TfcmBlocks {
         for (TfcmVanillaStone stone : TfcmVanillaStone.values()) {
             final EnumMap<TfcmOre, Map<Ore.Grade, RegistryObject<Block>>> ores = new EnumMap<>(TfcmOre.class);
             for (TfcmOre ore : TfcmOre.VALUES) {
+                if (!TfcmEnableContent.isOreEnabled(ore)) {
+                    continue;
+                }
                 if (!ore.isGraded()) {
                     continue;
                 }
@@ -368,6 +422,9 @@ public final class TfcmBlocks {
         for (TfcmVanillaStone stone : TfcmVanillaStone.values()) {
             final Map<String, RegistryObject<Block>> ores = new HashMap<>();
             for (String oreName : oreNames) {
+                if (!TfcmEnableContent.isOreEnabled(oreName)) {
+                    continue;
+                }
                 final String id = "ore/" + oreName + "/" + stone.getSerializedName();
                 ores.put(oreName, BLOCKS.register(id, () -> createVanillaOreBlock(stone)));
             }
@@ -379,6 +436,9 @@ public final class TfcmBlocks {
     private static Map<TfcmOre, RegistryObject<Block>> registerSmallOres() {
         final EnumMap<TfcmOre, RegistryObject<Block>> ores = new EnumMap<>(TfcmOre.class);
         for (TfcmOre ore : TfcmOre.VALUES) {
+            if (!TfcmEnableContent.isOreEnabled(ore)) {
+                continue;
+            }
             if (!ore.isGraded()) {
                 continue;
             }
@@ -396,6 +456,9 @@ public final class TfcmBlocks {
     private static Map<String, RegistryObject<Block>> registerCompatSmallOrePieces() {
         final Map<String, RegistryObject<Block>> ores = new HashMap<>();
         for (String oreName : TfcmContentNames.ORE_PIECES_WITHOUT_SAMPLES) {
+            if (!TfcmEnableContent.isOreEnabled(oreName)) {
+                continue;
+            }
             final String id = "ore/small_" + oreName;
             ores.put(oreName, BLOCKS.register(id, () -> GroundcoverBlock.looseOre(BlockBehaviour.Properties.of()
                 .mapColor(MapColor.GRASS)

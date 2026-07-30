@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.EnumMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
 
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Rock;
@@ -21,8 +22,9 @@ public final class TfcmItems {
     public static final boolean TFC_ORE_WASHING_LOADED = ModList.get().isLoaded(TfcmMod.TFC_ORE_WASHING_MOD_ID);
     public static final boolean TFC_METAL_TOOLS_LOADED = ModList.get().isLoaded(TfcmMod.TFC_METAL_TOOLS_MOD_ID);
     public static final boolean TFC_HOT_OR_NOT_LOADED = ModList.get().isLoaded(TfcmMod.TFC_HOT_OR_NOT_MOD_ID);
+    public static final DeferredItem<Item> CREATIVE_TAB_ICON = ITEMS.register("creative_tab_icon", () -> new Item(new Item.Properties()));
     public static final Map<TfcmMetal, DeferredItem<Item>> METAL_INGOTS = registerMetalItems("ingot", Metal.ItemType.INGOT);
-    public static final DeferredItem<Item> HIGH_CARBON_TUNGSTEN_STEEL_INGOT = ITEMS.register("metal/ingot/high_carbon_tungsten_steel", () -> new Item(new Item.Properties()));
+    public static final Optional<DeferredItem<Item>> HIGH_CARBON_TUNGSTEN_STEEL_INGOT = registerHighCarbonTungstenSteelIngot();
     public static final DeferredItem<Item> CUT_QUARTZ = ITEMS.register("gem/cut_quartz", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> CERTUS_QUARTZ = ITEMS.register("gem/certus_quartz", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> FLUORITE_POWDER = ITEMS.register("powder/fluorite", () -> new Item(new Item.Properties()));
@@ -76,9 +78,19 @@ public final class TfcmItems {
     private TfcmItems() {
     }
 
+    private static Optional<DeferredItem<Item>> registerHighCarbonTungstenSteelIngot() {
+        if (!TfcmEnableContent.isMetalEnabled(TfcmMetal.TUNGSTEN_STEEL)) {
+            return Optional.empty();
+        }
+        return Optional.of(ITEMS.register("metal/ingot/high_carbon_tungsten_steel", () -> new Item(new Item.Properties())));
+    }
+
     private static Map<TfcmMetal, DeferredItem<Item>> registerMetalItems(String itemTypePath, Metal.ItemType itemType) {
         final EnumMap<TfcmMetal, DeferredItem<Item>> items = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             items.put(metal, ITEMS.register("metal/" + itemTypePath + "/" + metal.getSerializedName(), () -> itemType.create(metal)));
         }
         return Collections.unmodifiableMap(items);
@@ -87,6 +99,9 @@ public final class TfcmItems {
     private static Map<TfcmMetal, Map<Metal.ItemType, DeferredItem<Item>>> registerMetalToolItems() {
         final EnumMap<TfcmMetal, Map<Metal.ItemType, DeferredItem<Item>>> itemsByMetal = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             if (!metal.hasTools()) {
                 continue;
             }
@@ -114,6 +129,9 @@ public final class TfcmItems {
     private static Map<TfcmMetal, DeferredItem<Item>> registerCompatItems(String form, boolean tongs) {
         final EnumMap<TfcmMetal, DeferredItem<Item>> items = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             if (!metal.hasTools()) {
                 continue;
             }
@@ -151,6 +169,9 @@ public final class TfcmItems {
     private static Map<TfcmMetal, Map<TfcmMoreItemType, DeferredItem<Item>>> registerMoreMetalItems() {
         final EnumMap<TfcmMetal, Map<TfcmMoreItemType, DeferredItem<Item>>> itemsByMetal = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             final EnumMap<TfcmMoreItemType, DeferredItem<Item>> itemsByType = new EnumMap<>(TfcmMoreItemType.class);
             for (TfcmMoreItemType type : TfcmMoreItemType.values()) {
                 final String id = "metal/" + type.path + "/" + metal.getSerializedName();
@@ -164,6 +185,9 @@ public final class TfcmItems {
     private static Map<TfcmOre, Map<TfcmOreWashingItemType, DeferredItem<Item>>> registerOreWashingOreItems() {
         final EnumMap<TfcmOre, Map<TfcmOreWashingItemType, DeferredItem<Item>>> itemsByOre = new EnumMap<>(TfcmOre.class);
         for (TfcmOre ore : TfcmOre.VALUES) {
+            if (!TfcmEnableContent.isOreEnabled(ore)) {
+                continue;
+            }
             if (!ore.isGraded()) {
                 continue;
             }
@@ -181,6 +205,9 @@ public final class TfcmItems {
     private static Map<TfcmOre, DeferredItem<Item>> registerOreItems() {
         final EnumMap<TfcmOre, DeferredItem<Item>> items = new EnumMap<>(TfcmOre.class);
         for (TfcmOre ore : TfcmOre.VALUES) {
+            if (!TfcmEnableContent.isOreEnabled(ore)) {
+                continue;
+            }
             if (ore.isGraded()) {
                 continue;
             }
@@ -192,6 +219,9 @@ public final class TfcmItems {
     private static Map<TfcmOre, Map<Ore.Grade, DeferredItem<Item>>> registerGradedOreItems() {
         final EnumMap<TfcmOre, Map<Ore.Grade, DeferredItem<Item>>> items = new EnumMap<>(TfcmOre.class);
         for (TfcmOre ore : TfcmOre.VALUES) {
+            if (!TfcmEnableContent.isOreEnabled(ore)) {
+                continue;
+            }
             if (!ore.isGraded()) {
                 continue;
             }

@@ -13,6 +13,8 @@ import java.util.Optional;
 
 import com.mojang.logging.LogUtils;
 
+import net.claustra01.tfcm.TfcmEnableContent;
+import net.claustra01.tfcm.TfcmMod;
 import net.dries007.tfc.util.collections.IWeighted;
 import net.dries007.tfc.util.collections.Weighted;
 import net.dries007.tfc.world.feature.vein.ClusterVeinConfig;
@@ -91,6 +93,10 @@ public final class TfcmVeinsYamlParser {
         String randomName,
         Long seedOverride
     ) {
+        public boolean hasEnabledOutputs() {
+            return blocks.stream().anyMatch(VeinDefinition::isOutputEnabled);
+        }
+
         public ConfiguredFeature<?, ?> buildConfiguredFeature() {
             final FeatureConfiguration veinConfig = switch (type.toString()) {
                 case "tfc:cluster_vein" -> new ClusterVeinConfig(buildVeinConfig(), size);
@@ -126,6 +132,9 @@ public final class TfcmVeinsYamlParser {
                 final Weighted<BlockState> weighted = new Weighted<>(new ArrayList<>());
                 final String rockToken = resolveOreRockToken(rock);
                 for (BlockDefinition output : blocks) {
+                    if (!isOutputEnabled(output)) {
+                        continue;
+                    }
                     if (tierWeights.isEmpty()) {
                         addOutput(weighted, output, rockToken, null, output.weight());
                     } else {
@@ -171,6 +180,17 @@ public final class TfcmVeinsYamlParser {
             if (oreState != null) {
                 weighted.add(weight, oreState);
             }
+        }
+
+        private static boolean isOutputEnabled(BlockDefinition output) {
+            final ResourceLocation templateId = ResourceLocation.tryParse(
+                output.blockTemplate()
+                    .replace("{tier}", "normal")
+                    .replace("{rock}", "stone")
+            );
+            return templateId == null
+                || !TfcmMod.MOD_ID.equals(templateId.getNamespace())
+                || TfcmEnableContent.isOrePathEnabled(templateId.getPath());
         }
 
         private BlockState resolveOutputBlockState(String out, String template) {

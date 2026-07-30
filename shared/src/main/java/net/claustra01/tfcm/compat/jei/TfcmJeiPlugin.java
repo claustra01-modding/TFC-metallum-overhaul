@@ -28,6 +28,7 @@ public final class TfcmJeiPlugin implements IModPlugin {
         final IIngredientManager ingredientManager = jeiRuntime.getIngredientManager();
         final Collection<ItemStack> existing = ingredientManager.getAllItemStacks();
         final List<ItemStack> toAdd = TfcmItems.ITEMS.getEntries().stream()
+            .filter(entry -> !entry.getId().getPath().equals("creative_tab_icon"))
             .map(entry -> entry.get().getDefaultInstance())
             .filter(stack -> !stack.isEmpty())
             .filter(stack -> !containsEquivalent(existing, stack))

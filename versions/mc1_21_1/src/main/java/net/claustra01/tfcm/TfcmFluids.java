@@ -48,6 +48,9 @@ public final class TfcmFluids {
     private static Map<TfcmMetal, FluidHolder<BaseFlowingFluid>> registerMetalFluids() {
         final EnumMap<TfcmMetal, FluidHolder<BaseFlowingFluid>> fluids = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             final String fluidName = "metal/" + metal.getSerializedName();
             final String flowingName = "metal/flowing_" + metal.getSerializedName();
             fluids.put(metal, registerMoltenMetal(fluidName, flowingName, metal));

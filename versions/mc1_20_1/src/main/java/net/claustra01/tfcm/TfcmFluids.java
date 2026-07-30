@@ -56,6 +56,9 @@ public final class TfcmFluids {
     private static Map<TfcmMetal, FluidRegistryObject<MoltenFluid>> registerMetalFluids() {
         final EnumMap<TfcmMetal, FluidRegistryObject<MoltenFluid>> fluids = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             final String fluidName = "metal/" + metal.getSerializedName();
             final String flowingName = "metal/flowing_" + metal.getSerializedName();
             fluids.put(metal, registerMoltenMetal(fluidName, flowingName, metal));
@@ -66,6 +69,9 @@ public final class TfcmFluids {
     private static Map<TfcmMetal, RegistryObject<LiquidBlock>> registerMetalFluidBlocks() {
         final EnumMap<TfcmMetal, RegistryObject<LiquidBlock>> blocks = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             blocks.put(metal, FLUID_BLOCKS.register("fluid/metal/" + metal.getSerializedName(),
                 () -> new MoltenFluidBlock(METAL_FLUIDS.get(metal).source(), BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable())));
         }
@@ -75,6 +81,9 @@ public final class TfcmFluids {
     private static Map<TfcmMetal, RegistryObject<BucketItem>> registerMetalFluidBuckets() {
         final EnumMap<TfcmMetal, RegistryObject<BucketItem>> buckets = new EnumMap<>(TfcmMetal.class);
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             buckets.put(metal, BUCKET_ITEMS.register("bucket/metal/" + metal.getSerializedName(),
                 () -> new BucketItem(() -> METAL_FLUIDS.get(metal).getSource(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1))));
         }

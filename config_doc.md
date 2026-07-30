@@ -1,5 +1,21 @@
 # カスタムworldgen設定仕様
 
+## common config
+
+common configの`content`には、registryへ登録しない金属・鉱石を指定できる。
+
+```toml
+[content]
+disabledMetals = ["lead", "uranium"]
+disabledOres = ["galena", "uraninite"]
+```
+
+指定名は金属・鉱石のregistry上の名前を使う。リストにない名前や未知の名前は無視され、設定変更にはゲームの再起動が必要になる。
+
+この設定はregistry登録を無効化するだけで、recipe、tag、loot、heatなどのdata resourceは削除しない。そのため、無効化したcontentを参照するrecipeでは個別の読み込みエラーがログに出る場合がある。creative tabとJEIには無効contentを表示しない。
+
+custom vein configの`blocks`に`tfcm:ore/...`を指定している場合は、無効化した鉱石の候補だけがworldgenから除外される。候補がすべて無効になった鉱脈は生成されない。
+
 TFCMは、Minecraftのconfigディレクトリにある次のファイルからカスタム鉱脈と晶洞を読み込む。
 
 - `config/tfcm/overworld.yaml`

@@ -8,9 +8,14 @@ public final class TfcmCompatOres {
     public static final List<String> FIRMALIFE_ORES = TfcmContentNames.FIRMALIFE_ORES;
 
     public static List<String> getLoadedOreNames() {
-        final List<String> ores = new ArrayList<>(TFC_ORES);
+        final List<String> ores = new ArrayList<>();
+        TFC_ORES.stream()
+            .filter(TfcmEnableContent::isOreEnabled)
+            .forEach(ores::add);
         if (TfcmPlatform.isModLoaded(TfcmMod.FIRMALIFE_MOD_ID)) {
-            ores.addAll(FIRMALIFE_ORES);
+            FIRMALIFE_ORES.stream()
+                .filter(TfcmEnableContent::isOreEnabled)
+                .forEach(ores::add);
         }
         return ores;
     }

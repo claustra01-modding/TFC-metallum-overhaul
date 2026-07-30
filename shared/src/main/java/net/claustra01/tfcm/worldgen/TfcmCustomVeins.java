@@ -174,6 +174,9 @@ public final class TfcmCustomVeins {
         // (including other mods' Feature/Block entries) are available.
         final List<net.minecraft.core.Holder<PlacedFeature>> built = new ArrayList<>(defs.size());
         for (TfcmVeinsYamlParser.VeinDefinition def : defs) {
+            if (!def.hasEnabledOutputs()) {
+                continue;
+            }
             try {
                 final var configured = def.buildConfiguredFeature();
                 final var placed = new PlacedFeature(net.minecraft.core.Holder.direct(configured), List.of());

@@ -13,9 +13,10 @@ public final class TfcmCreativeTabs {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN_TAB = CREATIVE_MODE_TABS.register("main",
         () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.tfcm"))
-            .icon(() -> TfcmItems.METAL_INGOTS.get(TfcmMetal.TUNGSTEN_STEEL).get().getDefaultInstance())
+            .icon(() -> TfcmItems.CREATIVE_TAB_ICON.get().getDefaultInstance())
             .displayItems((parameters, output) -> TfcmItems.ITEMS.getEntries().stream()
                 .filter(item -> TfcmItems.isOptionalCompatItemEnabled(item.getId()))
+                .filter(item -> !item.getId().getPath().equals("creative_tab_icon"))
                 .sorted(Comparator.comparing(item -> item.getId().toString()))
                 .map(item -> item.get())
                 .forEach(output::accept))

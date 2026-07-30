@@ -222,6 +222,9 @@ model pathはregistry IDと同じ階層を基本とする。
 - bauxite、galena、uraniniteの鉱脈はCrossoverではなく `tfcm:ore/*` と `tfcm:ore/small_*` を生成する。
 - `overworld.yaml`、`nether.yaml`、`end.yaml` はルート `geodes` で晶洞も定義できる。晶洞定義はtype、Y範囲、rarity、outer、middle、weightedなinner/filling/inner_placementsを持つ。
 - custom worldgen有効時はdata pack由来のTFCM晶洞を除外し、configの `geodes` に定義された晶洞だけを対象ディメンションへ追加する。`geodes` がない、空、または有効な定義がない場合は晶洞を生成しない。
+- common configの `content.disabledMetals` と `content.disabledOres` は、指定名のregistry登録だけを無効化する。未知の名前は無視し、変更にはゲームの再起動が必要である。
+- content無効化時もrecipeやtagなどのserver data resourceは削除しない。無効registryを参照するrecipeはMinecraft/TFC側で個別に読み込み失敗となり、creative tab・JEIには無効コンテンツを表示しない。
+- custom veinの `tfcm:ore/...` 出力は無効鉱石を候補から除外し、出力候補がなくなった鉱脈は生成しない。金属の無効化は鉱脈のblock出力を自動では無効化しない。
 
 ## 11. テクスチャ生成
 
@@ -335,3 +338,4 @@ python3 tools/textures/regenerate_misc.py
 - Mod entry: 各versionの `TfcmMod.java`
 - 鉱脈parser: sharedの `worldgen/TfcmVeinsYamlParser.java`
 - 鉱脈platform: 各versionの `TfcmVeinPlatform.java`
+- content選択: sharedの `TfcmEnableContent.java`

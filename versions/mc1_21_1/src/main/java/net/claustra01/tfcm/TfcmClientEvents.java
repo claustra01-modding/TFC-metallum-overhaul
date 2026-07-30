@@ -46,13 +46,17 @@ public final class TfcmClientEvents {
 
             // Compat ores in vanilla stones (netherrack/endstone)
             TfcmBlocks.COMPAT_VANILLA_ORES.values().forEach(oresByStone ->
-                oresByStone.values().forEach(block -> ItemBlockRenderTypes.setRenderLayer(block.get(), cutout)));
+                oresByStone.entrySet().stream()
+                    .filter(entry -> TfcmEnableContent.isOreEnabled(entry.getKey()))
+                    .forEach(entry -> ItemBlockRenderTypes.setRenderLayer(entry.getValue().get(), cutout)));
 
             // Loose small ores
             TfcmBlocks.SMALL_ORES.values().forEach(block -> ItemBlockRenderTypes.setRenderLayer(block.get(), cutout));
 
             // Loose ore pieces that have no native surface sample blocks (e.g. graphite)
-            TfcmBlocks.COMPAT_SMALL_ORE_PIECES.values().forEach(block -> ItemBlockRenderTypes.setRenderLayer(block.get(), cutout));
+            TfcmBlocks.COMPAT_SMALL_ORE_PIECES.entrySet().stream()
+                .filter(entry -> TfcmEnableContent.isOreEnabled(entry.getKey()))
+                .forEach(entry -> ItemBlockRenderTypes.setRenderLayer(entry.getValue().get(), cutout));
 
             ItemBlockRenderTypes.setRenderLayer(TfcmBlocks.QUARTZ_CLUSTER.get(), cutout);
             ItemBlockRenderTypes.setRenderLayer(TfcmBlocks.LARGE_QUARTZ_BUD.get(), cutout);
@@ -71,6 +75,9 @@ public final class TfcmClientEvents {
 
     private static void registerExtensions(RegisterClientExtensionsEvent event) {
         for (TfcmMetal metal : TfcmMetal.values()) {
+            if (!TfcmEnableContent.isMetalEnabled(metal)) {
+                continue;
+            }
             event.registerFluidType(new FluidRendererExtension(
                 0xFF000000 | metal.color(),
                 MOLTEN_STILL,

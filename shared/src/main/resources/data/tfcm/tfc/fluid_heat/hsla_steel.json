@@ -1,0 +1,5 @@
+{
+  "fluid": "tfc:metal/hsla_steel",
+  "melt_temperature": 1450,
+  "specific_heat_capacity": 0.008571429
+}

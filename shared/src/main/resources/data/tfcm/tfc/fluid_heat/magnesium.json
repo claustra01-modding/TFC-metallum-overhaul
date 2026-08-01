@@ -1,0 +1,5 @@
+{
+  "fluid": "tfc:metal/magnesium",
+  "melt_temperature": 650,
+  "specific_heat_capacity": 0.008571429
+}

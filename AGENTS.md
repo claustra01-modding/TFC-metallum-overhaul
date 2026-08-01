@@ -200,6 +200,8 @@ model pathはregistry IDと同じ階層を基本とする。
 - 金属block、slab、stairs、TFC More Items形状、Ore Washing形状には明示的なitem sizeを定義する。
 - item sizeの正本は `shared/src/main/resources/data/tfc/tfc/item_size`。1.20.1 buildで `item_sizes` へ変換する。
 - item heatは `shared/src/main/resources/data/tfcm/tfc/item_heat` に置く。
+- 全独自金属は `tfcm/tfc/fluid_heat/<metal>.json` を持ち、1.20.1では同じ定義からTFC metal JSONを生成する。各形状のitem heatはTFC本体と同じく融点の60%を鍛造可能温度、80%を溶接可能温度とし、Draconium系のように明示した例外だけ個別値を使う。
+- 全独自金属は形状別common item tag、item/block両方の `c:storage_blocks/<metal>`、`c:molten_<metal>` を持つ。形状別item tagは対応するトップレベルcommon tagから参照し、溶融fluidは `tfc:molten_metals` に含める。
 - 金属block、slab、stairsは個別heat定義を持ち、slab/stairsはitem IDを直接指定する。
 - 品位あり鉱石は鉱石ごとに `small`, `poor`, `normal`, `rich` を一つのheat定義で扱う。
 - Ore Washingは `pellet_briquet/<ore>.json` と `powder/<ore>.json` を使う。

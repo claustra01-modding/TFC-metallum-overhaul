@@ -53,6 +53,17 @@
 | `andesite_alloy` | common | `#757E76` | 2 | 1 | 520 | - |
 | `draconium` | epic | `#6C3F99` | 7 | 6 | 2000 | - |
 | `awakened_draconium` | epic | `#E06100` | 7 | 6 | 2000 | - |
+| `boron` | uncommon | `#676767` | 3 | 2 | 2076 | - |
+| `thorium` | uncommon | `#242424` | 3 | 2 | 1750 | - |
+| `magnesium` | common | `#BCA3BA` | 2 | 1 | 650 | - |
+| `beryllium` | uncommon | `#D3DCC3` | 3 | 2 | 1287 | - |
+| `zirconium` | uncommon | `#DFE0B7` | 5 | 4 | 1855 | - |
+| `neutronium` | epic | `#120E1A` | 7 | 6 | 3000 | - |
+| `ferroboron` | rare | `#3D3D3D` | 5 | 4 | 1500 | - |
+| `tough_alloy` | rare | `#130F1B` | 7 | 6 | 1600 | - |
+| `zircaloy` | rare | `#BABAB0` | 5 | 4 | 1855 | - |
+| `hsla_steel` | rare | `#726C9B` | 5 | 4 | 1450 | - |
+| `super_alloy` | epic | `#62595C` | 7 | 6 | 1800 | - |
 
 ## Tool性能
 
@@ -98,6 +109,11 @@
 | `andesite_alloy` | bronze | bronze | 低tier岩石・金属合金 |
 | `draconium` | black steel | black steel | 高度・魔法系金属 |
 | `awakened_draconium` | red steel | red steel | 最上位・魔法系金属 |
+| `boron`, `thorium`, `zirconium` | steel | steel | NuclearCraft由来の高融点金属 |
+| `magnesium` | zinc | zinc | NuclearCraft由来の軽金属 |
+| `beryllium` | silver | silver | NuclearCraft由来の軽金属 |
+| `neutronium`, `ferroboron`, `tough_alloy`, `hsla_steel`, `super_alloy` | black steel | black steel | NuclearCraft由来の高度合金。neutroniumは全item形状をanimated texture化 |
+| `zircaloy` | steel | steel | NuclearCraft由来のジルコニウム合金 |
 
 `high_carbon_tungsten_steel` はingotだけを生成します。Ore Washingは鉱石textureをパレット元、graphite/chromiumを形状元とする従来ルールを維持します。
 
@@ -114,6 +130,11 @@
 | `solder` | antimony 40-60%, bismuth 20-40%, tin 20-40% |
 | `andesite_alloy` | molten andesite 89-91%, zinc 9-11% |
 | `andesite_alloy` | molten andesite 89-91%, tin 9-11% |
+| `ferroboron` | boron 50%, steel 50% |
+| `tough_alloy` | ferroboron 50%, lithium 50% |
+| `zircaloy` | zirconium 87.5%, tin 12.5% |
+| `hsla_steel` | iron 93.75%, steel（NuclearCraftのcarbon-manganese相当成分）6.25% |
+| `super_alloy` | tough alloy 45-55%, titanium 45-55% |
 
 Naquadah、Dawnstone、Draconium、Awakened Draconiumには、このmod独自のalloying recipeを追加しません。Draconium系はDraconic Evolutionのingotをoptionalなcommon ingot tagで受け入れます。Andesite AlloyはCreateのitemを同様に受け入れ、520℃で100 mBの `tfc:metal/andesite_alloy` に溶融します。
 

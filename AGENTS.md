@@ -40,7 +40,7 @@
 
 対象金属:
 
-`compressed_iron`, `platinum`, `naquadah`, `iridium`, `osmium`, `osmiridium`, `mithril`, `arcane`, `refined_glowstone`, `refined_obsidian`, `antimony`, `titanium`, `cobalt`, `lithium`, `aluminum`, `constantan`, `invar`, `electrum`, `lead`, `uranium`, `tungsten`, `solder`, `tungsten_steel`, `netherite`, `dawnstone`, `andesite_alloy`
+`compressed_iron`, `platinum`, `naquadah`, `iridium`, `osmium`, `osmiridium`, `mithril`, `arcane`, `refined_glowstone`, `refined_obsidian`, `antimony`, `titanium`, `cobalt`, `lithium`, `aluminum`, `constantan`, `invar`, `electrum`, `lead`, `uranium`, `tungsten`, `solder`, `tungsten_steel`, `netherite`, `dawnstone`, `andesite_alloy`, `boron`, `thorium`, `magnesium`, `beryllium`, `zirconium`, `neutronium`, `ferroboron`, `tough_alloy`, `zircaloy`, `hsla_steel`, `super_alloy`
 
 常時生成する形状:
 
@@ -76,18 +76,18 @@ Andesite Alloyは鍛造tier 2、融点520℃、比熱0.012とする。optional�
 
 品位あり鉱石:
 
-`native_platinum`, `native_naquadah`, `native_iridium`, `native_osmium`, `rutile`, `cobaltite`, `spodumene`, `bauxite`, `galena`, `uraninite`, `mithril_matrix`, `stibnite`, `wolframite`
+`native_platinum`, `native_naquadah`, `native_iridium`, `native_osmium`, `rutile`, `cobaltite`, `spodumene`, `bauxite`, `galena`, `uraninite`, `mithril_matrix`, `stibnite`, `wolframite`, `thorianite`, `magnesite`, `zircon`
 
 品位なし鉱石:
 
-`fluorite`, `quartz`
+`fluorite`, `quartz`, `carobbiite`
 
 ID規則:
 
 - 品位ありitem: `tfcm:ore/{poor|normal|rich}_<ore>`
 - 品位なしitem: `tfcm:ore/<ore>`
 - 母岩内block: item IDに `/<tfc_rock>`、`/netherrack`、`/endstone` を付ける。全独自鉱石はTFC母岩版に加えてNether/End版を持つ。
-- 地表サンプル: `tfcm:ore/small_<ore>`
+- 地表サンプル: 品位あり鉱石は `tfcm:ore/small_<ore>`。
 - `small_fluorite` と `small_quartz` はgroundcover blockのみでblock itemを持たない。
 - QuartzはTFCのRuby等と同じ非品位宝石鉱石として、全TFC母岩、Nether、Endの `tfcm:ore/quartz/<rock_or_stone>` blockと `tfcm:ore/small_quartz` groundcover blockを持つ。
 - Quartz block modelは `tfcm:block/ore/quartz` overlayを参照する。overlay PNGは別途提供される正式素材を使用する。
@@ -118,7 +118,7 @@ Gem関連:
 次のコンテンツはTFC IE Crossoverを実行時依存にせず、TFCMの独自コンテンツとして常時登録する。
 
 - 金属: `aluminum`, `constantan`, `electrum`, `lead`, `uranium`
-- 鉱石: `bauxite` -> `aluminum`, `galena` -> `lead`, `uraninite` -> `uranium`
+- 鉱石: `bauxite` -> `aluminum`, `galena` -> `lead`
 - Electrum alloy: Gold 40-60% + Silver 40-60%
 - Constantan alloy: Copper 40-60% + Nickel 40-60%
 
@@ -219,7 +219,9 @@ model pathはregistry IDと同じ階層を基本とする。
 - `tier` は品位名から整数weightへのmappingとする。
 - 既存config互換のため、parserは旧 `block` とlist風 `tier` も受け入れる。
 - YAML parser本体は `shared/src/main/java`、TFC API差分は各versionの `TfcmVeinPlatform` に限定する。
-- bauxite、galena、uraniniteの鉱脈はCrossoverではなく `tfcm:ore/*` と `tfcm:ore/small_*` を生成する。
+- bauxite、galenaの鉱脈はCrossoverではなく `tfcm:ore/*` と `tfcm:ore/small_*` を生成する。
+- `uraninite` は品位あり鉱石として登録し、Ore Washing導入時はuraniumへ、未導入時は直接溶融でuraniumへ変換する。`borax` はTFC本体の鉱石を入力にOre Washingでboronへ変換する。
+- `spodumene`、`thorianite`、`magnesite`、`zircon` は過去版のgrade textureを使う品位あり鉱石で、それぞれlithium、thorium、magnesium、zirconiumへ変換する。`carobbiite` は過去版にgrade textureがないため、normal textureのみの非品位鉱石として登録し、`tfcorewashing` 導入時はOre Washingでberylliumへ変換する。
 - `overworld.yaml`、`nether.yaml`、`end.yaml` はルート `geodes` で晶洞も定義できる。晶洞定義はtype、Y範囲、rarity、outer、middle、weightedなinner/filling/inner_placementsを持つ。
 - custom worldgen有効時はdata pack由来のTFCM晶洞を除外し、configの `geodes` に定義された晶洞だけを対象ディメンションへ追加する。`geodes` がない、空、または有効な定義がない場合は晶洞を生成しない。
 - common configの `content.disabledMetals` と `content.disabledOres` は、指定名のregistry登録だけを無効化する。未知の名前は無視し、変更にはゲームの再起動が必要である。
@@ -315,18 +317,22 @@ python3 tools/textures/regenerate_ore_washing.py
 
 ### 11.4 鉱石・Gem補助texture
 
-- `bauxite`, `galena`, `uraninite` の鉱石item/block overlayとCut QuartzはTFC IE Crossover由来素材を使用する。
+- `bauxite`, `galena` の鉱石item/block overlayとCut QuartzはTFC IE Crossover由来素材を使用する。
 - Cut QuartzはCrossoverのQuartz Shardをそのまま使う。
 - Quartz晶洞のblock/bud textureとmodel、生成形状はTFC IE Crossover 1.21.xを正本とする。
 - Certus Quartzのitem/block/bud textureはApplied Energistics 2 1.21.1を正本とする。非成長blockは枠・中心紋・芽模様のない `quartz_block_empty`、成長blockは `flawless_budding_quartz` を使い、加工済み `quartz_block` は使わない。必要な第三者表示はルート `LICENCE` 内へ統合する。
 - raw QuartzはTFC `item/ore/amethyst` 形状へCut Quartzのパレットを転写する。
 - Fluorite PowderとQuartz PowderはTFC `item/powder/amethyst` 形状へ各鉱石itemのパレットを転写する。
-- `cobaltite` と `spodumene` の鉱石素材は、それぞれTFC Metallum UとTFC Metallum 1.12.2由来とする。
+- `cobaltite`、`spodumene`、`thorianite`、`magnesite`、`carobbiite`、`zircon` の鉱石素材は、TFC Metallum UまたはTFC Metallum 1.12.2由来とする。`carobbiite` だけはlegacy normal textureをそのまま使う。
+- `boron`, `thorium`, `magnesium`, `beryllium`, `zirconium`, `neutronium`, `ferroboron`, `tough_alloy`, `zircaloy`, `hsla_steel`, `super_alloy` の金属色はNuclearCraftのingot textureを参照する。`neutronium` はingot、double ingot、sheet、rod、block、More Items形状を含む全item textureを同じフレーム数のanimated PNGとして生成し、NuclearCraftのanimation metadataを維持する。
 
 生成script:
 
 ```bash
 python3 tools/textures/regenerate_misc.py
+python3 tools/textures/regenerate_ore_grades.py
+python3 tools/textures/regenerate_carobbiite.py
+python3 tools/textures/regenerate_neutronium.py
 ```
 
 ## 12. 主要コード

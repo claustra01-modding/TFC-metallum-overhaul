@@ -69,6 +69,7 @@ public final class TfcmContentNames {
         "amethyst",
         "bituminous_coal",
         "borax",
+        "carobbiite",
         "cinnabar",
         "cryolite",
         "diamond",
@@ -89,6 +90,11 @@ public final class TfcmContentNames {
         "sulfur",
         "sylvite",
         "topaz"
+    );
+
+    public static final List<String> TFC_ORE_WASHING_ORES = List.of(
+        "borax",
+        "carobbiite"
     );
 
     private TfcmContentNames() {

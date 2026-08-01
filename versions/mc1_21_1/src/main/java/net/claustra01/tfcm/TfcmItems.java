@@ -62,6 +62,9 @@ public final class TfcmItems {
     public static final Map<TfcmOre, Map<TfcmOreWashingItemType, DeferredItem<Item>>> ORE_WASHING_ORE_ITEMS = TFC_ORE_WASHING_LOADED
         ? registerOreWashingOreItems()
         : Collections.emptyMap();
+    public static final Map<String, Map<TfcmOreWashingItemType, DeferredItem<Item>>> TFC_COMPAT_ORE_WASHING_ITEMS = TFC_ORE_WASHING_LOADED
+        ? registerCompatOreWashingItems()
+        : Collections.emptyMap();
     public static final Map<TfcmMetal, DeferredItem<?>> METAL_BLOCK_ITEMS = TfcmBlocks.registerMetalBlockItems(ITEMS);
     public static final Map<TfcmMetal, DeferredItem<?>> METAL_BLOCK_SLAB_ITEMS = TfcmBlocks.registerMetalSlabBlockItems(ITEMS);
     public static final Map<TfcmMetal, DeferredItem<?>> METAL_BLOCK_STAIRS_ITEMS = TfcmBlocks.registerMetalStairsBlockItems(ITEMS);
@@ -198,6 +201,22 @@ public final class TfcmItems {
                 itemsByType.put(type, ITEMS.register(id, () -> new Item(new Item.Properties())));
             }
             itemsByOre.put(ore, Collections.unmodifiableMap(itemsByType));
+        }
+        return Collections.unmodifiableMap(itemsByOre);
+    }
+
+    private static Map<String, Map<TfcmOreWashingItemType, DeferredItem<Item>>> registerCompatOreWashingItems() {
+        final Map<String, Map<TfcmOreWashingItemType, DeferredItem<Item>>> itemsByOre = new java.util.LinkedHashMap<>();
+        for (String oreName : TfcmContentNames.TFC_ORE_WASHING_ORES) {
+            if (!TfcmEnableContent.isOreEnabled(oreName)) {
+                continue;
+            }
+            final EnumMap<TfcmOreWashingItemType, DeferredItem<Item>> itemsByType = new EnumMap<>(TfcmOreWashingItemType.class);
+            for (TfcmOreWashingItemType type : TfcmOreWashingItemType.values()) {
+                final String id = "metal/" + type.path + "/" + oreName;
+                itemsByType.put(type, ITEMS.register(id, () -> new Item(new Item.Properties())));
+            }
+            itemsByOre.put(oreName, Collections.unmodifiableMap(itemsByType));
         }
         return Collections.unmodifiableMap(itemsByOre);
     }

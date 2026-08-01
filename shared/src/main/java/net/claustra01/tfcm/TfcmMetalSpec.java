@@ -30,7 +30,18 @@ public enum TfcmMetalSpec {
     DAWNSTONE("dawnstone", Rarity.UNCOMMON, 0xB18143, false),
     ANDESITE_ALLOY("andesite_alloy", Rarity.COMMON, 0x757E76, false),
     DRACONIUM("draconium", Rarity.EPIC, 0x6C3F99, false),
-    AWAKENED_DRACONIUM("awakened_draconium", Rarity.EPIC, 0xE06100, false);
+    AWAKENED_DRACONIUM("awakened_draconium", Rarity.EPIC, 0xE06100, false),
+    BORON("boron", Rarity.UNCOMMON, 0x676767, false),
+    THORIUM("thorium", Rarity.UNCOMMON, 0x242424, false),
+    MAGNESIUM("magnesium", Rarity.COMMON, 0xBCA3BA, false),
+    BERYLLIUM("beryllium", Rarity.UNCOMMON, 0xD3DCC3, false),
+    ZIRCONIUM("zirconium", Rarity.UNCOMMON, 0xDFE0B7, false),
+    NEUTRONIUM("neutronium", Rarity.EPIC, 0x120E1A, false),
+    FERROBORON("ferroboron", Rarity.RARE, 0x3D3D3D, false),
+    TOUGH_ALLOY("tough_alloy", Rarity.RARE, 0x130F1B, false),
+    ZIRCALOY("zircaloy", Rarity.RARE, 0xBABAB0, false),
+    HSLA_STEEL("hsla_steel", Rarity.RARE, 0x726C9B, false),
+    SUPER_ALLOY("super_alloy", Rarity.EPIC, 0x62595C, false);
 
     private final String serializedName;
     private final Rarity rarity;
@@ -65,10 +76,12 @@ public enum TfcmMetalSpec {
             case ANTIMONY, CONSTANTAN, ELECTRUM, LEAD, DAWNSTONE -> 1;
             case MITHRIL, ARCANE, REFINED_GLOWSTONE, REFINED_OBSIDIAN, ANDESITE_ALLOY -> 2;
             case COMPRESSED_IRON, PLATINUM, IRIDIUM, OSMIUM, OSMIRIDIUM, COBALT, LITHIUM, ALUMINUM,
-                INVAR, URANIUM, TUNGSTEN, SOLDER -> 3;
+                INVAR, URANIUM, TUNGSTEN, SOLDER, BORON, THORIUM, BERYLLIUM -> 3;
+            case ZIRCONIUM, MAGNESIUM -> 2;
+            case FERROBORON, ZIRCALOY, HSLA_STEEL, TOUGH_ALLOY, SUPER_ALLOY -> 5;
             case TITANIUM -> 5;
             case NETHERITE -> 6;
-            case NAQUADAH, TUNGSTEN_STEEL, DRACONIUM, AWAKENED_DRACONIUM -> 7;
+            case NAQUADAH, TUNGSTEN_STEEL, DRACONIUM, AWAKENED_DRACONIUM, NEUTRONIUM -> 7;
         };
     }
 }

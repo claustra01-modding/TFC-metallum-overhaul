@@ -23,7 +23,11 @@ public enum TfcmOre {
     URANINITE(true, "uranium"),
     MITHRIL_MATRIX(true, "mithril"),
     STIBNITE(true, "antimony"),
-    WOLFRAMITE(true, "tungsten");
+    WOLFRAMITE(true, "tungsten"),
+    THORIANITE(true, "thorium"),
+    MAGNESITE(true, "magnesium"),
+    CAROBBIITE(false, "beryllium"),
+    ZIRCON(true, "zirconium");
 
     public static final TfcmOre[] VALUES = values();
 

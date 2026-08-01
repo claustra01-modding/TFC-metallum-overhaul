@@ -38,7 +38,18 @@ public enum TfcmMetal implements RegistryMetal {
     DAWNSTONE(TfcmMetalSpec.DAWNSTONE),
     ANDESITE_ALLOY(TfcmMetalSpec.ANDESITE_ALLOY),
     DRACONIUM(TfcmMetalSpec.DRACONIUM),
-    AWAKENED_DRACONIUM(TfcmMetalSpec.AWAKENED_DRACONIUM);
+    AWAKENED_DRACONIUM(TfcmMetalSpec.AWAKENED_DRACONIUM),
+    BORON(TfcmMetalSpec.BORON),
+    THORIUM(TfcmMetalSpec.THORIUM),
+    MAGNESIUM(TfcmMetalSpec.MAGNESIUM),
+    BERYLLIUM(TfcmMetalSpec.BERYLLIUM),
+    ZIRCONIUM(TfcmMetalSpec.ZIRCONIUM),
+    NEUTRONIUM(TfcmMetalSpec.NEUTRONIUM),
+    FERROBORON(TfcmMetalSpec.FERROBORON),
+    TOUGH_ALLOY(TfcmMetalSpec.TOUGH_ALLOY),
+    ZIRCALOY(TfcmMetalSpec.ZIRCALOY),
+    HSLA_STEEL(TfcmMetalSpec.HSLA_STEEL),
+    SUPER_ALLOY(TfcmMetalSpec.SUPER_ALLOY);
 
     private final TfcmMetalSpec spec;
 

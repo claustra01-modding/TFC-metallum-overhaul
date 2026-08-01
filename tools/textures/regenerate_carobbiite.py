@@ -39,8 +39,10 @@ def remove_old_graded_assets() -> None:
 
 
 def write_block_assets(path_name: str) -> None:
-    if path_name in {"netherrack", "endstone"}:
-        all_texture = f"minecraft:block/{path_name}"
+    if path_name == "endstone":
+        all_texture = "minecraft:block/end_stone"
+    elif path_name == "netherrack":
+        all_texture = "minecraft:block/netherrack"
     else:
         all_texture = f"tfc:block/rock/raw/{path_name}"
     model = {

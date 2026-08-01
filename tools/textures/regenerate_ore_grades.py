@@ -60,7 +60,12 @@ def write_grade_assets(ore: str, grade: str) -> None:
     block_size, block_pixels = block_source(ore, grade)
     save_png(ASSETS / f"textures/block/ore/{grade}_{ore}.png", block_size, block_pixels)
     for rock in (*ROCKS, "netherrack", "endstone"):
-        all_texture = f"minecraft:block/{rock}" if rock in {"netherrack", "endstone"} else f"tfc:block/rock/raw/{rock}"
+        if rock == "endstone":
+            all_texture = "minecraft:block/end_stone"
+        elif rock == "netherrack":
+            all_texture = "minecraft:block/netherrack"
+        else:
+            all_texture = f"tfc:block/rock/raw/{rock}"
         model = {
             "parent": "tfc:block/ore",
             "textures": {"all": all_texture, "particle": all_texture, "overlay": f"tfcm:block/ore/{grade}_{ore}"},

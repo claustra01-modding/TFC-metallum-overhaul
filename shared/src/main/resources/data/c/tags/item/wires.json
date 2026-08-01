@@ -28,6 +28,17 @@
     "#c:wires/dawnstone",
     "#c:wires/andesite_alloy",
     "#c:wires/draconium",
-    "#c:wires/awakened_draconium"
+    "#c:wires/awakened_draconium",
+    "#c:wires/boron",
+    "#c:wires/thorium",
+    "#c:wires/magnesium",
+    "#c:wires/beryllium",
+    "#c:wires/zirconium",
+    "#c:wires/neutronium",
+    "#c:wires/ferroboron",
+    "#c:wires/tough_alloy",
+    "#c:wires/zircaloy",
+    "#c:wires/hsla_steel",
+    "#c:wires/super_alloy"
   ]
 }

@@ -1,0 +1,8 @@
+{
+  "ingredient": {
+    "tag": "c:double_ingots/boron"
+  },
+  "heat_capacity": 5.714,
+  "forging_temperature": 1246,
+  "welding_temperature": 1661
+}

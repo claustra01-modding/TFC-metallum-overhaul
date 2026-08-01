@@ -1,0 +1,8 @@
+{
+  "ingredient": {
+    "tag": "c:heavy_sheets/beryllium"
+  },
+  "heat_capacity": 14.286,
+  "forging_temperature": 772,
+  "welding_temperature": 1030
+}

@@ -1,0 +1,16 @@
+{
+  "ingredient": [
+    {
+      "tag": "c:nails/neutronium"
+    },
+    {
+      "tag": "c:rivets/neutronium"
+    },
+    {
+      "tag": "c:screws/neutronium"
+    }
+  ],
+  "heat_capacity": 0.171,
+  "forging_temperature": 1800,
+  "welding_temperature": 2400
+}

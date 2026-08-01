@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "all": "tfcm:block/metal/block/tough_alloy"
+  },
+  "parent": "minecraft:block/cube_all"
+}

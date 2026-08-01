@@ -1,0 +1,8 @@
+{
+  "values": [
+    {
+      "id": "tfcm:metal/heavy_sheet/zircaloy",
+      "required": false
+    }
+  ]
+}

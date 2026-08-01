@@ -28,6 +28,17 @@
     "#c:stamens/dawnstone",
     "#c:stamens/andesite_alloy",
     "#c:stamens/draconium",
-    "#c:stamens/awakened_draconium"
+    "#c:stamens/awakened_draconium",
+    "#c:stamens/boron",
+    "#c:stamens/thorium",
+    "#c:stamens/magnesium",
+    "#c:stamens/beryllium",
+    "#c:stamens/zirconium",
+    "#c:stamens/neutronium",
+    "#c:stamens/ferroboron",
+    "#c:stamens/tough_alloy",
+    "#c:stamens/zircaloy",
+    "#c:stamens/hsla_steel",
+    "#c:stamens/super_alloy"
   ]
 }

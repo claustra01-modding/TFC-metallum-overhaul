@@ -28,6 +28,17 @@
     "#c:rods/dawnstone",
     "#c:rods/andesite_alloy",
     "#c:rods/draconium",
-    "#c:rods/awakened_draconium"
+    "#c:rods/awakened_draconium",
+    "#c:rods/boron",
+    "#c:rods/thorium",
+    "#c:rods/magnesium",
+    "#c:rods/beryllium",
+    "#c:rods/zirconium",
+    "#c:rods/neutronium",
+    "#c:rods/ferroboron",
+    "#c:rods/tough_alloy",
+    "#c:rods/zircaloy",
+    "#c:rods/hsla_steel",
+    "#c:rods/super_alloy"
   ]
 }

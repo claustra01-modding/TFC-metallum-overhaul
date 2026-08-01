@@ -1,0 +1,8 @@
+{
+  "ingredient": {
+    "tag": "c:heavy_sheets/boron"
+  },
+  "heat_capacity": 14.286,
+  "forging_temperature": 1246,
+  "welding_temperature": 1661
+}

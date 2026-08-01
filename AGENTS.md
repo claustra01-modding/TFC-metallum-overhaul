@@ -330,6 +330,8 @@ python3 tools/textures/regenerate_ore_washing.py
 
 ```bash
 python3 tools/textures/regenerate_misc.py
+python3 tools/textures/regenerate_metals.py
+python3 tools/textures/generate_metal_models.py
 python3 tools/textures/regenerate_ore_grades.py
 python3 tools/textures/regenerate_carobbiite.py
 python3 tools/textures/regenerate_neutronium.py

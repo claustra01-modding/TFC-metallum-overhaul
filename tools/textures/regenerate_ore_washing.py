@@ -20,9 +20,10 @@ TFC_JAR = next(
 ORE_WASHING_JAR = ROOT / ".tmp/tfcorewashing/tfcorewashing-1.21.1-neoforge-1.1.4.jar"
 
 ORES = (
-    "stibnite", "rutile", "cobaltite", "spodumene", "bauxite", "galena", "uraninite",
+    "stibnite", "rutile", "cobaltite", "spodumene", "thorianite", "magnesite", "zircon",
+    "bauxite", "galena", "uraninite",
     "wolframite", "native_platinum", "native_naquadah", "native_iridium", "native_osmium",
-    "mithril_matrix",
+    "mithril_matrix", "carobbiite",
 )
 
 FORM_BASES = {
@@ -54,7 +55,13 @@ def main() -> None:
     )
     overlay_indices = {index for index, pixel in enumerate(overlay) if pixel[3] > 0}
     sources = {
-        ore: load_png(ASSETS / f"textures/item/ore/normal_{ore}.png")[1]
+        ore: load_png(
+            ASSETS / (
+                f"textures/item/ore/normal_{ore}.png"
+                if (ASSETS / f"textures/item/ore/normal_{ore}.png").exists()
+                else f"textures/item/ore/{ore}.png"
+            )
+        )[1]
         for ore in ORES
     }
     generated = 0

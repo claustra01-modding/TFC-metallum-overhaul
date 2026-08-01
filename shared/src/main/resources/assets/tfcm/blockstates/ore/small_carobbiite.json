@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "tfcm:block/ore/small_carobbiite",
+        "y": 90
+      },
+      {
+        "model": "tfcm:block/ore/small_carobbiite"
+      },
+      {
+        "model": "tfcm:block/ore/small_carobbiite",
+        "y": 180
+      },
+      {
+        "model": "tfcm:block/ore/small_carobbiite",
+        "y": 270
+      }
+    ]
+  }
+}

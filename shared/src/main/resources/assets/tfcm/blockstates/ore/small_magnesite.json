@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "tfcm:block/ore/small_magnesite",
+        "y": 90
+      },
+      {
+        "model": "tfcm:block/ore/small_magnesite"
+      },
+      {
+        "model": "tfcm:block/ore/small_magnesite",
+        "y": 180
+      },
+      {
+        "model": "tfcm:block/ore/small_magnesite",
+        "y": 270
+      }
+    ]
+  }
+}

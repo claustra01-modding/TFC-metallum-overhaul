@@ -1,7 +1,7 @@
 {
-    "variants":  {
-                     "":  {
-                              "model":  "tfcm:block/ore/normal_spodumene/tuff"
-                          }
-                 }
+  "variants": {
+    "": {
+      "model": "tfcm:block/ore/normal_spodumene/tuff"
+    }
+  }
 }

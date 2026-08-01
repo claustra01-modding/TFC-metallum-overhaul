@@ -1,0 +1,20 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:mod_loaded",
+        "modid": "tfcorewashing"
+      }
+    }
+  ],
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "tfcm:ore/carobbiite"
+  },
+  "result_fluid": {
+    "amount": 25,
+    "id": "tfc:metal/beryllium"
+  },
+  "temperature": 181
+}

@@ -1,8 +1,8 @@
 {
   "parent": "tfc:block/ore",
   "textures": {
-    "all": "minecraft:block/end_stone",
-    "particle": "minecraft:block/end_stone",
+    "all": "minecraft:block/endstone",
+    "particle": "minecraft:block/endstone",
     "overlay": "tfcm:block/ore/rich_uraninite"
   }
 }

@@ -28,6 +28,17 @@
     "#c:nails/dawnstone",
     "#c:nails/andesite_alloy",
     "#c:nails/draconium",
-    "#c:nails/awakened_draconium"
+    "#c:nails/awakened_draconium",
+    "#c:nails/boron",
+    "#c:nails/thorium",
+    "#c:nails/magnesium",
+    "#c:nails/beryllium",
+    "#c:nails/zirconium",
+    "#c:nails/neutronium",
+    "#c:nails/ferroboron",
+    "#c:nails/tough_alloy",
+    "#c:nails/zircaloy",
+    "#c:nails/hsla_steel",
+    "#c:nails/super_alloy"
   ]
 }

@@ -40,6 +40,16 @@
     "#c:ores/aluminum/rich",
     "#c:ores/lead/rich",
     "#c:ores/uranium/rich",
-    "#c:ores/quartz"
+    "#c:ores/quartz",
+    "#c:ores/beryllium",
+    "#c:ores/thorium/poor",
+    "#c:ores/thorium/normal",
+    "#c:ores/thorium/rich",
+    "#c:ores/magnesium/poor",
+    "#c:ores/magnesium/normal",
+    "#c:ores/magnesium/rich",
+    "#c:ores/zirconium/poor",
+    "#c:ores/zirconium/normal",
+    "#c:ores/zirconium/rich"
   ]
 }

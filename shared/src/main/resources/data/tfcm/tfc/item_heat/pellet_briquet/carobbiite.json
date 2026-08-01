@@ -1,0 +1,13 @@
+{
+  "ingredient": [
+    {
+      "tag": "c:metal/pellet/carobbiite"
+    },
+    {
+      "tag": "c:metal/briquet/carobbiite"
+    }
+  ],
+  "heat_capacity": 3.333,
+  "forging_temperature": 772,
+  "welding_temperature": 1030
+}

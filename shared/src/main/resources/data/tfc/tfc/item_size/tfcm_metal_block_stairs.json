@@ -40,6 +40,27 @@
       "item": "tfcm:metal/block/cobalt_stairs"
     },
     {
+      "item": "tfcm:metal/block/lithium_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/aluminum_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/constantan_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/invar_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/electrum_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/lead_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/uranium_stairs"
+    },
+    {
       "item": "tfcm:metal/block/tungsten_stairs"
     },
     {
@@ -50,6 +71,51 @@
     },
     {
       "item": "tfcm:metal/block/netherite_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/dawnstone_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/andesite_alloy_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/draconium_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/awakened_draconium_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/boron_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/thorium_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/magnesium_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/beryllium_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/zirconium_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/neutronium_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/ferroboron_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/tough_alloy_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/zircaloy_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/hsla_steel_stairs"
+    },
+    {
+      "item": "tfcm:metal/block/super_alloy_stairs"
     }
   ],
   "size": "small",

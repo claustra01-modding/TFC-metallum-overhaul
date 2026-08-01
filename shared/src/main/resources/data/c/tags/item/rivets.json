@@ -28,6 +28,17 @@
     "#c:rivets/dawnstone",
     "#c:rivets/andesite_alloy",
     "#c:rivets/draconium",
-    "#c:rivets/awakened_draconium"
+    "#c:rivets/awakened_draconium",
+    "#c:rivets/boron",
+    "#c:rivets/thorium",
+    "#c:rivets/magnesium",
+    "#c:rivets/beryllium",
+    "#c:rivets/zirconium",
+    "#c:rivets/neutronium",
+    "#c:rivets/ferroboron",
+    "#c:rivets/tough_alloy",
+    "#c:rivets/zircaloy",
+    "#c:rivets/hsla_steel",
+    "#c:rivets/super_alloy"
   ]
 }

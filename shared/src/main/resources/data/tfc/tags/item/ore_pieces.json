@@ -40,6 +40,16 @@
     "tfcm:ore/rich_bauxite",
     "tfcm:ore/rich_galena",
     "tfcm:ore/rich_uraninite",
-    "tfcm:ore/quartz"
+    "tfcm:ore/carobbiite",
+    "tfcm:ore/quartz",
+    "tfcm:ore/poor_thorianite",
+    "tfcm:ore/normal_thorianite",
+    "tfcm:ore/rich_thorianite",
+    "tfcm:ore/poor_magnesite",
+    "tfcm:ore/normal_magnesite",
+    "tfcm:ore/rich_magnesite",
+    "tfcm:ore/poor_zircon",
+    "tfcm:ore/normal_zircon",
+    "tfcm:ore/rich_zircon"
   ]
 }

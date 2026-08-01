@@ -1110,6 +1110,33 @@ veins:
         underground_rarity: 1
         underground_count: 4
 
+  - tfcm:vein/carobbiite:
+      blocks:
+        - block: tfcm:ore/carobbiite/{rock}
+      type: tfc:cluster_vein
+      ymax: 32
+      ymin: -64
+      rarity: 70
+      density: 0.5
+      size: 18
+      random_name: carobbiite
+      rocks:
+        - granite
+        - diorite
+        - gabbro
+        - quartzite
+        - slate
+        - phyllite
+        - schist
+        - gneiss
+        - marble
+      indicator:
+        block: tfcm:ore/small_carobbiite
+        rarity: 0
+        depth: 35
+        underground_rarity: 1
+        underground_count: 4
+
 geodes:
   - tfcm:quartz_geode:
       type: tfcm:quartz_geode

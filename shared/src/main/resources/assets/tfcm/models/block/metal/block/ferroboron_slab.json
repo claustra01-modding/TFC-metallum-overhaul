@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "tfcm:block/metal/block/ferroboron",
+    "top": "tfcm:block/metal/block/ferroboron",
+    "side": "tfcm:block/metal/block/ferroboron"
+  }
+}

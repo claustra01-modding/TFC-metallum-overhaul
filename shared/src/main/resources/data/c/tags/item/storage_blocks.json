@@ -28,6 +28,17 @@
     "#c:storage_blocks/dawnstone",
     "#c:storage_blocks/andesite_alloy",
     "#c:storage_blocks/draconium",
-    "#c:storage_blocks/awakened_draconium"
+    "#c:storage_blocks/awakened_draconium",
+    "#c:storage_blocks/boron",
+    "#c:storage_blocks/thorium",
+    "#c:storage_blocks/magnesium",
+    "#c:storage_blocks/beryllium",
+    "#c:storage_blocks/zirconium",
+    "#c:storage_blocks/neutronium",
+    "#c:storage_blocks/ferroboron",
+    "#c:storage_blocks/tough_alloy",
+    "#c:storage_blocks/zircaloy",
+    "#c:storage_blocks/hsla_steel",
+    "#c:storage_blocks/super_alloy"
   ]
 }

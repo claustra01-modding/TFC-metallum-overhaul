@@ -29,6 +29,17 @@
     "#c:ingots/dawnstone",
     "#c:ingots/andesite_alloy",
     "#c:ingots/draconium",
-    "#c:ingots/awakened_draconium"
+    "#c:ingots/awakened_draconium",
+    "#c:ingots/boron",
+    "#c:ingots/thorium",
+    "#c:ingots/magnesium",
+    "#c:ingots/beryllium",
+    "#c:ingots/zirconium",
+    "#c:ingots/neutronium",
+    "#c:ingots/ferroboron",
+    "#c:ingots/tough_alloy",
+    "#c:ingots/zircaloy",
+    "#c:ingots/hsla_steel",
+    "#c:ingots/super_alloy"
   ]
 }

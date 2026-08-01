@@ -28,6 +28,17 @@
     "tfc:metal/dawnstone",
     "tfc:metal/andesite_alloy",
     "tfc:metal/draconium",
-    "tfc:metal/awakened_draconium"
+    "tfc:metal/awakened_draconium",
+    "tfc:metal/boron",
+    "tfc:metal/thorium",
+    "tfc:metal/magnesium",
+    "tfc:metal/beryllium",
+    "tfc:metal/zirconium",
+    "tfc:metal/neutronium",
+    "tfc:metal/ferroboron",
+    "tfc:metal/tough_alloy",
+    "tfc:metal/zircaloy",
+    "tfc:metal/hsla_steel",
+    "tfc:metal/super_alloy"
   ]
 }

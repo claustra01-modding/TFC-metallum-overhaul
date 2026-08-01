@@ -28,6 +28,17 @@
     "#c:rings/dawnstone",
     "#c:rings/andesite_alloy",
     "#c:rings/draconium",
-    "#c:rings/awakened_draconium"
+    "#c:rings/awakened_draconium",
+    "#c:rings/boron",
+    "#c:rings/thorium",
+    "#c:rings/magnesium",
+    "#c:rings/beryllium",
+    "#c:rings/zirconium",
+    "#c:rings/neutronium",
+    "#c:rings/ferroboron",
+    "#c:rings/tough_alloy",
+    "#c:rings/zircaloy",
+    "#c:rings/hsla_steel",
+    "#c:rings/super_alloy"
   ]
 }

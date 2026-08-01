@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "tfcm:block/ore/small_zircon",
+        "y": 90
+      },
+      {
+        "model": "tfcm:block/ore/small_zircon"
+      },
+      {
+        "model": "tfcm:block/ore/small_zircon",
+        "y": 180
+      },
+      {
+        "model": "tfcm:block/ore/small_zircon",
+        "y": 270
+      }
+    ]
+  }
+}

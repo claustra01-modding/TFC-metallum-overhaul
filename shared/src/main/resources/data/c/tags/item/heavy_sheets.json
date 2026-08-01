@@ -28,6 +28,17 @@
     "#c:heavy_sheets/dawnstone",
     "#c:heavy_sheets/andesite_alloy",
     "#c:heavy_sheets/draconium",
-    "#c:heavy_sheets/awakened_draconium"
+    "#c:heavy_sheets/awakened_draconium",
+    "#c:heavy_sheets/boron",
+    "#c:heavy_sheets/thorium",
+    "#c:heavy_sheets/magnesium",
+    "#c:heavy_sheets/beryllium",
+    "#c:heavy_sheets/zirconium",
+    "#c:heavy_sheets/neutronium",
+    "#c:heavy_sheets/ferroboron",
+    "#c:heavy_sheets/tough_alloy",
+    "#c:heavy_sheets/zircaloy",
+    "#c:heavy_sheets/hsla_steel",
+    "#c:heavy_sheets/super_alloy"
   ]
 }

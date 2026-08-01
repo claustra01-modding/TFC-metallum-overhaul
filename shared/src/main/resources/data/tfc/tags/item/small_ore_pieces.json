@@ -12,6 +12,9 @@
     "tfcm:ore/small_mithril_matrix",
     "tfcm:ore/small_bauxite",
     "tfcm:ore/small_galena",
-    "tfcm:ore/small_uraninite"
+    "tfcm:ore/small_uraninite",
+    "tfcm:ore/small_thorianite",
+    "tfcm:ore/small_magnesite",
+    "tfcm:ore/small_zircon"
   ]
 }

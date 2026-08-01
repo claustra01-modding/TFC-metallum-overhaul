@@ -303,6 +303,7 @@ python3 tools/textures/regenerate_metals.py
 ### 11.3 Ore Washing
 
 - 色・パレット元は各鉱石の `assets/tfcm/textures/item/ore/normal_<ore>.png`。
+- TFC本体由来の `borax` は、TFC本体の `assets/tfc/textures/item/ore/borax.png` をパレット元にする。
 - `chunks`, `rocky_chunks`, `dirty_dust`, `dirty_pile` はtfcorewashingのgraphite形状を使う。
 - `pellet`, `briquet` はgraphite形状がないためchromium形状をmaskとして使う。
 - `powder` はTFC `item/powder/graphite` の形状を使う。

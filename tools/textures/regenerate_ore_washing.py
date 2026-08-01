@@ -23,7 +23,7 @@ ORES = (
     "stibnite", "rutile", "cobaltite", "spodumene", "thorianite", "magnesite", "zircon",
     "bauxite", "galena", "uraninite",
     "wolframite", "native_platinum", "native_naquadah", "native_iridium", "native_osmium",
-    "mithril_matrix", "carobbiite",
+    "mithril_matrix", "carobbiite", "borax",
 )
 
 FORM_BASES = {
@@ -37,14 +37,14 @@ FORM_BASES = {
 }
 
 
-def write_rocky_model(ore: str) -> None:
-    path = ASSETS / f"models/item/metal/rocky_chunks/{ore}.json"
+def write_item_model(form: str, ore: str) -> None:
+    path = ASSETS / f"models/item/metal/{form}/{ore}.json"
+    textures = {"layer0": f"tfcm:item/metal/{form}/{ore}"}
+    if form == "rocky_chunks":
+        textures["layer1"] = "tfcm:item/metal/rocky_chunks/_rocky_overlay"
     data = {
         "parent": "item/generated",
-        "textures": {
-            "layer0": f"tfcm:item/metal/rocky_chunks/{ore}",
-            "layer1": "tfcm:item/metal/rocky_chunks/_rocky_overlay",
-        },
+        "textures": textures,
     }
     path.write_text(json.dumps(data, separators=(",", ":")), encoding="utf-8")
 
@@ -54,16 +54,17 @@ def main() -> None:
         ASSETS / "textures/item/metal/rocky_chunks/_rocky_overlay.png"
     )
     overlay_indices = {index for index, pixel in enumerate(overlay) if pixel[3] > 0}
-    sources = {
-        ore: load_png(
-            ASSETS / (
-                f"textures/item/ore/normal_{ore}.png"
-                if (ASSETS / f"textures/item/ore/normal_{ore}.png").exists()
-                else f"textures/item/ore/{ore}.png"
-            )
-        )[1]
-        for ore in ORES
-    }
+    sources = {}
+    for ore in ORES:
+        local_source = ASSETS / f"textures/item/ore/normal_{ore}.png"
+        if not local_source.exists():
+            local_source = ASSETS / f"textures/item/ore/{ore}.png"
+        if local_source.exists():
+            sources[ore] = load_png(local_source)[1]
+        elif ore == "borax":
+            _, sources[ore] = load_zip_png(TFC_JAR, "assets/tfc/textures/item/ore/borax.png")
+        else:
+            raise FileNotFoundError(f"No Ore Washing palette source for {ore}")
     generated = 0
 
     for form, (archive, member) in FORM_BASES.items():
@@ -74,8 +75,7 @@ def main() -> None:
         for ore in ORES:
             target = ASSETS / f"textures/item/metal/{form}/{ore}.png"
             save_png(target, size, transfer_palette(base, sources[ore], hidden))
-            if form == "rocky_chunks":
-                write_rocky_model(ore)
+            write_item_model(form, ore)
             generated += 1
 
     print(f"Regenerated {generated} Ore Washing textures for {len(ORES)} ores.")
